@@ -39,7 +39,7 @@ export const EnterpriseKnowledgeHub: React.FC<EnterpriseKnowledgeHubProps> = ({
 
   const executeSearch = (q: string) => {
     setIsLoading(true);
-    fetch(`http://localhost:8000/api/v1/search/omni?q=${encodeURIComponent(q || 'Tamil Nadu')}&doc_type=${docTypeFilter}`)
+    fetch(`/api/v1/search/omni?q=${encodeURIComponent(q || 'Tamil Nadu')}&doc_type=${docTypeFilter}`)
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data) {

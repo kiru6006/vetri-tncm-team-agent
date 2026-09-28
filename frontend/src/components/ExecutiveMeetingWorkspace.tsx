@@ -38,7 +38,7 @@ export const ExecutiveMeetingWorkspace: React.FC<ExecutiveMeetingWorkspaceProps>
   const [meetingType, setMeetingType] = useState('CABINET');
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/v1/meetings')
+    fetch('/api/v1/meetings')
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data && data.length > 0) {
@@ -122,7 +122,7 @@ export const ExecutiveMeetingWorkspace: React.FC<ExecutiveMeetingWorkspaceProps>
   const handleCreateMeeting = () => {
     if (!meetingTitle.trim()) return;
 
-    fetch('http://localhost:8000/api/v1/meetings/create', {
+    fetch('/api/v1/meetings/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

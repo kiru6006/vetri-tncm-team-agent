@@ -47,7 +47,7 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
 
   useEffect(() => {
     // Fetch hierarchy tree
-    fetch('http://localhost:8000/api/v1/hierarchy/tree')
+    fetch('/api/v1/hierarchy/tree')
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data) {
@@ -147,7 +147,7 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
 
   const performSearch = (q: string) => {
     setIsSearching(true);
-    fetch(`http://localhost:8000/api/v1/directory/search?query=${encodeURIComponent(q)}&semantic=true`)
+    fetch(`/api/v1/directory/search?query=${encodeURIComponent(q)}&semantic=true`)
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data && data.officers) {

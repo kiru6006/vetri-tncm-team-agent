@@ -40,7 +40,7 @@ export const GovernmentChatPlatform: React.FC<GovernmentChatPlatformProps> = ({
 
   useEffect(() => {
     // Fetch chat channels
-    fetch('http://localhost:8000/api/v1/chat/rooms')
+    fetch('/api/v1/chat/rooms')
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data && data.length > 0) {
@@ -80,7 +80,7 @@ export const GovernmentChatPlatform: React.FC<GovernmentChatPlatformProps> = ({
   useEffect(() => {
     if (!activeRoomId) return;
     // Fetch room messages
-    fetch(`http://localhost:8000/api/v1/chat/rooms/${activeRoomId}/messages`)
+    fetch(`/api/v1/chat/rooms/${activeRoomId}/messages`)
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data) {
@@ -145,7 +145,7 @@ export const GovernmentChatPlatform: React.FC<GovernmentChatPlatformProps> = ({
     setIsPriorityMessage(false);
 
     // Call backend
-    fetch(`http://localhost:8000/api/v1/chat/rooms/${activeRoomId}/messages`, {
+    fetch(`/api/v1/chat/rooms/${activeRoomId}/messages`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: newMsg.content_en, is_priority: newMsg.is_priority })
@@ -155,7 +155,7 @@ export const GovernmentChatPlatform: React.FC<GovernmentChatPlatformProps> = ({
   const handleSummarizeThread = () => {
     setIsSummarizing(true);
     setSummaryModalOpen(true);
-    fetch(`http://localhost:8000/api/v1/chat/rooms/${activeRoomId}/summarize`, { method: 'POST' })
+    fetch(`/api/v1/chat/rooms/${activeRoomId}/summarize`, { method: 'POST' })
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data) {

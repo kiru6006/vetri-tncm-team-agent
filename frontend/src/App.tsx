@@ -66,7 +66,7 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     // Fetch real-time executive briefing & actions
-    fetch('http://localhost:8000/api/v1/executive/workspace/briefing')
+    fetch('/api/v1/executive/workspace/briefing')
       .then(res => res.ok ? res.json() : null)
       .then(data => data && setBriefing(data))
       .catch(() => {
@@ -120,7 +120,7 @@ export const App: React.FC = () => {
         });
       });
 
-    fetch('http://localhost:8000/api/v1/executive/actions/today')
+    fetch('/api/v1/executive/actions/today')
       .then(res => res.ok ? res.json() : null)
       .then(data => data && setActionsToday(data))
       .catch(() => {

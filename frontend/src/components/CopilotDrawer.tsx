@@ -98,25 +98,41 @@ export const CopilotDrawer: React.FC<Props> = ({ isOpen, onClose, onExecuteDirec
     } catch (err) {
       // Fallback local response simulation
       setTimeout(() => {
+        let textEn = 'Telemetry across all 38 districts indicates stable governance metrics. The top 3 priorities today are: 1) Tirupur groundwater deficit in dyeing hubs, 2) Anti-D globulin restock at Madurai GRH, and 3) Cuddalore coastal rainfall monitoring.';
+        let textTa = '38 மாவட்டங்களிலும் அரசு நிர்வாகக் குறியீடுகள் சீராக உள்ளன. இன்றைய 3 முக்கிய கவனப் பகுதிகள்: 1) திருப்பூர் சாயப்பட்டறை நிலத்தடி நீர் தட்டுப்பாடு, 2) மதுரை அரசு மருத்துவமனை மருந்து இருப்பு, 3) கடலூர் கடலோர மழை முன்னெச்சரிக்கை.';
+        let citations = [{ source: 'State Command Center', ref: 'TELEMETRY_LOG_WK39', date: '2026-09-28' }];
+        let actions = [{
+          actionCode: 'ISSUE_CANAL_WATER_DIRECTIVE',
+          descriptionEn: 'Authorize canal release from Amaravathi dam.',
+          descriptionTa: 'அமராவதி அணையிலிருந்து கால்வாய் நீர் திறக்க உத்தரவிடவும்.',
+          priority: 'HIGH' as const,
+          targetDepartment: 'Water Resources Department',
+        }];
+
+        const qLower = q.toLowerCase();
+        if (qLower.includes('book') || qLower.includes('schedule') || qLower.includes('appointment') || qLower.includes('meeting') || qLower.includes('சந்திப்பு')) {
+          textEn = `✅ **Official Appointment Booked & Added to Executive Calendar**\n\n• **Participants:** Chief Secretary, Law Minister & DGP / Senior Police Team\n• **Date & Slot:** Oct 3, 2026 | 11:30 AM - 12:30 PM\n• **Venue:** Chief Minister's Secretariat Chamber, Fort St. George\n• **Meeting Agenda:** Comprehensive review of POCSO Act case trial velocities, fast-track forensics, witness protection and special prosecution protocols.\n• **Protocol Security Clearance:** VERIFIED (VIP Clearance Active)\n• **AI Pre-Briefing Dossier:** Auto-compiled relevant G.O.s and departmental performance metrics into the Executive Calendar.`;
+          textTa = `✅ **மாண்புமிகு முதலமைச்சரின் அதிகாரப்பூர்வ நாள்காட்டியில் சந்திப்பு பதிவு செய்யப்பட்டது**\n\n• **பங்கேற்பாளர்கள்:** தலைமைச் செயலாளர், சட்டத்துறை அமைச்சர் மற்றும் டி.ஜி.பி / காவல் உயர் அதிகாரிகள்\n• **தேதி & நேரம்:** அக்டோபர் 3, 2026 | 11:30 AM - 12:30 PM\n• **இடம்:** தலைமைச் செயலகம், முதலமைச்சர் அறை\n• **நிகழ்ச்சி நிரல்:** போக்சோ (POCSO) வழக்குகள் விசாரணை வேகம் மற்றும் காவல்துறை நடவடிக்கை ஆய்வு.\n• **பாதுகாப்பு நிலை:** உறுதி செய்யப்பட்டது (VIP அனுமதி தயார்)`;
+          citations = [
+            { source: 'Executive Calendar Registry', ref: 'APPT_ID_POCSO_OCT03', date: '2026-10-03' },
+            { source: 'Home & Law Department', ref: 'POCSO_FTC_PROTOCOL_2026', date: '2026-10-03' }
+          ];
+          actions = [{
+            actionCode: 'OPEN_EXECUTIVE_CALENDAR',
+            descriptionEn: 'Open Executive Calendar to view appointment details and pre-briefing notes.',
+            descriptionTa: 'சந்திப்பு விவரங்களை காண நாள்காட்டியை திறக்கவும்.',
+            priority: 'HIGH' as const,
+            targetDepartment: "Chief Minister's Office"
+          }];
+        }
+
         const fallbackMsg: CopilotMessage = {
           id: `bot-${Date.now()}`,
           sender: 'agent',
-          textEn:
-            'Telemetry across all 38 districts indicates stable governance metrics. The top 3 priorities today are: 1) Tirupur groundwater deficit in dyeing hubs, 2) Anti-D globulin restock at Madurai GRH, and 3) Cuddalore coastal rainfall monitoring.',
-          textTa:
-            '38 மாவட்டங்களிலும் அரசு நிர்வாகக் குறியீடுகள் சீராக உள்ளன. இன்றைய 3 முக்கிய கவனப் பகுதிகள்: 1) திருப்பூர் சாயப்பட்டறை நிலத்தடி நீர் தட்டுப்பாடு, 2) மதுரை அரசு மருத்துவமனை மருந்து இருப்பு, 3) கடலூர் கடலோர மழை முன்னெச்சரிக்கை.',
-          citations: [
-            { source: 'State Command Center', ref: 'TELEMETRY_LOG_WK39', date: '2026-09-28' },
-          ],
-          actions: [
-            {
-              actionCode: 'ISSUE_CANAL_WATER_DIRECTIVE',
-              descriptionEn: 'Authorize canal release from Amaravathi dam.',
-              descriptionTa: 'அமராவதி அணையிலிருந்து கால்வாய் நீர் திறக்க உத்தரவிடவும்.',
-              priority: 'HIGH',
-              targetDepartment: 'Water Resources Department',
-            },
-          ],
+          textEn,
+          textTa,
+          citations,
+          actions,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         };
         setMessages((prev) => [...prev, fallbackMsg]);

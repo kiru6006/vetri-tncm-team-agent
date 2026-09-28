@@ -54,7 +54,7 @@ export const ExecutiveCalendarView: React.FC<ExecutiveCalendarViewProps> = ({
   }, [roleFilter]);
 
   const fetchAppointments = (role: string) => {
-    fetch(`http://localhost:8000/api/v1/calendar/appointments?role_filter=${role}`)
+    fetch(`/api/v1/calendar/appointments?role_filter=${role}`)
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data && data.length > 0) {
@@ -130,7 +130,7 @@ export const ExecutiveCalendarView: React.FC<ExecutiveCalendarViewProps> = ({
   const handleBookAppointment = () => {
     if (!formTitle.trim() || !formParticipantName.trim()) return;
 
-    fetch('http://localhost:8000/api/v1/calendar/book', {
+    fetch('/api/v1/calendar/book', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
