@@ -154,6 +154,48 @@ export interface OfficerDossier {
   recent_decisions: string[];
 }
 
+export interface ChatMessage {
+  id: string;
+  room_id: string;
+  sender_id: string;
+  sender_name_en: string;
+  sender_name_ta: string;
+  sender_designation: string;
+  sender_role: string;
+  content_en: string;
+  content_ta: string;
+  message_type: 'TEXT' | 'FILE' | 'VOICE_NOTE' | 'APPROVAL_REQUEST' | 'TASK_ASSIGNED';
+  attachment_url?: string;
+  attachment_name?: string;
+  is_pinned?: boolean;
+  is_priority?: boolean;
+  timestamp: string;
+}
+
+export interface ChatRoom {
+  id: string;
+  name_en: string;
+  name_ta: string;
+  room_type: 'CABINET' | 'ALL_COLLECTORS' | 'DEPARTMENT' | 'DISTRICT_DISASTER' | 'DIRECT';
+  department_code?: string;
+  district_code?: string;
+  unread_count: number;
+  last_message_snippet: string;
+  last_message_time: string;
+  members_count: number;
+  is_encrypted: boolean;
+}
+
+export interface ChatSummary {
+  room_id: string;
+  room_name: string;
+  total_messages_analyzed: number;
+  summary_en: string;
+  summary_ta: string;
+  key_decisions: string[];
+  derived_action_items: Array<{ task: string; assignee: string; deadline: string }>;
+}
+
 export interface User {
   id: string;
   email: string;

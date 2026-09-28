@@ -15,6 +15,7 @@ import { PoliceDomainView } from './components/PoliceDomainView';
 import { WaterAgriDomainView } from './components/WaterAgriDomainView';
 import { FraudAuditDomainView } from './components/FraudAuditDomainView';
 import { GovernmentHierarchyDirectory } from './components/GovernmentHierarchyDirectory';
+import { GovernmentChatPlatform } from './components/GovernmentChatPlatform';
 import { CopilotDrawer } from './components/CopilotDrawer';
 import { useAuthStore } from './stores/authStore';
 import {
@@ -42,13 +43,14 @@ import {
   Droplets,
   ShieldAlert,
   Briefcase,
-  Layers
+  Layers,
+  MessagesSquare
 } from 'lucide-react';
 
 export const App: React.FC = () => {
   const { language, activeRole } = useAuthStore();
   const [activeTab, setActiveTab] = useState<
-    'workspace' | 'hierarchy' | 'dashboard' | 'gis' | 'revenue' | 'grievance' | 'health' | 'police' | 'water_agri' | 'fraud_audit' | 'role_view'
+    'workspace' | 'hierarchy' | 'chat' | 'dashboard' | 'gis' | 'revenue' | 'grievance' | 'health' | 'police' | 'water_agri' | 'fraud_audit' | 'role_view'
   >('workspace');
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null);
@@ -315,7 +317,19 @@ export const App: React.FC = () => {
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>{language === 'ta' ? 'நிர்வாகப் படிநிலை' : 'TN Hierarchy & Directory'}</span>
+              <span>{language === 'ta' ? 'நிர்வாகப் படிநிலை' : 'TN Hierarchy'}</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('chat')}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                activeTab === 'chat'
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-500/20'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <MessagesSquare className="w-3.5 h-3.5" />
+              <span>{language === 'ta' ? 'அரசு உரையாடல் (Chat)' : 'Gov Chat'}</span>
             </button>
 
             <button
@@ -490,6 +504,19 @@ export const App: React.FC = () => {
             <GovernmentHierarchyDirectory
               onSelectOfficer={(officer) => {
                 setNotification(`Loaded portfolio for ${officer.name_en}`);
+              }}
+              onOpenCopilot={(query) => {
+                setCopilotOpen(true);
+              }}
+            />
+          </section>
+        )}
+
+        {activeTab === 'chat' && (
+          <section className="animate-in fade-in duration-200">
+            <GovernmentChatPlatform
+              onConvertTask={(task) => {
+                setNotification(`Converted to Official Government Action: "${task.substring(0, 45)}..."`);
               }}
               onOpenCopilot={(query) => {
                 setCopilotOpen(true);
