@@ -4,11 +4,40 @@
 
 ---
 
-## 🏛️ Executive Summary
+## 🏛️ Executive Visual Platform Overview
 
-This playbook provides a comprehensive, role-by-role operational guide on how to leverage **VERTRI TN AI OS** for daily governance, policy decisions, inter-departmental collaboration, emergency response, and citizen grievance redressal.
+### 1. Chief Minister's Executive AI Command Cockpit
+Real-time state telemetry, prioritized daily actions, flagship scheme health, and instant 1-click executive directives.
 
-Every workflow is designed for **one-click execution, verified government data provenance, and conversational AI querying (English & தமிழ்)**.
+![CM Executive Command Cockpit](screenshots/01_cm_executive_workspace.png)
+
+---
+
+### 2. Enterprise Government Relationship Management (GRM) & Unified Directory
+Single source of truth for all Tamil Nadu Government Officials across **IAS, IPS, IRS, IFS, and State Cadres** with verified CUG lines, active schemes, performance scores, and instant collaboration actions.
+
+![Enterprise Government Relationship Management](screenshots/02_enterprise_grm_directory.png)
+
+---
+
+### 3. Interactive 21-Tier Hierarchy Org Chart
+Navigable administrative lineage from the Hon'ble Chief Minister $\rightarrow$ Chief Secretary $\rightarrow$ Principal Secretaries $\rightarrow$ Collectors $\rightarrow$ SPs $\rightarrow$ Tahsildars $\rightarrow$ BDOs $\rightarrow$ VAOs.
+
+![21-Tier Government Org Chart](screenshots/03_grm_21tier_org_chart.png)
+
+---
+
+### 4. AI Relationship & Meeting Intelligence Engine
+Automated attendees recommendation, cross-departmental collaborator mapping, and AI Pre-Meeting Briefing Strategy Dossiers.
+
+![AI Meeting Relationship Intelligence](screenshots/04_ai_meeting_relationship_intel.png)
+
+---
+
+### 5. Multi-View Executive Calendar & Appointments Hub
+Seamless synchronization of CM reviews, Cabinet meetings, assembly sessions, district inspections, and video conferences.
+
+![Executive Calendar & Appointments Hub](screenshots/05_official_calendar_appointments.png)
 
 ---
 

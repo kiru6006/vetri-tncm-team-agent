@@ -17,6 +17,22 @@ The platform unifies disparate departmental data silos into an intelligent, quer
 
 ---
 
+## 📸 Executive Visual Platform Showcase
+
+| Chief Minister's Command Cockpit | Enterprise Government Directory (GRM) |
+|:---:|:---:|
+| ![CM Executive Workspace](docs/screenshots/01_cm_executive_workspace.png) | ![GRM Directory](docs/screenshots/02_enterprise_grm_directory.png) |
+
+| 21-Tier Government Org Chart | AI Meeting Relationship Intel |
+|:---:|:---:|
+| ![21-Tier Org Chart](docs/screenshots/03_grm_21tier_org_chart.png) | ![AI Meeting Intelligence](docs/screenshots/04_ai_meeting_relationship_intel.png) |
+
+| Multi-View Official Calendar Hub |
+|:---:|
+| ![Official Calendar](docs/screenshots/05_official_calendar_appointments.png) |
+
+---
+
 ## 🗄️ Four-Dimensional Core Data Model
 
 ```mermaid
