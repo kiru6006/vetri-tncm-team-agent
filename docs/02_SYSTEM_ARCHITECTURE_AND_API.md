@@ -107,15 +107,21 @@ All endpoints are prefixed with `/api/v1/cmo`:
 
 | Method | Endpoint | Description | Query Parameters / Body |
 |---|---|---|---|
-| `POST` | `/api/v1/cmo/chat` | Natural-Language AI Query | `{ "query": str, "session_id": str, "role_clearance": str }` |
+| `POST` | `/api/v1/cmo/chat` | Natural-Language AI Query (Sonnet Agent) | `{ "query": str, "session_id": str, "role_clearance": str }` |
 | `GET` | `/api/v1/cmo/officials` | Search Official Directory | `q`, `cadre`, `department` |
 | `GET` | `/api/v1/cmo/departments/{dept_id}` | Department Overview | Path: `dept_id` |
 | `GET` | `/api/v1/cmo/schemes/{scheme_id}` | Scheme Progress & Budget | Path: `scheme_id`, Query: `district` |
 | `GET` | `/api/v1/cmo/districts/{district_name}` | 38-District Intelligence | Path: `district_name` |
-| `GET` | `/api/v1/cmo/contacts` | Faceted Contact Search | `cadre`, `department`, `rank`, `keyword`, `page` |
-| `GET` | `/api/v1/cmo/personnel-changes` | Civil Services Transfer Log | `date_from`, `date_to`, `cadre`, `department` |
-| `POST` | `/api/v1/cmo/cross-query` | Graph Intersection | `{ "officials": [], "schemes": [], "districts": [] }` |
-| `GET` | `/api/v1/cmo/export` | Downloadable CSV/PDF/vCard | `format=csv`, `cadre=IAS` |
+| `GET` | `/api/v1/cmo/contacts` | Faceted Contact Search (5 Dimensions) | `cadre`, `department`, `rank`, `keyword`, `page` |
+| `GET` | `/api/v1/cmo/personnel-changes` | Civil Services Transfer & Posting Log | `date_from`, `date_to`, `cadre`, `department` |
+| `POST` | `/api/v1/cmo/cross-query` | Graph Intersection Matrix | `{ "officials": [], "schemes": [], "districts": [] }` |
+| `GET` | `/api/v1/cmo/export` | Export Filtered Directory (CSV/PDF/vCard) | `format=csv`, `cadre=IAS` |
+| `GET` | `/api/v1/cmo/graph/neighborhood` | 2nd-Degree Knowledge Graph Subgraph | `entity_id`, `entity_type`, `depth` |
+| `GET` | `/api/v1/cmo/officers/{officer_id}/intelligence` | 360° Executive Intelligence Dossier | Path: `officer_id` |
+| `GET` | `/api/v1/cmo/departments/{dept_id}/intelligence` | Department Diagnostics & Expenditure Ratios | Path: `dept_id` |
+| `GET` | `/api/v1/cmo/schemes/{scheme_id}/intelligence` | Scheme Execution Velocity & Lagging Districts | Path: `scheme_id` |
+| `POST` | `/api/v1/cmo/meetings/prepare` | AI Pre-Meeting Briefing Strategy Dossier | `{ "agenda": str, "official_ids": [], "scheme_ids": [] }` |
+| `GET` | `/api/v1/cmo/decisions/{decision_scenario}` | High-Stakes Executive Decision Support | Path: `decision_scenario` (`FOCUS_TODAY`, `FLOOD_PREPAREDNESS`, `CABINET_BRIEFING`) |
 
 ---
 
