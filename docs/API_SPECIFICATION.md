@@ -1,9 +1,10 @@
 # VETTRI TN AI OS — OpenAPI Specification & API Contract
+### Phase 2 Enhanced Multi-Role Enterprise Architecture
 
 > **System:** VETTRI TN AI OS (*வெற்றி*)  
 > **API Standard:** OpenAPI 3.1.0 / JSON REST + WebSocket / SSE  
 > **Base URL:** `https://api.vettri.tn.gov.in/api/v1`  
-> **Version:** 1.0.0
+> **Version:** 2.0.0
 
 ---
 
@@ -15,13 +16,14 @@ All requests (except `/auth/login` and `/health`) require a valid Bearer JWT:
 Authorization: Bearer <jwt_access_token>
 X-Request-ID: req_uuid4_tracing_id
 X-Language-Pref: ta | en
+X-User-Role: CHIEF_MINISTER | CABINET_MINISTER | DISTRICT_COLLECTOR | VAO | FIELD_OFFICER
 ```
 
 ---
 
 ## 2. Core Endpoint Specifications
 
-### 2.1 Authentication (`/auth`)
+### 2.1 Authentication & Session (`/auth`)
 
 #### `POST /auth/login`
 - **Request Body:**
@@ -45,88 +47,198 @@ X-Language-Pref: ta | en
     "name_ta": "கே. செந்தில் குமார், இ.ஆ.ப.",
     "role": "DISTRICT_COLLECTOR",
     "assigned_district": "CBE",
-    "department": null
+    "department": "REVENUE",
+    "administrative_level": "DISTRICT",
+    "reports_to": "Chief Secretary"
   }
 }
 ```
 
 ---
 
-### 2.2 State Health Index (`/executive/state-score`)
+### 2.2 Executive Workspace & Morning Briefing (`/executive`)
 
-#### `GET /executive/state-score`
+#### `GET /executive/workspace/briefing`
+- **Headers:** `Authorization: Bearer <token>`
 - **Response (200 OK):**
 ```json
 {
+  "greeting_en": "Good Morning, Hon'ble Chief Minister",
+  "greeting_ta": "காலை வணக்கம், மாண்புமிகு முதலமைச்சர் அவர்களுக்கு",
+  "briefing_date": "2026-09-28",
   "state_score": 88.4,
-  "delta_last_week": "+1.2",
-  "recorded_at": "2026-09-28T14:30:00Z",
-  "dimensions": {
-    "economic_health": {
-      "score": 91.2,
-      "status": "EXCELLENT",
-      "metric_summary": "Commercial Tax collection at 104% of monthly target."
+  "top_priorities": [
+    {
+      "id": "prio_1",
+      "title": "Mettur Dam Kuruvai Water Inflow Review",
+      "severity": "CRITICAL",
+      "department": "WATER_RESOURCES",
+      "recommended_decision": "Authorize special delta irrigation release of 15,000 cusecs"
     },
-    "public_health": {
-      "score": 86.5,
-      "status": "GOOD",
-      "metric_summary": "98.2% PHC doctor attendance; 3 drug stockouts flagged."
-    },
-    "law_and_order": {
-      "score": 89.0,
-      "status": "EXCELLENT",
-      "metric_summary": "Zero critical communal incidents; 94% CCTV uptime."
-    },
-    "scheme_delivery": {
-      "score": 85.8,
-      "status": "GOOD",
-      "metric_summary": "Magalir Urimai Thittam disbursement 99.8% complete."
-    },
-    "infrastructure_velocity": {
-      "score": 83.5,
-      "status": "ATTENTION",
-      "metric_summary": "4 highway bypass projects delayed >30 days."
+    {
+      "id": "prio_2",
+      "title": "Commercial Tax Monthly Reconciliation",
+      "severity": "MEDIUM",
+      "department": "FINANCE",
+      "recommended_decision": "Review 3 enforcement circles underperforming target by >8%"
     }
-  }
+  ],
+  "weather_alerts": [
+    {
+      "region": "Coastal Tamil Nadu (Cuddalore, Nagapattinam)",
+      "alert_level": "ORANGE",
+      "forecast": "Heavy rainfall expected in next 36 hours. Disaster SDRF teams on standby."
+    }
+  ],
+  "pending_approvals_count": 7,
+  "cabinet_meetings_today": 1
+}
+```
+
+#### `GET /executive/actions/today`
+- **Response (200 OK):**
+```json
+{
+  "approvals_awaiting_decision": 5,
+  "urgent_reviews": [
+    {
+      "type": "DELAYED_PROJECT",
+      "title": "Chennai Peripheral Ring Road (Section II)",
+      "cost_in_crores": 2150.0,
+      "delayed_days": 45,
+      "bottleneck": "Land acquisition clearance in Ponneri Taluk",
+      "responsible_officer": "District Collector, Tiruvallur"
+    }
+  ],
+  "escalated_complaints_count": 12,
+  "schemes_underperforming": ["Rural Solar Pump Subsidy Scheme"]
 }
 ```
 
 ---
 
-### 2.3 AI Copilot Execution (`/copilot/chat`)
+### 2.3 Government Hierarchy & Smart Directory (`/hierarchy` & `/directory`)
+
+#### `GET /hierarchy/tree`
+- **Query Params:** `root_level=CHIEF_MINISTER&depth=3`
+- **Response (200 OK):** Returns hierarchical node structure of officers, designations, and sub-departments.
+
+#### `GET /directory/search`
+- **Query Params:** `query=Principal Secretary for Health&semantic=true`
+- **Response (200 OK):**
+```json
+{
+  "query_interpreted": "Find officer leading Health and Family Welfare Department",
+  "results": [
+    {
+      "officer_id": "off_health_ps_01",
+      "name_en": "P. Senthilkumar, IAS",
+      "name_ta": "பி. செந்தில்குமார், இ.ஆ.ப.",
+      "designation": "Principal Secretary to Government",
+      "department": "Health and Family Welfare",
+      "office_location": "Secretariat, Fort St. George, Chennai",
+      "cug_phone": "+91 44 2567 1875",
+      "official_email": "hfsec@tn.gov.in",
+      "current_schemes": ["Makkalai Thedi Maruthuvam", "Innuyir Kappom (Nammai Kakkum 48)"],
+      "pending_approvals": 4
+    }
+  ]
+}
+```
+
+---
+
+### 2.4 Secure Government Chat & Collaboration (`/chat`)
+
+#### `POST /chat/rooms` (Create / Join Channel)
+#### `GET /chat/rooms/{room_id}/messages`
+#### `POST /chat/rooms/{room_id}/summarize`
+- **Response (200 OK):**
+```json
+{
+  "room_id": "dept-health-monsoon-prep",
+  "summary_en": "Secretary instructed all Joint Directors to ensure 100% buffer stock of anti-venom and ORS packets in coastal PHCs by 18:00 hrs today.",
+  "action_items": [
+    {
+      "task": "Submit PHC stock compliance certificate",
+      "assignee": "JD Health (Cuddalore)",
+      "deadline": "2026-09-28T18:00:00Z"
+    }
+  ]
+}
+```
+
+---
+
+### 2.5 Executive Meeting Intelligence (`/meetings`)
+
+#### `POST /meetings/create`
+#### `GET /meetings/{meeting_id}/briefing-pack`
+- **Response (200 OK):**
+```json
+{
+  "meeting_id": "mtg_cab_20260928",
+  "title": "Cabinet Review on Industrial Investment Proposals",
+  "ai_pre_briefing": "3 Global Semiconductor & EV proposals awaiting SIPCOT land allotment subsidies totaling ₹4,800 Cr with direct employment potential of 14,200.",
+  "risk_factors": ["Power transmission substation timeline needs alignment with TANGEDCO"],
+  "historical_decisions": ["Cabinet approval granted for SIPCOT Hosur expansion in Q2 2026"],
+  "suggested_agenda_duration_mins": 45
+}
+```
+
+---
+
+### 2.6 Multi-Role AI Copilot Execution (`/copilot/chat`)
 
 #### `POST /copilot/chat`
 - **Request Body:**
 ```json
 {
-  "query": "காவிரி டெல்டா மாவட்டங்களில் குறுவை சாகுபடி நிலை என்ன?",
-  "language": "ta",
-  "session_id": "sess_8912",
-  "include_charts": true
+  "query": "Show all delayed road and bridge projects above ₹100 crore and suggest mitigation actions",
+  "role_context": "CHIEF_MINISTER",
+  "language": "en",
+  "session_id": "sess_cm_executive_981"
 }
 ```
 - **Response (200 OK):**
 ```json
 {
-  "response_ta": "காவிரி டெல்டா மாவட்டங்களில் (தஞ்சாவூர், திருவாரூர், நாகப்பட்டினம்) குறுவை சாகுபடி தற்போது 3.85 லட்சம் ஏக்கரில் நிறைவடைந்துள்ளது. மேட்டூர் அணை நீர் இருப்பு 68.4 அடியாக உள்ளதால், பாசன நீர் தேவைகள் திட்டமிட்டபடி பூர்த்தி செய்யப்படுகின்றன. இருப்பினும், திருவாரூர் மாவட்டத்தில் 12% உரக் கிடங்குகளில் டி.ஏ.பி (DAP) உரம் கையிருப்பு குறைவாக உள்ளது.",
-  "response_en": "In the Cauvery Delta districts (Thanjavur, Tiruvarur, Nagapattinam), Kuruvai cultivation has been completed across 3.85 lakh acres. Mettur reservoir storage stands at 68.4 ft, meeting irrigation schedules. However, a 12% DAP fertilizer deficit is detected in Tiruvarur district storage points.",
+  "response_en": "There are currently 4 major infrastructure projects above ₹100 Cr experiencing delays exceeding 30 days...",
+  "response_ta": "தற்போது ₹100 கோடிக்கு மேல் மதிப்பிலான 4 முக்கிய உள்கட்டமைப்பு திட்டங்கள் 30 நாட்களுக்கு மேல் தாமதமாகி வருகின்றன...",
   "citations": [
     {
-      "source": "WRD Reservoir Telemetry",
-      "ref": "METTUR_STORAGE_20260928",
+      "source": "Highways & Minor Ports Dept Project Tracker",
+      "ref": "HW_CAPEX_MONITOR_Q3_2026",
       "date": "2026-09-28"
-    },
-    {
-      "source": "Agri Dept Portal",
-      "ref": "KURUVAI_ACREAGE_REPORT_WK39",
-      "date": "2026-09-27"
     }
   ],
-  "recommended_actions": [
+  "agent_trace": {
+    "primary_agent": "Infrastructure Project Intelligence Agent",
+    "delegated_to": ["Revenue Land Acquisition Agent", "Finance Capex Agent"],
+    "reasoning_time_ms": 420
+  }
+}
+```
+
+---
+
+### 2.7 Unified Government Omni Search (`/search/omni`)
+
+#### `GET /search/omni`
+- **Query Params:** `q=Solar pump subsidy GO&types=GO,SCHEME,OFFICER&limit=10`
+- **Response (200 OK):**
+```json
+{
+  "query": "Solar pump subsidy GO",
+  "total_hits": 3,
+  "results": [
     {
-      "action_code": "DISPATCH_FERTILIZER_TIRUVARUR",
-      "description_en": "Authorize TANFED emergency dispatch of 450 MT DAP to Tiruvarur.",
-      "priority": "HIGH"
+      "type": "GOVERNMENT_ORDER",
+      "title": "G.O. (Ms) No. 112 - Agri Engineering - 70% Solar Pump Subsidy Expansion",
+      "doc_number": "GO-MS-112-AGRI-2026",
+      "issued_date": "2026-04-12",
+      "url": "https://storage.vettri.tn.gov.in/gos/go_ms_112_agri_2026.pdf",
+      "relevance_score": 0.96
     }
   ]
 }

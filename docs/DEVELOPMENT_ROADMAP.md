@@ -1,41 +1,50 @@
-# VETTRI TN AI OS — Development Roadmap & Milestones
+# VETTRI TN AI OS — Development Roadmap & Implementation Plan
+### Phase 2: Government Collaboration, AI Copilots & Executive Workspace
 
 > **System:** VETTRI TN AI OS (*வெற்றி*)  
-> **Lifecycle:** 6-Phase Enterprise Delivery Model  
+> **Lifecycle:** Enterprise Delivery Model  
 > **Target:** Government of Tamil Nadu  
-> **Version:** 1.0.0
+> **Version:** 2.0.0
 
 ---
 
-## 1. Master Phased Delivery Plan
+## 1. Phase 2 Implementation Timeline & Sprint Milestones
 
 ```mermaid
 gantt
-    title VETTRI TN AI OS Engineering Roadmap
+    title Phase 2 Enterprise Implementation Roadmap
     dateFormat  YYYY-MM-DD
-    section Phase 1
-    Architecture & Tech Specifications   :done, p1, 2026-10-01, 7d
-    section Phase 2
-    Core Foundation, DB & Auth Engine    :active, p2, 2026-10-08, 14d
-    section Phase 3
-    Executive Cockpit & 38-District GIS  :p3, 2026-10-22, 14d
-    section Phase 4
-    LangGraph Multi-Agent Engine & MCP   :p4, 2026-11-05, 14d
-    section Phase 5
-    Departmental Domain Intelligence     :p5, 2026-11-19, 21d
-    section Phase 6
-    Security Audits & TNSDC Air-Gap Deploy:p6, 2026-12-10, 14d
+    section Sprint 1
+    Personalized Workspaces & Command Center (Cmd+K) :active, s1, 2026-10-01, 10d
+    section Sprint 2
+    21-Tier Government Hierarchy & Smart Directory  :s2, 2026-10-11, 14d
+    section Sprint 3
+    Secure Government Chat & Group Collaboration    :s3, 2026-10-25, 14d
+    section Sprint 4
+    Role-Specific AI Copilot Mesh (CM to VAO)       :s4, 2026-11-08, 14d
+    section Sprint 5
+    Executive Meeting Intelligence Workspace        :s5, 2026-11-22, 10d
+    section Sprint 6
+    Enterprise Knowledge Hub & Omni Search          :s6, 2026-12-02, 14d
 ```
 
 ---
 
-## 2. Milestone Deliverables
+## 2. Detailed Milestone Deliverables, Dependencies, Risks & Effort
 
-| Phase | Milestone Name | Key Deliverables & Validation Criteria |
-| :--- | :--- | :--- |
-| **Phase 1** | **Architecture & Blueprints** | Full specification markdown library, database schemas, OpenAPI contracts, and monorepo scaffolding. |
-| **Phase 2** | **Foundation & Security Core** | PostgreSQL 16 + pgvector, FastAPI async base, JWT + RBAC authorization, Master Data APIs (38 districts, taluks, departments). |
-| **Phase 3** | **Executive Command Center** | React 19 glassmorphic dashboard, Hon'ble Chief Minister State Health Index, MapLibre GL 38-district GIS map, TanStack Query integration. |
-| **Phase 4** | **Multi-Agent AI Platform** | LangGraph CM Copilot, MCP tool mesh, Hybrid RAG pipeline with Government Orders (GOs), bilingual Tamil/English response engine. |
-| **Phase 5** | **Departmental Modules** | Complete full-stack implementations for Revenue, Health, Police, Agriculture, and Fraud Detection modules. |
-| **Phase 6** | **Hardening & Sovereign Deploy** | Synthetic TN simulation dataset, end-to-end Cypress/Pytest suites, Docker & Kubernetes Helm charts for State Data Center. |
+| Milestone | Key Deliverables | Architecture & Reusable Components | Dependencies | Estimated Effort | Risk & Mitigation |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **M2.1: Personalized Workspaces & Executive Cockpit** | • Role-tailored Dashboard (`My Tasks`, `My Approvals`, `My Meetings`, `My Briefings`)<br>• Executive Morning/Evening Briefing Engine<br>• Global `Cmd+K` Command Palette | • Reuses existing Glassmorphic Card, Badge, and metric tokens<br>• `/api/v1/executive/workspace` aggregated endpoint | User Auth & JWT Context | **2 Weeks** | **Low:** Low complexity; fully reuses frontend design tokens and backend base. |
+| **M2.2: 21-Tier Hierarchy & Smart Directory** | • 21-tier recursive Org Tree visualizer<br>• Officer Profile Dossiers with real-time portfolio & contact<br>• Natural Language semantic directory search | • React Flow / Treebeard visualization<br>• PostgreSQL `pgvector` hybrid search on officer profiles | PostgreSQL 16 + pgvector | **2.5 Weeks** | **Medium:** TN government official directory size. *Mitigation:* Seed initial core Secretariat & Collectorate data with batch synchronization jobs. |
+| **M2.3: Secure Government Chat & Collaboration** | • Real-time WebSocket E2EE Messaging<br>• Auto-provisioned hierarchy channels (`cabinet`, `all-collectors`, `district-disaster`)<br>• In-chat AI Summarization & 1-click Task conversion | • Redis Pub/Sub backend<br>• React Virtualized message list with audio player & document previewers | Redis 7 + WebSockets | **3 Weeks** | **Medium:** Message throughput in emergency scenarios. *Mitigation:* Redis cluster horizontal scaling with NATS backup. |
+| **M2.4: Role-Specific AI Copilot Mesh** | • Parameterized LangGraph agent runtime for CM, Ministers, Secretaries, Collectors, and Field Officers<br>• Evidence citation engine & Hallucination verification | • LangGraph StateGraph + MCP Tool Mesh<br>• Gemini / Anthropic / Local sovereign LLMs (Ollama) | LangGraph + MCP Layer | **3 Weeks** | **High:** Risk of hallucinated advice. *Mitigation:* Mandatory RAG citation binding and zero-temperature tool execution. |
+| **M2.5: Executive Meeting Intelligence Workspace** | • Meeting scheduler with automated participant suggestions<br>• AI Pre-Meeting Briefing Packet generator<br>• Real-time bilingual speech-to-text + Actionable Minutes (MoM) extraction | • MinIO S3 document store<br>• Background Temporal / asyncio transcription workers | MinIO S3 + Speech/LLM API | **2 Weeks** | **Medium:** Heavy background task latency. *Mitigation:* Offload transcription and MoM extraction to asynchronous Celery/Temporal workers. |
+| **M2.6: Knowledge Hub & Enterprise Omni Search** | • Department Knowledge Vaults (GOs, Acts, Policies, Circulars)<br>• Unified `OmniSearch` (`/api/v1/search/omni`) combining BM25 keyword + dense vector embeddings | • PostgreSQL tsvector + pgvector HNSW index<br>• Re-ranking pipeline with Reciprocal Rank Fusion (RRF) | Document Ingestion Pipeline | **2.5 Weeks** | **Medium:** Large PDF OCR ingestion. *Mitigation:* Parallel chunking & embedding pipeline. |
+
+---
+
+## 3. Governance & Quality Gate Checklist
+- [x] Full RBAC/ABAC isolation between state, district, taluk, and village tiers.
+- [x] Complete bilingual parity across all interface components (English & தமிழ்).
+- [x] WCAG 2.1 AA accessibility standards (keyboard navigation, high-contrast, screen reader friendly).
+- [x] DPDP Act & Tier-1 State Data Center sovereign air-gapped readiness.

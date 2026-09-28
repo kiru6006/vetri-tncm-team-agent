@@ -1,8 +1,9 @@
 # VETTRI TN AI OS — Database & Data Platform Architecture
+### Phase 2 Enhanced Multi-Role Enterprise Architecture
 
 > **System:** VETTRI TN AI OS (*வெற்றி*)  
-> **Database Engine:** PostgreSQL 16 Enterprise with pgvector 0.7+  
-> **Version:** 1.0.0
+> **Database Engine:** PostgreSQL 16 Enterprise with `pgvector` 0.7+  
+> **Version:** 2.0.0
 
 ---
 
@@ -19,17 +20,22 @@ erDiagram
     DEPARTMENT ||--o{ SCHEME : operates
     DEPARTMENT ||--o{ PROJECT : executes
     
-    USER ||--o{ USER_ROLE : assigned
     USER ||--o{ OFFICER_PROFILE : has
+    OFFICER_PROFILE }o--o| OFFICER_PROFILE : reports_to
     DISTRICT ||--o{ OFFICER_PROFILE : assigned_to
     DEPARTMENT ||--o{ OFFICER_PROFILE : belongs_to
     
+    OFFICER_PROFILE ||--o{ APPROVAL_REQUEST : initiates
+    OFFICER_PROFILE ||--o{ APPROVAL_REQUEST : assigned_approver
+    
+    MEETING ||--o{ MEETING_ATTENDEE : has
+    MEETING ||--o{ MEETING_ACTION_ITEM : generates
+    
+    CHAT_ROOM ||--o{ CHAT_MEMBER : includes
+    CHAT_ROOM ||--o{ CHAT_MESSAGE : contains
+    
     DEPARTMENT ||--o{ KPI_METRIC : tracks
     DISTRICT ||--o{ DISTRICT_METRIC_VALUE : reports
-    KPI_METRIC ||--o{ DISTRICT_METRIC_VALUE : measures
-    
-    DISTRICT ||--o{ GRIEVANCE : logs
-    DEPARTMENT ||--o{ GRIEVANCE : assigned_to
     
     DOCUMENT ||--o{ DOCUMENT_CHUNK : splits
     DOCUMENT_CHUNK ||--o{ EMBEDDING : contains_vector
@@ -37,9 +43,7 @@ erDiagram
 
 ---
 
-## 2. Core SQL Schema Definitions
-
-### 2.1 Administrative Hierarchy & Governance Structure
+## 2. Phase 2 Extended Schema Definitions
 
 ```sql
 -- Enable necessary extensions
@@ -47,180 +51,164 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 CREATE EXTENSION IF NOT EXISTS "vector";
 
--- 38 Districts of Tamil Nadu
-CREATE TABLE districts (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    code VARCHAR(10) UNIQUE NOT NULL,       -- e.g. 'CHE', 'CBE', 'MDU'
-    name_en VARCHAR(100) NOT NULL,          -- e.g. 'Coimbatore'
-    name_ta VARCHAR(100) NOT NULL,          -- e.g. 'கோயம்புத்தூர்'
-    headquarters_en VARCHAR(100) NOT NULL,
-    headquarters_ta VARCHAR(100) NOT NULL,
-    geo_boundary JSONB,                     -- GeoJSON MultiPolygon boundary
-    latitude NUMERIC(10, 6) NOT NULL,
-    longitude NUMERIC(10, 6) NOT NULL,
-    population BIGINT NOT NULL,
-    area_sq_km NUMERIC(10, 2) NOT NULL,
-    is_active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
-);
-
--- Taluks within Districts
-CREATE TABLE taluks (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    district_id UUID NOT NULL REFERENCES districts(id) ON DELETE CASCADE,
-    code VARCHAR(20) UNIQUE NOT NULL,
-    name_en VARCHAR(100) NOT NULL,
-    name_ta VARCHAR(100) NOT NULL,
-    geo_boundary JSONB,
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
-);
-
--- Ministries & Departments
-CREATE TABLE ministries (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    code VARCHAR(20) UNIQUE NOT NULL,       -- e.g. 'MIN_FIN', 'MIN_HLT'
-    name_en VARCHAR(150) NOT NULL,
-    name_ta VARCHAR(150) NOT NULL,
-    minister_name_en VARCHAR(150),
-    minister_name_ta VARCHAR(150),
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE departments (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    ministry_id UUID NOT NULL REFERENCES ministries(id) ON DELETE RESTRICT,
-    code VARCHAR(30) UNIQUE NOT NULL,       -- e.g. 'DEPT_COMM_TAX', 'DEPT_TNMSC'
-    name_en VARCHAR(150) NOT NULL,
-    name_ta VARCHAR(150) NOT NULL,
-    secretary_name_en VARCHAR(150),
-    secretary_name_ta VARCHAR(150),
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
-);
-```
-
-### 2.2 Users, Roles & Security Access Control
-
-```sql
-CREATE TYPE user_role_enum AS ENUM (
+-- 21-Tier Government Hierarchy Roles
+CREATE TYPE government_tier_enum AS ENUM (
     'CHIEF_MINISTER',
+    'DEPUTY_CHIEF_MINISTER',
+    'CABINET_MINISTER',
     'CHIEF_SECRETARY',
-    'MINISTER',
-    'DEPARTMENT_SECRETARY',
-    'DISTRICT_COLLECTOR',
+    'ADDITIONAL_CHIEF_SECRETARY',
+    'PRINCIPAL_SECRETARY',
+    'SECRETARY',
     'COMMISSIONER',
-    'TALUK_OFFICER',
-    'ANALYST',
-    'SYSTEM_ADMIN'
+    'MISSION_DIRECTOR',
+    'HOD',
+    'DISTRICT_COLLECTOR',
+    'SUPERINTENDENT_OF_POLICE',
+    'DISTRICT_REVENUE_OFFICER',
+    'JOINT_COLLECTOR',
+    'REVENUE_DIVISIONAL_OFFICER',
+    'TAHSILDAR',
+    'BLOCK_DEVELOPMENT_OFFICER',
+    'MUNICIPAL_COMMISSIONER',
+    'EXECUTIVE_OFFICER',
+    'VILLAGE_ADMINISTRATIVE_OFFICER',
+    'FIELD_OFFICER'
 );
 
-CREATE TABLE users (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    email VARCHAR(255) UNIQUE NOT NULL,
-    phone VARCHAR(20) UNIQUE NOT NULL,
-    hashed_password VARCHAR(255) NOT NULL,
-    full_name_en VARCHAR(150) NOT NULL,
-    full_name_ta VARCHAR(150),
-    role user_role_enum NOT NULL,
-    is_active BOOLEAN DEFAULT TRUE,
-    is_mfa_enabled BOOLEAN DEFAULT TRUE,
-    mfa_secret VARCHAR(64),
-    last_login_at TIMESTAMPTZ,
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
-);
-
+-- Enhanced Officer Profiles with Hierarchy
 CREATE TABLE officer_profiles (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID UNIQUE NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    official_name_en VARCHAR(150) NOT NULL,
+    official_name_ta VARCHAR(150) NOT NULL,
     designation VARCHAR(150) NOT NULL,
+    administrative_tier government_tier_enum NOT NULL,
     department_id UUID REFERENCES departments(id),
     district_id UUID REFERENCES districts(id),
     taluk_id UUID REFERENCES taluks(id),
-    cadre VARCHAR(50),                     -- e.g. 'IAS', 'IPS', 'TNCS'
+    reports_to_id UUID REFERENCES officer_profiles(id),
+    cadre VARCHAR(50),                     -- 'IAS', 'IPS', 'TNS', 'TNAS'
     batch_year INT,
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+    cug_phone VARCHAR(20) NOT NULL,
+    official_email VARCHAR(255) NOT NULL,
+    office_address TEXT NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
-```
 
-### 2.3 Real-Time Telemetry & Metric Storage
+-- Centralized Approvals Center
+CREATE TYPE approval_type_enum AS ENUM (
+    'BUDGET_SANCTION',
+    'PROJECT_APPROVAL',
+    'GO_DRAFT',
+    'CABINET_NOTE',
+    'APPOINTMENT_TRANSFER',
+    'CONTRACT_TENDER',
+    'POLICY_SANCTION'
+);
 
-```sql
-CREATE TABLE kpi_metrics (
+CREATE TYPE approval_status_enum AS ENUM (
+    'PENDING',
+    'AI_REVIEWED',
+    'APPROVED',
+    'REJECTED',
+    'ESCALATED'
+);
+
+CREATE TABLE approval_requests (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    file_number VARCHAR(100) UNIQUE NOT NULL,
+    title_en VARCHAR(255) NOT NULL,
+    title_ta VARCHAR(255) NOT NULL,
+    approval_type approval_type_enum NOT NULL,
     department_id UUID NOT NULL REFERENCES departments(id),
-    code VARCHAR(50) UNIQUE NOT NULL,       -- e.g. 'REV_GST_COLLECTION_CR'
-    name_en VARCHAR(150) NOT NULL,
-    name_ta VARCHAR(150) NOT NULL,
-    unit VARCHAR(30) NOT NULL,              -- 'Crores', 'Percentage', 'Count'
-    frequency VARCHAR(20) NOT NULL,         -- 'HOURLY', 'DAILY', 'MONTHLY'
-    target_value NUMERIC(18, 4),
-    critical_threshold_low NUMERIC(18, 4),
-    critical_threshold_high NUMERIC(18, 4),
+    initiator_id UUID NOT NULL REFERENCES officer_profiles(id),
+    current_approver_id UUID NOT NULL REFERENCES officer_profiles(id),
+    status approval_status_enum DEFAULT 'PENDING',
+    priority VARCHAR(20) DEFAULT 'MEDIUM', -- 'LOW', 'MEDIUM', 'HIGH', 'EMERGENCY'
+    financial_impact_crores NUMERIC(14, 2) DEFAULT 0.00,
+    ai_summary TEXT,
+    ai_risk_score NUMERIC(5, 2),            -- 0.00 to 100.00
+    ai_recommendation TEXT,
+    digital_signature_hash VARCHAR(128),
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    resolved_at TIMESTAMPTZ
+);
+
+-- Secure Government Chat & Channels
+CREATE TABLE chat_rooms (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR(150) NOT NULL,
+    room_type VARCHAR(50) NOT NULL,         -- 'DIRECT', 'DEPARTMENT', 'DISTRICT', 'CABINET', 'EMERGENCY'
+    department_id UUID REFERENCES departments(id),
+    district_id UUID REFERENCES districts(id),
+    is_encrypted BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE district_metric_values (
+CREATE TABLE chat_members (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    kpi_metric_id UUID NOT NULL REFERENCES kpi_metrics(id) ON DELETE CASCADE,
-    district_id UUID NOT NULL REFERENCES districts(id) ON DELETE CASCADE,
-    recorded_at TIMESTAMPTZ NOT NULL,
-    val NUMERIC(18, 4) NOT NULL,
-    target NUMERIC(18, 4),
-    anomaly_score NUMERIC(5, 4) DEFAULT 0.0, -- 0.0 to 1.0 (auto-computed by ML)
-    metadata JSONB,
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+    room_id UUID NOT NULL REFERENCES chat_rooms(id) ON DELETE CASCADE,
+    officer_id UUID NOT NULL REFERENCES officer_profiles(id) ON DELETE CASCADE,
+    joined_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(room_id, officer_id)
 );
 
-CREATE INDEX idx_dist_metrics_timestamp ON district_metric_values(district_id, recorded_at DESC);
-```
-
-### 2.4 Vector Database & Document Knowledge Graph (`pgvector`)
-
-```sql
-CREATE TABLE documents (
+CREATE TABLE chat_messages (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    title VARCHAR(255) NOT NULL,
-    doc_type VARCHAR(50) NOT NULL,          -- 'GO_ORDER', 'BUDGET_DOC', 'AUDIT_REPORT'
-    source_department_id UUID REFERENCES departments(id),
-    file_path VARCHAR(500) NOT NULL,
-    published_date DATE NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE document_chunks (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    document_id UUID NOT NULL REFERENCES documents(id) ON DELETE CASCADE,
-    chunk_index INT NOT NULL,
+    room_id UUID NOT NULL REFERENCES chat_rooms(id) ON DELETE CASCADE,
+    sender_id UUID NOT NULL REFERENCES officer_profiles(id),
     content TEXT NOT NULL,
     content_ta TEXT,
-    metadata JSONB,
-    embedding vector(1536),                 -- 1536-dim vector for embeddings
-    tsv_content tsvector GENERATED ALWAYS AS (to_tsvector('english', content)) STORED,
+    message_type VARCHAR(30) DEFAULT 'TEXT', -- 'TEXT', 'FILE', 'VOICE_NOTE', 'APPROVAL_CARD'
+    attachment_url VARCHAR(500),
+    is_pinned BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create HNSW Index for sub-millisecond semantic search
-CREATE INDEX idx_doc_chunk_embedding ON document_chunks USING hnsw (embedding vector_cosine_ops);
-CREATE INDEX idx_doc_chunk_tsv ON document_chunks USING gin (tsv_content);
-```
-
-### 2.5 Immutable Audit Log
-
-```sql
-CREATE TABLE audit_logs (
+-- Executive Meeting Intelligence
+CREATE TABLE meetings (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID REFERENCES users(id),
-    action VARCHAR(100) NOT NULL,
-    resource_type VARCHAR(50) NOT NULL,
-    resource_id VARCHAR(100),
-    ip_address INET,
-    user_agent TEXT,
-    payload JSONB,
-    previous_hash VARCHAR(64),
-    current_hash VARCHAR(64) NOT NULL,      -- Cryptographically chained SHA-256
+    title VARCHAR(255) NOT NULL,
+    meeting_type VARCHAR(50) NOT NULL,      -- 'CABINET', 'DISTRICT_COLLECTOR_REVIEW', 'DEPARTMENT_REVIEW'
+    organizer_id UUID NOT NULL REFERENCES officer_profiles(id),
+    scheduled_start TIMESTAMPTZ NOT NULL,
+    scheduled_end TIMESTAMPTZ NOT NULL,
+    status VARCHAR(30) DEFAULT 'SCHEDULED', -- 'SCHEDULED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED'
+    meeting_link VARCHAR(255),
+    ai_agenda_briefing TEXT,
+    ai_generated_minutes TEXT,
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX idx_audit_created ON audit_logs(created_at DESC);
+CREATE TABLE meeting_action_items (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    meeting_id UUID NOT NULL REFERENCES meetings(id) ON DELETE CASCADE,
+    action_text TEXT NOT NULL,
+    responsible_officer_id UUID NOT NULL REFERENCES officer_profiles(id),
+    deadline DATE NOT NULL,
+    status VARCHAR(30) DEFAULT 'PENDING',   -- 'PENDING', 'IN_PROGRESS', 'COMPLETED', 'OVERDUE'
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Comprehensive Schemes Database
+CREATE TABLE schemes (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    code VARCHAR(50) UNIQUE NOT NULL,       -- e.g. 'SCHEME_MUT_2023', 'SCHEME_MTM_2021'
+    name_en VARCHAR(255) NOT NULL,
+    name_ta VARCHAR(255) NOT NULL,
+    department_id UUID NOT NULL REFERENCES departments(id),
+    nodal_officer_id UUID REFERENCES officer_profiles(id),
+    budget_allocated_crores NUMERIC(14, 2) NOT NULL,
+    expenditure_crores NUMERIC(14, 2) DEFAULT 0.00,
+    target_beneficiaries BIGINT NOT NULL,
+    achieved_beneficiaries BIGINT DEFAULT 0,
+    eligibility_criteria JSONB,
+    risk_score NUMERIC(5, 2) DEFAULT 0.00,
+    ai_recommendation TEXT,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
 ```
