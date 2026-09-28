@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: vettri-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: vettri_db
+      POSTGRES_USER: vettri_admin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-VettriSecurePass2026}
+    ports:
+      - "5432:5432"
+    volumes:
+      - vettri_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vettri_admin -d vettri_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: vettri-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - vettri_redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: minio/minio:latest
+    container_name: vettri-minio
+    restart: always
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ACCESS_KEY:-vettri_minio_admin}
+      MINIO_ROOT_PASSWORD: ${MINIO_SECRET_KEY:-MinioSecurePass2026}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - vettri_miniodata:/data
+
+  backend:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+    container_name: vettri-backend
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+asyncpg://vettri_admin:VettriSecurePass2026@postgres:5432/vettri_db
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: ${SECRET_KEY:-vettri-super-secret-production-grade-key-tamil-nadu-2026}
+      ENVIRONMENT: development
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ../../frontend
+      dockerfile: Dockerfile
+    container_name: vettri-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  vettri_pgdata:
+  vettri_redisdata:
+  vettri_miniodata:

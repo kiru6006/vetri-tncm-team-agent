@@ -1,0 +1,65 @@
+from contextlib import asynccontextmanager
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from app.core.config import settings
+from app.core.database import engine, Base
+from app.core.redis import get_redis_client, close_redis_connection
+from app.api.v1.auth import router as auth_router
+from app.api.v1.executive import router as executive_router
+from app.api.v1.districts import router as districts_router
+from app.api.v1.copilot import router as copilot_router
+from app.api.v1.audit import router as audit_router
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Initialize database tables asynchronously if not exist
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    # Initialize Redis connection pool
+    try:
+        await get_redis_client()
+    except Exception:
+        pass # Redis fallback in local standalone dev
+    yield
+    # Cleanup connections
+    await close_redis_connection()
+    await engine.dispose()
+
+
+app = FastAPI(
+    title=settings.PROJECT_NAME,
+    description="Enterprise AI Operating System for Governance, Intelligence & Decision Support — Government of Tamil Nadu",
+    version="1.0.0",
+    lifespan=lifespan,
+    docs_url="/docs",
+    redoc_url="/redoc"
+)
+
+# CORS Middleware configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.CORS_ORIGINS if settings.ENVIRONMENT == "production" else ["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+@app.get("/health", tags=["System"])
+async def health_check():
+    return {
+        "status": "healthy",
+        "system": settings.PROJECT_NAME,
+        "environment": settings.ENVIRONMENT,
+        "state": "Tamil Nadu"
+    }
+
+
+# Include API v1 Routers
+app.include_router(auth_router, prefix=settings.API_V1_STR)
+app.include_router(executive_router, prefix=settings.API_V1_STR)
+app.include_router(districts_router, prefix=settings.API_V1_STR)
+app.include_router(copilot_router, prefix=settings.API_V1_STR)
+app.include_router(audit_router, prefix=settings.API_V1_STR)
