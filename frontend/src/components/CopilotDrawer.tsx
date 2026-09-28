@@ -129,7 +129,11 @@ export const CopilotDrawer: React.FC<Props> = ({ isOpen, onClose, onExecuteDirec
 
   const sampleQueries = [
     {
-      en: 'Which districts require immediate attention today?',
+      en: 'Show all delayed road and bridge projects above ₹100 crore',
+      ta: '₹100 கோடிக்கு மேற்பட்ட தாமதமான நெடுஞ்சாலை திட்டங்களை காட்டு',
+    },
+    {
+      en: 'Which districts require immediate executive attention today?',
       ta: 'இன்று உடனடி கவனம் தேவைப்படும் மாவட்டங்கள் எவை?',
     },
     {
@@ -140,6 +144,10 @@ export const CopilotDrawer: React.FC<Props> = ({ isOpen, onClose, onExecuteDirec
       en: 'Commercial Tax revenue growth vs Q2 targets',
       ta: 'வணிக வரி வசூல் மற்றும் காலாண்டு இலக்கு நிலவரம்',
     },
+    {
+      en: 'What is the law and order status and bandobast alert?',
+      ta: 'சட்டம் ஒழுங்கு நிலவரம் மற்றும் பாதுகாப்பு எச்சரிக்கை என்ன?',
+    }
   ];
 
   if (!isOpen) return null;
