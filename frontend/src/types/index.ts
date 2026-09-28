@@ -242,6 +242,37 @@ export interface MeetingBriefingPack {
   action_items: MeetingActionItem[];
 }
 
+export interface GovernmentOrderDocument {
+  id: string;
+  doc_type: 'GO_MS' | 'GO_4D' | 'ACT_STATUTE' | 'CIRCULAR' | 'BUDGET_NOTE' | 'AUDIT_REPORT';
+  go_number: string;
+  department_code: string;
+  department_en: string;
+  department_ta: string;
+  title_en: string;
+  title_ta: string;
+  issued_date: string;
+  signatory_officer: string;
+  abstract_en: string;
+  abstract_ta: string;
+  financial_sanction_cr?: number;
+  relevant_districts: string[];
+  applicable_acts_rules: string[];
+  pdf_download_url: string;
+  relevance_score: number;
+}
+
+export interface OmniSearchResponse {
+  query: string;
+  query_interpreted: string;
+  total_results: number;
+  documents: GovernmentOrderDocument[];
+  related_officers: Array<{ name: string; designation: string }>;
+  related_schemes: Array<{ name: string; budget: string }>;
+  ai_answer_en?: string;
+  ai_answer_ta?: string;
+}
+
 export interface User {
   id: string;
   email: string;

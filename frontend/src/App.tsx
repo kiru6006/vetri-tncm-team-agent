@@ -17,6 +17,7 @@ import { FraudAuditDomainView } from './components/FraudAuditDomainView';
 import { GovernmentHierarchyDirectory } from './components/GovernmentHierarchyDirectory';
 import { GovernmentChatPlatform } from './components/GovernmentChatPlatform';
 import { ExecutiveMeetingWorkspace } from './components/ExecutiveMeetingWorkspace';
+import { EnterpriseKnowledgeHub } from './components/EnterpriseKnowledgeHub';
 import { CopilotDrawer } from './components/CopilotDrawer';
 import { useAuthStore } from './stores/authStore';
 import {
@@ -46,13 +47,14 @@ import {
   Briefcase,
   Layers,
   MessagesSquare,
-  Calendar
+  Calendar,
+  BookOpen
 } from 'lucide-react';
 
 export const App: React.FC = () => {
   const { language, activeRole } = useAuthStore();
   const [activeTab, setActiveTab] = useState<
-    'workspace' | 'hierarchy' | 'chat' | 'meetings' | 'dashboard' | 'gis' | 'revenue' | 'grievance' | 'health' | 'police' | 'water_agri' | 'fraud_audit' | 'role_view'
+    'workspace' | 'hierarchy' | 'chat' | 'meetings' | 'knowledge' | 'dashboard' | 'gis' | 'revenue' | 'grievance' | 'health' | 'police' | 'water_agri' | 'fraud_audit' | 'role_view'
   >('workspace');
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null);
@@ -347,6 +349,18 @@ export const App: React.FC = () => {
             </button>
 
             <button
+              onClick={() => setActiveTab('knowledge')}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                activeTab === 'knowledge'
+                  ? 'bg-teal-600 text-white shadow-md shadow-teal-500/20'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>{language === 'ta' ? 'அரசாணை களஞ்சியம் (GO Hub)' : 'Knowledge Hub'}</span>
+            </button>
+
+            <button
               onClick={() => setActiveTab('dashboard')}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                 activeTab === 'dashboard'
@@ -553,6 +567,16 @@ export const App: React.FC = () => {
                   priority: 'HIGH',
                   targetDepartment: 'Cabinet Affairs'
                 });
+              }}
+            />
+          </section>
+        )}
+
+        {activeTab === 'knowledge' && (
+          <section className="animate-in fade-in duration-200">
+            <EnterpriseKnowledgeHub
+              onOpenCopilot={(query) => {
+                setCopilotOpen(true);
               }}
             />
           </section>
