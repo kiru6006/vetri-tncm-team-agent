@@ -273,6 +273,36 @@ export interface OmniSearchResponse {
   ai_answer_ta?: string;
 }
 
+export interface CalendarAppointment {
+  id: string;
+  title_en: string;
+  title_ta: string;
+  appointment_type: 'CM_APPOINTMENT' | 'CABINET_REVIEW' | 'MLA_DELEGATION' | 'SECRETARY_BRIEFING' | 'PUBLIC_PETITION' | 'FIELD_INSPECTION';
+  scheduled_date: string;
+  scheduled_time: string;
+  duration_minutes: number;
+  location: string;
+  status: 'CONFIRMED' | 'PENDING' | 'COMPLETED' | 'RESCHEDULED';
+  priority: 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'ROUTINE';
+  host_name: string;
+  host_role: string;
+  participant_name_en: string;
+  participant_name_ta: string;
+  participant_designation: string;
+  participant_role: 'CHIEF_MINISTER' | 'MINISTER' | 'MLA' | 'PRINCIPAL_SECRETARY' | 'GROUP_1' | 'GROUP_2' | 'GROUP_3_4' | 'CITIZEN' | string;
+  participant_department?: string;
+  participant_district?: string;
+  participant_contact: string;
+  participant_email?: string;
+  agenda_en: string;
+  agenda_ta: string;
+  ai_prepared_notes_en?: string;
+  ai_prepared_notes_ta?: string;
+  historical_decisions_context: string[];
+  required_files_gos: string[];
+  protocol_clearance_status: 'VERIFIED' | 'VIP_SECURITY' | 'STANDARD';
+}
+
 export interface User {
   id: string;
   email: string;

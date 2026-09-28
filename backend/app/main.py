@@ -14,6 +14,7 @@ from app.api.v1.hierarchy import router as hierarchy_router
 from app.api.v1.chat import router as chat_router
 from app.api.v1.meetings import router as meetings_router
 from app.api.v1.knowledge import router as knowledge_router
+from app.api.v1.calendar import router as calendar_router
 
 
 @asynccontextmanager
@@ -77,3 +78,4 @@ app.include_router(hierarchy_router, prefix=settings.API_V1_STR)
 app.include_router(chat_router, prefix=settings.API_V1_STR)
 app.include_router(meetings_router, prefix=settings.API_V1_STR)
 app.include_router(knowledge_router, prefix=settings.API_V1_STR)
+app.include_router(calendar_router, prefix=settings.API_V1_STR)

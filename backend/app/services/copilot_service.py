@@ -16,8 +16,83 @@ async def process_copilot_query(request: CopilotQueryRequest, user_claims: Dict[
         "4. Applied role-specific reasoning & strict hallucination verification guardrails"
     ]
 
+    # 0. APPOINTMENT BOOKING INTENT (CHIEF MINISTER & EXECUTIVES)
+    if any(w in q for w in ["book an appointment", "schedule appointment", "book meeting with", "சந்திப்பு பதிவு செய்", "அப்பாய்ண்ட்மென்ட்", "நேரம் ஒதுக்கு", "சந்திப்பு"]):
+        from app.services.calendar_service import book_new_appointment
+        from app.schemas.calendar import BookAppointmentRequest
+
+        # Extract or deduce member
+        target_name = "Principal Secretary & Special Delegation"
+        target_role = "PRINCIPAL_SECRETARY"
+        target_desig = "Principal Secretary to Government"
+        
+        if "collector" in q or "ஆட்சியர்" in q:
+            target_name = "Krasthi Kumar Pati, IAS (District Collector, Coimbatore)"
+            target_role = "GROUP_1"
+            target_desig = "District Collector"
+        elif "mla" in q or "சட்டமன்ற" in q:
+            target_name = "Delta District MLA Delegation"
+            target_role = "MLA"
+            target_desig = "Member of Legislative Assembly"
+        elif "minister" in q or "அமைச்சர்" in q:
+            target_name = "Hon'ble Minister for Finance & Human Resources"
+            target_role = "MINISTER"
+            target_desig = "Cabinet Minister"
+        elif "health" in q or "மருத்துவம்" in q:
+            target_name = "P. Senthilkumar, IAS (Principal Secretary, Health)"
+            target_role = "PRINCIPAL_SECRETARY"
+            target_desig = "Principal Secretary, Health & Family Welfare"
+        elif "police" in q or "sp" in q or "காவல்" in q:
+            target_name = "Superintendent of Police & DIG West Zone"
+            target_role = "GROUP_1"
+            target_desig = "Superintendent of Police"
+
+        new_appt = await book_new_appointment(
+            BookAppointmentRequest(
+                title=f"Executive Review Meeting with {target_name}",
+                participant_name=target_name,
+                participant_role=target_role,
+                participant_designation=target_desig,
+                scheduled_date=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+                scheduled_time="02:30 PM - 03:15 PM",
+                agenda=f"Discussion requested by Hon'ble Chief Minister regarding priority administration files & governance directives."
+            ),
+            user_claims
+        )
+
+        resp_en = (
+            f"Official appointment successfully scheduled and added to the Hon'ble Chief Minister's Executive Calendar!\n\n"
+            f"• **Participant:** {new_appt.participant_name_en} ({new_appt.participant_designation})\n"
+            f"• **Scheduled Slot:** Today, {new_appt.scheduled_time}\n"
+            f"• **Venue:** {new_appt.location}\n"
+            f"• **Status:** {new_appt.status} (VIP Protocol Cleared)\n"
+            f"• **AI Prepared Dossier:** Relevant departmental files, prior decisions, and briefing notes have been automatically synthesized and attached to the calendar entry."
+        )
+        resp_ta = (
+            f"மாண்புமிகு முதலமைச்சரின் அதிகாரப்பூர்வ நாள்காட்டியில் சந்திப்பு வெற்றிகரமாக பதிவு செய்யப்பட்டது!\n\n"
+            f"• **பங்கேற்பாளர்:** {new_appt.participant_name_ta} ({new_appt.participant_designation})\n"
+            f"• **நேரம்:** இன்று, {new_appt.scheduled_time}\n"
+            f"• **இடம்:** {new_appt.location}\n"
+            f"• **நிலை:** உறுதி செய்யப்பட்டது (VIP பாதுகாப்பு அனுமதி பெறப்பட்டது)\n"
+            f"• **AI குறிப்புகள்:** தொடர்புடைய துறை ஆவணங்கள் மற்றும் முன் தயாரிப்பு சுருக்கம் நாள்காட்டி பதிவில் இணைக்கப்பட்டுள்ளது."
+        )
+        citations = [
+            Citation(source="Executive Calendar Registry", ref=f"APPT_ID_{new_appt.id}", date=new_appt.scheduled_date),
+            Citation(source="Protocol & Security Division", ref="VIP_CLEARANCE_STAMP", date="2026-09-28")
+        ]
+        actions = [
+            ActionRecommendation(
+                action_code="OPEN_EXECUTIVE_CALENDAR",
+                description_en="Open Executive Calendar to view appointment details and pre-briefing notes.",
+                description_ta="சந்திப்பு விவரங்கள் மற்றும் AI குறிப்புகளை காண நாள்காட்டியை திறக்கவும்.",
+                priority="HIGH",
+                target_department="Chief Minister's Office"
+            )
+        ]
+        chart = None
+
     # A. CHIEF MINISTER & EXECUTIVE STATEWIDE QUERIES
-    if any(w in q for w in ["delayed project", "100 crore", "₹100", "தாமதமான திட்டம்", "நெடுஞ்சாலை"]):
+    elif any(w in q for w in ["delayed project", "100 crore", "₹100", "தாமதமான திட்டம்", "நெடுஞ்சாலை"]):
         resp_en = (
             "State Project Monitor flags 4 major capex projects above ₹100 Crore experiencing critical path delays:\n"
             "1. Chennai Peripheral Ring Road (Section II) - ₹2,150 Cr (45 days delayed, Land acquisition in Ponneri Taluk).\n"

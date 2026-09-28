@@ -18,6 +18,7 @@ import { GovernmentHierarchyDirectory } from './components/GovernmentHierarchyDi
 import { GovernmentChatPlatform } from './components/GovernmentChatPlatform';
 import { ExecutiveMeetingWorkspace } from './components/ExecutiveMeetingWorkspace';
 import { EnterpriseKnowledgeHub } from './components/EnterpriseKnowledgeHub';
+import { ExecutiveCalendarView } from './components/ExecutiveCalendarView';
 import { CopilotDrawer } from './components/CopilotDrawer';
 import { useAuthStore } from './stores/authStore';
 import {
@@ -54,7 +55,7 @@ import {
 export const App: React.FC = () => {
   const { language, activeRole } = useAuthStore();
   const [activeTab, setActiveTab] = useState<
-    'workspace' | 'hierarchy' | 'chat' | 'meetings' | 'knowledge' | 'dashboard' | 'gis' | 'revenue' | 'grievance' | 'health' | 'police' | 'water_agri' | 'fraud_audit' | 'role_view'
+    'workspace' | 'calendar' | 'hierarchy' | 'chat' | 'meetings' | 'knowledge' | 'dashboard' | 'gis' | 'revenue' | 'grievance' | 'health' | 'police' | 'water_agri' | 'fraud_audit' | 'role_view'
   >('workspace');
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null);
@@ -313,6 +314,18 @@ export const App: React.FC = () => {
             </button>
 
             <button
+              onClick={() => setActiveTab('calendar')}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                activeTab === 'calendar'
+                  ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <Calendar className="w-3.5 h-3.5" />
+              <span>{language === 'ta' ? 'நாள்காட்டி & சந்திப்புகள்' : 'Official Calendar'}</span>
+            </button>
+
+            <button
               onClick={() => setActiveTab('hierarchy')}
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                 activeTab === 'hierarchy'
@@ -522,6 +535,16 @@ export const App: React.FC = () => {
                   priority: action.priority,
                   targetDepartment: action.department
                 });
+              }}
+            />
+          </section>
+        )}
+
+        {activeTab === 'calendar' && (
+          <section className="animate-in fade-in duration-200">
+            <ExecutiveCalendarView
+              onOpenCopilot={(prompt) => {
+                setCopilotOpen(true);
               }}
             />
           </section>
