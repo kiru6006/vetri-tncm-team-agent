@@ -120,11 +120,9 @@ npm run build
 
 ---
 
-## 📚 Architectural Documentation Index
+## 📚 Core Documentation Suite
 
-- [Strategic Critique & Transformation Roadmap](docs/01_STRATEGIC_CRITIQUE_AND_ROADMAP.md)
-- [System Architecture Specification](docs/02_ARCHITECTURE_SPECIFICATION.md)
-- [Ministers & Officials Use Cases Playbook](docs/05_MINISTERS_AND_OFFICIALS_USE_CASES_PLAYBOOK.md)
-- [Database Schema & Migrations](docs/DATABASE_DESIGN.md)
-- [AI Multi-Agent Prompts & Tool Specifications](docs/AI_AGENTS_PROMPT.md)
-- [Phase 3 GRM Platform Specification](docs/PHASE_2_ENHANCEMENT_SPECIFICATION.md)
+1. **[01. Executive Summary & Strategic Critique](docs/01_EXECUTIVE_SUMMARY_AND_CRITIQUE.md)**: High-level governance vision, the 7 critical AI risks, and transformation roadmap.
+2. **[02. System Architecture & API Specification](docs/02_SYSTEM_ARCHITECTURE_AND_API.md)**: Four-dimensional relational schema, 8 AI agent tools, ETL pipelines, and REST endpoints.
+3. **[03. Ministers & Officials Operational Playbook](docs/03_MINISTERS_AND_OFFICIALS_PLAYBOOK.md)**: Role-based scenarios, bilingual query cheat-sheets, UI screenshots, and 1-click execution workflows.
+4. **[04. Deployment & Operational Runbook](docs/04_DEPLOYMENT_AND_RUNBOOK.md)**: Local dev setup, Docker, Kubernetes manifests, CI/CD pipelines, and observability.
