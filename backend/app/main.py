@@ -1,29 +1,26 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 from app.core.config import settings
 from app.core.database import engine, Base
 from app.core.redis import get_redis_client, close_redis_connection
 from app.api.v1.auth import router as auth_router
 from app.api.v1.executive import router as executive_router
 from app.api.v1.districts import router as districts_router
+from app.api.v1.departments import router as departments_router
 from app.api.v1.copilot import router as copilot_router
 from app.api.v1.audit import router as audit_router
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Initialize database tables asynchronously if not exist
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-    # Initialize Redis connection pool
     try:
         await get_redis_client()
     except Exception:
-        pass # Redis fallback in local standalone dev
+        pass
     yield
-    # Cleanup connections
     await close_redis_connection()
     await engine.dispose()
 
@@ -37,7 +34,6 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# CORS Middleware configuration
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS if settings.ENVIRONMENT == "production" else ["*"],
@@ -57,9 +53,10 @@ async def health_check():
     }
 
 
-# Include API v1 Routers
+# Register all API v1 Routers
 app.include_router(auth_router, prefix=settings.API_V1_STR)
 app.include_router(executive_router, prefix=settings.API_V1_STR)
 app.include_router(districts_router, prefix=settings.API_V1_STR)
+app.include_router(departments_router, prefix=settings.API_V1_STR)
 app.include_router(copilot_router, prefix=settings.API_V1_STR)
 app.include_router(audit_router, prefix=settings.API_V1_STR)

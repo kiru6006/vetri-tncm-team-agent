@@ -9,6 +9,10 @@ import { RevenueAnalyticsView } from './components/RevenueAnalyticsView';
 import { GrievanceSlaAnalytics } from './components/GrievanceSlaAnalytics';
 import { ChiefSecretaryCockpit } from './components/ChiefSecretaryCockpit';
 import { CollectorCommandView } from './components/CollectorCommandView';
+import { HealthDomainView } from './components/HealthDomainView';
+import { PoliceDomainView } from './components/PoliceDomainView';
+import { WaterAgriDomainView } from './components/WaterAgriDomainView';
+import { FraudAuditDomainView } from './components/FraudAuditDomainView';
 import { CopilotDrawer } from './components/CopilotDrawer';
 import { useAuthStore } from './stores/authStore';
 import {
@@ -28,11 +32,17 @@ import {
   Building2,
   FileCheck2,
   X,
+  HeartPulse,
+  Radio,
+  Droplets,
+  ShieldAlert,
 } from 'lucide-react';
 
 export const App: React.FC = () => {
   const { language, activeRole } = useAuthStore();
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'gis' | 'revenue' | 'grievance' | 'role_view'>('dashboard');
+  const [activeTab, setActiveTab] = useState<
+    'dashboard' | 'gis' | 'revenue' | 'grievance' | 'health' | 'police' | 'water_agri' | 'fraud_audit' | 'role_view'
+  >('dashboard');
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null);
   const [notification, setNotification] = useState<string | null>(null);
@@ -168,57 +178,111 @@ export const App: React.FC = () => {
       <nav className="w-full px-6 pt-3 bg-slate-950/70 border-b border-slate-800/80 sticky top-[57px] z-30 backdrop-blur-md">
         <div className="max-w-[1720px] mx-auto flex items-center justify-between overflow-x-auto no-scrollbar gap-2 pb-2.5">
           <div className="flex items-center gap-1.5">
+            {/* Core Command Tabs */}
             <button
               onClick={() => setActiveTab('dashboard')}
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                 activeTab === 'dashboard'
                   ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/10'
                   : 'text-slate-400 hover:text-white hover:bg-slate-900'
               }`}
             >
               <LayoutDashboard className="w-3.5 h-3.5" />
-              <span>{language === 'ta' ? 'தலைமைச் செயலக முகப்பு' : 'CM Cockpit'}</span>
+              <span>{language === 'ta' ? 'தலைமைச் செயலகம்' : 'CM Cockpit'}</span>
             </button>
 
             <button
               onClick={() => setActiveTab('gis')}
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                 activeTab === 'gis'
                   ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/10'
                   : 'text-slate-400 hover:text-white hover:bg-slate-900'
               }`}
             >
               <MapPin className="w-3.5 h-3.5" />
-              <span>{language === 'ta' ? '38 மாவட்ட புவிசார் வரைபடம்' : '38-District GIS Map'}</span>
+              <span>{language === 'ta' ? '38 மாவட்ட GIS' : '38-District GIS'}</span>
             </button>
 
             <button
               onClick={() => setActiveTab('revenue')}
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                 activeTab === 'revenue'
                   ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/10'
                   : 'text-slate-400 hover:text-white hover:bg-slate-900'
               }`}
             >
               <IndianRupee className="w-3.5 h-3.5" />
-              <span>{language === 'ta' ? 'வரி & வருவாய் பகுப்பாய்வு' : 'Revenue Intelligence'}</span>
+              <span>{language === 'ta' ? 'வரி & வருவாய்' : 'Revenue Intel'}</span>
             </button>
 
             <button
               onClick={() => setActiveTab('grievance')}
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                 activeTab === 'grievance'
                   ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/10'
                   : 'text-slate-400 hover:text-white hover:bg-slate-900'
               }`}
             >
               <MessageSquare className="w-3.5 h-3.5" />
-              <span>{language === 'ta' ? 'முதல்வரின் முகவரி (மனுக்கள்)' : 'CM Helpline SLA'}</span>
+              <span>{language === 'ta' ? 'மனுக்கள் (SLA)' : 'Helpline SLA'}</span>
+            </button>
+
+            {/* Departmental Intelligence Hub Tabs */}
+            <div className="h-4 w-px bg-slate-800 mx-1 shrink-0" />
+
+            <button
+              onClick={() => setActiveTab('health')}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                activeTab === 'health'
+                  ? 'bg-cyan-600 text-white shadow-md shadow-cyan-500/20'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <HeartPulse className="w-3.5 h-3.5 text-cyan-300" />
+              <span>{language === 'ta' ? 'சுகாதாரம் (TNMSC)' : 'Health & Drugs'}</span>
             </button>
 
             <button
+              onClick={() => setActiveTab('police')}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                activeTab === 'police'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <Radio className="w-3.5 h-3.5 text-indigo-300" />
+              <span>{language === 'ta' ? 'காவல்துறை (SITREP)' : 'Police SITREP'}</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('water_agri')}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                activeTab === 'water_agri'
+                  ? 'bg-teal-600 text-white shadow-md shadow-teal-500/20'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <Droplets className="w-3.5 h-3.5 text-teal-300" />
+              <span>{language === 'ta' ? 'அணைகள் & குறுவை' : 'Water & Crops'}</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('fraud_audit')}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                activeTab === 'fraud_audit'
+                  ? 'bg-rose-600 text-white shadow-md shadow-rose-500/20'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <ShieldAlert className="w-3.5 h-3.5 text-rose-300" />
+              <span>{language === 'ta' ? 'AI நிதி தணிக்கை' : 'Fraud Watchdog'}</span>
+            </button>
+
+            <div className="h-4 w-px bg-slate-800 mx-1 shrink-0" />
+
+            <button
               onClick={() => setActiveTab('role_view')}
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                 activeTab === 'role_view'
                   ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
                   : 'text-slate-400 hover:text-white hover:bg-slate-900'
@@ -227,17 +291,17 @@ export const App: React.FC = () => {
               {activeRole === 'CHIEF_SECRETARY' ? (
                 <>
                   <Shield className="w-3.5 h-3.5 text-cyan-300" />
-                  <span>{language === 'ta' ? 'தலைமைச் செயலாளர் பார்வை' : 'Chief Secretary Command'}</span>
+                  <span>{language === 'ta' ? 'தலைமைச் செயலாளர்' : 'CS Cockpit'}</span>
                 </>
               ) : activeRole === 'DISTRICT_COLLECTOR' ? (
                 <>
                   <Building2 className="w-3.5 h-3.5 text-emerald-300" />
-                  <span>{language === 'ta' ? 'மாவட்ட ஆட்சியர் மையம்' : 'Collectorate Command'}</span>
+                  <span>{language === 'ta' ? 'மாவட்ட ஆட்சியர்' : 'Collectorate'}</span>
                 </>
               ) : (
                 <>
                   <Shield className="w-3.5 h-3.5 text-amber-300" />
-                  <span>{language === 'ta' ? 'நிர்வாகப் பார்வை' : 'Operational Command'}</span>
+                  <span>{language === 'ta' ? 'நிர்வாக மையம்' : 'Ops Command'}</span>
                 </>
               )}
             </button>
@@ -317,6 +381,30 @@ export const App: React.FC = () => {
         {activeTab === 'grievance' && (
           <section className="animate-in fade-in duration-200">
             <GrievanceSlaAnalytics />
+          </section>
+        )}
+
+        {activeTab === 'health' && (
+          <section className="animate-in fade-in duration-200">
+            <HealthDomainView />
+          </section>
+        )}
+
+        {activeTab === 'police' && (
+          <section className="animate-in fade-in duration-200">
+            <PoliceDomainView />
+          </section>
+        )}
+
+        {activeTab === 'water_agri' && (
+          <section className="animate-in fade-in duration-200">
+            <WaterAgriDomainView />
+          </section>
+        )}
+
+        {activeTab === 'fraud_audit' && (
+          <section className="animate-in fade-in duration-200">
+            <FraudAuditDomainView />
           </section>
         )}
 
