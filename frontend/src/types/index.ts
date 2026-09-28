@@ -101,6 +101,59 @@ export interface MyActionsToday {
   actions: ActionItemTriage[];
 }
 
+export interface HierarchyNode {
+  id: string;
+  name_en: string;
+  name_ta: string;
+  designation_en: string;
+  designation_ta: string;
+  tier_level: number;
+  tier_role: string;
+  department_code?: string;
+  department_en?: string;
+  department_ta?: string;
+  district_code?: string;
+  district_name_en?: string;
+  cug_phone: string;
+  official_email: string;
+  office_address: string;
+  pending_approvals_count: number;
+  kpi_score: number;
+  active_projects_count: number;
+  active_schemes_count: number;
+  subordinates_count: number;
+  children: HierarchyNode[];
+}
+
+export interface OfficerDossier {
+  id: string;
+  name_en: string;
+  name_ta: string;
+  designation_en: string;
+  designation_ta: string;
+  tier_role: string;
+  cadre: string;
+  batch_year?: number;
+  department_en: string;
+  department_ta: string;
+  district_en?: string;
+  district_ta?: string;
+  taluk_en?: string;
+  office_address: string;
+  cug_phone: string;
+  official_email: string;
+  reports_to_name?: string;
+  reports_to_designation?: string;
+  responsibilities: string[];
+  current_schemes: string[];
+  current_projects: string[];
+  current_committees: string[];
+  calendar_availability: 'AVAILABLE' | 'IN_MEETING' | 'FIELD_VISIT';
+  pending_approvals_count: number;
+  performance_kpi_score: number;
+  recent_decisions: string[];
+}
+
 export interface User {
   id: string;
   email: string;

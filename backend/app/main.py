@@ -10,6 +10,7 @@ from app.api.v1.districts import router as districts_router
 from app.api.v1.departments import router as departments_router
 from app.api.v1.copilot import router as copilot_router
 from app.api.v1.audit import router as audit_router
+from app.api.v1.hierarchy import router as hierarchy_router
 
 
 @asynccontextmanager
@@ -69,3 +70,4 @@ app.include_router(districts_router, prefix=settings.API_V1_STR)
 app.include_router(departments_router, prefix=settings.API_V1_STR)
 app.include_router(copilot_router, prefix=settings.API_V1_STR)
 app.include_router(audit_router, prefix=settings.API_V1_STR)
+app.include_router(hierarchy_router, prefix=settings.API_V1_STR)
