@@ -138,11 +138,14 @@ async def book_new_appointment(req: BookAppointmentRequest, host_claims: Dict[st
     today_str = req.scheduled_date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
     time_str = req.scheduled_time or "02:00 PM - 02:45 PM"
     
+    primary_email = req.participant_email or (req.participant_emails[0] if req.participant_emails else "official@tn.gov.in")
+    all_emails = req.participant_emails if req.participant_emails else [primary_email]
+
     new_appt = CalendarAppointment(
         id=f"appt-gen-{int(datetime.now(timezone.utc).timestamp())}",
         title_en=req.title,
         title_ta=req.title,
-        appointment_type="SECRETARY_BRIEFING" if "SECRETARY" in req.participant_role else "CM_APPOINTMENT",
+        appointment_type="SECRETARY_BRIEFING" if "SECRETARY" in req.participant_role else ("MLA_DELEGATION" if "MLA" in req.participant_role else ("CABINET_REVIEW" if "MINISTER" in req.participant_role else "CM_APPOINTMENT")),
         scheduled_date=today_str,
         scheduled_time=time_str,
         duration_minutes=45,
@@ -157,14 +160,18 @@ async def book_new_appointment(req: BookAppointmentRequest, host_claims: Dict[st
         participant_role=req.participant_role,
         participant_department=req.department or "General Administration",
         participant_district=req.district or "Statewide",
+        participant_constituency=req.constituency,
         participant_contact=req.contact_phone or "+91 44 2567 0000",
-        participant_email="official@tn.gov.in",
+        participant_email=primary_email,
+        participant_emails=all_emails,
+        related_scheme=req.related_scheme,
+        related_project=req.related_project,
         agenda_en=req.agenda,
         agenda_ta=req.agenda,
-        ai_prepared_notes_en=f"AI Briefing dossier auto-compiled for '{req.title}'. Verified participant credentials and pulled relevant departmental files.",
-        ai_prepared_notes_ta=f"'{req.title}' சந்திப்பிற்கான AI முன் தயாரிப்பு குறிப்புகள் மற்றும் துறை ஆவணங்கள் இணைக்கப்பட்டுள்ளன.",
-        historical_decisions_context=["Logged in VETTRI Executive Protocol Registry."],
-        required_files_gos=["Verified e-Office File Dossier"],
+        ai_prepared_notes_en=f"AI Briefing dossier auto-compiled for '{req.title}'. Verified participant credentials ({', '.join(all_emails)}) and attached relevant departmental policy files.",
+        ai_prepared_notes_ta=f"'{req.title}' சந்திப்பிற்கான AI முன் தயாரிப்பு குறிப்புகள் மற்றும் துறை ஆவணங்கள் ({', '.join(all_emails)}) இணைக்கப்பட்டுள்ளன.",
+        historical_decisions_context=["Logged in VETTRI Executive Protocol & Calendar Registry."],
+        required_files_gos=["Verified e-Office File Dossier", f"Department Directive: {req.department or 'General Admin'}"],
         protocol_clearance_status="VERIFIED"
     )
 

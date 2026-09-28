@@ -16,136 +16,37 @@ async def process_copilot_query(request: CopilotQueryRequest, user_claims: Dict[
         "4. Applied role-specific reasoning & strict hallucination verification guardrails"
     ]
 
-    # 0. APPOINTMENT BOOKING INTENT (CHIEF MINISTER & EXECUTIVES)
-    booking_keywords = [
-        "book", "schedule", "appointment", "meeting", "calendar", "slot",
-        "சந்திப்பு", "அப்பாய்ண்ட்மென்ட்", "நேரம் ஒதுக்கு", "பதிவு செய்"
-    ]
-    is_booking_intent = (
-        ("book" in q or "schedule" in q or "சந்திப்பு" in q or "அப்பாய்ண்ட்மென்ட்" in q or "calendar" in q) and
-        ("appointment" in q or "meeting" in q or "schedule" in q or "calendar" in q or "secretary" in q or "minister" in q or "officer" in q or "mla" in q or "collector" in q or "police" in q or "discuss" in q or "சந்திப்பு" in q)
-    )
+    # 0. APPOINTMENT BOOKING & OFFICIAL/EMAIL DIRECTORY AGENT (CHIEF MINISTER & EXECUTIVES)
+    is_appointment_or_directory_query = any(w in q for w in [
+        "book", "schedule", "appointment", "meeting", "calendar", "slot", "சந்திப்பு", "அப்பாய்ண்ட்மென்ட்", "நேரம் ஒதுக்கு", "பதிவு செய்",
+        "email", "official", "officials", "mla", "minister", "secretary", "collector", "tahsildar", "bdo", "vao", "constituency", "who is the", "list the", "find the", "மின்னஞ்சல்", "அதிகாரி", "சட்டமன்ற"
+    ]) and any(w in q for w in [
+        "appointment", "meeting", "schedule", "calendar", "email", "minister", "mla", "secretary", "collector", "police", "scheme", "project", "thiruvaiyaru", "coimbatore", "madurai", "hosur", "water", "magalir", "semiconductor", "posco", "pocso", "discuss", "சந்திப்பு", "மின்னஞ்சல்"
+    ])
 
-    if is_booking_intent:
-        import re
-        from datetime import datetime, timezone
-        from app.services.calendar_service import book_new_appointment
-        from app.schemas.calendar import BookAppointmentRequest
+    if is_appointment_or_directory_query:
+        from app.services.appointment_agent import run_appointment_agent
+        from app.schemas.calendar import AgentAppointmentRequest
 
-        # Intelligent Date Parsing
-        scheduled_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-        if "oct 3" in q or "october 3" in q or "3 oct" in q:
-            scheduled_date = "2026-10-03"
-        elif "oct 4" in q or "october 4" in q:
-            scheduled_date = "2026-10-04"
-        elif "tomorrow" in q or "நாளை" in q:
-            scheduled_date = "2026-09-29"
-        else:
-            date_match = re.search(r"(\d{4}-\d{2}-\d{2})", q)
-            if date_match:
-                scheduled_date = date_match.group(1)
-
-        # Intelligent Time Slot Parsing
-        scheduled_time = "11:30 AM - 12:30 PM"
-        time_match = re.search(r"(\d{1,2}(?:\.\d{2}|:\d{2})?\s*(?:am|pm)?\s*(?:to|-)\s*\d{1,2}(?:\.\d{2}|:\d{2})?\s*(?:am|pm))", q)
-        if time_match:
-            scheduled_time = time_match.group(1).upper().replace('.', ':')
-        elif "11.30" in q or "11:30" in q:
-            scheduled_time = "11:30 AM - 12:30 PM"
-        elif "02:30" in q or "2.30" in q or "2:30" in q:
-            scheduled_time = "02:30 PM - 03:15 PM"
-
-        # Participant & Role Resolution
-        target_name = "Chief Secretary & Senior Delegations"
-        target_role = "PRINCIPAL_SECRETARY"
-        target_desig = "Chief Secretary & Department Heads"
-        agenda_en = "Discussion requested by Hon'ble Chief Minister regarding priority administration files & governance directives."
-        agenda_ta = "முக்கிய நிர்வாகக் கோப்புகள் மற்றும் அரசு வழிகாட்டுதல்கள் குறித்த கலந்துரையாடல்."
-
-        if ("posco" in q or "pocso" in q) and ("law minister" in q or "police" in q or "secretary" in q):
-            target_name = "Chief Secretary, Law Minister & DGP / Senior Police Team"
-            target_role = "MINISTER"
-            target_desig = "Chief Secretary, Law Minister & Police Leadership"
-            agenda_en = "Comprehensive review of POCSO Act case trial velocities, fast-track forensics, witness protection and special prosecution protocols."
-            agenda_ta = "போக்சோ (POCSO) சட்ட வழக்குகள் விரைவு நீதிமன்ற விசாரணை, தடயவியல் அறிக்கை வேகம் மற்றும் காவல்துறை நடவடிக்கை குறித்த விரிவான ஆய்வு."
-        elif "collector" in q or "ஆட்சியர்" in q:
-            target_name = "Krasthi Kumar Pati, IAS (District Collector, Coimbatore)"
-            target_role = "GROUP_1"
-            target_desig = "District Collector"
-            agenda_en = "Review of district development metrics, grievance disposal rates, and flagship scheme saturation."
-            agenda_ta = "மாவட்ட வளர்ச்சி பணிகள் மற்றும் மனுக்கள் தீர்வு ஆய்வு."
-        elif "mla" in q or "சட்டமன்ற" in q:
-            target_name = "Delta District MLA Delegation"
-            target_role = "MLA"
-            target_desig = "Member of Legislative Assembly"
-            agenda_en = "Cauvery Delta Kuruvai water release schedule, fertilizer distribution and tail-end canal desilting."
-            agenda_ta = "காவிரி டெல்டா குறுவை பாசன நீர் திறப்பு மற்றும் உர விநியோகம்."
-        elif "law minister" in q:
-            target_name = "Hon'ble Minister for Law, Courts & Prisons"
-            target_role = "MINISTER"
-            target_desig = "Cabinet Minister (Law)"
-            agenda_en = "Review of court infrastructure, fast track trial pendency, and public prosecutor coordination."
-            agenda_ta = "நீதிமன்ற உள்கட்டமைப்பு மற்றும் விரைவு வழக்குகள் ஆய்வு."
-        elif "minister" in q or "அமைச்சர்" in q:
-            target_name = "Hon'ble Minister for Finance & Human Resources"
-            target_role = "MINISTER"
-            target_desig = "Cabinet Minister"
-            agenda_en = "Fiscal budget execution, revenue performance, and departmental welfare allocations."
-            agenda_ta = "நிதி பட்ஜெட் மற்றும் திட்ட ஒதுக்கீடுகள் ஆய்வு."
-        elif "police" in q or "sp" in q or "dgp" in q or "காவல்" in q:
-            target_name = "Director General of Police (DGP) & Senior IPS Officers"
-            target_role = "GROUP_1"
-            target_desig = "DGP (Law & Order) & State Police Leadership"
-            agenda_en = "Statewide law and order review, special task force operations, and women/child safety measures."
-            agenda_ta = "சட்டம் ஒழுங்கு மற்றும் பெண்கள்-குழந்தைகள் பாதுகாப்பு நடவடிக்கைகள்."
-        elif "health" in q or "மருத்துவம்" in q:
-            target_name = "P. Senthilkumar, IAS (Principal Secretary, Health)"
-            target_role = "PRINCIPAL_SECRETARY"
-            target_desig = "Principal Secretary, Health & Family Welfare"
-            agenda_en = "TNMSC central drug inventory replenishment and Government Hospital emergency readiness."
-            agenda_ta = "மருந்து இருப்பு மற்றும் அரசு மருத்துவமனை தயார்நிலை."
-
-        new_appt = await book_new_appointment(
-            BookAppointmentRequest(
-                title=f"Executive Meeting: {target_name}",
-                participant_name=target_name,
-                participant_role=target_role,
-                participant_designation=target_desig,
-                scheduled_date=scheduled_date,
-                scheduled_time=scheduled_time,
-                agenda=agenda_en
-            ),
+        agent_res = await run_appointment_agent(
+            AgentAppointmentRequest(query=request.query, language=request.language),
             user_claims
         )
 
-        resp_en = (
-            f"✅ **Official Appointment Booked & Added to Executive Calendar**\n\n"
-            f"• **Participants:** {new_appt.participant_name_en} ({new_appt.participant_designation})\n"
-            f"• **Date & Slot:** {new_appt.scheduled_date} | {new_appt.scheduled_time}\n"
-            f"• **Venue:** {new_appt.location}\n"
-            f"• **Meeting Agenda:** {new_appt.agenda_en}\n"
-            f"• **Protocol Security Clearance:** {new_appt.protocol_clearance_status} (VIP Clearance Active)\n"
-            f"• **AI Pre-Briefing Dossier:** Auto-compiled relevant G.O.s ({', '.join(new_appt.required_files_gos)}) and departmental performance metrics into the Executive Calendar."
-        )
-        resp_ta = (
-            f"✅ **மாண்புமிகு முதலமைச்சரின் அதிகாரப்பூர்வ நாள்காட்டியில் சந்திப்பு பதிவு செய்யப்பட்டது**\n\n"
-            f"• **பங்கேற்பாளர்கள்:** {new_appt.participant_name_ta} ({new_appt.participant_designation})\n"
-            f"• **தேதி & நேரம்:** {new_appt.scheduled_date} | {new_appt.scheduled_time}\n"
-            f"• **இடம்:** {new_appt.location}\n"
-            f"• **நிகழ்ச்சி நிரல்:** {new_appt.agenda_ta}\n"
-            f"• **பாதுகாப்பு நெறிமுறை நிலை:** {new_appt.protocol_clearance_status} (VIP பாதுகாப்பு அனுமதி தயார்)\n"
-            f"• **AI ஆலோசனைக் குறிப்புகள்:** தேவையான அரசாணைகள் ({', '.join(new_appt.required_files_gos)}) மற்றும் துறை அறிக்கைகள் நாள்காட்டியில் இணைக்கப்பட்டுள்ளன."
-        )
+        resp_en = agent_res.response_en
+        resp_ta = agent_res.response_ta
+        thought_steps = agent_res.thought_steps
+
         citations = [
-            Citation(source="Executive Calendar Registry", ref=f"APPT_ID_{new_appt.id}", date=new_appt.scheduled_date),
-            Citation(source="Home & Law Department", ref="POCSO_FTC_PROTOCOL_2026", date=new_appt.scheduled_date),
-            Citation(source="State Intelligence Wing", ref="VIP_SECURITY_CLEARANCE", date=new_appt.scheduled_date)
+            Citation(source=c.get("source", "State Directory"), ref=c.get("ref", "REG_2026"), date=c.get("date", "2026-09-28"))
+            for c in agent_res.citations
         ]
+
         actions = [
             ActionRecommendation(
                 action_code="OPEN_EXECUTIVE_CALENDAR",
-                description_en="Open Executive Calendar to view meeting agenda, pre-briefing notes and participant dossier.",
-                description_ta="சந்திப்பு நிகழ்ச்சி நிரல், AI குறிப்புகள் மற்றும் ஆவணங்களை காண நாள்காட்டியை திறக்கவும்.",
+                description_en="Open Executive Calendar to view appointment details, participant emails and briefing dossier.",
+                description_ta="சந்திப்பு விவரங்கள், மின்னஞ்சல்கள் மற்றும் AI குறிப்புகளை காண நாள்காட்டியை திறக்கவும்.",
                 priority="HIGH",
                 target_department="Chief Minister's Office"
             )

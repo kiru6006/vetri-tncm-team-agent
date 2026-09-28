@@ -292,8 +292,12 @@ export interface CalendarAppointment {
   participant_role: 'CHIEF_MINISTER' | 'MINISTER' | 'MLA' | 'PRINCIPAL_SECRETARY' | 'GROUP_1' | 'GROUP_2' | 'GROUP_3_4' | 'CITIZEN' | string;
   participant_department?: string;
   participant_district?: string;
+  participant_constituency?: string;
   participant_contact: string;
   participant_email?: string;
+  participant_emails?: string[];
+  related_scheme?: string;
+  related_project?: string;
   agenda_en: string;
   agenda_ta: string;
   ai_prepared_notes_en?: string;
@@ -301,6 +305,42 @@ export interface CalendarAppointment {
   historical_decisions_context: string[];
   required_files_gos: string[];
   protocol_clearance_status: 'VERIFIED' | 'VIP_SECURITY' | 'STANDARD';
+}
+
+export interface OfficerDirectoryItem {
+  id: string;
+  name_en: string;
+  name_ta: string;
+  designation_en: string;
+  designation_ta: string;
+  role_tier: string;
+  department_en: string;
+  department_ta: string;
+  district_en: string;
+  district_ta: string;
+  constituency?: string;
+  official_email: string;
+  cug_phone: string;
+  office_address: string;
+  current_schemes: string[];
+  current_projects: string[];
+  availability_status: 'AVAILABLE' | 'IN_MEETING' | 'ON_FIELD_INSPECTION' | string;
+}
+
+export interface DirectorySearchResponse {
+  total_matches: number;
+  officers: OfficerDirectoryItem[];
+  query_interpreted?: string;
+}
+
+export interface AgentAppointmentResponse {
+  action_type: 'DIRECTORY_SEARCH_RESULTS' | 'APPOINTMENT_SCHEDULED' | 'GENERAL_INSIGHT' | string;
+  matched_officers: OfficerDirectoryItem[];
+  appointment?: CalendarAppointment;
+  response_en: string;
+  response_ta: string;
+  citations: Array<{ source: string; ref: string; date: string }>;
+  thought_steps: string[];
 }
 
 export interface User {
