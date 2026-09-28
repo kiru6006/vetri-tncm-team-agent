@@ -333,8 +333,8 @@ export const App: React.FC = () => {
                   : 'text-slate-400 hover:text-white hover:bg-slate-900'
               }`}
             >
-              <Layers className="w-3.5 h-3.5" />
-              <span>{language === 'ta' ? 'நிர்வாகப் படிநிலை' : 'TN Hierarchy'}</span>
+              <Building2 className="w-3.5 h-3.5" />
+              <span>{language === 'ta' ? 'அரசு அடைவு (GRM)' : 'Gov Directory (GRM)'}</span>
             </button>
 
             <button

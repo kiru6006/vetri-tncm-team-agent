@@ -510,3 +510,148 @@ export interface CopilotMessage {
   chartDirective?: any;
   timestamp: string;
 }
+
+// Enterprise Government Relationship Management (GRM) Directory Types
+export type CadreType = 'IAS' | 'IPS' | 'IRS' | 'IFS' | 'TNCS_GRP1' | 'TNCS_GRP2' | 'TNCS_GRP3_4' | 'MINISTER' | 'MLA';
+export type OfficialStatus = 'AVAILABLE' | 'IN_MEETING' | 'ON_TOUR' | 'ON_LEAVE' | 'IN_ASSEMBLY';
+
+export interface ReportingNode {
+  id: string;
+  name: string;
+  cadre: string;
+  designation: string;
+  department: string;
+}
+
+export interface DataSourceMetadata {
+  source_name: string;
+  source_portal_url: string;
+  last_synced_at: string;
+  sync_status: string;
+  record_hash: string;
+  source_reference_id: string;
+  verified_by_audit: boolean;
+}
+
+export interface OfficialGRMProfile {
+  id: string;
+  name_en: string;
+  name_ta: string;
+  cadre: CadreType;
+  batch_year?: number;
+  service_category: string;
+  designation_en: string;
+  designation_ta: string;
+  department_en: string;
+  department_ta: string;
+  office_name: string;
+  district_en: string;
+  district_ta: string;
+  taluk_en?: string;
+  role_tier: UserRole;
+  official_email: string;
+  cug_phone: string;
+  office_phone?: string;
+  office_address_en: string;
+  office_address_ta: string;
+  official_website?: string;
+  status: OfficialStatus;
+  reporting_officer?: ReportingNode;
+  reporting_hierarchy: ReportingNode[];
+  direct_reports: ReportingNode[];
+  responsibilities: string[];
+  current_projects: string[];
+  current_schemes: string[];
+  committees: string[];
+  upcoming_meetings_count: number;
+  recent_decisions: string[];
+  recent_gos: string[];
+  recent_reviews: string[];
+  kpis: { [key: string]: any };
+  performance_score: number;
+  avatar_color?: string;
+  data_source: DataSourceMetadata;
+  ai_profile_summary_en?: string;
+  ai_profile_summary_ta?: string;
+}
+
+export interface AutocompleteItem {
+  id: string;
+  name_en: string;
+  name_ta: string;
+  cadre: string;
+  batch_year?: number;
+  designation_en: string;
+  department_en: string;
+  district_en: string;
+  office_name: string;
+  official_email: string;
+  cug_phone: string;
+  status: OfficialStatus;
+  avatar_color?: string;
+  role_tier: string;
+}
+
+export interface GRMSearchResponse {
+  query: string;
+  total_matches: number;
+  cadre_counts: { [key: string]: number };
+  results: OfficialGRMProfile[];
+}
+
+export interface SyncConnector {
+  id: string;
+  name: string;
+  source_category: string;
+  endpoint_url: string;
+  frequency_cron: string;
+  last_sync_timestamp: string;
+  last_sync_status: string;
+  records_processed: number;
+  records_updated: number;
+  flagged_outdated: number;
+  latency_ms: number;
+}
+
+export interface SyncAuditLog {
+  id: string;
+  connector_id: string;
+  connector_name: string;
+  executed_at: string;
+  status: string;
+  records_added: number;
+  records_modified: number;
+  verified_by: string;
+  audit_hash: string;
+}
+
+export interface RecommendedOfficerItem {
+  id: string;
+  name: string;
+  cadre: string;
+  designation: string;
+  department: string;
+  district: string;
+  email: string;
+  cug_phone: string;
+  status: string;
+  role_justification: string;
+  cross_department_synergy: string;
+  decision_authority_level: string;
+}
+
+export interface RelationshipIntelligenceResponse {
+  purpose_query: string;
+  detected_intent: string;
+  primary_lead: RecommendedOfficerItem;
+  recommended_attendees: RecommendedOfficerItem[];
+  cross_department_collaborators: RecommendedOfficerItem[];
+  escalation_officer: RecommendedOfficerItem;
+  ai_meeting_briefing: {
+    recommended_agenda: string[];
+    critical_questions_to_ask: string[];
+    relevant_government_orders: string[];
+    risk_factors: string[];
+  };
+}
+
