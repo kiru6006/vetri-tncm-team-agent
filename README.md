@@ -108,6 +108,7 @@ npm run build
 
 - [Strategic Critique & Transformation Roadmap](docs/01_STRATEGIC_CRITIQUE_AND_ROADMAP.md)
 - [System Architecture Specification](docs/02_ARCHITECTURE_SPECIFICATION.md)
+- [Ministers & Officials Use Cases Playbook](docs/05_MINISTERS_AND_OFFICIALS_USE_CASES_PLAYBOOK.md)
 - [Database Schema & Migrations](docs/DATABASE_DESIGN.md)
 - [AI Multi-Agent Prompts & Tool Specifications](docs/AI_AGENTS_PROMPT.md)
 - [Phase 3 GRM Platform Specification](docs/PHASE_2_ENHANCEMENT_SPECIFICATION.md)
