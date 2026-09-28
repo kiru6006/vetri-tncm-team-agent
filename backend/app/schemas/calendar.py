@@ -43,6 +43,46 @@ class CalendarAppointment(BaseModel):
     protocol_clearance_status: str = "VERIFIED"  # VERIFIED, VIP_SECURITY, STANDARD
 
 
+class DepartmentStaffingMetric(BaseModel):
+    sanctioned_posts: int
+    in_position_staff: int
+    vacant_posts: int
+    vacancy_pct: float
+    demand_urgency: str  # CRITICAL, HIGH, MODERATE, STABLE
+    top_shortage_roles: List[str] = []
+    ai_staffing_remedy_en: str
+    ai_staffing_remedy_ta: str
+
+
+class DepartmentFundMetric(BaseModel):
+    budget_sanctioned_cr: float
+    funds_released_cr: float
+    expenditure_spent_cr: float
+    utilization_pct: float
+    unspent_balance_cr: float
+    fiscal_health_status: str  # HEALTHY, ON_TRACK, SLOW_ABSORPTION, VARIANCE_FLAG
+    flagged_variance_areas: List[str] = []
+
+
+class ProjectDetail(BaseModel):
+    name: str
+    sanctioned_cost_cr: float
+    physical_progress_pct: float
+    financial_progress_pct: float
+    target_completion: str
+    bottleneck_en: Optional[str] = None
+    bottleneck_ta: Optional[str] = None
+
+
+class SchemeDetail(BaseModel):
+    name: str
+    target_beneficiaries: str
+    actual_covered: str
+    saturation_pct: float
+    annual_budget_cr: float
+    disbursement_status: str
+
+
 class OfficerDirectoryItem(BaseModel):
     id: str
     name_en: str
@@ -61,6 +101,14 @@ class OfficerDirectoryItem(BaseModel):
     current_schemes: List[str] = []
     current_projects: List[str] = []
     availability_status: str = "AVAILABLE"  # AVAILABLE, IN_MEETING, ON_FIELD_INSPECTION
+
+    # Executive Intelligence & Analytics Extensions
+    funds_allocation: Optional[DepartmentFundMetric] = None
+    staffing_demand_supply: Optional[DepartmentStaffingMetric] = None
+    detailed_projects: List[ProjectDetail] = []
+    detailed_schemes: List[SchemeDetail] = []
+    ai_strategic_analysis_en: Optional[str] = None
+    ai_strategic_analysis_ta: Optional[str] = None
 
 
 class DirectorySearchFilter(BaseModel):

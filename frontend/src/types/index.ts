@@ -307,6 +307,49 @@ export interface CalendarAppointment {
   protocol_clearance_status: 'VERIFIED' | 'VIP_SECURITY' | 'STANDARD';
 }
 
+export interface DepartmentFundMetric {
+  department_code: string;
+  department_name_en: string;
+  department_name_ta: string;
+  sanctioned_budget_cr: number;
+  released_amount_cr: number;
+  expenditure_cr: number;
+  utilization_rate_pct: number;
+  fiscal_risk_flag: 'LOW' | 'MEDIUM' | 'HIGH' | 'STABLE' | string;
+  allocation_status: 'ON_TRACK' | 'SURPLUS_CAPEX' | 'ACCELERATED_OUTLAY' | 'DELAYED_DISBURSEMENT' | string;
+  fiscal_year: string;
+}
+
+export interface DepartmentStaffingMetric {
+  department_code: string;
+  sanctioned_posts: number;
+  in_position_staff: number;
+  vacant_posts: number;
+  vacancy_deficit_pct: number;
+  urgency_level: 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW' | 'STABLE' | string;
+  top_shortage_roles: string[];
+  ai_staffing_gap_remedy?: string;
+}
+
+export interface SchemeDetail {
+  code: string;
+  name: string;
+  target_beneficiaries: string;
+  actual_beneficiaries: string;
+  saturation_rate_pct: number;
+  budget_allocated_cr: number;
+}
+
+export interface ProjectDetail {
+  code: string;
+  name: string;
+  budget_cr: number;
+  physical_progress_pct: number;
+  financial_progress_pct: number;
+  status: string;
+  key_bottleneck?: string;
+}
+
 export interface OfficerDirectoryItem {
   id: string;
   name_en: string;
@@ -324,7 +367,13 @@ export interface OfficerDirectoryItem {
   office_address: string;
   current_schemes: string[];
   current_projects: string[];
+  active_projects?: string[];
   availability_status: 'AVAILABLE' | 'IN_MEETING' | 'ON_FIELD_INSPECTION' | string;
+  funds_metrics?: DepartmentFundMetric;
+  staffing_metrics?: DepartmentStaffingMetric;
+  schemes_details?: SchemeDetail[];
+  projects_details?: ProjectDetail[];
+  ai_strategic_notes?: string;
 }
 
 export interface DirectorySearchResponse {

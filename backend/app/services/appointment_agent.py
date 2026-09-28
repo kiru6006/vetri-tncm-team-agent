@@ -32,24 +32,24 @@ async def run_appointment_agent(request: AgentAppointmentRequest, user_claims: D
     ])
 
     # 1. Multi-dimensional filtering across the directory
-    # Detect Department
-    dept_kw = None
+    # Detect Multiple Departments
+    depts_found = []
     if "water" in q_lower or "irrigation" in q_lower or "நீர்வளம்" in q_lower or "பாசனம்" in q_lower:
-        dept_kw = "Water Resources"
-    elif "industr" in q_lower or "invest" in q_lower or "தொழில்" in q_lower:
-        dept_kw = "Industries"
-    elif "energy" in q_lower or "power" in q_lower or "tangedco" in q_lower or "மின்" in q_lower:
-        dept_kw = "Energy"
-    elif "health" in q_lower or "drug" in q_lower or "hospital" in q_lower or "மருத்துவம்" in q_lower:
-        dept_kw = "Health"
-    elif "law" in q_lower or "court" in q_lower or "posco" in q_lower or "pocso" in q_lower or "சட்டம்" in q_lower:
-        dept_kw = "Law"
-    elif "police" in q_lower or "sp" in q_lower or "dgp" in q_lower or "காவல்" in q_lower:
-        dept_kw = "Police"
-    elif "finance" in q_lower or "budget" in q_lower or "வரி" in q_lower or "நிதி" in q_lower:
-        dept_kw = "Finance"
-    elif "revenue" in q_lower or "patta" in q_lower or "வருவாய்" in q_lower:
-        dept_kw = "Revenue"
+        depts_found.append("water")
+    if "industr" in q_lower or "invest" in q_lower or "தொழில்" in q_lower:
+        depts_found.append("industr")
+    if "energy" in q_lower or "power" in q_lower or "tangedco" in q_lower or "மின்" in q_lower:
+        depts_found.append("energy")
+    if "health" in q_lower or "drug" in q_lower or "hospital" in q_lower or "மருத்துவம்" in q_lower:
+        depts_found.append("health")
+    if "law" in q_lower or "court" in q_lower or "posco" in q_lower or "pocso" in q_lower or "சட்டம்" in q_lower:
+        depts_found.append("law")
+    if "police" in q_lower or "sp" in q_lower or "dgp" in q_lower or "காவல்" in q_lower:
+        depts_found.append("police")
+    if "finance" in q_lower or "budget" in q_lower or "வரி" in q_lower or "நிதி" in q_lower:
+        depts_found.append("finance")
+    if "revenue" in q_lower or "patta" in q_lower or "வருவாய்" in q_lower:
+        depts_found.append("revenue")
 
     # Detect Scheme
     scheme_kw = None
@@ -88,10 +88,10 @@ async def run_appointment_agent(request: AgentAppointmentRequest, user_claims: D
 
     # Detect Tier Role
     tier_kw = "ALL"
-    if "minister" in q_lower or "அமைச்சர்" in q_lower:
-        tier_kw = "MINISTER"
-    elif "mla" in q_lower or "சட்டமன்ற" in q_lower:
+    if "mla" in q_lower or "சட்டமன்ற" in q_lower:
         tier_kw = "MLA"
+    elif "minister" in q_lower or "அமைச்சர்" in q_lower:
+        tier_kw = "MINISTER"
     elif "secretary" in q_lower or "செயலாளர்" in q_lower:
         tier_kw = "PRINCIPAL_SECRETARY"
     elif "collector" in q_lower or "ஆட்சியர்" in q_lower or "sp" in q_lower:
@@ -101,24 +101,28 @@ async def run_appointment_agent(request: AgentAppointmentRequest, user_claims: D
     elif "vao" in q_lower or "village" in q_lower or "கிராம நிர்வாக" in q_lower:
         tier_kw = "GROUP_3_4"
 
-    # Execute Search
-    search_res = search_officials_directory(DirectorySearchFilter(
-        query=q,
-        department=dept_kw,
-        scheme=scheme_kw,
-        project=proj_kw,
-        district=dist_kw,
-        constituency=const_kw,
-        role_tier=tier_kw if tier_kw != "ALL" else None
-    ))
+    # Multi-Department or Multi-Criteria Filter Resolution
+    matched_officers: List[OfficerDirectoryItem] = []
+    if depts_found:
+        for off in TAMIL_NADU_OFFICIALS_DIRECTORY:
+            dept_text = (off.department_en + " " + off.department_ta).lower()
+            if any(d in dept_text for d in depts_found):
+                if tier_kw != "ALL" and off.role_tier != tier_kw:
+                    continue
+                matched_officers.append(off)
 
-    matched_officers = search_res.officers
     if not matched_officers:
-        # Fallback: broad search
-        matched_officers = [
-            off for off in TAMIL_NADU_OFFICIALS_DIRECTORY
-            if any(term in (off.name_en + off.department_en + off.district_en + (off.constituency or '') + ' '.join(off.current_schemes) + ' '.join(off.current_projects)).lower() for term in q_lower.split() if len(term) > 3)
-        ]
+        search_res = search_officials_directory(DirectorySearchFilter(
+            query=q,
+            department=depts_found[0] if depts_found else None,
+            scheme=scheme_kw,
+            project=proj_kw,
+            district=dist_kw,
+            constituency=const_kw,
+            role_tier=tier_kw if tier_kw != "ALL" else None
+        ))
+        matched_officers = search_res.officers
+
     if not matched_officers:
         matched_officers = TAMIL_NADU_OFFICIALS_DIRECTORY[:4]
 
@@ -224,37 +228,49 @@ async def run_appointment_agent(request: AgentAppointmentRequest, user_claims: D
             thought_steps=thought_steps
         )
 
-    # 3. DIRECTORY DISCOVERY / LISTING RESULTS
+    # 3. DIRECTORY DISCOVERY / LISTING / FUNDS & STAFFING INTELLIGENCE
     else:
         officer_bullets_en = []
         officer_bullets_ta = []
         for o in matched_officers:
+            funds_txt_en = f"₹{o.funds_allocation.expenditure_spent_cr:,.1f} Cr spent of ₹{o.funds_allocation.budget_sanctioned_cr:,.1f} Cr ({o.funds_allocation.utilization_pct}% utilized)" if o.funds_allocation else "N/A"
+            staff_txt_en = f"{o.staffing_demand_supply.in_position_staff:,} in position / {o.staffing_demand_supply.sanctioned_posts:,} sanctioned ({o.staffing_demand_supply.vacant_posts:,} vacant, {o.staffing_demand_supply.vacancy_pct}% gap - {o.staffing_demand_supply.demand_urgency})" if o.staffing_demand_supply else "N/A"
+            shortages_en = f"Critical role shortages: {', '.join(o.staffing_demand_supply.top_shortage_roles)}" if o.staffing_demand_supply and o.staffing_demand_supply.top_shortage_roles else ""
+            remedy_en = f"AI Staffing Recommendation: {o.staffing_demand_supply.ai_staffing_remedy_en}" if o.staffing_demand_supply else ""
+
             officer_bullets_en.append(
-                f"• **{o.name_en}** ({o.role_tier})\n"
-                f"  - **Designation:** {o.designation_en}\n"
-                f"  - **Department:** {o.department_en} | **District / Constituency:** {o.district_en} {f'({o.constituency})' if o.constituency else ''}\n"
-                f"  - **Official Email:** `{o.official_email}` | **CUG Phone:** {o.cug_phone}\n"
-                f"  - **Active Schemes:** {', '.join(o.current_schemes[:2]) if o.current_schemes else 'N/A'}\n"
-                f"  - **Active Projects:** {', '.join(o.current_projects[:2]) if o.current_projects else 'N/A'}"
+                f"### 👤 **{o.name_en}** ({o.role_tier})\n"
+                f"• **Designation:** {o.designation_en}\n"
+                f"• **Department:** {o.department_en} | **District / Constituency:** {o.district_en} {f'({o.constituency})' if o.constituency else ''}\n"
+                f"• **Official Email:** `{o.official_email}` | **CUG Phone:** {o.cug_phone}\n"
+                f"• **Active Schemes:** {', '.join(o.current_schemes) if o.current_schemes else 'N/A'}\n"
+                f"• **Major Projects:** {', '.join(o.current_projects) if o.current_projects else 'N/A'}\n"
+                f"• **💰 Funds & Budget Allocation:** {funds_txt_en}\n"
+                f"• **👥 Staffing Demand & Supply:** {staff_txt_en}\n"
+                + (f"  - {shortages_en}\n" if shortages_en else "")
+                + (f"  - ⚡ *{remedy_en}*\n" if remedy_en else "")
+                + (f"  - 🎯 **AI Strategic Insight:** {o.ai_strategic_analysis_en}\n" if o.ai_strategic_analysis_en else "")
             )
+
             officer_bullets_ta.append(
-                f"• **{o.name_ta}** ({o.role_tier})\n"
-                f"  - **பதவி:** {o.designation_ta}\n"
-                f"  - **துறை:** {o.department_ta} | **மாவட்டம்:** {o.district_ta}\n"
-                f"  - **மின்னஞ்சல்:** `{o.official_email}` | **தொலைபேசி:** {o.cug_phone}"
+                f"### 👤 **{o.name_ta}** ({o.role_tier})\n"
+                f"• **பதவி:** {o.designation_ta}\n"
+                f"• **துறை:** {o.department_ta} | **மாவட்டம்:** {o.district_ta}\n"
+                f"• **மின்னஞ்சல்:** `{o.official_email}` | **தொலைபேசி:** {o.cug_phone}\n"
+                f"• **திட்டங்கள்:** {', '.join(o.current_schemes)}\n"
+                f"• **பணியாளர் தேவை & பற்றாக்குறை:** {o.staffing_demand_supply.vacant_posts if o.staffing_demand_supply else 0} பணியிடங்கள் காலியிடம்"
             )
 
         resp_en = (
-            f"🔍 **State Directory AI Search Results ({len(matched_officers)} Officials Found)**\n\n"
-            f"Here are the verified government officials matching your criteria (Name / Department / Scheme / Project / Location / Constituency):\n\n"
+            f"🔍 **Executive Directory & Department Intelligence ({len(matched_officers)} Portfolios Analyzed)**\n\n"
             + "\n\n".join(officer_bullets_en)
-            + "\n\n💡 *Tip: You can say 'Book an appointment with them tomorrow at 11 AM' to schedule instantly.*"
+            + "\n\n💡 *Action: You can command: 'Book an appointment with them tomorrow at 11 AM' or 'Schedule review with CS on staffing gaps'.*"
         )
 
         resp_ta = (
-            f"🔍 **அரசு அதிகாரிகள் விபரங்கள் ({len(matched_officers)} அதிகாரிகள் கண்டறியப்பட்டனர்)**\n\n"
+            f"🔍 **அரசு அதிகாரிகள் விபரங்கள், திட்டங்கள், நிதி ஒதுக்கீடு & பணியாளர் தேவைகள் ({len(matched_officers)} துறைகள்)**\n\n"
             + "\n\n".join(officer_bullets_ta)
-            + "\n\n💡 *குறிப்பு: 'இவர்களுடன் நாளை காலை 11 மணிக்கு சந்திப்பு பதிவு செய்' என்று கட்டளையிட்டு உடனடியாக பதிவு செய்யலாம்.*"
+            + "\n\n💡 *குறிப்பு: 'இவர்களுடன் நாளை காலை 11 மணிக்கு சந்திப்பு பதிவு செய்' என்று கூறி உடனடியாக சந்திப்பு பதிவு செய்யலாம்.*"
         )
 
         return AgentAppointmentResponse(
@@ -264,7 +280,8 @@ async def run_appointment_agent(request: AgentAppointmentRequest, user_claims: D
             response_en=resp_en,
             response_ta=resp_ta,
             citations=[
-                {"source": "Tamil Nadu State Officials Directory", "ref": "STATE_DIR_REGISTRY_2026", "date": datetime.now().strftime("%Y-%m-%d")}
+                {"source": "Tamil Nadu State Officials & Staffing Registry", "ref": "STATE_DIR_REGISTRY_2026", "date": datetime.now().strftime("%Y-%m-%d")},
+                {"source": "Finance Department Treasury Ledger", "ref": "IFHRMS_BUDGET_Q3", "date": datetime.now().strftime("%Y-%m-%d")}
             ],
             thought_steps=thought_steps
         )

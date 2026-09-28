@@ -43,6 +43,7 @@ export const ExecutiveCalendarView: React.FC<ExecutiveCalendarViewProps> = ({ on
   const [selectedApptId, setSelectedApptId] = useState<string | null>(null);
   const [directoryOfficers, setDirectoryOfficers] = useState<OfficerDirectoryItem[]>([]);
   const [isLoadingDirectory, setIsLoadingDirectory] = useState(false);
+  const [selectedDossierOfficer, setSelectedDossierOfficer] = useState<OfficerDirectoryItem | null>(null);
 
   // AI Assistant Command Bar State
   const [agentInput, setAgentInput] = useState('');
@@ -622,7 +623,7 @@ export const ExecutiveCalendarView: React.FC<ExecutiveCalendarViewProps> = ({ on
         </div>
       )}
 
-      {/* VIEW MODE 2: STATE OFFICIALS DIRECTORY & EMAILS */}
+          {/* VIEW MODE 2: STATE OFFICIALS DIRECTORY & EMAILS */}
       {activeViewMode === 'directory' && (
         <div className="space-y-4">
           {/* Multi-Dimensional Filter Deck */}
@@ -693,6 +694,41 @@ export const ExecutiveCalendarView: React.FC<ExecutiveCalendarViewProps> = ({ on
             </div>
           </div>
 
+          {/* Quick Category Badges */}
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 text-xs">
+            <span className="text-slate-400 font-bold shrink-0">Quick Analytics Filters:</span>
+            {[
+              { id: 'ALL', label: '🌐 All Departments & Officers' },
+              { id: 'CRITICAL_STAFF', label: '🚨 Critical Staffing Vacancies (>20%)' },
+              { id: 'HIGH_FUNDS', label: '💰 High Budget Allocations (> ₹5,000 Cr)' },
+              { id: 'PROJECTS', label: '🏗️ Mega Infrastructure Projects' },
+              { id: 'SCHEMES', label: '🌾 Welfare Flagship Schemes' },
+            ].map(f => (
+              <button
+                key={f.id}
+                onClick={() => {
+                  if (f.id === 'ALL') {
+                    setDeptFilter('');
+                    setSchemeFilter('');
+                    setProjectFilter('');
+                    setSearchQuery('');
+                  } else if (f.id === 'CRITICAL_STAFF') {
+                    setSearchQuery('Critical Staff Shortages');
+                  } else if (f.id === 'HIGH_FUNDS') {
+                    setSearchQuery('Budget Allocation Funds');
+                  } else if (f.id === 'PROJECTS') {
+                    setSearchQuery('Mega Projects');
+                  } else if (f.id === 'SCHEMES') {
+                    setSearchQuery('Flagship Schemes');
+                  }
+                }}
+                className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white shrink-0 font-medium transition-all"
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+
           <div className="flex items-center justify-between text-xs text-slate-400 font-semibold px-1">
             <span>Verified Official Government Roster ({directoryOfficers.length} Officials Listed)</span>
             <button
@@ -704,88 +740,423 @@ export const ExecutiveCalendarView: React.FC<ExecutiveCalendarViewProps> = ({ on
           </div>
 
           {/* Directory Officers Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {directoryOfficers.map(officer => (
-              <div
-                key={officer.id}
-                className="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all space-y-3 flex flex-col justify-between shadow-lg"
-              >
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                      {officer.role_tier}
-                    </span>
-                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-md border border-emerald-900/60">
-                      ● {officer.availability_status}
-                    </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {directoryOfficers.map(officer => {
+              const funds = officer.funds_metrics;
+              const staff = officer.staffing_metrics;
+
+              return (
+                <div
+                  key={officer.id}
+                  className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-indigo-500/50 transition-all space-y-4 flex flex-col justify-between shadow-xl backdrop-blur-sm group"
+                >
+                  <div className="space-y-3">
+                    {/* Top Tier & Status Badge */}
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                        {officer.role_tier}
+                      </span>
+                      <div className="flex items-center gap-1.5">
+                        {staff && staff.urgency_level === 'CRITICAL' && (
+                          <span className="text-[10px] font-bold text-rose-400 bg-rose-950/60 px-2 py-0.5 rounded-md border border-rose-900/60 animate-pulse">
+                            🚨 Staff Shortage
+                          </span>
+                        )}
+                        <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-md border border-emerald-900/60">
+                          ● {officer.availability_status}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Officer Identity */}
+                    <div>
+                      <h3 className="text-base font-bold text-white leading-tight group-hover:text-amber-400 transition-colors">
+                        {language === 'ta' ? officer.name_ta : officer.name_en}
+                      </h3>
+                      <p className="text-xs text-slate-300 mt-0.5 font-medium">
+                        {language === 'ta' ? officer.designation_ta : officer.designation_en}
+                      </p>
+                    </div>
+
+                    {/* Department & Jurisdiction */}
+                    <div className="space-y-1 text-xs text-slate-300">
+                      <div className="flex items-center gap-1.5 text-slate-300 font-semibold">
+                        <Building2 className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                        <span className="truncate">{officer.department_en}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-slate-400">
+                        <MapPin className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                        <span className="truncate">{officer.district_en} {officer.constituency ? `(${officer.constituency})` : ''}</span>
+                      </div>
+                    </div>
+
+                    {/* Funds Allocation Snapshot */}
+                    {funds && (
+                      <div className="p-3 rounded-xl bg-slate-950/90 border border-slate-800 space-y-1.5 text-xs">
+                        <div className="flex items-center justify-between text-[11px]">
+                          <span className="font-bold text-slate-400 flex items-center gap-1">
+                            <span>💰 Department Funds ({funds.fiscal_year})</span>
+                          </span>
+                          <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono font-bold ${
+                            funds.utilization_rate_pct > 75 ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-300'
+                          }`}>
+                            {funds.utilization_rate_pct}% Spent
+                          </span>
+                        </div>
+                        <div className="flex items-baseline justify-between font-mono">
+                          <span className="text-slate-400 text-[11px]">Sanctioned: <b className="text-white font-sans">₹{funds.sanctioned_budget_cr.toLocaleString()} Cr</b></span>
+                          <span className="text-emerald-400 text-[11px]">Released: <b>₹{funds.released_amount_cr.toLocaleString()} Cr</b></span>
+                        </div>
+                        {/* Progress Bar */}
+                        <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                          <div
+                            className="bg-gradient-to-r from-indigo-500 to-emerald-400 h-1.5 rounded-full"
+                            style={{ width: `${Math.min(funds.utilization_rate_pct, 100)}%` }}
+                          />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Staffing Demand & Supply Snapshot */}
+                    {staff && (
+                      <div className="p-3 rounded-xl bg-slate-950/90 border border-slate-800 space-y-1.5 text-xs">
+                        <div className="flex items-center justify-between text-[11px]">
+                          <span className="font-bold text-slate-400 flex items-center gap-1">
+                            <span>👥 Staffing Demand & Supply</span>
+                          </span>
+                          <span className={`px-1.5 py-0.2 rounded text-[10px] font-bold ${
+                            staff.urgency_level === 'CRITICAL' ? 'bg-rose-500/20 text-rose-400' : 'bg-indigo-500/20 text-indigo-300'
+                          }`}>
+                            {staff.vacant_posts.toLocaleString()} Vacancies ({staff.vacancy_deficit_pct}%)
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-[11px] text-slate-400">
+                          <span>Sanctioned: <b className="text-slate-200">{staff.sanctioned_posts.toLocaleString()}</b></span>
+                          <span>In-Position: <b className="text-emerald-300">{staff.in_position_staff.toLocaleString()}</b></span>
+                        </div>
+                        {staff.top_shortage_roles && staff.top_shortage_roles.length > 0 && (
+                          <div className="text-[10px] text-rose-300/90 font-medium truncate">
+                            Shortages: {staff.top_shortage_roles.slice(0, 2).join(', ')}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Contact Email Pill */}
+                    <div className="pt-1 space-y-1 text-xs font-mono">
+                      <div className="flex items-center justify-between text-indigo-300 bg-slate-950 p-2 rounded-xl border border-slate-800">
+                        <div className="flex items-center gap-1.5 truncate">
+                          <Mail className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                          <span className="truncate">{officer.official_email}</span>
+                        </div>
+                        <button
+                          onClick={() => copyToClipboard(officer.official_email)}
+                          className="text-slate-400 hover:text-white p-0.5"
+                          title="Copy Email"
+                        >
+                          <Copy className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-slate-400 px-1 text-[11px]">
+                        <Phone className="w-3 h-3 text-slate-500 shrink-0" />
+                        <span>{officer.cug_phone}</span>
+                      </div>
+                    </div>
+
+                    {/* Schemes & Projects Tags */}
+                    {officer.current_schemes && officer.current_schemes.length > 0 && (
+                      <div className="flex flex-wrap gap-1 pt-1">
+                        {officer.current_schemes.map((sc, i) => (
+                          <span key={i} className="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-300 text-[10px] font-medium border border-amber-500/20">
+                            🌾 {sc}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {officer.active_projects && officer.active_projects.length > 0 && (
+                      <div className="flex flex-wrap gap-1">
+                        {officer.active_projects.map((pr, i) => (
+                          <span key={i} className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-300 text-[10px] font-medium border border-indigo-500/20">
+                            🏗️ {pr}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
-                  <div>
-                    <h3 className="text-sm font-bold text-white leading-tight">
-                      {language === 'ta' ? officer.name_ta : officer.name_en}
-                    </h3>
-                    <p className="text-xs text-slate-400 mt-0.5 font-medium">
-                      {language === 'ta' ? officer.designation_ta : officer.designation_en}
+                  {/* Quick Action Buttons */}
+                  <div className="pt-3 border-t border-slate-800 grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => setSelectedDossierOfficer(officer)}
+                      className="py-2 px-2 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-indigo-300 hover:text-white text-xs font-bold flex items-center justify-center gap-1 transition-all cursor-pointer"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Full Dossier</span>
+                    </button>
+                    <button
+                      onClick={() => handlePreFillBookingFromOfficer(officer)}
+                      className="py-2 px-2 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white text-xs font-bold flex items-center justify-center gap-1 shadow-md transition-all cursor-pointer"
+                    >
+                      <CalendarIcon className="w-3.5 h-3.5" />
+                      <span>Book Slot</span>
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Detailed Department & Officer Dossier Modal */}
+          {selectedDossierOfficer && (
+            <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+              <div className="bg-slate-900 border border-slate-700 rounded-3xl max-w-4xl w-full p-6 sm:p-8 space-y-6 shadow-2xl animate-in zoom-in-95 duration-200 my-8">
+                {/* Modal Header */}
+                <div className="flex items-start justify-between pb-4 border-b border-slate-800">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                        {selectedDossierOfficer.role_tier}
+                      </span>
+                      <span className="px-3 py-1 rounded-full text-xs font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-900/60">
+                        ● {selectedDossierOfficer.availability_status}
+                      </span>
+                    </div>
+                    <h2 className="text-2xl font-black text-white mt-2">
+                      {language === 'ta' ? selectedDossierOfficer.name_ta : selectedDossierOfficer.name_en}
+                    </h2>
+                    <p className="text-sm text-slate-300 font-medium">
+                      {language === 'ta' ? selectedDossierOfficer.designation_ta : selectedDossierOfficer.designation_en} • {selectedDossierOfficer.department_en}
                     </p>
                   </div>
+                  <button
+                    onClick={() => setSelectedDossierOfficer(null)}
+                    className="text-slate-400 hover:text-white p-2 rounded-xl bg-slate-950 border border-slate-800 text-sm font-bold"
+                  >
+                    ✕
+                  </button>
+                </div>
 
-                  <div className="space-y-1 text-xs text-slate-300 pt-1">
-                    <div className="flex items-center gap-1.5 text-slate-400">
-                      <Building2 className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                      <span className="truncate">{officer.department_en}</span>
+                {/* Communication & Contact Strip */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                  <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] text-slate-500 uppercase font-bold block">Official Email</span>
+                      <span className="font-mono text-indigo-300 font-bold text-xs">{selectedDossierOfficer.official_email}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-slate-400">
-                      <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                      <span className="truncate">{officer.district_en} {officer.constituency ? `(${officer.constituency})` : ''}</span>
-                    </div>
+                    <button
+                      onClick={() => copyToClipboard(selectedDossierOfficer.official_email)}
+                      className="p-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white"
+                      title="Copy"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                    </button>
                   </div>
+                  <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800">
+                    <span className="text-[10px] text-slate-500 uppercase font-bold block">CUG Phone & Ext</span>
+                    <span className="font-mono text-slate-200 font-bold text-xs">{selectedDossierOfficer.cug_phone}</span>
+                  </div>
+                  <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800">
+                    <span className="text-[10px] text-slate-500 uppercase font-bold block">Jurisdiction / District</span>
+                    <span className="text-slate-200 font-bold text-xs">{selectedDossierOfficer.district_en}</span>
+                  </div>
+                </div>
 
-                  {/* Contact Dossier */}
-                  <div className="pt-2 border-t border-slate-800/80 space-y-1 text-xs font-mono">
-                    <div className="flex items-center justify-between text-indigo-300 bg-slate-950 p-2 rounded-xl border border-slate-800">
-                      <div className="flex items-center gap-1.5 truncate">
-                        <Mail className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
-                        <span className="truncate">{officer.official_email}</span>
+                {/* 2-Column Analytics Grid: Funds & Staffing */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Department Funds & Fiscal Breakdown */}
+                  {selectedDossierOfficer.funds_metrics && (
+                    <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                          <span>💰 Budget Allocation & Fiscal Execution</span>
+                        </h4>
+                        <span className="text-[10px] text-slate-400 font-mono">FY {selectedDossierOfficer.funds_metrics.fiscal_year}</span>
                       </div>
-                      <button
-                        onClick={() => copyToClipboard(officer.official_email)}
-                        className="text-slate-400 hover:text-white p-0.5"
-                        title="Copy Email"
-                      >
-                        <Copy className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-slate-400 px-1">
-                      <Phone className="w-3 h-3 text-slate-500 shrink-0" />
-                      <span>{officer.cug_phone}</span>
-                    </div>
-                  </div>
 
-                  {/* Schemes & Projects Tags */}
-                  {officer.current_schemes && officer.current_schemes.length > 0 && (
-                    <div className="flex flex-wrap gap-1 pt-1">
-                      {officer.current_schemes.map((sc, i) => (
-                        <span key={i} className="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-300 text-[10px] font-medium border border-amber-500/20">
-                          {sc}
+                      <div className="grid grid-cols-3 gap-2 text-center">
+                        <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                          <div className="text-[10px] text-slate-500 uppercase font-bold">Sanctioned</div>
+                          <div className="text-sm font-black text-white font-mono mt-0.5">₹{selectedDossierOfficer.funds_metrics.sanctioned_budget_cr.toLocaleString()} Cr</div>
+                        </div>
+                        <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                          <div className="text-[10px] text-slate-500 uppercase font-bold">Released</div>
+                          <div className="text-sm font-black text-emerald-400 font-mono mt-0.5">₹{selectedDossierOfficer.funds_metrics.released_amount_cr.toLocaleString()} Cr</div>
+                        </div>
+                        <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                          <div className="text-[10px] text-slate-500 uppercase font-bold">Spent / Utilized</div>
+                          <div className="text-sm font-black text-indigo-400 font-mono mt-0.5">₹{selectedDossierOfficer.funds_metrics.expenditure_cr.toLocaleString()} Cr</div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-1.5 pt-1">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-slate-400">Fund Utilization Rate</span>
+                          <span className="font-bold text-white font-mono">{selectedDossierOfficer.funds_metrics.utilization_rate_pct}%</span>
+                        </div>
+                        <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                          <div
+                            className="bg-gradient-to-r from-amber-500 via-indigo-500 to-emerald-400 h-2 rounded-full"
+                            style={{ width: `${Math.min(selectedDossierOfficer.funds_metrics.utilization_rate_pct, 100)}%` }}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="text-xs text-slate-400 pt-1 flex items-center justify-between">
+                        <span>Status: <b className="text-slate-200">{selectedDossierOfficer.funds_metrics.allocation_status}</b></span>
+                        <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">
+                          {selectedDossierOfficer.funds_metrics.fiscal_risk_flag}
                         </span>
-                      ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Staffing Demand & Supply Matrix */}
+                  {selectedDossierOfficer.staffing_metrics && (
+                    <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-xs font-black uppercase tracking-wider text-indigo-400 flex items-center gap-1.5">
+                          <span>👥 Staff Need, Demand & Supply</span>
+                        </h4>
+                        <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+                          selectedDossierOfficer.staffing_metrics.urgency_level === 'CRITICAL' ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30' : 'bg-indigo-500/20 text-indigo-300'
+                        }`}>
+                          {selectedDossierOfficer.staffing_metrics.urgency_level} DEMAND
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-2 text-center">
+                        <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                          <div className="text-[10px] text-slate-500 uppercase font-bold">Sanctioned</div>
+                          <div className="text-sm font-black text-white font-mono mt-0.5">{selectedDossierOfficer.staffing_metrics.sanctioned_posts.toLocaleString()}</div>
+                        </div>
+                        <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                          <div className="text-[10px] text-slate-500 uppercase font-bold">In-Position</div>
+                          <div className="text-sm font-black text-emerald-400 font-mono mt-0.5">{selectedDossierOfficer.staffing_metrics.in_position_staff.toLocaleString()}</div>
+                        </div>
+                        <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                          <div className="text-[10px] text-slate-500 uppercase font-bold">Vacancy Deficit</div>
+                          <div className="text-sm font-black text-rose-400 font-mono mt-0.5">{selectedDossierOfficer.staffing_metrics.vacant_posts.toLocaleString()}</div>
+                        </div>
+                      </div>
+
+                      {/* Deficit Bar */}
+                      <div className="space-y-1.5 pt-1">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-slate-400">Staff Deficit / Vacancy Gap</span>
+                          <span className="font-bold text-rose-400 font-mono">{selectedDossierOfficer.staffing_metrics.vacancy_deficit_pct}% shortfall</span>
+                        </div>
+                        <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                          <div
+                            className="bg-rose-500 h-2 rounded-full"
+                            style={{ width: `${Math.min(selectedDossierOfficer.staffing_metrics.vacancy_deficit_pct * 2.5, 100)}%` }}
+                          />
+                        </div>
+                      </div>
+
+                      {selectedDossierOfficer.staffing_metrics.ai_staffing_gap_remedy && (
+                        <div className="p-2.5 rounded-xl bg-indigo-950/40 border border-indigo-900/60 text-[11px] text-indigo-200">
+                          <b>AI Staffing Recommendation:</b> {selectedDossierOfficer.staffing_metrics.ai_staffing_gap_remedy}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
 
-                {/* Quick Action Button */}
-                <div className="pt-3 border-t border-slate-800">
+                {/* Projects & Schemes Execution Table */}
+                <div className="space-y-3">
+                  <h4 className="text-xs font-black uppercase tracking-wider text-slate-400">
+                    🏗️ Active Schemes & Infrastructure Projects
+                  </h4>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {selectedDossierOfficer.schemes_details && selectedDossierOfficer.schemes_details.map((sch, i) => (
+                      <div key={i} className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2 text-xs">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-amber-300">🌾 {sch.name}</span>
+                          <span className="text-[10px] font-mono text-emerald-400 font-bold">{sch.saturation_rate_pct}% Saturation</span>
+                        </div>
+                        <div className="text-slate-400 text-[11px]">
+                          Beneficiaries: <b className="text-white font-mono">{sch.actual_beneficiaries}</b> / {sch.target_beneficiaries}
+                        </div>
+                        <div className="text-slate-400 text-[11px]">
+                          Budget Outlay: <b className="text-slate-200 font-mono">₹{sch.budget_allocated_cr} Cr</b>
+                        </div>
+                      </div>
+                    ))}
+
+                    {selectedDossierOfficer.projects_details && selectedDossierOfficer.projects_details.map((prj, i) => (
+                      <div key={i} className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2 text-xs">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-indigo-300">🏗️ {prj.name}</span>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-800">
+                            {prj.status}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-[11px] text-slate-400">
+                          <span>Physical: <b className="text-white font-mono">{prj.physical_progress_pct}%</b></span>
+                          <span>Financial: <b className="text-white font-mono">{prj.financial_progress_pct}%</b></span>
+                          <span>Capex: <b className="text-amber-300 font-mono">₹{prj.budget_cr} Cr</b></span>
+                        </div>
+                        {prj.key_bottleneck && (
+                          <div className="text-[11px] text-rose-300 bg-rose-950/40 p-1.5 rounded-lg border border-rose-900/60">
+                            <b>Bottleneck:</b> {prj.key_bottleneck}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* AI Strategic Analysis */}
+                {selectedDossierOfficer.ai_strategic_notes && (
+                  <div className="p-4 rounded-2xl bg-gradient-to-r from-indigo-950/60 via-slate-950 to-slate-950 border border-indigo-500/40 space-y-2">
+                    <div className="flex items-center gap-2 text-xs font-bold text-indigo-300">
+                      <Sparkles className="w-4 h-4 text-amber-400" />
+                      <span>CM Strategic AI Analysis & Required Interventions</span>
+                    </div>
+                    <p className="text-xs text-indigo-100 leading-relaxed">
+                      {selectedDossierOfficer.ai_strategic_notes}
+                    </p>
+                  </div>
+                )}
+
+                {/* Modal Footer Actions */}
+                <div className="pt-4 border-t border-slate-800 flex items-center justify-between flex-wrap gap-3">
                   <button
-                    onClick={() => handlePreFillBookingFromOfficer(officer)}
-                    className="w-full py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-md transition-all cursor-pointer"
+                    onClick={() => {
+                      const prompt = `Analyze funds allocation and staffing requirements for ${selectedDossierOfficer.name_en} (${selectedDossierOfficer.department_en})`;
+                      setSelectedDossierOfficer(null);
+                      onOpenCopilot?.(prompt);
+                    }}
+                    className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-bold flex items-center gap-1.5 transition-all"
                   >
-                    <CalendarIcon className="w-3.5 h-3.5" />
-                    <span>{language === 'ta' ? 'சந்திப்பு பதிவு செய்' : 'Book Appointment with Official'}</span>
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Deep-Dive with Copilot</span>
                   </button>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setSelectedDossierOfficer(null)}
+                      className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-all"
+                    >
+                      Close
+                    </button>
+                    <button
+                      onClick={() => {
+                        const off = selectedDossierOfficer;
+                        setSelectedDossierOfficer(null);
+                        handlePreFillBookingFromOfficer(off);
+                      }}
+                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-bold shadow-lg shadow-emerald-900/30 flex items-center gap-2 transition-all cursor-pointer"
+                    >
+                      <CalendarIcon className="w-4 h-4" />
+                      <span>Schedule Meeting with Official</span>
+                    </button>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
       )}
 

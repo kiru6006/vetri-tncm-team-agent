@@ -16,12 +16,16 @@ async def process_copilot_query(request: CopilotQueryRequest, user_claims: Dict[
         "4. Applied role-specific reasoning & strict hallucination verification guardrails"
     ]
 
-    # 0. APPOINTMENT BOOKING & OFFICIAL/EMAIL DIRECTORY AGENT (CHIEF MINISTER & EXECUTIVES)
+    # 0. APPOINTMENT BOOKING, DIRECTORY, FUNDS, PROJECTS & STAFFING INTELLIGENCE AGENT
     is_appointment_or_directory_query = any(w in q for w in [
         "book", "schedule", "appointment", "meeting", "calendar", "slot", "சந்திப்பு", "அப்பாய்ண்ட்மென்ட்", "நேரம் ஒதுக்கு", "பதிவு செய்",
-        "email", "official", "officials", "mla", "minister", "secretary", "collector", "tahsildar", "bdo", "vao", "constituency", "who is the", "list the", "find the", "மின்னஞ்சல்", "அதிகாரி", "சட்டமன்ற"
+        "email", "contact", "official", "officials", "directory", "staff", "staffing", "vacancy", "vacancies", "manpower", "demand", "supply", "need",
+        "fund", "funds", "allocation", "allocations", "budget", "utilization", "spent", "project", "projects", "scheme", "schemes",
+        "மின்னஞ்சல்", "அதிகாரி", "பணியாளர்", "நிதி", "திட்டம்"
     ]) and any(w in q for w in [
-        "appointment", "meeting", "schedule", "calendar", "email", "minister", "mla", "secretary", "collector", "police", "scheme", "project", "thiruvaiyaru", "coimbatore", "madurai", "hosur", "water", "magalir", "semiconductor", "posco", "pocso", "discuss", "சந்திப்பு", "மின்னஞ்சல்"
+        "appointment", "meeting", "schedule", "calendar", "email", "contact", "directory", "staff", "staffing", "vacancy", "vacancies", "demand", "supply", "manpower", "need",
+        "fund", "funds", "allocation", "budget", "minister", "secretary", "collector", "police", "health", "water", "industries", "law", "finance", "revenue",
+        "scheme", "project", "coimbatore", "thanjavur", "madurai", "hosur", "salem", "posco", "pocso", "discuss", "சந்திப்பு", "மின்னஞ்சல்", "பணியாளர்", "நிதி"
     ])
 
     if is_appointment_or_directory_query:
