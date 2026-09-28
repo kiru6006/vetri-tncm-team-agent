@@ -16,6 +16,7 @@ import { WaterAgriDomainView } from './components/WaterAgriDomainView';
 import { FraudAuditDomainView } from './components/FraudAuditDomainView';
 import { GovernmentHierarchyDirectory } from './components/GovernmentHierarchyDirectory';
 import { GovernmentChatPlatform } from './components/GovernmentChatPlatform';
+import { ExecutiveMeetingWorkspace } from './components/ExecutiveMeetingWorkspace';
 import { CopilotDrawer } from './components/CopilotDrawer';
 import { useAuthStore } from './stores/authStore';
 import {
@@ -44,13 +45,14 @@ import {
   ShieldAlert,
   Briefcase,
   Layers,
-  MessagesSquare
+  MessagesSquare,
+  Calendar
 } from 'lucide-react';
 
 export const App: React.FC = () => {
   const { language, activeRole } = useAuthStore();
   const [activeTab, setActiveTab] = useState<
-    'workspace' | 'hierarchy' | 'chat' | 'dashboard' | 'gis' | 'revenue' | 'grievance' | 'health' | 'police' | 'water_agri' | 'fraud_audit' | 'role_view'
+    'workspace' | 'hierarchy' | 'chat' | 'meetings' | 'dashboard' | 'gis' | 'revenue' | 'grievance' | 'health' | 'police' | 'water_agri' | 'fraud_audit' | 'role_view'
   >('workspace');
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null);
@@ -333,6 +335,18 @@ export const App: React.FC = () => {
             </button>
 
             <button
+              onClick={() => setActiveTab('meetings')}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                activeTab === 'meetings'
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <Calendar className="w-3.5 h-3.5" />
+              <span>{language === 'ta' ? 'அமைச்சரவை கூட்டங்கள்' : 'Meetings Hub'}</span>
+            </button>
+
+            <button
               onClick={() => setActiveTab('dashboard')}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                 activeTab === 'dashboard'
@@ -520,6 +534,25 @@ export const App: React.FC = () => {
               }}
               onOpenCopilot={(query) => {
                 setCopilotOpen(true);
+              }}
+            />
+          </section>
+        )}
+
+        {activeTab === 'meetings' && (
+          <section className="animate-in fade-in duration-200">
+            <ExecutiveMeetingWorkspace
+              onOpenCopilot={(prompt) => {
+                setCopilotOpen(true);
+              }}
+              onExecuteAction={(task) => {
+                handleExecuteDirective({
+                  actionCode: `MEETING_TASK_${task.id}`,
+                  descriptionEn: task.task_en,
+                  descriptionTa: task.task_ta,
+                  priority: 'HIGH',
+                  targetDepartment: 'Cabinet Affairs'
+                });
               }}
             />
           </section>

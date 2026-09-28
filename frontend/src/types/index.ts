@@ -196,6 +196,52 @@ export interface ChatSummary {
   derived_action_items: Array<{ task: string; assignee: string; deadline: string }>;
 }
 
+export interface MeetingAttendee {
+  officer_id: string;
+  name_en: string;
+  name_ta: string;
+  designation: string;
+  tier_role: string;
+  status: 'CONFIRMED' | 'INVITED' | 'DECLINED';
+}
+
+export interface MeetingActionItem {
+  id: string;
+  meeting_id: string;
+  task_en: string;
+  task_ta: string;
+  responsible_officer_name: string;
+  responsible_officer_designation: string;
+  deadline: string;
+  status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'OVERDUE';
+}
+
+export interface MeetingBriefingPack {
+  meeting_id: string;
+  title_en: string;
+  title_ta: string;
+  meeting_type: 'CABINET' | 'COLLECTOR_REVIEW' | 'DEPARTMENT_REVIEW' | 'CRISIS_MANAGEMENT';
+  scheduled_time: string;
+  chairperson_name: string;
+  chairperson_designation: string;
+  attendees: MeetingAttendee[];
+  agenda_items: string[];
+  ai_pre_briefing_en: string;
+  ai_pre_briefing_ta: string;
+  key_risks_flagged: string[];
+  historical_decisions: string[];
+  suggested_decision_options: Array<{
+    option_code: string;
+    label_en: string;
+    label_ta: string;
+    fiscal_impact: string;
+    recommended: boolean;
+  }>;
+  auto_generated_minutes_en?: string;
+  auto_generated_minutes_ta?: string;
+  action_items: MeetingActionItem[];
+}
+
 export interface User {
   id: string;
   email: string;
