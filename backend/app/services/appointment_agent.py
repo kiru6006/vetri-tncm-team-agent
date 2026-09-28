@@ -32,53 +32,10 @@ async def run_appointment_agent(request: AgentAppointmentRequest, user_claims: D
     ])
 
     # 1. Multi-dimensional filtering across the directory
-    # Detect Multiple Departments
-    depts_found = []
-    if "water" in q_lower or "irrigation" in q_lower or "நீர்வளம்" in q_lower or "பாசனம்" in q_lower:
-        depts_found.append("water")
-    if "industr" in q_lower or "invest" in q_lower or "தொழில்" in q_lower:
-        depts_found.append("industr")
-    if "energy" in q_lower or "power" in q_lower or "tangedco" in q_lower or "மின்" in q_lower:
-        depts_found.append("energy")
-    if "health" in q_lower or "drug" in q_lower or "hospital" in q_lower or "மருத்துவம்" in q_lower:
-        depts_found.append("health")
-    if "law" in q_lower or "court" in q_lower or "posco" in q_lower or "pocso" in q_lower or "சட்டம்" in q_lower:
-        depts_found.append("law")
-    if "police" in q_lower or "sp" in q_lower or "dgp" in q_lower or "காவல்" in q_lower:
-        depts_found.append("police")
-    if "finance" in q_lower or "budget" in q_lower or "வரி" in q_lower or "நிதி" in q_lower:
-        depts_found.append("finance")
-    if "revenue" in q_lower or "patta" in q_lower or "வருவாய்" in q_lower:
-        depts_found.append("revenue")
-
-    # Detect Scheme
-    scheme_kw = None
-    if "magalir urimai" in q_lower or "kmut" in q_lower or "உரிமைத்தொகை" in q_lower:
-        scheme_kw = "Kalaignar Magalir Urimai Thittam"
-    elif "breakfast" in q_lower or "காலை உணவு" in q_lower:
-        scheme_kw = "Chief Minister's Breakfast Scheme"
-    elif "makkalai thedi" in q_lower or "மருத்துவம்" in q_lower:
-        scheme_kw = "Makkalai Thedi Maruthuvam"
-    elif "pudhumai penn" in q_lower or "புதுமைப் பெண்" in q_lower:
-        scheme_kw = "Pudhumai Penn"
-    elif "kuruvai" in q_lower or "குறுவை" in q_lower:
-        scheme_kw = "Kuruvai"
-
-    # Detect Project
-    proj_kw = None
-    if "semiconductor" in q_lower or "fab" in q_lower or "sipcot" in q_lower or "குறைக்கடத்தி" in q_lower:
-        proj_kw = "Semiconductor"
-    elif "ring road" in q_lower or "சுற்றுச்சாலை" in q_lower or "புறவழிச்சாலை" in q_lower:
-        proj_kw = "Ring Road"
-    elif "river link" in q_lower or "thamirabarani" in q_lower or "நதிகள் இணைப்பு" in q_lower:
-        proj_kw = "River Linking"
-    elif "metro" in q_lower or "மெட்ரோ" in q_lower:
-        proj_kw = "Metro"
-
     # Detect District / Constituency / Location
     dist_kw = None
     const_kw = None
-    for loc in ["coimbatore", "chennai", "madurai", "thanjavur", "tiruvarur", "krishnagiri", "hosur", "salem", "tirupur", "cuddalore", "katpadi", "thiruvaiyaru", "mannargudi", "tiruchuli"]:
+    for loc in ["salem", "coimbatore", "chennai", "madurai", "thanjavur", "tiruvarur", "krishnagiri", "hosur", "tirupur", "cuddalore", "katpadi", "thiruvaiyaru", "mannargudi", "tiruchuli", "vellore", "pudukkottai"]:
         if loc in q_lower:
             if loc in ["thiruvaiyaru", "mannargudi", "hosur", "tiruchuli", "katpadi"]:
                 const_kw = loc
@@ -86,31 +43,120 @@ async def run_appointment_agent(request: AgentAppointmentRequest, user_claims: D
                 dist_kw = loc
             break
 
-    # Detect Tier Role
-    tier_kw = "ALL"
-    if "mla" in q_lower or "சட்டமன்ற" in q_lower:
-        tier_kw = "MLA"
-    elif "minister" in q_lower or "அமைச்சர்" in q_lower:
-        tier_kw = "MINISTER"
-    elif "secretary" in q_lower or "செயலாளர்" in q_lower:
-        tier_kw = "PRINCIPAL_SECRETARY"
-    elif "collector" in q_lower or "ஆட்சியர்" in q_lower or "sp" in q_lower:
-        tier_kw = "GROUP_1"
-    elif "tahsildar" in q_lower or "bdo" in q_lower or "வட்டாட்சியர்" in q_lower:
-        tier_kw = "GROUP_2"
-    elif "vao" in q_lower or "village" in q_lower or "கிராம நிர்வாக" in q_lower:
-        tier_kw = "GROUP_3_4"
+    # Detect Multiple Departments
+    depts_found = []
+    if any(w in q_lower for w in ["water", "irrigation", "நீர்வளம்", "பாசனம்", "கால்வாய்"]):
+        depts_found.append("water")
+    if any(w in q_lower for w in ["industr", "invest", "sipcot", "தொழில்"]):
+        depts_found.append("industr")
+    if any(w in q_lower for w in ["energy", "power", "tangedco", "மின்"]):
+        depts_found.append("energy")
+    if any(w in q_lower for w in ["health", "drug", "hospital", "phc", "மருத்துவம்", "சுகாதாரம்"]):
+        depts_found.append("health")
+    if any(w in q_lower for w in ["law", "court", "posco", "pocso", "சட்டம்", "நீதிமன்றம்"]):
+        depts_found.append("law")
+    if any(w in q_lower for w in ["police", "sp ", " sp", "superintendent", "superidedant", "suprintendent", "dgp", "காவல்", "குற்றம்"]):
+        depts_found.append("police")
+    if any(w in q_lower for w in ["finance", "budget", "வரி", "நிதி", "பட்ஜெட்"]):
+        depts_found.append("finance")
+    if any(w in q_lower for w in ["revenue", "collector", "patta", "tahsildar", "வருவாய்", "ஆட்சியர்"]):
+        depts_found.append("revenue")
 
-    # Multi-Department or Multi-Criteria Filter Resolution
+    # Detect Specific Roles Mentioned
+    wants_collector = any(w in q_lower for w in ["collector", "மாவட்ட ஆட்சித்தலைவர்", "ஆட்சியர்"])
+    wants_sp = any(w in q_lower for w in ["superintendent", "superidedant", "suprintendent", "sp", "police", "காவல் கண்காணிப்பாளர்"])
+    wants_minister = any(w in q_lower for w in ["minister", "அமைச்சர்"])
+    wants_secretary = any(w in q_lower for w in ["chief secretary", "secretary", "செயலாளர்", "முதன்மைச் செயலாளர்"])
+    wants_mla = any(w in q_lower for w in ["mla", "mp", "சட்டமன்ற"])
+    wants_bdo = any(w in q_lower for w in ["bdo", "tahsildar", "வட்டாட்சியர்", "வட்டார வளர்ச்சி"])
+    wants_vao = any(w in q_lower for w in ["vao", "கிராம நிர்வாக"])
+
+    # Detect Scheme
+    scheme_kw = None
+    if any(w in q_lower for w in ["magalir urimai", "kmut", "உரிமைத்தொகை"]):
+        scheme_kw = "Kalaignar Magalir Urimai Thittam"
+    elif any(w in q_lower for w in ["breakfast", "காலை உணவு"]):
+        scheme_kw = "Chief Minister's Breakfast Scheme"
+    elif any(w in q_lower for w in ["makkalai thedi", "maruthuvam"]):
+        scheme_kw = "Makkalai Thedi Maruthuvam"
+    elif any(w in q_lower for w in ["pudhumai penn", "புதுமைப் பெண்"]):
+        scheme_kw = "Pudhumai Penn"
+    elif any(w in q_lower for w in ["kuruvai", "குறுவை"]):
+        scheme_kw = "Kuruvai"
+
+    # Detect Project
+    proj_kw = None
+    if any(w in q_lower for w in ["semiconductor", "fab", "குறைக்கடத்தி"]):
+        proj_kw = "Semiconductor"
+    elif any(w in q_lower for w in ["ring road", "சுற்றுச்சாலை", "புறவழிச்சாலை"]):
+        proj_kw = "Ring Road"
+    elif any(w in q_lower for w in ["river link", "thamirabarani", "நதிகள் இணைப்பு"]):
+        proj_kw = "River Linking"
+    elif any(w in q_lower for w in ["metro", "மெட்ரோ"]):
+        proj_kw = "Metro"
+
+    # Match Officers by District + Role Priority
     matched_officers: List[OfficerDirectoryItem] = []
-    if depts_found:
-        for off in TAMIL_NADU_OFFICIALS_DIRECTORY:
-            dept_text = (off.department_en + " " + off.department_ta).lower()
-            if any(d in dept_text for d in depts_found):
-                if tier_kw != "ALL" and off.role_tier != tier_kw:
-                    continue
-                matched_officers.append(off)
 
+    # Priority 1: District-Specific Matching if District is present
+    if dist_kw:
+        district_officers = [
+            o for o in TAMIL_NADU_OFFICIALS_DIRECTORY
+            if dist_kw in o.district_en.lower() or dist_kw in o.district_ta.lower()
+        ]
+        
+        # If user explicitly asked for Collector and/or SP in this district
+        if wants_collector or wants_sp:
+            for o in district_officers:
+                desig_lower = o.designation_en.lower()
+                if wants_collector and ("collector" in desig_lower or "district magistrate" in desig_lower):
+                    if o not in matched_officers:
+                        matched_officers.append(o)
+                if wants_sp and ("superintendent of police" in desig_lower or "sp" in desig_lower):
+                    if o not in matched_officers:
+                        matched_officers.append(o)
+        
+        # If still empty or more matches needed, check departments in this district
+        if not matched_officers and depts_found:
+            for o in district_officers:
+                dept_text = (o.department_en + " " + o.department_ta).lower()
+                if any(d in dept_text for d in depts_found):
+                    if o not in matched_officers:
+                        matched_officers.append(o)
+
+        # Fallback to all officers in this district
+        if not matched_officers and district_officers:
+            matched_officers.extend(district_officers)
+
+    # Priority 2: Statewide / Department / Specific Role Matching if no district or district didn't fulfill
+    if not matched_officers:
+        # Check specific statewide leadership
+        if wants_secretary:
+            for o in TAMIL_NADU_OFFICIALS_DIRECTORY:
+                if "chief secretary" in o.designation_en.lower():
+                    if o not in matched_officers:
+                        matched_officers.append(o)
+        if wants_minister:
+            for o in TAMIL_NADU_OFFICIALS_DIRECTORY:
+                if o.role_tier == "MINISTER":
+                    if depts_found:
+                        dept_text = (o.department_en + " " + o.department_ta).lower()
+                        if any(d in dept_text for d in depts_found):
+                            if o not in matched_officers:
+                                matched_officers.append(o)
+                    else:
+                        if o not in matched_officers:
+                            matched_officers.append(o)
+
+        # Check departments
+        if depts_found:
+            for o in TAMIL_NADU_OFFICIALS_DIRECTORY:
+                dept_text = (o.department_en + " " + o.department_ta).lower()
+                if any(d in dept_text for d in depts_found):
+                    if o not in matched_officers:
+                        matched_officers.append(o)
+
+    # Priority 3: Fallback through search_officials_directory
     if not matched_officers:
         search_res = search_officials_directory(DirectorySearchFilter(
             query=q,
@@ -118,24 +164,41 @@ async def run_appointment_agent(request: AgentAppointmentRequest, user_claims: D
             scheme=scheme_kw,
             project=proj_kw,
             district=dist_kw,
-            constituency=const_kw,
-            role_tier=tier_kw if tier_kw != "ALL" else None
+            constituency=const_kw
         ))
         matched_officers = search_res.officers
 
     if not matched_officers:
         matched_officers = TAMIL_NADU_OFFICIALS_DIRECTORY[:4]
 
-    thought_steps.append(f"5. Matched {len(matched_officers)} verified officials from State Directory with official @tn.gov.in emails.")
+    thought_steps.append(f"5. Matched {len(matched_officers)} verified officials from State Directory: {', '.join([o.name_en for o in matched_officers[:3]])}")
 
     # 2. IF BOOKING REQUESTED -> SCHEDULE APPOINTMENT
     if is_booking:
         # Intelligent Date Parsing
         scheduled_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-        if "oct 3" in q_lower or "october 3" in q_lower or "3 oct" in q_lower:
-            scheduled_date = "2026-10-03"
-        elif "oct 4" in q_lower or "october 4" in q_lower:
-            scheduled_date = "2026-10-04"
+        
+        # Regex for specific dates like "4 oct 2026", "oct 4 2026", "3 oct", "october 4", etc.
+        day_month_match = re.search(r"(\d{1,2})\s*(?:st|nd|rd|th)?\s*(oct|october|nov|november|dec|december|sep|september|jan|feb|mar|apr|may|jun|jul)\w*(?:\s*(\d{4}))?", q_lower)
+        month_day_match = re.search(r"(oct|october|nov|november|dec|december|sep|september|jan|feb|mar|apr|may|jun|jul)\w*\s*(\d{1,2})\s*(?:st|nd|rd|th)?(?:\s*(\d{4}))?", q_lower)
+
+        months_map = {
+            "jan": "01", "feb": "02", "mar": "03", "apr": "04", "may": "05", "jun": "06",
+            "jul": "07", "aug": "08", "sep": "09", "oct": "10", "nov": "11", "dec": "12"
+        }
+
+        if day_month_match:
+            d_val = int(day_month_match.group(1))
+            m_prefix = day_month_match.group(2)[:3]
+            m_val = months_map.get(m_prefix, "10")
+            y_val = day_month_match.group(3) or "2026"
+            scheduled_date = f"{y_val}-{m_val}-{d_val:02d}"
+        elif month_day_match:
+            m_prefix = month_day_match.group(1)[:3]
+            m_val = months_map.get(m_prefix, "10")
+            d_val = int(month_day_match.group(2))
+            y_val = month_day_match.group(3) or "2026"
+            scheduled_date = f"{y_val}-{m_val}-{d_val:02d}"
         elif "tomorrow" in q_lower or "நாளை" in q_lower:
             scheduled_date = "2026-09-29"
         else:
@@ -145,31 +208,54 @@ async def run_appointment_agent(request: AgentAppointmentRequest, user_claims: D
 
         # Intelligent Time Slot Parsing
         scheduled_time = "11:30 AM - 12:30 PM"
-        time_match = re.search(r"(\d{1,2}(?:\.\d{2}|:\d{2})?\s*(?:am|pm)?\s*(?:to|-)\s*\d{1,2}(?:\.\d{2}|:\d{2})?\s*(?:am|pm))", q_lower)
-        if time_match:
-            scheduled_time = time_match.group(1).upper().replace('.', ':')
+        
+        # Match time ranges like "3pm to 4pm", "3 pm to 4 pm", "3:00pm to 4:00pm", "11.30am to 12.30pm"
+        time_range_match = re.search(r"(\d{1,2}(?::\d{2}|\.\d{2})?\s*(?:am|pm)?)\s*(?:to|-)\s*(\d{1,2}(?::\d{2}|\.\d{2})?\s*(?:am|pm))", q_lower)
+        if time_range_match:
+            t1 = time_range_match.group(1).strip().upper().replace('.', ':')
+            t2 = time_range_match.group(2).strip().upper().replace('.', ':')
+            if not ("AM" in t1 or "PM" in t1) and ("PM" in t2):
+                t1 += " PM"
+            elif not ("AM" in t1 or "PM" in t1) and ("AM" in t2):
+                t1 += " AM"
+            scheduled_time = f"{t1} - {t2}"
         elif "11.30" in q_lower or "11:30" in q_lower:
             scheduled_time = "11:30 AM - 12:30 PM"
-        elif "03:00" in q_lower or "3.00" in q_lower or "3:00" in q_lower or "3 pm" in q_lower:
-            scheduled_time = "03:00 PM - 03:45 PM"
-        elif "02:30" in q_lower or "2.30" in q_lower or "2:30" in q_lower or "2:30 pm" in q_lower:
-            scheduled_time = "02:30 PM - 03:15 PM"
+        elif "3pm" in q_lower or "3 pm" in q_lower or "15:00" in q_lower:
+            scheduled_time = "03:00 PM - 04:00 PM"
+        elif "4pm" in q_lower or "4 pm" in q_lower or "16:00" in q_lower:
+            scheduled_time = "04:00 PM - 05:00 PM"
+        elif "10am" in q_lower or "10 am" in q_lower or "10:00" in q_lower:
+            scheduled_time = "10:00 AM - 11:00 AM"
+
+        # Resolve Location & Venue
+        location = "Chief Minister's Secretariat Chamber, Fort St. George"
+        if any(w in q_lower for w in ["google meet", "gmeet", "meet", "video", "vc", "virtual", "online"]):
+            location = "Google Meet (Executive Video Conference: meet.google.com/tncm-sec-conf)"
+        elif dist_kw and "collectorate" in q_lower:
+            location = f"{dist_kw.capitalize()} District Collectorate Conference Hall"
 
         # Resolve primary participant & email collection
         primary_officer = matched_officers[0]
         participant_names = ", ".join([o.name_en for o in matched_officers[:3]])
         participant_emails = [o.official_email for o in matched_officers[:4]]
 
-        agenda_en = f"Review meeting on priority governance items: {proj_kw or scheme_kw or dept_kw or 'State Administration Files'} as requested by Hon'ble Chief Minister."
-        agenda_ta = f"முக்கிய அரசு பணிகள் மற்றும் திட்டங்கள் குறித்த மீளாய்வு கூட்டம்: {proj_kw or scheme_kw or dept_kw or 'நிர்வாக கோப்புகள்'}."
-
-        if "posco" in q_lower or "pocso" in q_lower:
+        # Dynamic Agenda Generation
+        if dist_kw:
+            agenda_en = f"District Executive Review on Revenue Administration, Law & Order, Welfare Schemes and Priority Infrastructure Projects with {dist_kw.capitalize()} District Officials."
+            agenda_ta = f"{dist_kw.capitalize()} மாவட்ட வளர்ச்சி திட்டங்கள், சட்டம் ஒழுங்கு மற்றும் நலத்திட்டங்கள் குறித்த மாவட்ட அளவிலான உயர்நிலை ஆய்வு."
+        elif "posco" in q_lower or "pocso" in q_lower:
             agenda_en = "High-Level Review on Fast-Tracking POCSO Act Trials, Special Courts Infrastructure, Forensic Clearance Speeds & Police Prosecution Coordination."
             agenda_ta = "போக்சோ (POCSO) சட்ட வழக்குகள் விரைவு நீதிமன்ற விசாரணை, தடயவியல் அறிக்கை வேகம் மற்றும் காவல்துறை நடவடிக்கைகள் குறித்த உயர்மட்ட ஆய்வு."
+        else:
+            agenda_en = f"Review meeting on priority governance items: {proj_kw or scheme_kw or 'State Administration & Department Files'} as requested by Hon'ble Chief Minister."
+            agenda_ta = f"முக்கிய அரசு பணிகள் மற்றும் திட்டங்கள் குறித்த மீளாய்வு கூட்டம்: {proj_kw or scheme_kw or 'நிர்வாக கோப்புகள்'}."
+
+        meeting_title = f"Executive Governance Review: {participant_names}"
 
         new_appt = await book_new_appointment(
             BookAppointmentRequest(
-                title=f"Executive Review with {primary_officer.name_en} & Officials",
+                title=meeting_title,
                 participant_name=participant_names,
                 participant_role=primary_officer.role_tier,
                 participant_designation=primary_officer.designation_en,
@@ -184,7 +270,7 @@ async def run_appointment_agent(request: AgentAppointmentRequest, user_claims: D
                 participant_emails=participant_emails,
                 related_scheme=scheme_kw,
                 related_project=proj_kw,
-                location="Chief Minister's Secretariat Chamber, Fort St. George"
+                location=location
             ),
             user_claims
         )

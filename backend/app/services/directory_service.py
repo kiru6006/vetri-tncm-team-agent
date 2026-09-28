@@ -442,6 +442,294 @@ TAMIL_NADU_OFFICIALS_DIRECTORY: List[OfficerDirectoryItem] = [
         ],
         ai_strategic_analysis_en="Coimbatore Rural Police maintains zero communal incidents and 96% CCTV network uptime.",
         ai_strategic_analysis_ta="கோவை புறநகர் காவல் துறை சட்டம் ஒழுங்கை சிறப்பாக பராமரித்து வருகிறது."
+    ),
+
+    # SALEM DISTRICT COLLECTOR & SP
+    OfficerDirectoryItem(
+        id="dir-grp1-03",
+        name_en="Dr. R. Brindha Devi, IAS",
+        name_ta="மருத்துவர் ஆர். பிருந்தாதேவி, இ.ஆ.ப.",
+        designation_en="District Collector & District Magistrate, Salem",
+        designation_ta="மாவட்ட ஆட்சித்தலைவர், சேலம் மாவட்டம்",
+        role_tier="GROUP_1",
+        department_en="Revenue Administration, Welfare & District Development",
+        department_ta="வருவாய் நிர்வாகம் மற்றும் மாவட்ட வளர்ச்சித் துறை",
+        district_en="Salem",
+        district_ta="சேலம்",
+        constituency=None,
+        official_email="collr-slm@nic.in",
+        cug_phone="+91 427 2450001",
+        office_address="District Collectorate Campus, Salem - 636001",
+        current_schemes=["Kalaignar Magalir Urimai Thittam", "Chief Minister's Breakfast Scheme", "Makkalai Thedi Maruthuvam", "Pudhumai Penn"],
+        current_projects=["Salem Textile & Apparel Processing Park (₹350 Cr)", "Mettur Surplus Water Lift Irrigation Scheme (₹565 Cr)", "Salem Smart City Water Distribution Network"],
+        availability_status="AVAILABLE",
+        funds_allocation=DepartmentFundMetric(
+            budget_sanctioned_cr=2980.0,
+            funds_released_cr=2650.0,
+            expenditure_spent_cr=2490.0,
+            utilization_pct=93.9,
+            unspent_balance_cr=160.0,
+            fiscal_health_status="HEALTHY",
+            flagged_variance_areas=["Mettur lift irrigation canal works billing verified; Zero fiscal leaks."]
+        ),
+        staffing_demand_supply=DepartmentStaffingMetric(
+            sanctioned_posts=7800,
+            in_position_staff=6420,
+            vacant_posts=1380,
+            vacancy_pct=17.7,
+            demand_urgency="HIGH",
+            top_shortage_roles=["Tahsildars (Revenue)", "Surveyors (Taluk Offices)", "Child Development Project Officers (CDPO)"],
+            ai_staffing_remedy_en="Depute 28 Revenue Inspectors as in-charge Tahsildars and deploy mobile e-Seva camps across Omalur and Mettur taluks.",
+            ai_staffing_remedy_ta="ஓமலூர் மற்றும் மேட்டூர் வட்டங்களில் நிலுவை மனுக்களை தீர்க்க சிறப்பு வருவாய் குழுக்களை நியமிக்கவும்."
+        ),
+        detailed_projects=[
+            ProjectDetail(name="Mettur 100 Water Bodies Surplus Lift Irrigation Scheme", sanctioned_cost_cr=565.0, physical_progress_pct=91.0, financial_progress_pct=88.0, target_completion="Nov 2026"),
+            ProjectDetail(name="Salem Defense & Aerospace Manufacturing Node", sanctioned_cost_cr=420.0, physical_progress_pct=68.0, financial_progress_pct=64.0, target_completion="Aug 2027")
+        ],
+        detailed_schemes=[
+            SchemeDetail(name="Chief Minister Breakfast Scheme (Salem)", target_beneficiaries="1.24 Lakh Students", actual_covered="1.22 Lakh Students", saturation_pct=98.3, annual_budget_cr=48.0, disbursement_status="Active across 1,420 Primary Schools")
+        ],
+        ai_strategic_analysis_en="Salem District demonstrates 98.3% saturation in CM Breakfast scheme. Focus on completing trial runs for Mettur 100 surplus water bodies lift scheme before November.",
+        ai_strategic_analysis_ta="சேலம் மாவட்டத்தில் முதலமைச்சரின் காலை உணவுத் திட்டம் 98.3% வெற்றி பெற்றுள்ளது. மேட்டூர் உபரி நீர் திட்ட சோதனை ஓட்டத்தை நவம்பருக்குள் முடிக்க வேண்டும்."
+    ),
+
+    OfficerDirectoryItem(
+        id="dir-grp1-04",
+        name_en="A.K. Arun Kabilan, IPS",
+        name_ta="ஏ.கே. அருண் கபிலன், இ.கா.ப.",
+        designation_en="Superintendent of Police (SP), Salem District",
+        designation_ta="காவல் கண்காணிப்பாளர், சேலம் மாவட்டம்",
+        role_tier="GROUP_1",
+        department_en="Tamil Nadu Police (Law & Order)",
+        department_ta="காவல்துறை (சட்டம் ஒழுங்கு)",
+        district_en="Salem",
+        district_ta="சேலம்",
+        constituency=None,
+        official_email="sp-slm@tncctns.gov.in",
+        cug_phone="+91 427 2451001",
+        office_address="District Police Office (DPO), Collectorate Road, Salem - 636001",
+        current_schemes=["POCSO Fast-Track Investigation Units", "Statewide Intelligent Highway Safety", "Operation Ganja Vettai 4.0"],
+        current_projects=["Salem-Attur NH AI Speed & Safety Surveillance", "Salem Cyber Crime Station Modernization", "Interstate Gang Interdiction Cell"],
+        availability_status="AVAILABLE",
+        funds_allocation=DepartmentFundMetric(
+            budget_sanctioned_cr=310.0,
+            funds_released_cr=285.0,
+            expenditure_spent_cr=272.0,
+            utilization_pct=95.4,
+            unspent_balance_cr=13.0,
+            fiscal_health_status="HEALTHY",
+            flagged_variance_areas=["Highway ANPR cameras and CCTNS modernization fully operational."]
+        ),
+        staffing_demand_supply=DepartmentStaffingMetric(
+            sanctioned_posts=2650,
+            in_position_staff=2210,
+            vacant_posts=440,
+            vacancy_pct=16.6,
+            demand_urgency="HIGH",
+            top_shortage_roles=["Sub-Inspectors (Crime Wing)", "Highway Patrol Drivers", "Forensic Data Analysts"],
+            ai_staffing_remedy_en="Deploy 35 newly passed out Sub-Inspectors to Mettur, Attur and Sankari subdivisions.",
+            ai_staffing_remedy_ta="மேட்டூர், ஆத்தூர், சங்ககிரி உட்கோட்டங்களுக்கு 35 புதிய உதவி ஆய்வாளர்களை நியமிக்கவும்."
+        ),
+        detailed_projects=[
+            ProjectDetail(name="Salem NH-44 AI Highway Surveillance", sanctioned_cost_cr=22.0, physical_progress_pct=98.0, financial_progress_pct=95.0, target_completion="Completed")
+        ],
+        detailed_schemes=[
+            SchemeDetail(name="POCSO Special Fast Track Prosecution (Salem)", target_beneficiaries="100% Case Coverage", actual_covered="96% Charge-sheeted < 60 Days", saturation_pct=96.0, annual_budget_cr=6.2, disbursement_status="Active")
+        ],
+        ai_strategic_analysis_en="Salem Rural Police reports 32% reduction in highway fatalities following smart AI ANPR deployment. High vigilance maintained on interstate border checkpoints.",
+        ai_strategic_analysis_ta="சேலம் மாவட்டத்தில் ஏஐ கேமராக்கள் மூலம் நெடுஞ்சாலை விபத்துக்கள் 32% குறைந்துள்ளன. எல்லை சோதனை சாவடிகள் தீவிர கண்காணிப்பில் உள்ளன."
+    ),
+
+    # MADURAI DISTRICT COLLECTOR & SP
+    OfficerDirectoryItem(
+        id="dir-grp1-05",
+        name_en="M.S. Sangeetha, IAS",
+        name_ta="எம்.எஸ். சங்கீதா, இ.ஆ.ப.",
+        designation_en="District Collector & District Magistrate, Madurai",
+        designation_ta="மாவட்ட ஆட்சித்தலைவர், மதுரை மாவட்டம்",
+        role_tier="GROUP_1",
+        department_en="Revenue Administration, Heritage & District Development",
+        department_ta="வருவாய் நிர்வாகம் மற்றும் பாரம்பரிய வளர்ச்சித் துறை",
+        district_en="Madurai",
+        district_ta="மதுரை",
+        constituency=None,
+        official_email="collr-mdu@nic.in",
+        cug_phone="+91 452 2531110",
+        office_address="District Collectorate Campus, Madurai - 625020",
+        current_schemes=["Kalaignar Centenary Library Operations", "Makkalai Thedi Maruthuvam", "Madurai Heritage Corridor Scheme"],
+        current_projects=["Madurai AIIMS Connecting Expressway (₹180 Cr)", "Vaigai Riverfront Beautification", "Madurai Metro Rail Phase 1 Preparatory Works"],
+        availability_status="AVAILABLE",
+        funds_allocation=DepartmentFundMetric(
+            budget_sanctioned_cr=3120.0,
+            funds_released_cr=2780.0,
+            expenditure_spent_cr=2640.0,
+            utilization_pct=94.9,
+            unspent_balance_cr=140.0,
+            fiscal_health_status="HEALTHY",
+            flagged_variance_areas=["Madurai AIIMS access road utility alignment verified."]
+        ),
+        staffing_demand_supply=DepartmentStaffingMetric(
+            sanctioned_posts=8200,
+            in_position_staff=6950,
+            vacant_posts=1250,
+            vacancy_pct=15.2,
+            demand_urgency="HIGH",
+            top_shortage_roles=["Municipal Engineers (Water Supply)", "Taluk Revenue Officers", "Medical Officers (PHC)"],
+            ai_staffing_remedy_en="Fast-track direct recruitment for Madurai Corporation engineers to manage Metro Phase 1 utility relocation.",
+            ai_staffing_remedy_ta="மதுரை மெட்ரோ பணிகளுக்கான பயன்பாட்டு மாற்றங்களை மேற்கொள்ள கூடுதல் பொறியாளர்களை நியமிக்கவும்."
+        ),
+        detailed_projects=[
+            ProjectDetail(name="Madurai AIIMS Connecting 4-Lane Expressway", sanctioned_cost_cr=180.0, physical_progress_pct=64.0, financial_progress_pct=61.0, target_completion="May 2027", bottleneck_en="Railway ROB design vetting with Southern Railway"),
+            ProjectDetail(name="Vaigai Riverbank Sustainable Restoration", sanctioned_cost_cr=125.0, physical_progress_pct=85.0, financial_progress_pct=82.0, target_completion="Dec 2026")
+        ],
+        detailed_schemes=[
+            SchemeDetail(name="Kalaignar Centenary Library Knowledge Reach", target_beneficiaries="15,000 Readers Daily", actual_covered="16,200 Readers Daily", saturation_pct=108.0, annual_budget_cr=28.0, disbursement_status="Exceeding Target")
+        ],
+        ai_strategic_analysis_en="Madurai Collectorate maintains 108% target in Kalaignar Centenary Library footfalls. Railway ROB coordination for AIIMS connector is top priority.",
+        ai_strategic_analysis_ta="கலைஞர் நூற்றாண்டு நூலகம் இலக்கை தாண்டி செயல்படுகிறது. எய்ம்ஸ் இணைப்பு சாலை ரயில்வே அனுமதிக்கு முன்னுரிமை அளிக்க வேண்டும்."
+    ),
+
+    OfficerDirectoryItem(
+        id="dir-grp1-06",
+        name_en="B.K. Arvind, IPS",
+        name_ta="பி.கே. அரவிந்த், இ.கா.ப.",
+        designation_en="Superintendent of Police (SP), Madurai Rural",
+        designation_ta="காவல் கண்காணிப்பாளர், மதுரை புறநகர்",
+        role_tier="GROUP_1",
+        department_en="Tamil Nadu Police (Law & Order)",
+        department_ta="காவல்துறை (சட்டம் ஒழுங்கு)",
+        district_en="Madurai",
+        district_ta="மதுரை",
+        constituency=None,
+        official_email="sp-mdu@tncctns.gov.in",
+        cug_phone="+91 452 2530044",
+        office_address="District Police Office, Survey Club Road, Madurai - 625007",
+        current_schemes=["Smart Community Policing", "POCSO Protection Wing", "Anti-Rowdy Special Cell"],
+        current_projects=["Madurai Rural CCTV Grid Linkage (1,850 Cameras)", "Highway Quick Response Units"],
+        availability_status="AVAILABLE",
+        funds_allocation=DepartmentFundMetric(
+            budget_sanctioned_cr=290.0,
+            funds_released_cr=265.0,
+            expenditure_spent_cr=254.0,
+            utilization_pct=95.8,
+            unspent_balance_cr=11.0,
+            fiscal_health_status="HEALTHY",
+            flagged_variance_areas=["CCTV integration completed at 98%."]
+        ),
+        staffing_demand_supply=DepartmentStaffingMetric(
+            sanctioned_posts=2800,
+            in_position_staff=2380,
+            vacant_posts=420,
+            vacancy_pct=15.0,
+            demand_urgency="HIGH",
+            top_shortage_roles=["Armed Reserve Drivers", "Station Writers & Crime SIs", "Cyber Forensics Experts"],
+            ai_staffing_remedy_en="Depute 30 Armed Reserve personnel for festival bandobast in Usilampatti and Melur.",
+            ai_staffing_remedy_ta="உசிலம்பட்டி மற்றும் மேலூர் பகுதி பாதுகாப்பு பணிகளுக்கு 30 ஆயுதப்படை காவலர்களை நியமிக்கவும்."
+        ),
+        detailed_projects=[
+            ProjectDetail(name="Madurai Rural CCTV Command Network", sanctioned_cost_cr=18.0, physical_progress_pct=96.0, financial_progress_pct=93.0, target_completion="Completed")
+        ],
+        detailed_schemes=[
+            SchemeDetail(name="Project Kaval Karangal Madurai", target_beneficiaries="1,200 Citizens", actual_covered="1,180 Citizens", saturation_pct=98.3, annual_budget_cr=4.5, disbursement_status="Active")
+        ],
+        ai_strategic_analysis_en="Madurai Rural law & order index is optimal at 91.2/100. Effective crime prevention through village vigilance committees.",
+        ai_strategic_analysis_ta="மதுரை புறநகர் சட்டம் ஒழுங்கு 91.2 புள்ளிகளுடன் சீராக உள்ளது. கிராம கண்காணிப்பு குழுக்கள் சிறப்பாக செயல்படுகின்றன."
+    ),
+
+    # 4. GROUP 2 OFFICERS (TAHSILDARS & BDOS)
+    OfficerDirectoryItem(
+        id="dir-grp2-01",
+        name_en="M. Shanmugam, BDO",
+        name_ta="மு. சண்முகம், வட்டார வளர்ச்சி அலுவலர்",
+        designation_en="Block Development Officer (BDO), Thiruvaiyaru Block",
+        designation_ta="வட்டார வளர்ச்சி அலுவலர், திருவையாறு ஊராட்சி ஒன்றியம்",
+        role_tier="GROUP_2",
+        department_en="Rural Development & Panchayat Raj",
+        department_ta="ஊரக வளர்ச்சி மற்றும் ஊராட்சித் துறை",
+        district_en="Thanjavur",
+        district_ta="தஞ்சாவூர்",
+        constituency="Thiruvaiyaru",
+        official_email="bdo-thiruvaiyaru@tn.gov.in",
+        cug_phone="+91 4362 260222",
+        office_address="Panchayat Union Office, Thiruvaiyaru, Thanjavur - 613204",
+        current_schemes=["MGNREGS Delta Desilting Works", "Anaithu Grama Anna Marumalarchi Thittam", "Kalaignar Kanavu Illam"],
+        current_projects=["Vennar Sub-Basin Desilting Package II", "Panchayat Solar Pumping Stations", "Village Drinking Water Grid"],
+        availability_status="AVAILABLE",
+        funds_allocation=DepartmentFundMetric(
+            budget_sanctioned_cr=84.0,
+            funds_released_cr=76.0,
+            expenditure_spent_cr=72.5,
+            utilization_pct=95.4,
+            unspent_balance_cr=3.5,
+            fiscal_health_status="HEALTHY",
+            flagged_variance_areas=["Canal desilting wages 100% disbursed via direct Aadhaar DBTs."]
+        ),
+        staffing_demand_supply=DepartmentStaffingMetric(
+            sanctioned_posts=240,
+            in_position_staff=205,
+            vacant_posts=35,
+            vacancy_pct=14.5,
+            demand_urgency="MODERATE",
+            top_shortage_roles=["Panchayat Secretaries", "Rural Work Overseers (Civil)", "Accountants"],
+            ai_staffing_remedy_en="Recruit 8 contract civil overseers to inspect desilted canal cross-sections across 34 village panchayats.",
+            ai_staffing_remedy_ta="34 கிராம ஊராட்சிகளில் தூர்வாரும் பணிகளை ஆய்வு செய்ய 8 ஒப்பந்த மேற்பார்வையாளர்களை நியமிக்கவும்."
+        ),
+        detailed_projects=[
+            ProjectDetail(name="Thiruvaiyaru Tail-End Desilting Package", sanctioned_cost_cr=12.5, physical_progress_pct=97.0, financial_progress_pct=95.0, target_completion="Completed")
+        ],
+        detailed_schemes=[
+            SchemeDetail(name="MGNREGS Rural Desilting", target_beneficiaries="18,400 Workers", actual_covered="18,150 Workers", saturation_pct=98.6, annual_budget_cr=38.0, disbursement_status="Weekly DBT Active")
+        ],
+        ai_strategic_analysis_en="Thiruvaiyaru BDO has completed 97% of monsoon preparedness desilting. Tail-end irrigation discharge reaching farmer fields on schedule.",
+        ai_strategic_analysis_ta="திருவையாறு ஒன்றியத்தில் 97% தூர்வாரும் பணிகள் நிறைவடைந்து விவசாயிகளுக்கு பாசன நீர் தடையின்றி கிடைக்கிறது."
+    ),
+
+    # 5. GROUP 3 & 4 OFFICERS (VAOS & FIELD OFFICERS)
+    OfficerDirectoryItem(
+        id="dir-grp34-01",
+        name_en="S. Anbarasan, VAO",
+        name_ta="எஸ். அன்பரசன், கிராம நிர்வாக அலுவலர்",
+        designation_en="Village Administrative Officer (VAO), Salem West Taluk",
+        designation_ta="கிராம நிர்வாக அலுவலர், சேலம் மேற்கு வட்டம்",
+        role_tier="GROUP_3_4",
+        department_en="Revenue Administration & Disaster Relief",
+        department_ta="வருவாய்த்துறை & பேரிடர் மேலாண்மை",
+        district_en="Salem",
+        district_ta="சேலம்",
+        constituency="Salem West",
+        official_email="vao-salemwest@tn.gov.in",
+        cug_phone="+91 94433 87654",
+        office_address="Village Administrative Office, Suramangalam, Salem - 636005",
+        current_schemes=["Patta Chitta Digital Distribution", "Pattadharar Varisu Certificate Issuance", "Kalaignar Magalir Urimai Verification"],
+        current_projects=["Anywhere Anytime e-Patta Verification", "Crop Damage Survey GIS"],
+        availability_status="AVAILABLE",
+        funds_allocation=DepartmentFundMetric(
+            budget_sanctioned_cr=1.2,
+            funds_released_cr=1.2,
+            expenditure_spent_cr=1.1,
+            utilization_pct=91.6,
+            unspent_balance_cr=0.1,
+            fiscal_health_status="HEALTHY",
+            flagged_variance_areas=["e-Seva digital verification kits deployed."]
+        ),
+        staffing_demand_supply=DepartmentStaffingMetric(
+            sanctioned_posts=45,
+            in_position_staff=38,
+            vacant_posts=7,
+            vacancy_pct=15.5,
+            demand_urgency="MODERATE",
+            top_shortage_roles=["Village Assistants (Thalaiyari)", "Field Survey Assistants"],
+            ai_staffing_remedy_en="Appoint 4 village assistants to assist in doorstep survey verification.",
+            ai_staffing_remedy_ta="வீட்டு வாசலில் கள ஆய்வு பணிகளுக்காக 4 கிராம உதவியாளர்களை நியமிக்கவும்."
+        ),
+        detailed_projects=[
+            ProjectDetail(name="Digital e-Patta 100% Saturation Drive", sanctioned_cost_cr=0.5, physical_progress_pct=99.0, financial_progress_pct=95.0, target_completion="Completed")
+        ],
+        detailed_schemes=[
+            SchemeDetail(name="e-Patta Online Settlement", target_beneficiaries="4,200 Landowners", actual_covered="4,120 Landowners", saturation_pct=98.0, annual_budget_cr=0.8, disbursement_status="Active")
+        ],
+        ai_strategic_analysis_en="Salem West VAO office has achieved 98% SLA completion rate for digital patta mutations without grievance escalations.",
+        ai_strategic_analysis_ta="சேலம் மேற்கு கிராம நிர்வாக அலுவலர் பட்டா பெயர் மாற்றங்களை 98% குறித்த காலத்திற்குள் வழங்கி சாதனை படைத்துள்ளார்."
     )
 ]
 
