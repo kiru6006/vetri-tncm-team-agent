@@ -1,575 +1,113 @@
-# PROJECT
+# VERTRI TN AI OS
+## Enterprise AI Operating System for Governance, Intelligence & Decision Support
+### Government of Tamil Nadu — Chief Minister's Office (CMO)
+
+---
+
+## 🏛️ System Overview
 
-You are the Principal Software Architect, Distinguished AI Engineer, Enterprise Architect, Government Technology Specialist, and Staff Engineer responsible for designing and implementing a production-ready AI Operating System for the Government of Tamil Nadu.
+**VERTRI TN AI OS** is a production-grade, relationship-aware AI Operating System engineered for the **Hon'ble Chief Minister of Tamil Nadu, Cabinet Ministers, Chief Secretary, District Collectors, Superintendents of Police, and Secretariat Leadership**.
 
-This project is called
-
-VERTRI TN AI OS
-
-Tagline
-
-AI Operating System for Governance, Intelligence and Decision Support
-
-This is NOT a dashboard.
-
-This is NOT an admin panel.
-
-This is NOT a BI tool.
-
-It is an enterprise AI Operating System similar in engineering quality to products built by Palantir, Microsoft, Google Cloud, AWS, ServiceNow, SAP, and OpenAI.
-
-Think as if 100 engineers are building this product.
-
-Everything must be production ready.
-
-Every decision should follow enterprise software engineering standards.
-
-Never generate demo code.
-
-Never generate placeholder architecture.
-
-Never generate toy examples.
-
-Everything should be GitHub production quality.
-
---------------------------------------------------
-PROJECT OBJECTIVES
---------------------------------------------------
-
-The platform should help the Hon'ble Chief Minister monitor, understand, predict and improve governance across Tamil Nadu.
-
-The application should provide
-
-• Executive Decision Support
-• AI Copilot
-• Multi-Agent AI
-• State Command Center
-• Ministry Command Centers
-• Department Dashboards
-• District Collector Dashboards
-• Taluk Dashboards
-• Citizen Intelligence
-• Revenue Intelligence
-• Budget Intelligence
-• Scheme Intelligence
-• Fraud Detection
-• Predictive Analytics
-• Digital Twin
-• Knowledge Graph
-• Government Knowledge Repository
-• GIS
-• Real Time Monitoring
-
-The system must become the Digital Brain of Tamil Nadu.
-
---------------------------------------------------
-TECH STACK
---------------------------------------------------
-
-Frontend
-
-React 19
-
-TypeScript
-
-Vite
-
-Tailwind CSS v4
-
-shadcn/ui
-
-TanStack Router
-
-TanStack Query
-
-React Hook Form
-
-Zod
-
-Zustand
-
-Framer Motion
-
-AG Grid
-
-Apache ECharts
-
-MapLibre GL
-
-React Flow
-
-PWA
-
-Dark Mode
-
-Light Mode
-
-Accessibility WCAG AA
-
---------------------------------------------------
-
-Backend
-
-Python 3.13
-
-FastAPI
-
-Pydantic V2
-
-SQLAlchemy 2
-
-Alembic
-
-PostgreSQL
-
-pgvector
-
-Redis
-
-NATS
-
-Temporal
-
-MinIO
-
---------------------------------------------------
-
-AI
-
-LangGraph
-
-LangChain where appropriate
-
-OpenAI Responses API
-
-Anthropic Claude
-
-Google Gemini
-
-Llama
-
-Model Context Protocol
-
-Vector Database
-
-Knowledge Graph
-
-Hybrid Search
-
-RAG
-
-Agent Memory
-
-Prompt Library
-
-Evaluation Framework
-
-Structured Output
-
-Guardrails
-
---------------------------------------------------
-
-Security
-
-JWT
-
-OAuth2
-
-OIDC
-
-RBAC
-
-ABAC
-
-Audit Logs
-
-Encryption
-
-Secrets
-
-API Gateway
-
-Rate Limiting
-
---------------------------------------------------
-
-Infrastructure
-
-Docker
-
-Docker Compose
-
-Kubernetes
-
-GitHub Actions
-
-Terraform
-
-Helm
-
-Prometheus
-
-Grafana
-
-OpenTelemetry
-
-Loki
-
-NGINX
-
-Cloud Ready
-
---------------------------------------------------
-SYSTEM MODULES
---------------------------------------------------
-
-Authentication
-
-User Management
-
-Organization Management
-
-District Management
-
-Taluk Management
-
-Department Management
-
-Ministry Management
-
-Officer Management
-
-Projects
-
-Schemes
-
-Finance
-
-Budget
-
-Revenue
-
-Assets
-
-Citizen Services
-
-Complaints
-
-Police
-
-Healthcare
-
-Education
-
-Agriculture
-
-Disaster Management
-
-Water
-
-Roads
-
-Power
-
-Transport
-
-Analytics
-
-Reports
-
-AI Agents
-
-Knowledge Base
-
-Notifications
-
-Document Management
-
-GIS
-
-Settings
-
---------------------------------------------------
-AI AGENTS
---------------------------------------------------
-
-Chief Minister Copilot
-
-Chief Secretary Agent
-
-Finance Agent
-
-Revenue Agent
-
-Police Agent
-
-Education Agent
-
-Healthcare Agent
-
-Agriculture Agent
-
-Transport Agent
-
-Water Resources Agent
-
-Infrastructure Agent
-
-Disaster Agent
-
-Procurement Agent
-
-Audit Agent
-
-Fraud Detection Agent
-
-Legal Agent
-
-Policy Agent
-
-Budget Agent
-
-Scheme Agent
-
-Citizen Agent
-
-Media Intelligence Agent
-
-Each AI Agent should
-
-understand
-
-reason
-
-collaborate
-
-delegate
-
-verify
-
-recommend
-
-explain
-
-cite evidence
-
---------------------------------------------------
-APPLICATION REQUIREMENTS
---------------------------------------------------
-
-Enterprise Architecture
-
-Domain Driven Design
-
-Feature Based Architecture
-
-Reusable Components
-
-Atomic Design
-
-Responsive
-
-Offline Support
-
-Caching
-
-Streaming
-
-Background Jobs
-
-Event Driven Architecture
-
-Auditability
-
-Observability
-
-Accessibility
-
-Scalability
-
-Maintainability
-
-Testing
-
---------------------------------------------------
-USER PERSONAS
---------------------------------------------------
-
-Chief Minister
-
-Chief Secretary
-
-Minister
-
-Department Secretary
-
-District Collector
-
-Commissioner
-
-Officer
-
-Analyst
-
-Citizen
-
---------------------------------------------------
-UI DESIGN
---------------------------------------------------
-
-Modern
-
-Minimal
-
-Executive
-
-Premium
-
-Glass Morphism where appropriate
-
-Apple
-
-Linear
-
-Notion
-
-Palantir
-
-Bloomberg
-
-Tesla
-
-Formula 1 Race Control
-
-Microsoft Fluent
-
---------------------------------------------------
-CODING STANDARDS
---------------------------------------------------
-
-SOLID
-
-Clean Architecture
-
-Clean Code
-
-No duplicated code
-
-Strong typing
-
-Reusable utilities
-
-Centralized constants
-
-Configuration driven
-
-Production logging
-
-Error handling
-
-Validation
-
-Testing
-
-Documentation
-
---------------------------------------------------
-OUTPUT RULES
---------------------------------------------------
-
-Never attempt to generate the whole application in one response.
-
-Instead work in phases.
-
-At the end of every phase wait.
-
-Do not continue until I say
-
-CONTINUE
-
---------------------------------------------------
-PHASE 1
---------------------------------------------------
-
-Generate
-
-1 Repository Architecture
-
-2 Folder Structure
-
-3 Monorepo Layout
-
-4 Technology Decisions
-
-5 Architecture Diagram
-
-6 Module Breakdown
-
-7 Database Design
-
-8 Domain Model
-
-9 API Strategy
-
-10 Event Architecture
-
-11 AI Agent Architecture
-
-12 Security Architecture
-
-13 Deployment Architecture
-
-14 Coding Standards
-
-15 GitHub Repository Structure
-
-16 Development Roadmap
-
-17 Milestones
-
-18 Sprint Plan
-
-19 Feature Priorities
-
-20 UI Navigation
-
-Make every decision as if this product will be deployed by the Government of Tamil Nadu and maintained for the next 20 years.
-
-Do not write application code yet.
-
-Generate only the complete software architecture.
-
-
-- MASTER_CLAUDE_PROMPT.md
-- AUTH_MODULE_PROMPT.md
-- CM_DASHBOARD_PROMPT.md
-- DEVELOPMENT_ROADMAP.md
-
-- README.md
-- SYSTEM_ARCHITECTURE.md
-- PROJECT_STRUCTURE.md
-- FRONTEND_PROMPT.md
-- BACKEND_PROMPT.md
-- AI_AGENTS_PROMPT.md
-- DATABASE_DESIGN.md
-- LANGGRAPH_AGENTS.md
-- MCP_INTEGRATION.md
-- RAG_ARCHITECTURE.md
-- GITHUB_ACTIONS.md
-- DOCKER_DEPLOYMENT.md
-- KUBERNETES_DEPLOYMENT.md
-- API_SPECIFICATION.md
-- DESIGN_SYSTEM.md
-- UI_COMPONENT_LIBRARY.md
-- CHIEF_MINISTER_COPILOT.md
-- MINISTER_DASHBOARD.md
-- SECRETARY_DASHBOARD.md
-- COLLECTOR_DASHBOARD.md
-- REVENUE_AI_AGENT.md
-- HEALTH_AI_AGENT.md
-- POLICE_AI_AGENT.md
-- FINANCE_AI_AGENT.md
-- FRAUD_DETECTION_AGENT.md
-- KNOWLEDGE_GRAPH.md
-- PRODUCT_REQUIREMENTS_DOCUMENT.md
+The platform unifies disparate departmental data silos into an intelligent, queryable, relationship-aware operating environment with:
+1. **Natural-Language & Voice-Ready Query Interface**: Tool-augmented AI Agent (Claude Sonnet / LangGraph) retrieving structured government data with deterministic guardrails and cryptographic source citations.
+2. **Enterprise Government Relationship Management (GRM)**: Single source of truth for all Tamil Nadu officials across **IAS, IPS, IRS, IFS, and State Cadres** with 21-tier organizational mapping and verified CUG contacts.
+3. **Four-Dimensional Core Governance Model**: Relational PostgreSQL 16 + pgvector semantic retrieval + Graph Edge mapping connecting Officials $\leftrightarrow$ Departments $\leftrightarrow$ Schemes $\leftrightarrow$ 38 Districts.
+4. **Data Ingestion & Synchronization Pipeline**: Scheduled ETL scrapers and PDF parsers (`pdfplumber`) synchronizing Tamil Nadu Gazettes, AG IAS lists, and CCTNS registries with SHA-256 provenance hashes.
+5. **Two-Way Citizen-Government Trust Gateway (*Jan-Samvad*)**: Bridging the gap between the Secretariat and the 72+ million citizens with public-safe office locators, eligibility matchers (*Ungal Thittam*), and WhatsApp/1100 voice grievance ingestion.
+
+---
+
+## 🗄️ Four-Dimensional Core Data Model
+
+```mermaid
+erDiagram
+    OFFICIALS ||--o{ DEPARTMENTS : leads_or_serves
+    MINISTRIES ||--o{ DEPARTMENTS : oversees
+    DEPARTMENTS ||--o{ SCHEMES : executes
+    OFFICIALS ||--o{ SCHEMES : responsible_for
+    DISTRICTS ||--o{ SCHEMES : covers
+    OFFICIALS ||--o{ ASSIGNMENTS : assigned_to
+    OFFICIALS ||--o{ PERSONNEL_CHANGES : recorded_in
+```
+
+### 1. `officials` (Master Personnel Registry)
+- `id` (PK, e.g. `IAS-TN-2015-042`), `full_name_en`, `full_name_ta`, `cadre` (IAS, IPS, IRS, IFS, STATE, MINISTER, MLA), `batch_year`, `current_posting`, `department_id`, `ministry_id`, `designation_rank`, `phone_landline`, `phone_mobile`, `official_email`, `office_address`, `posting_effective_date`, `expected_retirement`, `status`, `source_refs`.
+
+### 2. `departments` & `ministries`
+- `id`, `name_en`, `name_ta`, `ministry_id`, `minister_official_id`, `secretary_official_id`, `parent_department_id`, `contact_phone`, `contact_email`, `address`, `source_refs`.
+
+### 3. `schemes` (State Welfare & Infrastructure)
+- `id`, `name_en`, `name_ta`, `department_id`, `owning_ministry_id`, `responsible_official_ids`, `budget_sanctioned`, `budget_released`, `financial_year`, `status` (PLANNED, IN_PROGRESS, COMPLETED, DELAYED, ON_HOLD), `progress_percent`, `milestones`, `geography_ids`, `sector`, `source_refs`.
+
+### 4. `districts` (38 Administrative Jurisdictions)
+- `id`, `name_en`, `name_ta`, `region`, `mp_constituencies`, `assembly_constituencies`, `key_indicators`.
+
+### 5. `assignments` (Graph Edges Table)
+- `id`, `official_id`, `entity_type` (DEPARTMENT, SCHEME, DISTRICT, COMMITTEE), `entity_id`, `role`, `since`, `until`, `notes`.
+
+### 6. `personnel_changes` (Audit Timeline)
+- `id`, `official_id`, `change_type` (TRANSFER, PROMOTION, RETIREMENT, CHARGE), `from_role`, `to_role`, `effective_date`, `order_ref` (G.O. Ms. No.).
+
+---
+
+## 🤖 AI Agent Architecture & Callable Tools
+
+The system orchestrates an Anthropic Claude 3.5 Sonnet agent using a strict tool-calling loop with deterministic database routing:
+
+| Tool | Purpose | Output Format |
+|---|---|---|
+| `find_official` | Fuzzy multi-attribute search for officials | Summary Card + Contact Details |
+| `get_department_overview` | Portfolio, Minister, Secretary, and active schemes | Department Dossier |
+| `get_scheme_progress` | Budget, progress %, milestones, and officers | Scheme Progress Card + Table |
+| `get_district_overview` | Deployed Collectors, SPs, and district schemes | 38-District Intelligence View |
+| `search_contacts` | Faceted contact directory across 5 dimensions | Paginated Contact Grid |
+| `get_personnel_changes` | Chronological transfer and posting timeline | Gazette Audit Trail |
+| `cross_query` | Intersectional query across entities | Relational Graph Matrix |
+| `export_contacts` | Export filtered official directory | CSV, PDF, or vCard file |
+
+---
+
+## 🔒 Security, Clearance & PII Guardrails
+
+1. **No Hallucination**: Contact details and financial metrics are queried directly from verified PostgreSQL records. If absent, the agent reports `"Data not available in official records — source: {last_sync}"`.
+2. **Mandatory Source Citation**: Every claim links to verified Government Orders or official portal URLs.
+3. **Role-Based Clearance (RBAC)**:
+   - `CM_CS_CABINET`: Unredacted CUG lines, encrypted video meet triggers, direct executive directives.
+   - `ANALYST_STAFF`: Official office PBX and department reception channels only.
+   - `PUBLIC`: *Jan-Samvad* public reception hours, nodal RTI officers, and complaint desks.
+4. **Immutable Audit Trail**: 100% of queries, tool calls, and data sync jobs are cryptographically logged.
+
+---
+
+## 🚀 Quick Start & Development
+
+### 1. Backend (FastAPI + AsyncPG + Celery)
+```bash
+cd backend
+python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload
+```
+
+### 2. Frontend (React + Vite + Tailwind)
+```bash
+cd frontend
+npm install
+npm run dev # Starts development server on port 3000
+```
+
+### 3. Production Verification Build
+```bash
+cd frontend
+npm run build
+```
+
+---
+
+## 📚 Architectural Documentation Index
+
+- [Strategic Critique & Transformation Roadmap](docs/01_STRATEGIC_CRITIQUE_AND_ROADMAP.md)
+- [System Architecture Specification](docs/02_ARCHITECTURE_SPECIFICATION.md)
+- [Database Schema & Migrations](docs/DATABASE_DESIGN.md)
+- [AI Multi-Agent Prompts & Tool Specifications](docs/AI_AGENTS_PROMPT.md)
+- [Phase 3 GRM Platform Specification](docs/PHASE_2_ENHANCEMENT_SPECIFICATION.md)
