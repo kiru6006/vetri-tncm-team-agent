@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ExecutiveHeader } from './components/ExecutiveHeader';
+import { ExecutiveWorkspace } from './components/ExecutiveWorkspace';
 import { StateScoreGauge } from './components/StateScoreGauge';
 import { PriorityAlertsTicker } from './components/PriorityAlertsTicker';
 import { DistrictHeatmapGrid } from './components/DistrictHeatmapGrid';
@@ -21,6 +22,9 @@ import {
   District,
   FlagshipScheme,
   ActionRecommendation,
+  ExecutiveBriefing,
+  MyActionsToday,
+  ActionItemTriage
 } from './types';
 import {
   Sparkles,
@@ -36,16 +40,125 @@ import {
   Radio,
   Droplets,
   ShieldAlert,
+  Briefcase
 } from 'lucide-react';
 
 export const App: React.FC = () => {
   const { language, activeRole } = useAuthStore();
   const [activeTab, setActiveTab] = useState<
-    'dashboard' | 'gis' | 'revenue' | 'grievance' | 'health' | 'police' | 'water_agri' | 'fraud_audit' | 'role_view'
-  >('dashboard');
+    'workspace' | 'dashboard' | 'gis' | 'revenue' | 'grievance' | 'health' | 'police' | 'water_agri' | 'fraud_audit' | 'role_view'
+  >('workspace');
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null);
   const [notification, setNotification] = useState<string | null>(null);
+
+  const [briefing, setBriefing] = useState<ExecutiveBriefing | null>(null);
+  const [actionsToday, setActionsToday] = useState<MyActionsToday | null>(null);
+
+  useEffect(() => {
+    // Fetch real-time executive briefing & actions
+    fetch('http://localhost:8000/api/v1/executive/workspace/briefing')
+      .then(res => res.ok ? res.json() : null)
+      .then(data => data && setBriefing(data))
+      .catch(() => {
+        // graceful offline mock fallback
+        setBriefing({
+          greeting_en: "Good Morning, Hon'ble Chief Minister",
+          greeting_ta: "காலை வணக்கம், மாண்புமிகு முதலமைச்சர் அவர்களுக்கு",
+          user_role: "CHIEF_MINISTER",
+          briefing_date: new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
+          state_score: 88.4,
+          revenue_achievement_pct: 104.2,
+          budget_spend_pct: 72.8,
+          top_priorities: [
+            {
+              id: "prio-cm-1",
+              title_en: "Cauvery Delta Kuruvai Water Release & Fertilizer Stock",
+              title_ta: "காவிரி டெல்டா குறுவை பாசன நீர் திறப்பு மற்றும் உர இருப்பு",
+              severity: "CRITICAL",
+              department: "Water Resources & Agriculture",
+              district: "Thanjavur, Tiruvarur",
+              metric_signal: "Mettur Inflow 18,400 cusecs; DAP deficit 12%",
+              recommended_decision_en: "Authorize release of 15,000 cusecs and mandate TANFED dispatch of 450 MT DAP.",
+              recommended_decision_ta: "15,000 கனஅடி நீர் திறப்பு மற்றும் 450 மெட்ரிக் டன் டிஏபி உரத்தை அனுப்ப உத்தரவிடவும்.",
+              responsible_officer: "Principal Secretary, Water Resources"
+            }
+          ],
+          weather_alerts: [
+            {
+              region_en: "Coastal Tamil Nadu (Cuddalore, Nagapattinam)",
+              region_ta: "கடலோர தமிழகம் (கடலூர், நாகப்பட்டினம்)",
+              alert_level: "ORANGE",
+              description_en: "Heavy to very heavy rainfall expected in next 36 hours.",
+              description_ta: "அடுத்த 36 மணி நேரத்தில் பலத்த மழை வாய்ப்பு.",
+              preparedness_status: "4 SDRF Battalions on standby."
+            }
+          ],
+          citizen_sentiment: {
+            sentiment_score_pct: 81.4,
+            trending_topics: [
+              { topic: "Kalaignar Magalir Urimai Thittam", sentiment: "94% Positive", mentions: "14.2k" },
+              { topic: "CM Breakfast Scheme", sentiment: "98% Positive", mentions: "9.8k" }
+            ],
+            grievance_velocity: "92.4% on-time resolution rate"
+          },
+          pending_approvals_count: 7,
+          scheduled_meetings_today: 3,
+          cabinet_agenda_highlights: ["SIPCOT Semiconductor Park Special Package", "Monsoon Disaster Mitigation Sanctions"],
+          recent_gos_count: 14,
+          ai_strategic_advice_en: "Focus today's Cabinet agenda on SIPCOT semiconductor allotment and monitor Mettur dam discharge for Kuruvai delta irrigation.",
+          ai_strategic_advice_ta: "இன்றைய அமைச்சரவைக் கூட்டத்தில் சிப்காட் குறைக்கடத்தி நில ஒதுக்கீடு மற்றும் டெல்டா பாசனத்திற்கான மேட்டூர் அணை நீர் திறப்பை முதன்மையாகக் கண்காணிக்கவும்."
+        });
+      });
+
+    fetch('http://localhost:8000/api/v1/executive/actions/today')
+      .then(res => res.ok ? res.json() : null)
+      .then(data => data && setActionsToday(data))
+      .catch(() => {
+        setActionsToday({
+          user_role: "CHIEF_MINISTER",
+          total_actions_pending: 5,
+          approvals_awaiting_decision_count: 1,
+          delayed_projects_count: 1,
+          escalated_grievances_count: 1,
+          court_cases_deadline_count: 1,
+          actions: [
+            {
+              id: "act-appr-01",
+              category: "APPROVAL",
+              priority: "CRITICAL",
+              title_en: "Sanction of Phase 2 Chennai Stormwater Drainage Network (Kosasthalaiyar Basin)",
+              title_ta: "சென்னையின் இரண்டாம் கட்ட மழைநீர் வடிகால் கட்டமைப்பு அனுமதி (கொசஸ்தலையாறு வடிநிலம்)",
+              department: "Municipal Administration & Water Supply",
+              financial_impact_cr: 412.50,
+              delay_days: 0,
+              bottleneck_en: "Awaiting final executive financial concurrence before monsoon commencement.",
+              bottleneck_ta: "பருவமழை தொடங்குவதற்கு முன் நிதித்துறையின் இறுதி ஒப்புதலுக்காக காத்திருக்கிறது.",
+              responsible_officer: "Principal Secretary, MAWS",
+              deadline: "Today, 14:00 hrs",
+              ai_recommended_action_en: "Authorize sanction with condition that work in 6 flood-prone wards completes by Oct 15.",
+              ai_recommended_action_ta: "அக்டோபர் 15-க்குள் 6 முக்கிய வார்டுகளில் பணிகளை முடிக்க வேண்டும் என்ற நிபந்தனையுடன் ஒப்புதல் வழங்கலாம்."
+            },
+            {
+              id: "act-proj-02",
+              category: "DELAYED_PROJECT",
+              priority: "HIGH",
+              title_en: "Chennai Peripheral Ring Road (Section II - Thatchur to Tiruvallur Bypass)",
+              title_ta: "சென்னை புறவட்ட சாலை (பிரிவு II - தச்சூர் முதல் திருவள்ளூர் பைபாஸ் வரை)",
+              department: "Highways & Minor Ports",
+              financial_impact_cr: 2150.00,
+              delay_days: 45,
+              bottleneck_en: "Land acquisition clearance in 2 villages in Ponneri Taluk held up due to compensation revision demand.",
+              bottleneck_ta: "பொன்னேரி வட்டத்தில் 2 கிராமங்களில் இழப்பீட்டு திருத்தக் கோரிக்கையால் நில எடுப்பு தாமதம்.",
+              responsible_officer: "District Collector, Tiruvallur",
+              deadline: "Today, 16:30 hrs",
+              ai_recommended_action_en: "Direct Collector Tiruvallur to convene Special Lok Adalat bench for immediate compensation settlement.",
+              ai_recommended_action_ta: "இழப்பீட்டுத் தொகையை உடனடியாகத் தீர்க்க சிறப்பு லோக் அதாலத் அமர்வை கூட்ட திருவள்ளூர் ஆட்சியருக்கு உத்தரவிடவும்."
+            }
+          ]
+        });
+      });
+  }, []);
 
   // Initial State Data
   const [scorecard] = useState<StateScorecard>({
@@ -179,6 +292,18 @@ export const App: React.FC = () => {
         <div className="max-w-[1720px] mx-auto flex items-center justify-between overflow-x-auto no-scrollbar gap-2 pb-2.5">
           <div className="flex items-center gap-1.5">
             {/* Core Command Tabs */}
+            <button
+              onClick={() => setActiveTab('workspace')}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                activeTab === 'workspace'
+                  ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <Briefcase className="w-3.5 h-3.5" />
+              <span>{language === 'ta' ? 'அரசு பணிமனை (Workspace)' : 'AI Workspace'}</span>
+            </button>
+
             <button
               onClick={() => setActiveTab('dashboard')}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
@@ -325,6 +450,27 @@ export const App: React.FC = () => {
 
       {/* Dynamic Content Views */}
       <main className="flex-1 p-6 space-y-6 max-w-[1720px] mx-auto w-full">
+        {activeTab === 'workspace' && (
+          <section className="animate-in fade-in duration-200">
+            <ExecutiveWorkspace
+              briefing={briefing}
+              actionsToday={actionsToday}
+              onOpenCopilot={(prompt) => {
+                setCopilotOpen(true);
+              }}
+              onSelectAction={(action) => {
+                handleExecuteDirective({
+                  actionCode: `ACTION_${action.id}`,
+                  descriptionEn: action.ai_recommended_action_en,
+                  descriptionTa: action.ai_recommended_action_ta,
+                  priority: action.priority,
+                  targetDepartment: action.department
+                });
+              }}
+            />
+          </section>
+        )}
+
         {activeTab === 'dashboard' && (
           <div className="space-y-6 animate-in fade-in duration-200">
             {/* Top Row: State Score Gauge & Priority Alerts */}

@@ -2,13 +2,104 @@ export type Language = 'en' | 'ta';
 
 export type UserRole = 
   | 'CHIEF_MINISTER'
-  | 'CHIEF_SECRETARY'
+  | 'DEPUTY_CHIEF_MINISTER'
+  | 'CABINET_MINISTER'
   | 'MINISTER'
+  | 'CHIEF_SECRETARY'
+  | 'ADDITIONAL_CHIEF_SECRETARY'
+  | 'PRINCIPAL_SECRETARY'
   | 'DEPARTMENT_SECRETARY'
-  | 'DISTRICT_COLLECTOR'
+  | 'SECRETARY'
   | 'COMMISSIONER'
+  | 'MISSION_DIRECTOR'
+  | 'HOD'
+  | 'DISTRICT_COLLECTOR'
+  | 'SUPERINTENDENT_OF_POLICE'
+  | 'DISTRICT_REVENUE_OFFICER'
+  | 'JOINT_COLLECTOR'
+  | 'REVENUE_DIVISIONAL_OFFICER'
+  | 'TAHSILDAR'
   | 'TALUK_OFFICER'
+  | 'BLOCK_DEVELOPMENT_OFFICER'
+  | 'MUNICIPAL_COMMISSIONER'
+  | 'EXECUTIVE_OFFICER'
+  | 'VILLAGE_ADMINISTRATIVE_OFFICER'
+  | 'FIELD_OFFICER'
   | 'ANALYST';
+
+export interface MorningBriefingPriority {
+  id: string;
+  title_en: string;
+  title_ta: string;
+  severity: 'CRITICAL' | 'HIGH' | 'MEDIUM';
+  department: string;
+  district?: string;
+  metric_signal: string;
+  recommended_decision_en: string;
+  recommended_decision_ta: string;
+  responsible_officer: string;
+}
+
+export interface WeatherDisasterAlert {
+  region_en: string;
+  region_ta: string;
+  alert_level: 'RED' | 'ORANGE' | 'YELLOW' | 'GREEN';
+  description_en: string;
+  description_ta: string;
+  preparedness_status: string;
+}
+
+export interface CitizenSentimentSummary {
+  sentiment_score_pct: number;
+  trending_topics: Array<{ topic: string; sentiment: string; mentions: string }>;
+  grievance_velocity: string;
+}
+
+export interface ExecutiveBriefing {
+  greeting_en: string;
+  greeting_ta: string;
+  user_role: string;
+  briefing_date: string;
+  state_score: number;
+  revenue_achievement_pct: number;
+  budget_spend_pct: number;
+  top_priorities: MorningBriefingPriority[];
+  weather_alerts: WeatherDisasterAlert[];
+  citizen_sentiment: CitizenSentimentSummary;
+  pending_approvals_count: number;
+  scheduled_meetings_today: number;
+  cabinet_agenda_highlights: string[];
+  recent_gos_count: number;
+  ai_strategic_advice_en: string;
+  ai_strategic_advice_ta: string;
+}
+
+export interface ActionItemTriage {
+  id: string;
+  category: 'APPROVAL' | 'DELAYED_PROJECT' | 'CITIZEN_GRIEVANCE' | 'COLLECTOR_REVIEW' | 'REVENUE_LEAKAGE' | 'COURT_CASE';
+  priority: 'CRITICAL' | 'HIGH' | 'MEDIUM';
+  title_en: string;
+  title_ta: string;
+  department: string;
+  financial_impact_cr?: number;
+  delay_days?: number;
+  bottleneck_en: string;
+  bottleneck_ta: string;
+  responsible_officer: string;
+  deadline: string;
+  ai_recommended_action_en: string;
+  ai_recommended_action_ta: string;
+}
+
+export interface MyActionsToday {
+  user_role: string;
+  total_actions_pending: number;
+  approvals_awaiting_decision_count: number;
+  delayed_projects_count: number;
+  escalated_grievances_count: number;
+  court_cases_deadline_count: number;
+  actions: ActionItemTriage[];
+}
 
 export interface User {
   id: string;
@@ -113,7 +204,7 @@ export interface ActionRecommendation {
   actionCode: string;
   descriptionEn: string;
   descriptionTa: string;
-  priority: 'HIGH' | 'MEDIUM' | 'LOW';
+  priority: 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW';
   targetDepartment: string;
 }
 

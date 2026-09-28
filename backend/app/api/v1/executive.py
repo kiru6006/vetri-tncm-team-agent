@@ -6,7 +6,20 @@ from app.schemas.analytics import RevenueAnalyticsResponse, GrievanceAnalyticsRe
 from app.services.executive_service import get_state_scorecard, get_priority_alerts, get_flagship_schemes
 from app.services.analytics_service import get_revenue_analytics, get_grievance_analytics, get_stalled_projects
 
+from app.schemas.workspace import ExecutiveBriefingResponse, MyActionsTodayResponse
+from app.services.workspace_service import generate_executive_briefing, generate_my_actions_today
+
 router = APIRouter(prefix="/executive", tags=["Executive Command Center"])
+
+
+@router.get("/workspace/briefing", response_model=ExecutiveBriefingResponse)
+async def fetch_executive_briefing(claims: dict = Depends(get_current_user_claims)):
+    return await generate_executive_briefing(claims)
+
+
+@router.get("/actions/today", response_model=MyActionsTodayResponse)
+async def fetch_my_actions_today(claims: dict = Depends(get_current_user_claims)):
+    return await generate_my_actions_today(claims)
 
 
 @router.get("/state-score", response_model=StateScoreResponse)
