@@ -155,3 +155,81 @@ async def export_directory_endpoint(
         )
 
     return result
+
+
+# ==========================================
+# PHASE 4: EXECUTIVE INTELLIGENCE PLATFORM
+# ==========================================
+
+from app.schemas.executive_intel import (
+    KnowledgeGraphResponse,
+    OfficerExecutiveIntelligence,
+    DepartmentIntelligence,
+    SchemeIntelligence,
+    MeetingPreparationRequest,
+    MeetingPreparationResponse,
+    ExecutiveDecisionSupportResponse
+)
+from app.services.executive_intelligence_service import executive_intel_service
+
+
+@router.get("/graph/{entity_id}", response_model=KnowledgeGraphResponse)
+async def get_knowledge_graph_endpoint(entity_id: str):
+    """
+    Retrieve interconnected Government Knowledge Graph nodes and edges for any entity.
+    """
+    return executive_intel_service.get_knowledge_graph(entity_id)
+
+
+@router.get("/officers/{officer_id}/intelligence", response_model=OfficerExecutiveIntelligence)
+async def get_officer_intelligence_endpoint(officer_id: str):
+    """
+    Retrieve full executive intelligence dossier for an official (workload, projects,
+    citizen complaints, crime/revenue metrics, and AI discussion topics).
+    """
+    intel = executive_intel_service.get_officer_executive_intelligence(officer_id)
+    if not intel:
+        raise HTTPException(status_code=404, detail=f"Officer '{officer_id}' intelligence dossier not found.")
+    return intel
+
+
+@router.get("/departments/{dept_id}/intelligence", response_model=DepartmentIntelligence)
+async def get_department_intelligence_endpoint(dept_id: str):
+    """
+    Retrieve department intelligence diagnostic (budget utilization, revenue leakages,
+    top governance risks, and operational issues).
+    """
+    intel = executive_intel_service.get_department_intelligence(dept_id)
+    if not intel:
+        raise HTTPException(status_code=404, detail=f"Department '{dept_id}' intelligence not found.")
+    return intel
+
+
+@router.get("/schemes/{scheme_id}/intelligence", response_model=SchemeIntelligence)
+async def get_scheme_intelligence_endpoint(scheme_id: str):
+    """
+    Retrieve scheme intelligence (physical vs financial progress, audit findings,
+    citizen feedback, and predictive completion date).
+    """
+    intel = executive_intel_service.get_scheme_intelligence(scheme_id)
+    if not intel:
+        raise HTTPException(status_code=404, detail=f"Scheme '{scheme_id}' intelligence not found.")
+    return intel
+
+
+@router.post("/meetings/prepare", response_model=MeetingPreparationResponse)
+async def prepare_meeting_endpoint(payload: MeetingPreparationRequest):
+    """
+    Automatically generate an AI Pre-Meeting Briefing Strategy Dossier (agenda,
+    critical questions for the Hon'ble CM, decision options, media coverage, and assembly questions).
+    """
+    return executive_intel_service.prepare_meeting(payload.officer_id, payload.meeting_topic)
+
+
+@router.get("/decisions/{query_key}", response_model=ExecutiveDecisionSupportResponse)
+async def get_executive_decision_support_endpoint(query_key: str):
+    """
+    Resolve high-level executive queries (e.g. FOCUS_TODAY, FLOOD_PREPAREDNESS, CABINET_BRIEFING).
+    """
+    return executive_intel_service.resolve_decision_support(query_key)
+
