@@ -87,6 +87,21 @@ export interface FlagshipScheme {
   status: string;
 }
 
+export interface StalledProject {
+  id: string;
+  name_en: string;
+  name_ta: string;
+  department_en: string;
+  department_ta: string;
+  district_name_en: string;
+  estimated_cost_cr: number;
+  delay_days: number;
+  bottleneck_reason_en: string;
+  bottleneck_reason_ta: string;
+  action_required_en: string;
+  action_required_ta: string;
+}
+
 export interface Citation {
   source: string;
   ref: string;

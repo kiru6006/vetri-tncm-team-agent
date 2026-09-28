@@ -4,6 +4,11 @@ import { StateScoreGauge } from './components/StateScoreGauge';
 import { PriorityAlertsTicker } from './components/PriorityAlertsTicker';
 import { DistrictHeatmapGrid } from './components/DistrictHeatmapGrid';
 import { FlagshipSchemesTracker } from './components/FlagshipSchemesTracker';
+import { TamilNaduInteractiveMap } from './components/TamilNaduInteractiveMap';
+import { RevenueAnalyticsView } from './components/RevenueAnalyticsView';
+import { GrievanceSlaAnalytics } from './components/GrievanceSlaAnalytics';
+import { ChiefSecretaryCockpit } from './components/ChiefSecretaryCockpit';
+import { CollectorCommandView } from './components/CollectorCommandView';
 import { CopilotDrawer } from './components/CopilotDrawer';
 import { useAuthStore } from './stores/authStore';
 import {
@@ -15,19 +20,19 @@ import {
 } from './types';
 import {
   Sparkles,
-  Layers,
-  BarChart3,
-  ShieldCheck,
-  Zap,
-  TrendingUp,
-  AlertCircle,
+  LayoutDashboard,
+  MapPin,
+  IndianRupee,
+  MessageSquare,
+  Shield,
+  Building2,
   FileCheck2,
   X,
-  IndianRupee,
 } from 'lucide-react';
 
 export const App: React.FC = () => {
-  const { language, activeRole, user } = useAuthStore();
+  const { language, activeRole } = useAuthStore();
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'gis' | 'revenue' | 'grievance' | 'role_view'>('dashboard');
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null);
   const [notification, setNotification] = useState<string | null>(null);
@@ -131,43 +136,20 @@ export const App: React.FC = () => {
   const [schemes, setSchemes] = useState<FlagshipScheme[]>([]);
 
   useEffect(() => {
-    // Fetch live districts & schemes from FastAPI backend with fallback
     fetch('/api/v1/districts/')
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (data) setDistricts(data);
+        if (data && data.length > 0) setDistricts(data);
       })
       .catch(() => {});
 
     fetch('/api/v1/executive/flagship-schemes')
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (data) setSchemes(data);
+        if (data && data.length > 0) setSchemes(data);
       })
       .catch(() => {});
   }, []);
-
-  // Fallback data if backend is starting
-  useEffect(() => {
-    if (districts.length === 0) {
-      setDistricts([
-        { code: 'CHE', nameEn: 'Chennai', nameTa: 'சென்னை', headquartersEn: 'Chennai', headquartersTa: 'சென்னை', zone: 'North', latitude: 13.0827, longitude: 80.2707, population: 7088403, areaSqKm: 426, performanceScore: 92.4, scoreStatus: 'HEALTHY', collectorName: 'Rashmi Siddharth Zagade, IAS', pendingGrievances: 14, revenueAchievementPct: 104.2, healthIndex: 88.5, lawAndOrderIndex: 91.0 },
-        { code: 'CBE', nameEn: 'Coimbatore', nameTa: 'கோயம்புத்தூர்', headquartersEn: 'Coimbatore', headquartersTa: 'கோயம்புத்தூர்', zone: 'West', latitude: 11.0168, longitude: 76.9558, population: 3458045, areaSqKm: 4723, performanceScore: 91.8, scoreStatus: 'HEALTHY', collectorName: 'Kranthi Kumar Pati, IAS', pendingGrievances: 18, revenueAchievementPct: 105.1, healthIndex: 90.2, lawAndOrderIndex: 92.4 },
-        { code: 'MDU', nameEn: 'Madurai', nameTa: 'மதுரை', headquartersEn: 'Madurai', headquartersTa: 'மதுரை', zone: 'South', latitude: 9.9252, longitude: 78.1198, population: 3038252, areaSqKm: 3741, performanceScore: 86.5, scoreStatus: 'ATTENTION', collectorName: 'M. S. Sangeetha, IAS', pendingGrievances: 22, revenueAchievementPct: 98.4, healthIndex: 78.4, lawAndOrderIndex: 88.0 },
-        { code: 'TPR', nameEn: 'Tirupur', nameTa: 'திருப்பூர்', headquartersEn: 'Tirupur', headquartersTa: 'திருப்பூர்', zone: 'West', latitude: 11.1085, longitude: 77.3411, population: 2479052, areaSqKm: 5186, performanceScore: 83.2, scoreStatus: 'CRITICAL', collectorName: 'T. Christuraj, IAS', pendingGrievances: 42, revenueAchievementPct: 93.6, healthIndex: 86.1, lawAndOrderIndex: 89.2 },
-        { code: 'SLM', nameEn: 'Salem', nameTa: 'சேலம்', headquartersEn: 'Salem', headquartersTa: 'சேலம்', zone: 'West', latitude: 11.6643, longitude: 78.1460, population: 3482056, areaSqKm: 5245, performanceScore: 87.9, scoreStatus: 'ATTENTION', collectorName: 'R. Brindha Devi, IAS', pendingGrievances: 19, revenueAchievementPct: 101.4, healthIndex: 88.0, lawAndOrderIndex: 90.1 },
-        { code: 'TRZ', nameEn: 'Tiruchirappalli', nameTa: 'திருச்சிராப்பள்ளி', headquartersEn: 'Tiruchirappalli', headquartersTa: 'திருச்சிராப்பள்ளி', zone: 'Central', latitude: 10.7905, longitude: 78.7047, population: 2722290, areaSqKm: 4404, performanceScore: 89.1, scoreStatus: 'HEALTHY', collectorName: 'M. Pradeep Kumar, IAS', pendingGrievances: 15, revenueAchievementPct: 102.8, healthIndex: 89.4, lawAndOrderIndex: 91.5 },
-      ]);
-    }
-    if (schemes.length === 0) {
-      setSchemes([
-        { code: 'SCHEME_KMUT', nameEn: 'Kalaignar Magalir Urimai Thittam', nameTa: 'கலைஞர் மகளிர் உரிமைத் திட்டம்', budgetCr: 13722.0, beneficiariesCount: 11548290, saturationPercent: 99.8, status: 'EXCELLENT' },
-        { code: 'SCHEME_BREAKFAST', nameEn: "Chief Minister's Breakfast Scheme", nameTa: 'முதலமைச்சரின் காலை உணவுத் திட்டம்', budgetCr: 404.0, beneficiariesCount: 1850000, saturationPercent: 100.0, status: 'EXCELLENT' },
-        { code: 'SCHEME_PUDHUMAI_PENN', nameEn: 'Pudhumai Penn Scheme (Higher Ed)', nameTa: 'புதுமைப் பெண் திட்டம்', budgetCr: 370.0, beneficiariesCount: 482100, saturationPercent: 96.4, status: 'GOOD' },
-        { code: 'SCHEME_MTM', nameEn: 'Makkalai Thedi Maruthuvam (Healthcare)', nameTa: 'மக்களைத் தேடி மருத்துவம்', budgetCr: 250.0, beneficiariesCount: 10450000, saturationPercent: 104.5, status: 'EXCELLENT' },
-      ]);
-    }
-  }, [districts.length, schemes.length]);
 
   const handleExecuteDirective = (action: ActionRecommendation) => {
     setNotification(
@@ -180,12 +162,92 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#07090e] text-slate-100 flex flex-col selection:bg-amber-500/30">
-      {/* Executive Header Bar */}
       <ExecutiveHeader />
+
+      {/* Primary Executive Navigation Tabs */}
+      <nav className="w-full px-6 pt-3 bg-slate-950/70 border-b border-slate-800/80 sticky top-[57px] z-30 backdrop-blur-md">
+        <div className="max-w-[1720px] mx-auto flex items-center justify-between overflow-x-auto no-scrollbar gap-2 pb-2.5">
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => setActiveTab('dashboard')}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                activeTab === 'dashboard'
+                  ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/10'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <LayoutDashboard className="w-3.5 h-3.5" />
+              <span>{language === 'ta' ? 'தலைமைச் செயலக முகப்பு' : 'CM Cockpit'}</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('gis')}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                activeTab === 'gis'
+                  ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/10'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <MapPin className="w-3.5 h-3.5" />
+              <span>{language === 'ta' ? '38 மாவட்ட புவிசார் வரைபடம்' : '38-District GIS Map'}</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('revenue')}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                activeTab === 'revenue'
+                  ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/10'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <IndianRupee className="w-3.5 h-3.5" />
+              <span>{language === 'ta' ? 'வரி & வருவாய் பகுப்பாய்வு' : 'Revenue Intelligence'}</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('grievance')}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                activeTab === 'grievance'
+                  ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/10'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>{language === 'ta' ? 'முதல்வரின் முகவரி (மனுக்கள்)' : 'CM Helpline SLA'}</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('role_view')}
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                activeTab === 'role_view'
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-900'
+              }`}
+            >
+              {activeRole === 'CHIEF_SECRETARY' ? (
+                <>
+                  <Shield className="w-3.5 h-3.5 text-cyan-300" />
+                  <span>{language === 'ta' ? 'தலைமைச் செயலாளர் பார்வை' : 'Chief Secretary Command'}</span>
+                </>
+              ) : activeRole === 'DISTRICT_COLLECTOR' ? (
+                <>
+                  <Building2 className="w-3.5 h-3.5 text-emerald-300" />
+                  <span>{language === 'ta' ? 'மாவட்ட ஆட்சியர் மையம்' : 'Collectorate Command'}</span>
+                </>
+              ) : (
+                <>
+                  <Shield className="w-3.5 h-3.5 text-amber-300" />
+                  <span>{language === 'ta' ? 'நிர்வாகப் பார்வை' : 'Operational Command'}</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </nav>
 
       {/* Floating Action Notification Banner */}
       {notification && (
-        <div className="fixed top-20 right-6 z-50 p-4 rounded-xl glass-card border border-emerald-500/60 bg-emerald-950/80 text-emerald-200 shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-top-4">
+        <div className="fixed top-24 right-6 z-50 p-4 rounded-xl glass-card border border-emerald-500/60 bg-emerald-950/80 text-emerald-200 shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-top-4">
           <FileCheck2 className="w-5 h-5 text-emerald-400 shrink-0" />
           <div className="text-xs font-semibold">{notification}</div>
           <button
@@ -197,41 +259,76 @@ export const App: React.FC = () => {
         </div>
       )}
 
-      {/* Main Command Center Container */}
+      {/* Dynamic Content Views */}
       <main className="flex-1 p-6 space-y-6 max-w-[1720px] mx-auto w-full">
-        {/* Top Executive Row: State Health Index Gauge + AI Priority Feed */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-5">
-            <StateScoreGauge scorecard={scorecard} />
+        {activeTab === 'dashboard' && (
+          <div className="space-y-6 animate-in fade-in duration-200">
+            {/* Top Row: State Score Gauge & Priority Alerts */}
+            <section className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div className="lg:col-span-5">
+                <StateScoreGauge scorecard={scorecard} />
+              </div>
+              <div className="lg:col-span-7">
+                <PriorityAlertsTicker
+                  alerts={alerts}
+                  onTriggerAction={(alert) =>
+                    handleExecuteDirective({
+                      actionCode: `DIRECTIVE_${alert.districtCode}`,
+                      descriptionEn: alert.actionRecommendedEn,
+                      descriptionTa: alert.actionRecommendedTa,
+                      priority: 'HIGH',
+                      targetDepartment: alert.domain,
+                    })
+                  }
+                />
+              </div>
+            </section>
+
+            {/* Middle Row: 38 Districts Matrix */}
+            <section>
+              <DistrictHeatmapGrid
+                districts={districts}
+                onSelectDistrict={(d) => setSelectedDistrict(d)}
+              />
+            </section>
+
+            {/* Bottom Row: Flagship Welfare Schemes */}
+            <section>
+              <FlagshipSchemesTracker schemes={schemes} />
+            </section>
           </div>
-          <div className="lg:col-span-7">
-            <PriorityAlertsTicker
-              alerts={alerts}
-              onTriggerAction={(alert) =>
-                handleExecuteDirective({
-                  actionCode: `DIRECTIVE_${alert.districtCode}`,
-                  descriptionEn: alert.actionRecommendedEn,
-                  descriptionTa: alert.actionRecommendedTa,
-                  priority: 'HIGH',
-                  targetDepartment: alert.domain,
-                })
-              }
+        )}
+
+        {activeTab === 'gis' && (
+          <section className="animate-in fade-in duration-200">
+            <TamilNaduInteractiveMap
+              districts={districts}
+              onSelectDistrict={(d) => setSelectedDistrict(d)}
             />
-          </div>
-        </section>
+          </section>
+        )}
 
-        {/* Middle Row: 38 Districts Matrix */}
-        <section>
-          <DistrictHeatmapGrid
-            districts={districts}
-            onSelectDistrict={(d) => setSelectedDistrict(d)}
-          />
-        </section>
+        {activeTab === 'revenue' && (
+          <section className="animate-in fade-in duration-200">
+            <RevenueAnalyticsView />
+          </section>
+        )}
 
-        {/* Bottom Row: Flagship Welfare Schemes */}
-        <section>
-          <FlagshipSchemesTracker schemes={schemes} />
-        </section>
+        {activeTab === 'grievance' && (
+          <section className="animate-in fade-in duration-200">
+            <GrievanceSlaAnalytics />
+          </section>
+        )}
+
+        {activeTab === 'role_view' && (
+          <section className="animate-in fade-in duration-200">
+            {activeRole === 'DISTRICT_COLLECTOR' ? (
+              <CollectorCommandView />
+            ) : (
+              <ChiefSecretaryCockpit />
+            )}
+          </section>
+        )}
       </main>
 
       {/* District Detail Modal */}
@@ -261,7 +358,7 @@ export const App: React.FC = () => {
                 <div className="text-slate-100 font-semibold mt-1">{selectedDistrict.collectorName}</div>
               </div>
               <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="text-slate-400 text-[10px] uppercase font-bold">Performance Score</div>
+                <div className="text-slate-400 text-[10px] uppercase font-bold">Health Score</div>
                 <div className="text-emerald-400 font-mono font-bold text-base mt-1">
                   {selectedDistrict.performanceScore.toFixed(1)} / 100
                 </div>
@@ -310,7 +407,7 @@ export const App: React.FC = () => {
         <span className="w-2 h-2 rounded-full bg-emerald-900 animate-ping" />
       </button>
 
-      {/* AI Copilot Full Sliding Drawer */}
+      {/* AI Copilot Drawer */}
       <CopilotDrawer
         isOpen={copilotOpen}
         onClose={() => setCopilotOpen(false)}
