@@ -16,6 +16,7 @@ from app.api.v1.meetings import router as meetings_router
 from app.api.v1.knowledge import router as knowledge_router
 from app.api.v1.calendar import router as calendar_router
 from app.api.v1.grm import router as grm_router
+from app.api.v1.cmo_endpoints import router as cmo_router
 
 
 @asynccontextmanager
@@ -81,3 +82,4 @@ app.include_router(meetings_router, prefix=settings.API_V1_STR)
 app.include_router(knowledge_router, prefix=settings.API_V1_STR)
 app.include_router(calendar_router, prefix=settings.API_V1_STR)
 app.include_router(grm_router, prefix=settings.API_V1_STR)
+app.include_router(cmo_router, prefix=settings.API_V1_STR)
