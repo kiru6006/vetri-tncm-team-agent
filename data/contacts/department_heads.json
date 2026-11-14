@@ -1,0 +1,30 @@
+[
+  {
+    "contact_id": "dept-ind-ic",
+    "category": "DEPT_HEAD",
+    "full_name": "L. Nirmalraj",
+    "designation": "Industries Commissioner and Director of Industries and Commerce",
+    "service": "IAS",
+    "department": "Industries",
+    "office_email": "icdic@tn.gov.in",
+    "office_phone": "22505013",
+    "source_url": "https://www.tn.gov.in/industries-contact",
+    "source_title": "TN Govt — Industries Contact",
+    "verified_on": "2026-11-14",
+    "verification_status": "VERIFIED_CURRENT"
+  },
+  {
+    "contact_id": "dept-labour-comm",
+    "category": "DEPT_HEAD",
+    "full_name": "M. Vallalar",
+    "designation": "Commissioner of Labour",
+    "service": "IAS",
+    "department": "Labour",
+    "office_email": "com.tnlabour@nic.in",
+    "office_phone": null,
+    "source_url": "https://labour.tn.gov.in/contact",
+    "source_title": "TN Labour Dept — Contact",
+    "verified_on": "2026-11-14",
+    "verification_status": "VERIFIED_CURRENT"
+  }
+]

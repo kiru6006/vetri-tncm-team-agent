@@ -1,0 +1,50 @@
+[
+  {
+    "source_id": "src-tn-gazette-2026",
+    "url": "https://www.tn.gov.in/gazette/2026/256",
+    "title": "Tamil Nadu Government Gazette Extraordinary No. 256",
+    "authority": "Government of Tamil Nadu, Public Department",
+    "last_checked": "2026-11-14",
+    "notes": "Official gazette notification for Council of Ministers portfolios."
+  },
+  {
+    "source_id": "src-tn-cs-portal",
+    "url": "https://www.tn.gov.in/cs",
+    "title": "Chief Secretary to Government Portal",
+    "authority": "Chief Secretary's Office, Secretariat",
+    "last_checked": "2026-11-14",
+    "notes": "Verified institutional coordinates."
+  },
+  {
+    "source_id": "src-tn-police-portal",
+    "url": "https://www.tnpolice.gov.in/",
+    "title": "Tamil Nadu Police Official Portal",
+    "authority": "Director General of Police, Tamil Nadu",
+    "last_checked": "2026-11-14",
+    "notes": "DGP office directory."
+  },
+  {
+    "source_id": "src-district-nic",
+    "url": "https://india.gov.in/",
+    "title": "National Informatics Centre (NIC) District Portals",
+    "authority": "Ministry of Electronics and Information Technology / Government of Tamil Nadu",
+    "last_checked": "2026-11-14",
+    "notes": "District administration official Who's Who and directory pages across 38 districts."
+  },
+  {
+    "source_id": "src-tnurbantree",
+    "url": "https://tnurbantree.tn.gov.in/",
+    "title": "Tamil Nadu Urban Local Bodies Portal",
+    "authority": "Directorate of Municipal Administration",
+    "last_checked": "2026-11-14",
+    "notes": "Official municipal corporations and municipalities contact directories."
+  },
+  {
+    "source_id": "src-tnsdma",
+    "url": "https://tnsdma.tn.gov.in/",
+    "title": "Tamil Nadu State Disaster Management Authority",
+    "authority": "Revenue & Disaster Management Department",
+    "last_checked": "2026-11-14",
+    "notes": "Disaster management control rooms and nodal officers."
+  }
+]
