@@ -82,3 +82,4 @@ export interface DirectorySearchResult {
   evidence: SourceEvidence;
   active_assignments_count: number;
 }
+

@@ -38,3 +38,4 @@ Entities are now separated into 6 distinct schema tables:
 4. **Department**: Institutional department hierarchy and official portals.
 5. **Source Evidence**: Immutable provenance records (URL, publication date, retrieval date, verification authority).
 6. **Work Assignment**: Projects and schemes assigned to an `Office` and traceable through officer transfers.
+

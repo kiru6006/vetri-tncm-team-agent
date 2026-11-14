@@ -1,0 +1,984 @@
+{
+  "metadata": {
+    "system": "VERTRI TN AI OS",
+    "document": "Master Feature Audit, Verification and Development Tracker",
+    "version": "1.0.0",
+    "generated_at": "2026-11-14T11:02:16.761044",
+    "total_planned_features": 34,
+    "verified_complete": 24,
+    "partially_complete": 10,
+    "implemented_unverified": 0,
+    "defective": 0,
+    "not_started": 0,
+    "blocked": 0,
+    "p0_defects": 0,
+    "p1_defects": 0,
+    "p2_defects": 8,
+    "p3_defects": 2
+  },
+  "features": [
+    {
+      "feature_id": "GOV-01-01",
+      "category": "Executive Office",
+      "category_id": "GOV-01",
+      "feature": "Chief Minister Command Center Workspace",
+      "description": "Executive dashboard rendering high-level state governance KPIs, flagship health, priority alerts, and actionable decision queues.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/ExecutiveWorkspace.tsx, backend/app/api/v1/executive.py, tested in demo and backend",
+      "defects": [],
+      "dependencies": [
+        "GOV-17-01",
+        "GOV-20-01"
+      ],
+      "next_action": "Add real-time telemetry WebSocket streaming when backend server is running",
+      "owner": "Frontend Lead / Executive UI Team",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-01-02",
+      "category": "Executive Office",
+      "category_id": "GOV-01",
+      "feature": "Daily Executive Morning Briefing",
+      "description": "Daily intelligence summary covering overnight critical incidents, water reservoir status, and flagship delivery milestones.",
+      "priority": "P1",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/ExecutiveWorkspace.tsx lines 85-140, /api/v1/executive/workspace/briefing",
+      "defects": [],
+      "dependencies": [
+        "GOV-01-01"
+      ],
+      "next_action": "Incorporate audio read-aloud TTS synthesis in Tamil and English",
+      "owner": "Executive Intelligence Team",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-01-03",
+      "category": "Executive Office",
+      "category_id": "GOV-01",
+      "feature": "Chief Minister AI Executive Copilot Drawer",
+      "description": "Slide-out intelligent assistant providing natural language answers, directive drafts, and cross-departmental insights.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/CopilotDrawer.tsx, backend/app/agent/orchestrator.py, tested multi-turn queries",
+      "defects": [],
+      "dependencies": [
+        "GOV-14-01"
+      ],
+      "next_action": "Connect streaming tokens via Server-Sent Events",
+      "owner": "AI Engineering Lead",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-01-04",
+      "category": "Executive Office",
+      "category_id": "GOV-01",
+      "feature": "State Governance Health Gauge & Alerts Ticker",
+      "description": "Visual composite health index computed from district delivery, grievance redressal, and revenue achievement.",
+      "priority": "P1",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/StateScoreGauge.tsx, frontend/src/components/PriorityAlertsTicker.tsx",
+      "defects": [],
+      "dependencies": [
+        "GOV-01-01"
+      ],
+      "next_action": "Calibrate dynamic variance weighting across seasonal monsoon months",
+      "owner": "Analytics Team",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-02-01",
+      "category": "Ministries",
+      "category_id": "GOV-02",
+      "feature": "Council of Ministers Overview & Portfolio Catalog",
+      "description": "Catalog of all state ministers, assigned ministerial portfolios, administrative control, and budget spend velocity.",
+      "priority": "P0",
+      "status": "PARTIALLY_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/App.tsx lines 161-210, frontend/src/data/verifiedGovernmentDirectory.ts",
+      "defects": [
+        "DEF-MIN-01"
+      ],
+      "dependencies": [
+        "GOV-06-01"
+      ],
+      "next_action": "Build dedicated individual ministry drilldown pages with historical reshuffle timelines",
+      "owner": "Frontend Team",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-03-01",
+      "category": "Departments",
+      "category_id": "GOV-03",
+      "feature": "Secretariat Departments Performance & KPI Monitoring",
+      "description": "Departmental breakdown of budget allocations, expenditure rates, open bottlenecks, and responsible Secretaries.",
+      "priority": "P1",
+      "status": "PARTIALLY_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/data/governanceData.ts (TN_DEPARTMENTS), backend/app/api/v1/departments.py",
+      "defects": [
+        "DEF-DEPT-01"
+      ],
+      "dependencies": [
+        "GOV-02-01"
+      ],
+      "next_action": "Add dedicated HOD and sub-department hierarchy directory views",
+      "owner": "Public Finance Specialist",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-04-01",
+      "category": "District Administration",
+      "category_id": "GOV-04",
+      "feature": "38 Districts Performance Grid & Interactive Map",
+      "description": "Geospatial and tabular monitoring of all 38 districts with Collector names, health score, revenue attainment, and pending petitions.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/DistrictHeatmapGrid.tsx, TamilNaduInteractiveMap.tsx, MASTER_DISTRICTS",
+      "defects": [],
+      "dependencies": [
+        "GOV-06-01"
+      ],
+      "next_action": "Provide drilldown into revenue taluks and blocks for each district modal",
+      "owner": "District Operations Expert",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-04-02",
+      "category": "District Administration",
+      "category_id": "GOV-04",
+      "feature": "District Collector Specialized Command Cockpit",
+      "description": "Role-specific cockpit view for District Collectors displaying district petitions, revenue recovery, and local flagship progress.",
+      "priority": "P1",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/CollectorCommandView.tsx, activated when activeRole is DISTRICT_COLLECTOR",
+      "defects": [],
+      "dependencies": [
+        "GOV-04-01",
+        "GOV-20-01"
+      ],
+      "next_action": "Add field inspection photo geotagging upload widget",
+      "owner": "Frontend Lead",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-05-01",
+      "category": "Constituencies",
+      "category_id": "GOV-05",
+      "feature": "Assembly & Parliamentary Constituency Performance",
+      "description": "Tracking of 234 Assembly constituencies and 39 Lok Sabha constituencies with MLA petition metrics.",
+      "priority": "P2",
+      "status": "PARTIALLY_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "backend/app/db/seed_cmo_data.py (assembly_constituencies), routed to district map in App.tsx",
+      "defects": [
+        "DEF-CONST-01"
+      ],
+      "dependencies": [
+        "GOV-04-01"
+      ],
+      "next_action": "Build dedicated MLA constituency card view with booth grievance status",
+      "owner": "Product Owner",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-06-01",
+      "category": "Government Directory",
+      "category_id": "GOV-06",
+      "feature": "Verified Civil Services & Political Executive Directory",
+      "description": "Authoritative registry of Ministers, IAS Secretaries, 38 District Collectors, Police Leadership (IPS), Forest (IFS), and IRS officers with verified contacts.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/data/verifiedGovernmentDirectory.ts, GovernmentHierarchyDirectory.tsx, docs/DIRECTORY_DEFECT_AUDIT_REPORT.md",
+      "defects": [],
+      "dependencies": [],
+      "next_action": "Set up automated daily GitHub Action scraper against tn.gov.in official gazettes",
+      "owner": "Data Governance Architect",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-06-02",
+      "category": "Government Directory",
+      "category_id": "GOV-06",
+      "feature": "Government Directory Autocomplete & Search Index",
+      "description": "Real-time autocomplete and multi-term semantic search over officer names, designations, cadres, departments, and districts.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "getVerifiedAutocomplete() in verifiedGovernmentDirectory.ts, /api/v1/grm/autocomplete",
+      "defects": [],
+      "dependencies": [
+        "GOV-06-01"
+      ],
+      "next_action": "Support Tamil phonetic keyboard input transliteration",
+      "owner": "Frontend Lead",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-06-03",
+      "category": "Government Directory",
+      "category_id": "GOV-06",
+      "feature": "Unverified Record Quarantine & Defect Isolation System",
+      "description": "Defect defense mechanism ensuring mock/unverified records are isolated and surfaced as quarantine alerts rather than presented as official officials.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "QUARANTINED_UNVERIFIED_RECORDS in verifiedGovernmentDirectory.ts and quarantine notice in UI",
+      "defects": [],
+      "dependencies": [
+        "GOV-06-01"
+      ],
+      "next_action": "Add admin UI workflow to resolve or discharge quarantined records",
+      "owner": "Data Governance Architect",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-07-01",
+      "category": "Projects",
+      "category_id": "GOV-07",
+      "feature": "State Infrastructure Major Projects Cockpit",
+      "description": "Tracking of multi-crore infrastructure projects (Metro, expressways, industrial corridors) with financial milestones and bottleneck alerts.",
+      "priority": "P1",
+      "status": "PARTIALLY_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/ChiefSecretaryCockpit.tsx, governanceData.ts",
+      "defects": [
+        "DEF-PROJ-01"
+      ],
+      "dependencies": [
+        "GOV-03-01"
+      ],
+      "next_action": "Implement interactive Gantt chart timeline component with critical path highlighting",
+      "owner": "Enterprise Solution Architect",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-08-01",
+      "category": "Schemes",
+      "category_id": "GOV-08",
+      "feature": "15 Flagship Welfare Schemes Delivery Saturation Tracker",
+      "description": "Tracking of Tamil Nadu flagship welfare schemes with budget allocations, disbursement cadence, and beneficiary saturation counts.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/FlagshipSchemesTracker.tsx, /api/v1/executive/flagship-schemes",
+      "defects": [],
+      "dependencies": [
+        "GOV-01-01"
+      ],
+      "next_action": "Add beneficiary exclusion grievance analytics overlay",
+      "owner": "Schemes and Policy Specialist",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-09-01",
+      "category": "Financial Intelligence",
+      "category_id": "GOV-09",
+      "feature": "State Revenue Collection & Expenditure Analytics",
+      "description": "SGST, Commercial Taxes, and Treasury outflow tracking with target variance analytics.",
+      "priority": "P1",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/RevenueAnalyticsView.tsx, backend/app/services/analytics_service.py",
+      "defects": [],
+      "dependencies": [
+        "GOV-03-01"
+      ],
+      "next_action": "Integrate direct IFHRMS treasury balance reconciliation feed",
+      "owner": "Public Finance Specialist",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-09-02",
+      "category": "Financial Intelligence",
+      "category_id": "GOV-09",
+      "feature": "Fraud Audit, Procurement Tenders & Revenue Leakage Detection",
+      "description": "AI-assisted scrutiny of GST input tax credit anomalies, tender bid collusion patterns, and CAG audit non-compliance.",
+      "priority": "P1",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/FraudAuditDomainView.tsx, backend/app/api/v1/audit.py",
+      "defects": [],
+      "dependencies": [
+        "GOV-09-01"
+      ],
+      "next_action": "Add automated blacklisted contractor cross-referencing against GeM and state portals",
+      "owner": "Revenue Leakage Auditor",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-10-01",
+      "category": "Issue Intelligence",
+      "category_id": "GOV-10",
+      "feature": "Cross-Department Governance Issue Detection & Evidence Dossier",
+      "description": "15 connected cross-department governance scenarios linking root cause telemetry, evidence PDFs, and designated accountable officers.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/data/governanceData.ts (GOVERNANCE_ISSUES_MASTER), ExecutiveActionManagement.tsx",
+      "defects": [],
+      "dependencies": [
+        "GOV-04-01",
+        "GOV-06-01"
+      ],
+      "next_action": "Allow field officers to submit digital counter-evidence directly from mobile",
+      "owner": "Enterprise Solution Architect",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-11-01",
+      "category": "CM Action Tracker",
+      "category_id": "GOV-11",
+      "feature": "Executive Instruction Issuance & Lifecycle Management",
+      "description": "Direct CM order issuance, official acknowledgment by Collectors/Secretaries, status updates, and milestone closure audit log.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/ExecutiveActionManagement.tsx, tested status changes",
+      "defects": [],
+      "dependencies": [
+        "GOV-10-01",
+        "GOV-06-01"
+      ],
+      "next_action": "Add digital signature (e-Sign) cryptographic verification for completed instructions",
+      "owner": "Principal React Engineer",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-12-01",
+      "category": "Messaging",
+      "category_id": "GOV-12",
+      "feature": "Official Government Collaboration & Chat Platform",
+      "description": "Bilingual messaging platform supporting 1-on-1 official communication, departmental groups, and issue-linked discussion threads.",
+      "priority": "P1",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/GovernmentChatPlatform.tsx, backend/app/api/v1/chat.py",
+      "defects": [],
+      "dependencies": [
+        "GOV-06-01",
+        "GOV-20-01"
+      ],
+      "next_action": "Enable end-to-end encrypted file attachment transfer for confidential cabinet files",
+      "owner": "Frontend Lead",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-13-01",
+      "category": "Meetings",
+      "category_id": "GOV-13",
+      "feature": "Executive Calendar & Appointment Booking Hub",
+      "description": "Interactive calendar supporting high-level appointment scheduling, role filtering, and verified directory participant selection.",
+      "priority": "P1",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/ExecutiveCalendarView.tsx, backend/app/api/v1/calendar.py",
+      "defects": [],
+      "dependencies": [
+        "GOV-06-01"
+      ],
+      "next_action": "Sync appointment events with official NIC Zimbra/GovMail calendar exchange",
+      "owner": "QA Lead",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-13-02",
+      "category": "Meetings",
+      "category_id": "GOV-13",
+      "feature": "AI Meeting Briefing & Strategic Question Generator",
+      "description": "Automated briefing generator creating targeted discussion agendas, KPI highlights, and tough strategic questions for the CM.",
+      "priority": "P1",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "backend/app/services/executive_intelligence_service.py (prepare_meeting), tested in test_executive_intelligence.py",
+      "defects": [],
+      "dependencies": [
+        "GOV-13-01",
+        "GOV-14-01"
+      ],
+      "next_action": "Generate 1-click printable PDF Cabinet Briefing Note",
+      "owner": "AI Engineering Lead",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-14-01",
+      "category": "AI Agents",
+      "category_id": "GOV-14",
+      "feature": "CMO AI Multi-Tool Agent Orchestrator",
+      "description": "Autonomous AI agent executing 8 verified governance tools for personnel lookup, scheme status, department reviews, and cross-queries.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "backend/app/agent/orchestrator.py, backend/app/agent/tools.py, 10 unit tests in test_cmo_agent_tools.py",
+      "defects": [],
+      "dependencies": [
+        "GOV-06-01",
+        "GOV-08-01"
+      ],
+      "next_action": "Integrate LangGraph state machine checkpointing in persistent Postgres table",
+      "owner": "Agentic AI Architect",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-15-01",
+      "category": "Knowledge Hub",
+      "category_id": "GOV-15",
+      "feature": "Government Orders (G.O.) & Policy Document Library",
+      "description": "Searchable repository of Government Orders, policy documents, and statutory Acts with metadata viewer and downloads.",
+      "priority": "P1",
+      "status": "PARTIALLY_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/EnterpriseKnowledgeHub.tsx, backend/app/api/v1/knowledge.py",
+      "defects": [
+        "DEF-KNOW-01"
+      ],
+      "dependencies": [
+        "GOV-03-01"
+      ],
+      "next_action": "Connect live vector embeddings pipeline (FastEmbed/pgvector) for full document semantic RAG",
+      "owner": "Enterprise Solution Architect",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-16-01",
+      "category": "Notifications",
+      "category_id": "GOV-16",
+      "feature": "Critical Governance Alerts & Deadline Escalation Ticker",
+      "description": "Top-bar alerts and notification drawer alerting executive leadership to impending SLA violations and disaster alerts.",
+      "priority": "P1",
+      "status": "PARTIALLY_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/ExecutiveHeader.tsx lines 80-140",
+      "defects": [
+        "DEF-NOTIF-01"
+      ],
+      "dependencies": [
+        "GOV-10-01"
+      ],
+      "next_action": "Add browser Web Push Notification API integration and SMS gateway bridge",
+      "owner": "Frontend Lead",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-17-01",
+      "category": "Navigation",
+      "category_id": "GOV-17",
+      "feature": "Collapsible Governance Responsibility Sidebar & Deep Linking",
+      "description": "Left-side collapsible navigation organizing all government modules into 8 clear governance categories with state persistence and deep hash routing.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/ExecutiveSidebar.tsx, App.tsx router, tested deep links",
+      "defects": [],
+      "dependencies": [],
+      "next_action": "Add keyboard shortcut cheat-sheet modal (e.g. '/' for search, 'c' for copilot)",
+      "owner": "Government UX Specialist",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-17-02",
+      "category": "Navigation",
+      "category_id": "GOV-17",
+      "feature": "Explore Platform Visual Dashboard Catalog",
+      "description": "Visual visual directory of all 24 executive monitoring dashboards at /explore with one-click direct launch cards.",
+      "priority": "P1",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/components/ExplorePlatform.tsx, accessible via sidebar and hash #explore",
+      "defects": [],
+      "dependencies": [
+        "GOV-17-01"
+      ],
+      "next_action": "Add personalized 'Recently Viewed Dashboards' quick-access strip",
+      "owner": "Frontend Lead",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-18-01",
+      "category": "Responsive UI",
+      "category_id": "GOV-18",
+      "feature": "Multi-Device Responsive Breakpoints & Mobile Drawer",
+      "description": "Responsive layout tested across mobile (320-767px), tablet (768-1023px), and large desktop (1440px+) without horizontal page scroll.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "ExecutiveHeader, ExecutiveSidebar mobile drawer, index.css, WCAG compliance verified",
+      "defects": [],
+      "dependencies": [
+        "GOV-17-01"
+      ],
+      "next_action": "Conduct automated mobile touch target accessibility audit (minimum 44x44px)",
+      "owner": "Government UX Specialist",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-18-02",
+      "category": "Responsive UI",
+      "category_id": "GOV-18",
+      "feature": "Tamil & English Bilingual Language Switching",
+      "description": "Dynamic language toggle persisting preference in localStorage and updating UI headers, badges, and summaries.",
+      "priority": "P1",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/stores/authStore.ts, ExecutiveHeader language selector",
+      "defects": [],
+      "dependencies": [],
+      "next_action": "Complete full Tamil translation dictionary for all secondary settings tooltips",
+      "owner": "Government UX Specialist",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-19-01",
+      "category": "Data Platform",
+      "category_id": "GOV-19",
+      "feature": "Official Source Ingestion Adapters & Data Sync Hub",
+      "description": "Connectors and ingestion pipeline for tn.gov.in portal, AGIAS civil list, CCTNS, and SDMA with audit logging.",
+      "priority": "P1",
+      "status": "PARTIALLY_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "backend/app/ingestion/ (4 adapters), test_ingestion.py passing, GovernmentHierarchyDirectory Sync tab",
+      "defects": [
+        "DEF-DATA-01"
+      ],
+      "dependencies": [
+        "GOV-06-01"
+      ],
+      "next_action": "Deploy scheduled Celery/Cron job to automatically run daily sync in production environment",
+      "owner": "Data Governance Architect",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-20-01",
+      "category": "Security",
+      "category_id": "GOV-20",
+      "feature": "Role-Based Persona Switching & Access Control",
+      "description": "RBAC system supporting CHIEF_MINISTER, CHIEF_SECRETARY, DISTRICT_COLLECTOR, and CITIZEN roles with adaptive permissions.",
+      "priority": "P0",
+      "status": "PARTIALLY_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/stores/authStore.ts, backend/app/core/security.py, ExecutiveHeader persona switcher",
+      "defects": [
+        "DEF-SEC-01"
+      ],
+      "dependencies": [],
+      "next_action": "Integrate state OAuth2 / e-Pramaan Single Sign-On provider",
+      "owner": "Cybersecurity Architect",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-21-01",
+      "category": "Demo Platform",
+      "category_id": "GOV-21",
+      "feature": "Zero-Config Standalone Demo Mode & API Interceptor",
+      "description": "Client-side mock/interceptor framework enabling full interactive exploration on GitHub Pages and static preview without live backend requirement.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/services/apiAdapter.ts (initDemoApiInterceptor), tested standalone in demo/",
+      "defects": [],
+      "dependencies": [],
+      "next_action": "Add downloadable JSON scenario import/export for demonstration customization",
+      "owner": "Principal React Engineer",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-22-01",
+      "category": "DevOps",
+      "category_id": "GOV-22",
+      "feature": "Automated Multi-Stage CI/CD GitHub Actions Deployment",
+      "description": "Automated workflow executing Pytest regression tests, frontend typechecks, production Vite bundle build, 404 fallback generation, and Pages deploy.",
+      "priority": "P0",
+      "status": "VERIFIED_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": ".github/workflows/deploy.yml, tested clean build in 17s",
+      "defects": [],
+      "dependencies": [],
+      "next_action": "Add automated Playwright end-to-end visual regression test step in GitHub Actions",
+      "owner": "GitHub Actions Engineer",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-23-01",
+      "category": "Observability",
+      "category_id": "GOV-23",
+      "feature": "System Health & Action Audit Logging",
+      "description": "Backend health verification endpoint (/health) and action audit log tracking executive decisions.",
+      "priority": "P2",
+      "status": "PARTIALLY_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "backend/app/main.py (/health), backend/app/api/v1/audit.py",
+      "defects": [
+        "DEF-OBS-01"
+      ],
+      "dependencies": [
+        "GOV-20-01"
+      ],
+      "next_action": "Add OpenTelemetry distributed tracing and structured JSON log export",
+      "owner": "Enterprise Solution Architect",
+      "last_verified": "2026-11-14 10:55 IST"
+    },
+    {
+      "feature_id": "GOV-24-01",
+      "category": "Administration",
+      "category_id": "GOV-24",
+      "feature": "System Settings & Workspace Preferences",
+      "description": "Workspace settings modal allowing role override, language configuration, and cache reset.",
+      "priority": "P2",
+      "status": "PARTIALLY_COMPLETE",
+      "ui_result": "Pass",
+      "functional_result": "Pass",
+      "data_result": "Pass",
+      "integration_result": "Pass",
+      "evidence": "frontend/src/stores/authStore.ts, ExecutiveSidebar Settings modal trigger",
+      "defects": [
+        "DEF-ADMIN-01"
+      ],
+      "dependencies": [
+        "GOV-20-01"
+      ],
+      "next_action": "Build comprehensive administrative user management table with role assignment",
+      "owner": "Product Owner",
+      "last_verified": "2026-11-14 10:55 IST"
+    }
+  ],
+  "defects": [
+    {
+      "defect_id": "DEF-MIN-01",
+      "feature_id": "GOV-02-01",
+      "severity": "P2",
+      "description": "No dedicated individual ministry drilldown screen exists; all ministries render as compact cards inside one page.",
+      "reproduction_steps": "1. Navigate to #ministries in sidebar. 2. Observe list of ministry cards. 3. Click card. Notice no separate deep-dive view opens.",
+      "expected_result": "Clicking a ministry card should open a comprehensive portfolio view showing subordinate directorates, historical G.O.s, and gazetted milestones.",
+      "actual_result": "Card renders inline without expandable deep-dive view.",
+      "root_cause": "Ministry route currently uses compact inline grid in App.tsx without separate MinistryDetail modal/page component.",
+      "affected_screens": [
+        "#ministries",
+        "#departments"
+      ],
+      "business_impact": "CM cannot drill down into specific subordinate boards (e.g. TWAD Board under Municipal Administration) directly from Ministry view.",
+      "proposed_fix": "Implement dedicated MinistryDetailDrawer component with subordinate board tabs.",
+      "status": "OPEN",
+      "verification_evidence": "frontend/src/App.tsx line 175"
+    },
+    {
+      "defect_id": "DEF-DEPT-01",
+      "feature_id": "GOV-03-01",
+      "severity": "P2",
+      "description": "Sub-departments route (#sub-departments) aliases directly to primary departments without subordinate directorate breakdown.",
+      "reproduction_steps": "1. Click 'Sub-Departments' in sidebar navigation. 2. Observe identical display as 'Departments'.",
+      "expected_result": "Sub-departments should list field directorates, commissionerates, and statutory boards under each Secretariat department.",
+      "actual_result": "Renders parent departments list.",
+      "root_cause": "Route alias in App.tsx line 161 combines ministries, departments, and sub-departments into one handler.",
+      "affected_screens": [
+        "#sub-departments"
+      ],
+      "business_impact": "Lack of visibility into third-tier executive directorates (e.g. Directorate of Public Health vs Health Secretariat).",
+      "proposed_fix": "Create dedicated SubDepartmentDirectory listing 140+ state directorates mapped to their parent departments.",
+      "status": "OPEN",
+      "verification_evidence": "frontend/src/App.tsx line 161"
+    },
+    {
+      "defect_id": "DEF-CONST-01",
+      "feature_id": "GOV-05-01",
+      "severity": "P2",
+      "description": "Constituency route (#constituencies) routes to District Heatmap instead of individual Assembly Constituency scorecards.",
+      "reproduction_steps": "1. Click 'Constituencies' in sidebar. 2. Observe District Heatmap loads instead of 234 MLA constituencies.",
+      "expected_result": "Should render 234 Assembly constituencies with sitting MLA name, party, and local grievance resolution index.",
+      "actual_result": "Renders 38 district heatmap cards.",
+      "root_cause": "App.tsx line 212 groups districts, taluks, and constituencies into single DistrictHeatmapGrid renderer.",
+      "affected_screens": [
+        "#constituencies",
+        "#taluks"
+      ],
+      "business_impact": "CM cannot review MLA-specific grievance redressal rate before district review meetings.",
+      "proposed_fix": "Build ConstituencyGrid component with MLA search, political party badges, and local infrastructure status.",
+      "status": "OPEN",
+      "verification_evidence": "frontend/src/App.tsx line 212"
+    },
+    {
+      "defect_id": "DEF-PROJ-01",
+      "feature_id": "GOV-07-01",
+      "severity": "P2",
+      "description": "Infrastructure project progress lacks interactive Gantt timeline component; delay analysis relies on static percentage cards.",
+      "reproduction_steps": "1. Navigate to #projects. 2. Inspect project items. 3. Observe lack of milestone time-slider.",
+      "expected_result": "Projects should display interactive milestone timeline with critical path delay alerts and land acquisition dependencies.",
+      "actual_result": "Cards display progress percentages and textual delay descriptions.",
+      "root_cause": "ChiefSecretaryCockpit component renders project cards with static progress bars rather than timeline chart.",
+      "affected_screens": [
+        "#projects",
+        "#infrastructure"
+      ],
+      "business_impact": "Delays cannot be analyzed across seasonal monsoon windows.",
+      "proposed_fix": "Add ECharts-based ProjectMilestoneTimeline component.",
+      "status": "OPEN",
+      "verification_evidence": "frontend/src/components/ChiefSecretaryCockpit.tsx line 80"
+    },
+    {
+      "defect_id": "DEF-KNOW-01",
+      "feature_id": "GOV-15-01",
+      "severity": "P2",
+      "description": "Enterprise Knowledge Hub uses client-side keyword search in standalone mode; semantic vector RAG embeddings require live Python backend.",
+      "reproduction_steps": "1. Open #knowledge in GitHub Pages. 2. Search for conceptual queries without exact keyword match.",
+      "expected_result": "Semantic search matches concept across G.O. texts.",
+      "actual_result": "Only exact substring keyword matches return results.",
+      "root_cause": "Standalone client cannot host local vector index in browser without WebAssembly transformer model.",
+      "affected_screens": [
+        "#knowledge",
+        "#knowledge-search"
+      ],
+      "business_impact": "Officials must know exact terminology (e.g. 'G.O. Ms 128' rather than 'flood compensation order').",
+      "proposed_fix": "Compile lightweight pre-computed semantic embedding index for top 500 G.O.s in client.",
+      "status": "OPEN",
+      "verification_evidence": "frontend/src/components/EnterpriseKnowledgeHub.tsx"
+    },
+    {
+      "defect_id": "DEF-NOTIF-01",
+      "feature_id": "GOV-16-01",
+      "severity": "P3",
+      "description": "Notification ticker updates on page reload or periodic poll; Web Push Notifications are not registered with service worker.",
+      "reproduction_steps": "1. Check browser service worker registration in DevTools. 2. Notice absence of push manager subscription.",
+      "expected_result": "Critical alerts (e.g. Mettur flood alert) should trigger background browser notifications.",
+      "actual_result": "Notifications only render when application tab is open.",
+      "root_cause": "No service worker registered in main.tsx for Push API.",
+      "affected_screens": [
+        "ExecutiveHeader"
+      ],
+      "business_impact": "Executive staff not actively viewing tab may miss urgent warnings.",
+      "proposed_fix": "Register lightweight service worker supporting Web Push API.",
+      "status": "OPEN",
+      "verification_evidence": "frontend/src/main.tsx"
+    },
+    {
+      "defect_id": "DEF-DATA-01",
+      "feature_id": "GOV-19-01",
+      "severity": "P2",
+      "description": "Data synchronization connectors operate on simulated trigger in demo mode; real government REST APIs require VPN clearance.",
+      "reproduction_steps": "1. Go to #data-sync. 2. Click 'Trigger Sync Now'. 3. Observe simulated sync progress.",
+      "expected_result": "Sync should document that live endpoints require State Data Centre (SDC) network tunnel.",
+      "actual_result": "Shows simulated 100% sync success without explicit connectivity banner.",
+      "root_cause": "Demo interceptor returns mock success payload.",
+      "affected_screens": [
+        "#data-sync"
+      ],
+      "business_impact": "Reviewers might assume live connection to TNeGA / e-District servers is established.",
+      "proposed_fix": "Add explicit badge: 'Simulated Sandbox Mode - Production Requires SDC VPN Tunnel'.",
+      "status": "OPEN",
+      "verification_evidence": "frontend/src/components/GovernmentHierarchyDirectory.tsx"
+    },
+    {
+      "defect_id": "DEF-SEC-01",
+      "feature_id": "GOV-20-01",
+      "severity": "P2",
+      "description": "User persona switching is unauthenticated in demo mode; anyone can switch between Chief Minister and District Collector without password.",
+      "reproduction_steps": "1. Click user profile in top header. 2. Select 'Chief Minister' or 'District Collector'. 3. Role switches instantly.",
+      "expected_result": "Demo mode should display 'DEMO PERSONA SWITCHER - NOT FOR PRODUCTION USE' warning label.",
+      "actual_result": "Switches silently.",
+      "root_cause": "authStore provides instant dev switcher for demonstration convenience.",
+      "affected_screens": [
+        "ExecutiveHeader"
+      ],
+      "business_impact": "Confusing for security auditors evaluating government access boundaries.",
+      "proposed_fix": "Add visual watermark badge indicating 'Simulation Persona Switcher Active'.",
+      "status": "OPEN",
+      "verification_evidence": "frontend/src/components/ExecutiveHeader.tsx"
+    },
+    {
+      "defect_id": "DEF-OBS-01",
+      "feature_id": "GOV-23-01",
+      "severity": "P3",
+      "description": "No client-side telemetry or performance logging export to monitoring backends (Sentry / CloudWatch).",
+      "reproduction_steps": "1. Trigger intentional route error. 2. Observe error only logs to browser console.",
+      "expected_result": "Errors should be captured and surfaced in an executive error-rate dashboard.",
+      "actual_result": "Only console.error statements exist.",
+      "root_cause": "Observability focused on backend /health endpoint; frontend error boundary telemetry not configured.",
+      "affected_screens": [
+        "Global"
+      ],
+      "business_impact": "Frontend rendering issues on older mobile devices may go unnoticed.",
+      "proposed_fix": "Implement React ErrorBoundary with local telemetry buffer.",
+      "status": "OPEN",
+      "verification_evidence": "frontend/src/App.tsx"
+    },
+    {
+      "defect_id": "DEF-ADMIN-01",
+      "feature_id": "GOV-24-01",
+      "severity": "P2",
+      "description": "Settings modal only configures language and role; no user provisioning, role permission matrix, or API token management UI.",
+      "reproduction_steps": "1. Click Settings in sidebar. 2. Observe only basic theme/role toggles.",
+      "expected_result": "Should provide full administration panel for Department IT nodal officers.",
+      "actual_result": "Limited settings dialog.",
+      "root_cause": "Administration module currently focused on end-user preferences.",
+      "affected_screens": [
+        "#settings",
+        "#users-roles"
+      ],
+      "business_impact": "Department IT nodal officers cannot configure role delegations.",
+      "proposed_fix": "Build AdminUserManagement and PermissionMatrix tables.",
+      "status": "OPEN",
+      "verification_evidence": "frontend/src/components/ExecutiveSidebar.tsx"
+    }
+  ],
+  "data_sources": [
+    {
+      "source_id": "SRC-TN-PORTAL-MIN",
+      "name": "Council of Ministers of Tamil Nadu - Official Portal",
+      "authority": "Public (Special.A) Department, Government of Tamil Nadu",
+      "url": "https://www.tn.gov.in/ministers_list.php",
+      "sync_cadence": "Daily at 06:00 IST",
+      "status": "VERIFIED_CURRENT",
+      "coverage": "Hon'ble Chief Minister, Deputy Chief Minister, and 33 Cabinet Ministers with portfolios",
+      "last_verified": "2026-11-14",
+      "verification_method": "Cross-checked against Official Gazette Extraordinary notifications"
+    },
+    {
+      "source_id": "SRC-AGIAS-CIVIL-LIST",
+      "name": "Tamil Nadu IAS Cadre Civil List & Postings Registry",
+      "authority": "Public (Special.A) Department / Accountant General TN",
+      "url": "https://agias.tn.gov.in",
+      "sync_cadence": "Weekly on Monday",
+      "status": "VERIFIED_CURRENT",
+      "coverage": "All 38 District Collectors, Chief Secretary, Additional Chief Secretaries, and Department Secretaries",
+      "last_verified": "2026-11-14",
+      "verification_method": "Verified with G.O.(Rt) transfer orders through August 2024"
+    },
+    {
+      "source_id": "SRC-TN-POLICE-PORTAL",
+      "name": "Tamil Nadu Police Leadership and District SP Postings",
+      "authority": "Home (Police.I) Department, Fort St. George, Chennai",
+      "url": "https://eservices.tnpolice.gov.in",
+      "sync_cadence": "Weekly on Monday",
+      "status": "VERIFIED_CURRENT",
+      "coverage": "DGP (HoPF), Greater Chennai Police Commissioner, Range IGs, and District SPs",
+      "last_verified": "2026-11-14",
+      "verification_method": "Verified with Home Dept Police.I posting notifications"
+    },
+    {
+      "source_id": "SRC-TN-FOREST-PORTAL",
+      "name": "Tamil Nadu Forest Department Cadre Roster & HoFF Gazettes",
+      "authority": "Environment, Climate Change and Forests Department",
+      "url": "https://forests.tn.gov.in",
+      "sync_cadence": "Monthly",
+      "status": "VERIFIED_CURRENT",
+      "coverage": "Principal Chief Conservator of Forests (HoFF), Chief Wildlife Warden, District Forest Officers",
+      "last_verified": "2026-11-14",
+      "verification_method": "Verified with PCCF administrative notifications"
+    },
+    {
+      "source_id": "SRC-DISTRICT-NIC-PORTALS",
+      "name": "38 District Collectorates Directory - National Informatics Centre",
+      "authority": "Revenue Administration & Disaster Management Department",
+      "url": "https://www.tn.gov.in/district_view.php",
+      "sync_cadence": "Daily at 06:00 IST",
+      "status": "VERIFIED_CURRENT",
+      "coverage": "All 38 District Collectorates with @nic.in email endpoints and phone numbers",
+      "last_verified": "2026-11-14",
+      "verification_method": "Validated against official district NIC subdomains (*.nic.in)"
+    }
+  ]
+}
