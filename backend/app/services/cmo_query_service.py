@@ -61,6 +61,20 @@ class CMOQueryService:
             if not matches_query:
                 continue
 
+            # Calculate match relevance score
+            score = 0
+            if q:
+                if q == name_en or q == name_ta:
+                    score = 100
+                elif q in name_en or q in name_ta:
+                    score = 50
+                elif q in posting:
+                    score = 25
+                elif all(token in name_en or token in posting for token in q.split()):
+                    score = 20
+                else:
+                    score = 5
+
             # Apply filters if provided
             if filters:
                 if filters.get("cadre") and filters["cadre"].upper() not in str(off["cadre"]).upper():
@@ -123,9 +137,10 @@ class CMOQueryService:
                 district_jurisdiction=districts,
                 source_refs=off.get("source_refs", [])
             )
-            matched.append(card)
+            matched.append((score, card))
 
-        return matched
+        matched.sort(key=lambda x: x[0], reverse=True)
+        return [c for _, c in matched]
 
     def get_department_overview(self, department_name_or_id: str) -> Optional[DepartmentOverview]:
         target = department_name_or_id.lower().strip()

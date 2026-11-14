@@ -14,10 +14,10 @@ TAMIL_NADU_OFFICIALS_DIRECTORY: List[OfficerDirectoryItem] = [
     # 1. MINISTERS
     OfficerDirectoryItem(
         id="dir-min-01",
-        name_en="Thiru Thangam Thennarasu",
-        name_ta="திரு தங்கம் தென்னரசு",
-        designation_en="Hon'ble Minister for Finance, Planning & Human Resources Management",
-        designation_ta="மாண்புமிகு நிதி, மனிதவள மேலாண்மைத் துறை அமைச்சர்",
+        name_en="Dr N. Marie Wilson",
+        name_ta="முனைவர் என். மேரி வில்சன்",
+        designation_en="Hon'ble Minister for Finance, Planning and Development",
+        designation_ta="மாண்புமிகு நிதி மற்றும் திட்டமிடல் துறை அமைச்சர்",
         role_tier="MINISTER",
         department_en="Finance, Planning & HR",
         department_ta="நிதி, திட்டமிடல் மற்றும் மனிதவளத் துறை",
@@ -110,10 +110,10 @@ TAMIL_NADU_OFFICIALS_DIRECTORY: List[OfficerDirectoryItem] = [
 
     OfficerDirectoryItem(
         id="dir-min-03",
-        name_en="Thiru Duraimurugan",
-        name_ta="திரு துரைமுருகன்",
-        designation_en="Hon'ble Minister for Water Resources & Mines",
-        designation_ta="மாண்புமிகு நீர்வளத்துறை அமைச்சர்",
+        name_en="Thiru N. Anand",
+        name_ta="திரு என். ஆனந்த்",
+        designation_en="Hon'ble Minister for Rural Development and Water Resources",
+        designation_ta="மாண்புமிகு ஊரக வளர்ச்சி மற்றும் நீர்வளத்துறை அமைச்சர்",
         role_tier="MINISTER",
         department_en="Water Resources",
         department_ta="நீர்வளத்துறை",
@@ -255,8 +255,8 @@ TAMIL_NADU_OFFICIALS_DIRECTORY: List[OfficerDirectoryItem] = [
     # 2. PRINCIPAL SECRETARIES
     OfficerDirectoryItem(
         id="dir-sec-01",
-        name_en="N. Muruganandam, IAS",
-        name_ta="நா. முருகானந்தம், இ.ஆ.ப.",
+        name_en="Dr. M. Sai Kumar, IAS",
+        name_ta="முனைவர் எம். சாய் குமார், இ.ஆ.ப.",
         designation_en="Chief Secretary to Government of Tamil Nadu",
         designation_ta="அரசு தலைமைச் செயலாளர்",
         role_tier="PRINCIPAL_SECRETARY",

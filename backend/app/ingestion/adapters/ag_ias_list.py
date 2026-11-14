@@ -21,7 +21,7 @@ class AGIASListAdapter(BaseIngestionAdapter):
             "document_title": "Tamil Nadu IAS & IPS Cadre Gazette Allocation 2026",
             "gazette_no": "G.O.(Ms) No. 3412",
             "raw_text_pages": [
-                "N. Muruganandam IAS 1991 Chief Secretary cs@tn.gov.in +914425671555",
+                "Dr. M. Sai Kumar IAS 1990 Chief Secretary cs@tn.gov.in +914425671555",
                 "Dr. R. Brindha Devi IAS 2015 District Collector Salem collr-slm@nic.in +914272450001",
                 "Kirubakaran IPS 2015 Superintendent of Police Salem sp-slm@tncctns.gov.in +914272451001",
                 "Krasthi Kumar Pati IAS 2015 District Collector Coimbatore collr-cbe@nic.in +914222301114"
@@ -32,7 +32,7 @@ class AGIASListAdapter(BaseIngestionAdapter):
         records = [
             {
                 "id": "IAS-TN-1991-001",
-                "name": "N. Muruganandam, IAS",
+                "name": "Dr. M. Sai Kumar, IAS",
                 "cadre": "IAS",
                 "batch": 1991,
                 "posting": "Chief Secretary to Government",

@@ -71,8 +71,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     let nameEn = "Hon'ble Chief Minister";
     let nameTa = "மாண்புமிகு முதலமைச்சர்";
     if (role === 'CHIEF_SECRETARY') {
-      nameEn = "N. Muruganandam, IAS (Chief Secretary)";
-      nameTa = "நா. முருகானந்தம், இ.ஆ.ப. (தலைமைச் செயலாளர்)";
+      nameEn = "Dr. M. Sai Kumar, IAS (Chief Secretary)";
+      nameTa = "முனைவர் எம். சாய் குமார், இ.ஆ.ப. (தலைமைச் செயலாளர்)";
     } else if (role === 'DISTRICT_COLLECTOR') {
       nameEn = "Kranthi Kumar Pati, IAS (Collector, Coimbatore)";
       nameTa = "கிராந்திகுமார் பாடி, இ.ஆ.ப. (மாவட்ட ஆட்சியர், கோவை)";

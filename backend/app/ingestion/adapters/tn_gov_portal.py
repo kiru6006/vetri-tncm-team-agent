@@ -20,7 +20,7 @@ class TNGovPortalAdapter(BaseIngestionAdapter):
         return """
         <div class="dept-entry" data-dept="public">
             <span class="dept-name">Public & General Administration</span>
-            <span class="secretary">N. Muruganandam, IAS</span>
+            <span class="secretary">Dr. M. Sai Kumar, IAS</span>
             <span class="cug">+91 44 2567 1555</span>
             <span class="email">cs@tn.gov.in</span>
         </div>
@@ -44,7 +44,7 @@ class TNGovPortalAdapter(BaseIngestionAdapter):
             {
                 "id": "dept-public-01",
                 "department_name": "Public & General Administration",
-                "secretary_name": "N. Muruganandam, IAS",
+                "secretary_name": "Dr. M. Sai Kumar, IAS",
                 "cug_phone": "+91 44 2567 1555",
                 "email": "cs@tn.gov.in",
                 "source": self.endpoint_or_file

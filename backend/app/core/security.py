@@ -78,7 +78,7 @@ async def get_optional_user_claims(credentials: Optional[HTTPAuthorizationCreden
             pass
     return {
         "sub": "cm-executive-01",
-        "name": "Hon'ble Chief Minister M.K. Stalin",
+        "name": "Hon'ble Chief Minister Thiru C. Joseph Vijay",
         "role": "CHIEF_MINISTER",
         "district": "STATEWIDE"
     }

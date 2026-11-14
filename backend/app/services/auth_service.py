@@ -24,8 +24,8 @@ SEED_USERS = [
         "email": "cs@tn.gov.in",
         "phone": "+919444000002",
         "password": "CSGovernance2026!",
-        "full_name_en": "N. Muruganandam, IAS",
-        "full_name_ta": "என். முருகானந்தம், இ.ஆ.ப.",
+        "full_name_en": "Dr. M. Sai Kumar, IAS",
+        "full_name_ta": "முனைவர் எம். சாய் குமார், இ.ஆ.ப.",
         "role": UserRole.CHIEF_SECRETARY,
         "designation": "Chief Secretary to Government",
         "cadre": "IAS"

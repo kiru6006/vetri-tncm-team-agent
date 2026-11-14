@@ -60,16 +60,16 @@ export const ExecutiveMeetingWorkspace: React.FC<ExecutiveMeetingWorkspaceProps>
             attendees: [
               {
                 officer_id: "off-cm-01",
-                name_en: "M. K. Stalin",
-                name_ta: "மு. க. ஸ்டாலின்",
+                name_en: "Thiru C. Joseph Vijay",
+                name_ta: "திரு சி. ஜோசப் விஜய்",
                 designation: "Chief Minister",
                 tier_role: "CHIEF_MINISTER",
                 status: "CONFIRMED"
               },
               {
                 officer_id: "off-cs-01",
-                name_en: "N. Muruganandam, IAS",
-                name_ta: "நா. முருகானந்தம், இ.ஆ.ப.",
+                name_en: "Dr. M. Sai Kumar, IAS",
+                name_ta: "முனைவர் எம். சாய் குமார், இ.ஆ.ப.",
                 designation: "Chief Secretary",
                 tier_role: "CHIEF_SECRETARY",
                 status: "CONFIRMED"

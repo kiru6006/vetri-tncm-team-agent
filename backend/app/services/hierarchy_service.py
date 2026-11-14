@@ -5,8 +5,8 @@ from app.schemas.hierarchy import HierarchyNode, OfficerDossier, DirectorySearch
 OFFICERS_MASTER_DATA: List[OfficerDossier] = [
     OfficerDossier(
         id="off-cm-01",
-        name_en="M. K. Stalin",
-        name_ta="மு. க. ஸ்டாலின்",
+        name_en="Thiru C. Joseph Vijay",
+        name_ta="திரு சி. ஜோசப் விஜய்",
         designation_en="Hon'ble Chief Minister of Tamil Nadu",
         designation_ta="மாண்புமிகு தமிழ்நாடு முதலமைச்சர்",
         tier_role="CHIEF_MINISTER",
@@ -54,13 +54,13 @@ OFFICERS_MASTER_DATA: List[OfficerDossier] = [
     ),
     OfficerDossier(
         id="off-cs-01",
-        name_en="N. Muruganandam, IAS",
-        name_ta="நா. முருகானந்தம், இ.ஆ.ப.",
+        name_en="Dr. M. Sai Kumar, IAS",
+        name_ta="முனைவர் எம். சாய் குமார், இ.ஆ.ப.",
         designation_en="Chief Secretary to Government",
         designation_ta="அரசு தலைமைச் செயலாளர்",
         tier_role="CHIEF_SECRETARY",
         cadre="IAS",
-        batch_year=1991,
+        batch_year=1990,
         department_en="Personnel, Vigilance & Inter-Departmental Coordination",
         department_ta="பணியாளர், ஊழல் தடுப்பு மற்றும் துறை ஒருங்கிணைப்பு",
         district_en="Statewide (Secretariat)",
@@ -69,7 +69,7 @@ OFFICERS_MASTER_DATA: List[OfficerDossier] = [
         office_address="Chief Secretary Office, Main Building, Fort St. George, Chennai - 600009",
         cug_phone="+91 44 2567 1555",
         official_email="cs@tn.gov.in",
-        reports_to_name="M. K. Stalin",
+        reports_to_name="Thiru C. Joseph Vijay",
         reports_to_designation="Hon'ble Chief Minister",
         responsibilities=[
             "Administrative Head of Tamil Nadu Civil Services",
@@ -116,7 +116,7 @@ OFFICERS_MASTER_DATA: List[OfficerDossier] = [
         office_address="Health Dept, 4th Floor, Secretariat, Chennai - 600009",
         cug_phone="+91 44 2567 1875",
         official_email="hfsec@tn.gov.in",
-        reports_to_name="N. Muruganandam, IAS",
+        reports_to_name="Dr. M. Sai Kumar, IAS",
         reports_to_designation="Chief Secretary",
         responsibilities=[
             "State Public Health Policy & Primary Health Centers (PHCs)",
@@ -162,7 +162,7 @@ OFFICERS_MASTER_DATA: List[OfficerDossier] = [
         office_address="Collectorate, State Bank Road, Gopalapuram, Coimbatore - 641018",
         cug_phone="+91 422 2301114",
         official_email="collr-cbe@nic.in",
-        reports_to_name="N. Muruganandam, IAS",
+        reports_to_name="Dr. M. Sai Kumar, IAS",
         reports_to_designation="Chief Secretary",
         responsibilities=[
             "District Executive Leadership across 11 Taluks & 30 Line Departments",
@@ -393,8 +393,8 @@ def build_hierarchy_tree() -> HierarchyNode:
     # Chief Secretary Node
     cs_node = HierarchyNode(
         id="node-cs-01",
-        name_en="N. Muruganandam, IAS",
-        name_ta="நா. முருகானந்தம், இ.ஆ.ப.",
+        name_en="Dr. M. Sai Kumar, IAS",
+        name_ta="முனைவர் எம். சாய் குமார், இ.ஆ.ப.",
         designation_en="Chief Secretary to Government",
         designation_ta="அரசு தலைமைச் செயலாளர்",
         tier_level=4,
@@ -418,8 +418,8 @@ def build_hierarchy_tree() -> HierarchyNode:
     # Top Root: Hon'ble Chief Minister
     cm_root = HierarchyNode(
         id="node-cm-01",
-        name_en="M. K. Stalin",
-        name_ta="மு. க. ஸ்டாலின்",
+        name_en="Thiru C. Joseph Vijay",
+        name_ta="திரு சி. ஜோசப் விஜய்",
         designation_en="Hon'ble Chief Minister of Tamil Nadu",
         designation_ta="மாண்புமிகு தமிழ்நாடு முதலமைச்சர்",
         tier_level=1,

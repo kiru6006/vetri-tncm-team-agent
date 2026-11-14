@@ -85,7 +85,7 @@ export const ExecutiveHeader: React.FC<ExecutiveHeaderProps> = ({
 
   const rolesList: { role: UserRole; labelEn: string; labelTa: string; subEn: string }[] = [
     { role: 'CHIEF_MINISTER', labelEn: 'Hon\'ble Chief Minister', labelTa: 'மாண்புமிகு முதலமைச்சர்', subEn: 'Head of Government' },
-    { role: 'CHIEF_SECRETARY', labelEn: 'Chief Secretary', labelTa: 'தலைமைச் செயலாளர்', subEn: 'N. Muruganandam, IAS' },
+    { role: 'CHIEF_SECRETARY', labelEn: 'Chief Secretary', labelTa: 'தலைமைச் செயலாளர்', subEn: 'Dr. M. Sai Kumar, IAS' },
     { role: 'DISTRICT_COLLECTOR', labelEn: 'District Collector (Coimbatore)', labelTa: 'மாவட்ட ஆட்சியர் (கோவை)', subEn: 'Kranthi Kumar Pati, IAS' },
     { role: 'DEPARTMENT_SECRETARY', labelEn: 'Finance Secretary', labelTa: 'நிதிச் செயலாளர்', subEn: 'T. Udhayachandran, IAS' },
   ];

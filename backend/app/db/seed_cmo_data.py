@@ -17,25 +17,25 @@ SAMPLE_MINISTRIES = [
         "id": "min-cmo-01",
         "name_en": "Chief Minister's Office & Cabinet Affairs",
         "name_ta": "முதலமைச்சர் அலுவலகம் & அமைச்சரவை விவகாரங்கள்",
-        "minister_official_id": "off-cm-stalin"
+        "minister_official_id": "off-cm-vijay"
     },
     {
         "id": "min-home-01",
         "name_en": "Ministry of Home, Prohibition and Excise",
         "name_ta": "உள்துறை, மதுவிலக்கு மற்றும் ஆயத்தீர்வை அமைச்சகம்",
-        "minister_official_id": "off-cm-stalin"
+        "minister_official_id": "off-cm-vijay"
     },
     {
         "id": "min-finance-01",
         "name_en": "Ministry of Finance, Planning and Human Resources",
         "name_ta": "நிதி, திட்டமிடல் மற்றும் மனிதவள மேலாண்மை அமைச்சகம்",
-        "minister_official_id": "off-min-thangam"
+        "minister_official_id": "off-min-mariewilson"
     },
     {
         "id": "min-health-01",
         "name_en": "Ministry of Health and Family Welfare",
         "name_ta": "மக்கள் நல்வாழ்வு மற்றும் குடும்ப நலத்துறை அமைச்சகம்",
-        "minister_official_id": "off-min-subramanian"
+        "minister_official_id": "off-min-arunraj"
     },
     {
         "id": "min-ind-01",
@@ -57,8 +57,8 @@ SAMPLE_DEPARTMENTS = [
         "name_en": "Public & General Administration Department",
         "name_ta": "பொது மற்றும் தலைமை நிர்வாகத்துறை",
         "ministry_id": "min-cmo-01",
-        "minister_official_id": "off-cm-stalin",
-        "secretary_official_id": "off-cs-muruganandam",
+        "minister_official_id": "off-cm-vijay",
+        "secretary_official_id": "off-cs-saikumar",
         "contact_phone": "+91 44 2567 1555",
         "contact_email": "publicsec@tn.gov.in",
         "address": "Secretariat, Fort St. George, Chennai 600009",
@@ -69,7 +69,7 @@ SAMPLE_DEPARTMENTS = [
         "name_en": "Home, Prohibition and Excise Department",
         "name_ta": "உள்துறை, மதுவிலக்கு மற்றும் ஆயத்தீர்வைத்துறை",
         "ministry_id": "min-home-01",
-        "minister_official_id": "off-cm-stalin",
+        "minister_official_id": "off-cm-vijay",
         "secretary_official_id": "off-ps-home-dheeraj",
         "contact_phone": "+91 44 2567 1222",
         "contact_email": "homesec@tn.gov.in",
@@ -81,7 +81,7 @@ SAMPLE_DEPARTMENTS = [
         "name_en": "Health and Family Welfare Department",
         "name_ta": "மக்கள் நல்வாழ்வு மற்றும் குடும்ப நலத்துறை",
         "ministry_id": "min-health-01",
-        "minister_official_id": "off-min-subramanian",
+        "minister_official_id": "off-min-arunraj",
         "secretary_official_id": "off-ps-health-senthilkumar",
         "contact_phone": "+91 44 2567 1875",
         "contact_email": "hfsec@tn.gov.in",
@@ -117,7 +117,7 @@ SAMPLE_DEPARTMENTS = [
         "name_en": "Commercial Taxes and Registration Department",
         "name_ta": "வணிக வரிகள் மற்றும் பதிவுத்துறை",
         "ministry_id": "min-finance-01",
-        "minister_official_id": "off-min-thangam",
+        "minister_official_id": "off-min-mariewilson",
         "secretary_official_id": "off-ps-ct-dheeraj",
         "contact_phone": "+91 44 2567 2200",
         "contact_email": "ctsec@tn.gov.in",
@@ -128,9 +128,9 @@ SAMPLE_DEPARTMENTS = [
 
 SAMPLE_OFFICIALS = [
     {
-        "id": "off-cm-stalin",
-        "full_name_en": "M. K. Stalin",
-        "full_name_ta": "மு. க. ஸ்டாலின்",
+        "id": "off-cm-vijay",
+        "full_name_en": "Thiru C. Joseph Vijay",
+        "full_name_ta": "திரு சி. ஜோசப் விஜய்",
         "cadre": CadreEnum.MINISTER,
         "batch_year": None,
         "current_posting": "Hon'ble Chief Minister of Tamil Nadu",
@@ -141,19 +141,19 @@ SAMPLE_OFFICIALS = [
         "phone_mobile": "+91 94440 00001",
         "official_email": "cmcell@tn.gov.in",
         "office_address": "Chief Minister's Office, Secretariat, Fort St. George, Chennai 600009",
-        "posting_effective_date": date(2021, 5, 7),
+        "posting_effective_date": date(2026, 5, 22),
         "expected_retirement": None,
         "status": OfficialStatusEnum.ACTIVE,
         "notes": "State Executive Head & Cabinet Leader",
-        "source_refs": [{"source": "tn.gov.in/cmo", "ref": "GAZ_ELEC_2021", "date": "2021-05-07"}]
+        "source_refs": [{"source": "tn.gov.in/cmo", "ref": "GAZ_ELEC_2026", "date": "2026-05-22"}]
     },
     {
-        "id": "off-min-subramanian",
-        "full_name_en": "Ma. Subramanian",
-        "full_name_ta": "மா. சுப்பிரமணியன்",
+        "id": "off-min-arunraj",
+        "full_name_en": "Dr. K.G. Arunraj",
+        "full_name_ta": "மருத்துவர் கே. ஜி. அருண்ராஜ்",
         "cadre": CadreEnum.MINISTER,
         "batch_year": None,
-        "current_posting": "Minister for Health and Family Welfare",
+        "current_posting": "Minister for Health, Medical Education and Family Welfare",
         "department_id": "dept-health-01",
         "ministry_id": "min-health-01",
         "designation_rank": "Cabinet Minister",
@@ -161,19 +161,19 @@ SAMPLE_OFFICIALS = [
         "phone_mobile": "+91 94440 00011",
         "official_email": "healthminister@tn.gov.in",
         "office_address": "Minister Chamber, 4th Floor, Secretariat, Chennai 600009",
-        "posting_effective_date": date(2021, 5, 7),
+        "posting_effective_date": date(2026, 5, 22),
         "expected_retirement": None,
         "status": OfficialStatusEnum.ACTIVE,
-        "notes": "Minister for Health and Family Welfare",
-        "source_refs": [{"source": "tn.gov.in/cabinet", "date": "2021-05-07"}]
+        "notes": "Minister for Health, Medical Education and Family Welfare",
+        "source_refs": [{"source": "tn.gov.in/cabinet", "date": "2026-05-22"}]
     },
     {
-        "id": "off-min-thangam",
-        "full_name_en": "Thangam Thennarasu",
-        "full_name_ta": "தங்கம் தென்னரசு",
+        "id": "off-min-mariewilson",
+        "full_name_en": "Dr N. Marie Wilson",
+        "full_name_ta": "முனைவர் என். மேரி வில்சன்",
         "cadre": CadreEnum.MINISTER,
         "batch_year": None,
-        "current_posting": "Minister for Finance, Planning & Human Resources",
+        "current_posting": "Minister for Finance, Planning and Development",
         "department_id": "dept-ct-01",
         "ministry_id": "min-finance-01",
         "designation_rank": "Cabinet Minister",
@@ -181,18 +181,18 @@ SAMPLE_OFFICIALS = [
         "phone_mobile": "+91 94440 00012",
         "official_email": "financeminister@tn.gov.in",
         "office_address": "Minister Chamber, Secretariat, Chennai 600009",
-        "posting_effective_date": date(2021, 5, 7),
+        "posting_effective_date": date(2026, 5, 22),
         "expected_retirement": None,
         "status": OfficialStatusEnum.ACTIVE,
         "notes": "State Budget & Revenue Reform Head",
-        "source_refs": [{"source": "tn.gov.in/cabinet", "date": "2021-05-07"}]
+        "source_refs": [{"source": "tn.gov.in/cabinet", "date": "2026-05-22"}]
     },
     {
-        "id": "off-cs-muruganandam",
-        "full_name_en": "N. Muruganandam, IAS",
-        "full_name_ta": "நா. முருகானந்தம், இ.ஆ.ப.",
+        "id": "off-cs-saikumar",
+        "full_name_en": "Dr. M. Sai Kumar, IAS",
+        "full_name_ta": "முனைவர் எம். சாய் குமார், இ.ஆ.ப.",
         "cadre": CadreEnum.IAS,
-        "batch_year": 1991,
+        "batch_year": 1990,
         "current_posting": "Chief Secretary to Government of Tamil Nadu",
         "department_id": "dept-public-01",
         "ministry_id": "min-cmo-01",
@@ -201,8 +201,8 @@ SAMPLE_OFFICIALS = [
         "phone_mobile": "+91 94440 00002",
         "official_email": "cs@tn.gov.in",
         "office_address": "Chief Secretary's Chamber, Secretariat, Fort St. George, Chennai 600009",
-        "posting_effective_date": date(2024, 8, 19),
-        "expected_retirement": date(2027, 3, 31),
+        "posting_effective_date": date(2026, 5, 22),
+        "expected_retirement": date(2028, 3, 31),
         "status": OfficialStatusEnum.ACTIVE,
         "notes": "Head of Civil Services & State Coordination",
         "source_refs": [{"source": "G.O.(Rt) No. 3412, Public (Special.A)", "date": "2024-08-19"}]
@@ -538,11 +538,11 @@ SAMPLE_PERSONNEL_CHANGES = [
         "order_ref": "G.O.(Rt) No. 204, Public (Special.A) Dept"
     },
     {
-        "official_id": "off-cs-muruganandam",
+        "official_id": "off-cs-saikumar",
         "change_type": ChangeTypeEnum.PROMOTION,
-        "from_role": "Additional Chief Secretary to Government (Finance)",
+        "from_role": "Additional Chief Secretary to Government",
         "to_role": "Chief Secretary to Government of Tamil Nadu",
-        "effective_date": date(2024, 8, 19),
+        "effective_date": date(2026, 5, 22),
         "order_ref": "G.O.(Rt) No. 3412, Public (Special.A) Dept"
     }
 ]

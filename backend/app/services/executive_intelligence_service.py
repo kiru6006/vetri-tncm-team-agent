@@ -225,10 +225,10 @@ class ExecutiveIntelligenceService:
             official_email=off["official_email"],
             cug_phone=off.get("phone_mobile") or off.get("phone_landline") or "+91 44 2567 1555",
             office_address=off["office_address"],
-            reporting_officer={"name": "N. Muruganandam, IAS", "designation": "Chief Secretary to Government"},
+            reporting_officer={"name": "Dr. M. Sai Kumar, IAS", "designation": "Chief Secretary to Government"},
             reporting_hierarchy=[
-                {"tier": "1", "name": "M. K. Stalin", "designation": "Hon'ble Chief Minister"},
-                {"tier": "4", "name": "N. Muruganandam, IAS", "designation": "Chief Secretary"},
+                {"tier": "1", "name": "Thiru C. Joseph Vijay", "designation": "Hon'ble Chief Minister"},
+                {"tier": "4", "name": "Dr. M. Sai Kumar, IAS", "designation": "Chief Secretary"},
                 {"tier": "11", "name": off["full_name_en"], "designation": off["current_posting"]}
             ],
             current_workload_score=88.5,
@@ -514,7 +514,7 @@ class ExecutiveIntelligenceService:
                     )
                 ],
                 ranked_entities=[
-                    {"officer": "N. Muruganandam, IAS", "role": "Chief Secretary", "must_attend": True},
+                    {"officer": "Dr. M. Sai Kumar, IAS", "role": "Chief Secretary", "must_attend": True},
                     {"officer": "P. Senthilkumar, IAS", "role": "Principal Secretary, Health", "must_attend": True},
                     {"officer": "A. K. Arun Kabilan, IPS", "role": "Superintendent of Police", "must_attend": True},
                     {"officer": "Dr. R. Brindha Devi, IAS", "role": "District Collector, Salem", "must_attend": True}
