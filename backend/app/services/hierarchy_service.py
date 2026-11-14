@@ -147,7 +147,7 @@ OFFICERS_MASTER_DATA: List[OfficerDossier] = [
     ),
     OfficerDossier(
         id="off-col-cbe-01",
-        name_en="Krasthi Kumar Pati, IAS",
+        name_en="Kranthi Kumar Pati, IAS",
         name_ta="கிராந்தி குமார் பாடி, இ.ஆ.ப.",
         designation_en="District Collector & District Magistrate, Coimbatore",
         designation_ta="மாவட்ட ஆட்சித்தலைவர், கோயம்புத்தூர்",
@@ -256,7 +256,7 @@ OFFICERS_MASTER_DATA: List[OfficerDossier] = [
         office_address="Taluk Office, Balasundaram Road, Coimbatore - 641018",
         cug_phone="+91 422 2247833",
         official_email="tah-cbenorth@tn.gov.in",
-        reports_to_name="Krasthi Kumar Pati, IAS",
+        reports_to_name="Kranthi Kumar Pati, IAS",
         reports_to_designation="District Collector",
         responsibilities=[
             "Taluk Revenue Records (Patta, Chitta, Adangal) & Sub-Divisions",
@@ -343,7 +343,7 @@ def build_hierarchy_tree() -> HierarchyNode:
     # District Collector (DC)
     collector_cbe_node = HierarchyNode(
         id="node-col-cbe",
-        name_en="Krasthi Kumar Pati, IAS",
+        name_en="Kranthi Kumar Pati, IAS",
         name_ta="கிராந்தி குமார் பாடி, இ.ஆ.ப.",
         designation_en="District Collector, Coimbatore",
         designation_ta="மாவட்ட ஆட்சித்தலைவர், கோயம்புத்தூர்",

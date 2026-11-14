@@ -24,7 +24,7 @@ class AGIASListAdapter(BaseIngestionAdapter):
                 "Dr. M. Sai Kumar IAS 1990 Chief Secretary cs@tn.gov.in +914425671555",
                 "Dr. R. Brindha Devi IAS 2015 District Collector Salem collr-slm@nic.in +914272450001",
                 "Kirubakaran IPS 2015 Superintendent of Police Salem sp-slm@tncctns.gov.in +914272451001",
-                "Krasthi Kumar Pati IAS 2015 District Collector Coimbatore collr-cbe@nic.in +914222301114"
+                "Kranthi Kumar Pati IAS 2015 District Collector Coimbatore collr-cbe@nic.in +914222301114"
             ]
         }
 
@@ -62,7 +62,7 @@ class AGIASListAdapter(BaseIngestionAdapter):
             },
             {
                 "id": "IAS-TN-2015-031",
-                "name": "Krasthi Kumar Pati, IAS",
+                "name": "Kranthi Kumar Pati, IAS",
                 "cadre": "IAS",
                 "batch": 2015,
                 "posting": "District Collector & DM, Coimbatore",

@@ -145,7 +145,7 @@ MEETINGS_DATABASE: List[MeetingBriefingPack] = [
             ),
             MeetingAttendee(
                 officer_id="off-col-cbe-01",
-                name_en="Krasthi Kumar Pati, IAS",
+                name_en="Kranthi Kumar Pati, IAS",
                 name_ta="கிராந்தி குமார் பாடி, இ.ஆ.ப.",
                 designation="Collector, Coimbatore",
                 tier_role="DISTRICT_COLLECTOR",
