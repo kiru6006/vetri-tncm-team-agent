@@ -3,6 +3,9 @@ import { ContactRecord, Category } from '@/types/contacts';
 import ministersData from '@/data/contacts/ministers.json';
 import chiefSecretaryData from '@/data/contacts/chief_secretary.json';
 import stateLeadershipData from '@/data/contacts/state_leadership.json';
+import constitutionalData from '@/data/contacts/constitutional.json';
+import cmOfficeData from '@/data/contacts/cm_office.json';
+import governorStaffData from '@/data/contacts/governor_staff.json';
 import mlasData from '@/data/contacts/mlas.json';
 import mpsData from '@/data/contacts/rajya_sabha_mps.json';
 import secretariatData from '@/data/contacts/secretariat.json';
@@ -18,6 +21,9 @@ import otherData from '@/data/contacts/other.json';
 
 const rawDataArrays = [
   stateLeadershipData,
+  constitutionalData,
+  cmOfficeData,
+  governorStaffData,
   ministersData,
   mlasData,
   mpsData,

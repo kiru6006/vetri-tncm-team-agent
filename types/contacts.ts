@@ -13,6 +13,9 @@ export type VerificationStatus = z.infer<typeof VerificationStatus>;
 
 export const Category = z.enum([
   'STATE_LEADERSHIP',
+  'CONSTITUTIONAL',
+  'CM_OFFICE',
+  'GOVERNOR_STAFF',
   'MINISTER',
   'MLA',
   'MP',

@@ -195,6 +195,20 @@ export function ContactCard({ contact, userRole, onOpenDetails }: ContactCardPro
         )}
       </div>
 
+      {/* Institutional fetch_contact_page button for HOD & Undertakings */}
+      {(contact.category === 'HOD' || contact.category === 'UNDERTAKING') && (
+        <a
+          href={contact.source_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mb-2.5 inline-flex items-center justify-center gap-1.5 w-full py-1.5 px-3 rounded-lg text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors"
+          title={`Open official contact page for ${contact.department || contact.designation}`}
+        >
+          <ExternalLink className="w-3.5 h-3.5" />
+          <span>fetch_contact_page() · Open Department Sub-page</span>
+        </a>
+      )}
+
       {/* Conflict / Notes Alert if CONFLICTED */}
       {contact.verification_status === 'CONFLICTED' && (
         <div className="mb-2 p-1.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded text-2xs text-amber-800 dark:text-amber-200 flex items-start gap-1">

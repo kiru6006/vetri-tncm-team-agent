@@ -12,7 +12,8 @@ import { ContactDetailSheet } from './ContactDetailSheet';
 import { ExportMenu } from './ExportMenu';
 import { DataQualityBanner } from './DataQualityBanner';
 import { EmptyState } from './EmptyState';
-import { Filter, UserCheck, Shield } from 'lucide-react';
+import { Filter, UserCheck, Shield, Printer } from 'lucide-react';
+import { QuickContactsSheet } from './QuickContactsSheet';
 
 interface ContactDirectoryPageProps {
   initialContacts: ContactRecord[];
@@ -28,6 +29,9 @@ export function ContactDirectoryPage({
   // Search & Filter state
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('all');
+  const [cabinetOnly, setCabinetOnly] = useState(false);
+  const [groupByDistrict, setGroupByDistrict] = useState(false);
+  const [quickSheetOpen, setQuickSheetOpen] = useState(false);
   const [filters, setFilters] = useState<ActiveFilterState>({
     department: [],
     district: [],
@@ -85,12 +89,34 @@ export function ContactDirectoryPage({
       status: filters.status.length > 0 ? filters.status : undefined,
     };
 
-    return filterContacts(initialContacts, searchQuery, appliedFilters);
-  }, [initialContacts, searchQuery, activeTab, filters]);
+    let result = filterContacts(initialContacts, searchQuery, appliedFilters);
+
+    // Cabinet Only filter (Ministers tab)
+    if (activeTab === 'ministers' && cabinetOnly) {
+      result = result.filter((c) => {
+        const des = (c.designation || '').toUpperCase();
+        const notes = (c.notes || '').toUpperCase();
+        return !des.includes('(FAC)') && !des.includes('I-C') && !notes.includes('(FAC)');
+      });
+    }
+
+    // Group MLAs by District (MLAs tab)
+    if (activeTab === 'mlas' && groupByDistrict) {
+      result = [...result].sort((a, b) => {
+        const da = a.district || a.portfolio || '';
+        const db = b.district || b.portfolio || '';
+        return da.localeCompare(db);
+      });
+    }
+
+    return result;
+  }, [initialContacts, searchQuery, activeTab, filters, cabinetOnly, groupByDistrict]);
 
   const handleResetFilters = () => {
     setSearchQuery('');
     setActiveTab('all');
+    setCabinetOnly(false);
+    setGroupByDistrict(false);
     setFilters({
       department: [],
       district: [],
@@ -142,6 +168,16 @@ export function ContactDirectoryPage({
               </select>
             </div>
 
+            {/* Quick Contacts Print Button */}
+            <button
+              onClick={() => setQuickSheetOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 text-xs font-semibold hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors shadow-2xs"
+              title="Print one-page Quick Contacts Sheet for CM (A4 PDF)"
+            >
+              <Printer className="w-3.5 h-3.5" />
+              <span>CM Quick Contacts (A4)</span>
+            </button>
+
             <ExportMenu contacts={filteredContacts} userRole={role} />
           </div>
         </div>
@@ -162,7 +198,7 @@ export function ContactDirectoryPage({
       </section>
 
       {/* Category Tabs & Mobile Filter Button */}
-      <section className="mb-6 flex items-center justify-between gap-3" aria-label="Category tabs">
+      <section className="mb-4 flex items-center justify-between gap-3" aria-label="Category tabs">
         <div className="flex-1 overflow-hidden">
           <CategoryTabs
             activeTab={activeTab}
@@ -179,6 +215,39 @@ export function ContactDirectoryPage({
           <span>Filters</span>
         </button>
       </section>
+
+      {/* Contextual Sub-filters */}
+      {activeTab === 'ministers' && (
+        <div className="mb-4 flex items-center gap-2">
+          <button
+            onClick={() => setCabinetOnly(!cabinetOnly)}
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border transition-all ${
+              cabinetOnly
+                ? 'bg-amber-600 text-white border-amber-600 shadow-2xs'
+                : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800'
+            }`}
+          >
+            <span>Cabinet Only (Exclude FAC / In-Charge)</span>
+            {cabinetOnly && <span className="text-2xs font-bold">✓ Active</span>}
+          </button>
+        </div>
+      )}
+
+      {activeTab === 'mlas' && (
+        <div className="mb-4 flex items-center gap-2">
+          <button
+            onClick={() => setGroupByDistrict(!groupByDistrict)}
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border transition-all ${
+              groupByDistrict
+                ? 'bg-indigo-600 text-white border-indigo-600 shadow-2xs'
+                : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800'
+            }`}
+          >
+            <span>Sort Constituencies by District</span>
+            {groupByDistrict && <span className="text-2xs font-bold">✓ Active</span>}
+          </button>
+        </div>
+      )}
 
       {/* Main Layout: Left Filter Rail + Results Grid */}
       <div className="flex items-start gap-6">
@@ -216,6 +285,13 @@ export function ContactDirectoryPage({
         contact={selectedContact}
         onClose={() => setSelectedContact(null)}
         userRole={role}
+      />
+
+      {/* CM Quick Contacts Printable Sheet */}
+      <QuickContactsSheet
+        isOpen={quickSheetOpen}
+        onClose={() => setQuickSheetOpen(false)}
+        contacts={initialContacts}
       />
     </div>
   );

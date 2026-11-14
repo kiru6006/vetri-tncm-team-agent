@@ -8,17 +8,18 @@ export interface CategoryTabItem {
 }
 
 export const CATEGORY_TABS: CategoryTabItem[] = [
-  { id: 'all', label: 'All Contacts' },
-  { id: 'leadership', label: 'State Leadership', category: ['STATE_LEADERSHIP', 'CHIEF_SECRETARY'] },
-  { id: 'ministers', label: 'Ministers (35)', category: 'MINISTER' },
-  { id: 'collectors', label: 'District Collectors (38)', category: 'COLLECTOR' },
-  { id: 'mlas', label: 'MLAs (234)', category: 'MLA' },
-  { id: 'mps', label: 'Rajya Sabha (18)', category: 'MP' },
-  { id: 'secretariat', label: 'Secretaries to Govt', category: 'SECRETARIAT' },
-  { id: 'hod', label: 'Heads of Depts (242)', category: ['HOD', 'DEPT_HEAD'] },
-  { id: 'undertakings', label: 'Govt Undertakings (172)', category: 'UNDERTAKING' },
+  { id: 'all', label: 'All' },
+  { id: 'ministers', label: 'Ministers', category: 'MINISTER' },
+  { id: 'mlas', label: 'MLAs', category: 'MLA' },
+  { id: 'collectors', label: 'Collectors', category: 'COLLECTOR' },
+  { id: 'secretariat', label: 'Secretaries', category: 'SECRETARIAT' },
+  { id: 'constitutional', label: 'Constitutional Officers', category: 'CONSTITUTIONAL' },
+  { id: 'cmo', label: "CM's Office", category: 'CM_OFFICE' },
+  { id: 'governor_staff', label: "Governor's Staff", category: 'GOVERNOR_STAFF' },
+  { id: 'hod', label: 'Heads of Departments', category: ['HOD', 'DEPT_HEAD'] },
+  { id: 'undertakings', label: 'Undertakings', category: 'UNDERTAKING' },
+  { id: 'mps', label: 'Rajya Sabha', category: 'MP' },
   { id: 'services', label: 'IAS / IPS / IFoS', category: ['IAS', 'IPS', 'IFOS', 'DGP', 'SP'] },
-  { id: 'field', label: 'DROs & Municipal', category: ['DRO', 'MUNICIPAL_COMMISSIONER'] },
 ];
 
 interface CategoryTabsProps {

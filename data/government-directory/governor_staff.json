@@ -1,0 +1,37 @@
+[
+  {
+    "contact_id": "gov-staff-01-sec",
+    "category": "GOVERNOR_STAFF",
+    "full_name": "Dr. Anandrao V. Patil, IAS",
+    "designation": "Principal Secretary to Governor",
+    "service": "IAS",
+    "department": "Governor's Secretariat",
+    "district": "Chennai",
+    "office_name": "Governor's Secretariat, Lok Bhavan",
+    "office_email": "secy.governor@tn.gov.in",
+    "office_phone": "044-22351313",
+    "office_address": "Lok Bhavan, Guindy, Chennai - 600022",
+    "source_url": "https://www.tn.gov.in/governor_details.php",
+    "source_title": "Governor's Secretariat Contact Directory",
+    "verified_on": "2026-11-14",
+    "verification_status": "VERIFIED_CURRENT",
+    "notes": "Administrative Head of Raj Bhavan / Lok Bhavan Secretariat."
+  },
+  {
+    "contact_id": "gov-staff-02-adc",
+    "category": "GOVERNOR_STAFF",
+    "full_name": "Major S. Ramkumar",
+    "designation": "Aide-de-Camp (ADC) to Governor / Comptroller of Household",
+    "department": "Governor's Household",
+    "district": "Chennai",
+    "office_name": "Governor's Household, Lok Bhavan",
+    "office_email": "adc.governor@tn.gov.in",
+    "office_phone": "044-22351314",
+    "office_address": "Lok Bhavan, Guindy, Chennai - 600022",
+    "source_url": "https://www.tn.gov.in/governor_details.php",
+    "source_title": "Governor's Household & Staff Directory",
+    "verified_on": "2026-11-14",
+    "verification_status": "VERIFIED_CURRENT",
+    "notes": "Protocol, Household, and Ceremonial Security to Governor."
+  }
+]
