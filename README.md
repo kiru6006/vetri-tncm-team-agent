@@ -39,7 +39,7 @@ Rather than focusing on decorative charts, the platform prioritizes **problems r
 | **District Intelligence** | **Reported (Verified)** | Interactive 38-district SVG/Leaflet Tamil Nadu map, color-coded district performance heatmaps, Collector Command View, all 38 verified District Collectors. Backed by `TamilNaduInteractiveMap.tsx` and `CollectorCommandView.tsx`. | Taluk-level geospatial heat layers and complete 312-taluk Tahsildar roster integration. |
 | **Project Monitoring** | **Reported (Verified)** | State infrastructure portfolio tracking (Metro Rail, Highways, SIPCOT, Desalination Plants), financial vs physical completion %, milestone delay risk indicators. Backed by `ExplorePlatform.tsx`. | Interactive SVG/Canvas Gantt chart component for critical path and monsoon window monitoring ([DEF-PROJ-01](docs/project-tracker/DEFECT_REGISTER.md#def-proj-01)). |
 | **Scheme Monitoring** | **Reported (Verified)** | Marquee flagship welfare schemes tracking (Kalaignar Magalir Urimai Thittam, Pudhumai Penn, Breakfast Scheme, Makkalai Thedi Maruthuvam), beneficiary counts, DBT disbursement and bank rejection analytics. Backed by `FlagshipSchemesTracker.tsx`. | District-level saturation gap analysis breakdown and field surveyor mobile sync. |
-| **Government Contact Directory** | **Reported (Verified)** *(DEF-DIR-01 Fixed)* | Complete 21-category official integration across `https://www.tn.gov.in/contact_directory.php`: 35 Cabinet Ministers, 38 District Collectors, 234 MLAs, 18 Rajya Sabha MPs, 40 Secretaries to Govt, 242 Heads of Depts, 172 Undertakings, State Leadership & Guest Houses (787+ verified records). Backed by `/contacts` route, canonical datasets in `data/government-directory/`, and `docs/government-directory/`. | Automated weekly crawler for gazette posting changes. |
+| **Government Contact Directory** | **Reported (Verified)** *(DEF-DIR-01 Fixed)* | Complete 21-category official integration across `https://www.tn.gov.in/contact_directory.php`: 35 Cabinet Ministers with portfolios, 38 District Collectors with `@nic.in` emails, 234 MLAs, 18 Rajya Sabha MPs, 40 Secretaries to Govt, 4 Constitutional Officers, 6 CM Office staff, 2 Governor staff, 242 Heads of Depts, 172 Undertakings, State Leadership & Guest Houses (787+ verified records). Backed by `/contacts` route, canonical datasets in `data/government-directory/`, and `docs/government-directory/`. Features HoD `fetch_contact_page()` deep links, Cabinet-only filter, District-sorted MLAs, and 2-column A4 CM Quick Contacts printable sheet. | Automated weekly crawler for gazette posting changes. |
 | **Global Search & AI Copilot** | **Reported (Verified)** | Slide-out Copilot drawer, global AI search modal, FastAPI backend orchestrator with 7 callable agent tools (`find_official`, `get_department_overview`, `get_scheme_progress`, etc.), zero hallucination on verified directory. Backed by `CopilotDrawer.tsx` and `backend/app/agent/`. | Token-streaming response rendering with interactive markdown table formatting. |
 | **Meeting Calendar** | **Reported (Verified)** | Executive calendar view, review meeting scheduler (Cabinet, Collector conferences), automated briefing dossier assembly, real-time meeting minutes extraction, 1-click action item sync. Backed by `ExecutiveCalendarView.tsx` and `ExecutiveMeetingWorkspace.tsx`. | Bi-directional calendar sync with Google Workspace / MS Exchange. |
 | **Messaging & Collaboration** | **Reported (Verified)** | Secure executive peer-to-peer chat, departmental working group channels (`#disaster-management`), issue-linked discussion threads anchored to CM Action IDs, directive broadcast banners. Backed by `GovernmentChatPlatform.tsx`. | Voice note recording with automated Tamil speech-to-text transcription. |
@@ -52,6 +52,44 @@ Rather than focusing on decorative charts, the platform prioritizes **problems r
 | **GitHub Pages Deployment** | **Reported (Verified)** | Automated GitHub Actions CI/CD deployment (`.github/workflows/deploy.yml`), Vite production bundling, SPA `404.html` client routing, offline demo mode with rich verified local datasets. | Custom domain mapping with automated SSL renewal. |
 
 > Detailed capability-level evaluation, acceptance criteria, and defect tracking are maintained in [docs/project-tracker/MASTER_FEATURE_TRACKER.md](docs/project-tracker/MASTER_FEATURE_TRACKER.md) and [docs/project-tracker/DEFECT_REGISTER.md](docs/project-tracker/DEFECT_REGISTER.md).
+
+---
+
+## 🏛️ Government Contacts Directory (`/contacts`)
+
+The **Government Contacts Directory** (`/contacts`, alias `/directory`) provides a high-assurance, source-verified administrative roster for the Chief Minister's Office, Cabinet Ministers, and Secretariat Leadership.
+
+### 1. Roster Coverage Breakdown (~800+ Verified Records)
+
+| Category | Count | Upstream Official Source | Data Fields & Verification Pattern |
+|---|---|---|---|
+| **Council of Ministers** | 35 | `minister_list.php` & Gazette 256 | CM Thiru C. Joseph Vijay + 34 Cabinet Ministers with substantive portfolios |
+| **Legislative Assembly (MLAs)** | 234 | `17thassembly_members.php` | 234 Assembly constituencies (`mla<name>@tn.gov.in`), political parties |
+| **District Collectors** | 38 | `district_collector.php` | 38 District Collectors with direct phone, fax, and `@nic.in` emails |
+| **Secretaries to Government** | 40 | `secret_to_govt.php` | ACS, Principal Secretaries, Secretaries with direct & PBX extensions |
+| **Constitutional Officers** | 4 | Official Portals | Governor, Chief Justice, Chief Electoral Officer, Vigilance Commissioner |
+| **Chief Minister's Office** | 6 | CMO Secretariat | Hon. CM, 4 Secretaries to CM, Special Officer (CM Special Cell) |
+| **Governor's Staff** | 2 | Lok Bhavan Portal | Principal Secretary to Governor, ADC / Comptroller of Household |
+| **Heads of Departments (HoD)** | 242 | `cont_dir_All_hod_list.php` | Institutional directorates with subpage deep links (`fetch_contact_page()`) |
+| **Government Undertakings** | 172 | `cont_dir_All_und_tak.php` | State PSUs, apex corporations, boards with direct portal links |
+| **Rajya Sabha Members** | 18 | `rajyasabha.nic.in` | 18 Rajya Sabha seats for Tamil Nadu (`@sansad.nic.in`) |
+| **Civil Services & Field Cadres** | 44 | Cadre Rosters & Portals | Key DROs, Municipal Commissioners, and Police leadership |
+
+### 2. Core Architectural & UX Innovations
+
+1. **Constitutional Primacy**: Reflects the 35-member Council of Ministers headed by Hon'ble Chief Minister Thiru C. Joseph Vijay per Gazette Extraordinary No. 256.
+2. **Contextual "Cabinet Only" Filter**: In the Ministers tab, a one-click toggle isolates substantive portfolio ministers (excluding FAC / Additional Charge).
+3. **Constituency District Sorting**: In the MLAs tab, a dedicated toggle groups and sorts assembly constituencies by district.
+4. **Institutional Cards & `fetch_contact_page()`**: HoDs and Undertakings render clean institutional cards without fabricating personal names (`NOT_PUBLICLY_AVAILABLE`), complete with direct action buttons linking to department subpages.
+5. **CM Quick Contacts Sheet (Print / A4 PDF)**: A dedicated executive modal generates a compact 2-column A4 printable standing dossier featuring the Governor, CM, CS, DGP, and all 38 District Collectors.
+6. **RBAC & PII Masking**: Communication coordinates (`office_phone`, `office_email`) are unredacted for `CM`/`PS`/`SECRETARY`, gated for `ANALYST`, and strictly stripped for `READONLY` users (with cryptographic logging to `/api/audit/reveal`).
+7. **Directory Documentation**:
+   - [Source Inventory](docs/government-directory/source-inventory.md)
+   - [Category Coverage & Gap Analysis](docs/government-directory/category-coverage.md)
+   - [Data Verification Report](docs/government-directory/data-verification-report.md)
+   - [Missing Contacts & Public Availability Audit](docs/government-directory/missing-contacts.md)
+   - [Conflicting Records & Reconciliation Report](docs/government-directory/conflicting-records.md)
+   - [Directory Operational Guide](README-contacts.md)
 
 ---
 

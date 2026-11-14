@@ -134,3 +134,4 @@ export function QuickContactsSheet({ isOpen, onClose, contacts }: QuickContactsS
     </div>
   );
 }
+

@@ -34,3 +34,4 @@
    - Secretariat emails conform to `<dept>sec@tn.gov.in`.
 3. **No Fabricated PII:** Where private phone numbers or individual officer names are omitted on upstream public index listings, `full_name` is set to `null` and `verification_status` is explicitly set to `NOT_PUBLICLY_AVAILABLE`.
 4. **Zod Validation:** All records conform to the strict TypeScript/Zod `ContactRecord` schema.
+

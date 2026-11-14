@@ -27,3 +27,4 @@
 - **Source A (Legacy):** 36 historical departments.
 - **Source B (Live Portal):** 42 Secretariat departments, including modern portfolios such as Artificial Intelligence, Information Technology and Digital Services Department, and Natural Resources.
 - **Reconciliation Decision:** Upstream 42 Secretariat Departments and 40 active Secretaries are fully ingested.
+

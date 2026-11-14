@@ -31,3 +31,4 @@ for fn, lbl in [
     ('tnhouse_delhi.html', 'TN House Delhi')
 ]:
     inspect_file(fn, lbl)
+

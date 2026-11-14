@@ -62,3 +62,4 @@ The table below contrasts the legacy implementation against the official live Ta
    - Add tab navigation in `CategoryTabs.tsx` supporting: Overview, State Leadership, Ministers, MLAs & MPs, Secretaries, Collectors, HoDs, Undertakings, Civil Services (IAS/IPS/IFoS), Field Officers (DRO/Municipal).
    - Add stats summary cards on Directory Overview.
    - Support institutional contact cards where `full_name` is null.
+
