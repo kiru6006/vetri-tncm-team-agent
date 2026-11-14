@@ -352,7 +352,7 @@ class ExecutiveIntelligenceService:
             principal_secretary_name="Principal Secretary to Government",
             executing_officers=[
                 {"name": "Dr. R. Brindha Devi, IAS", "role": "District Collector, Salem"},
-                {"name": "Krasthi Kumar Pati, IAS", "role": "District Collector, Coimbatore"}
+                {"name": "Kranthi Kumar Pati, IAS", "role": "District Collector, Coimbatore"}
             ],
             district_coverage=["Salem", "Coimbatore", "Madurai", "Chennai", "Kallakurichi"],
             budget_sanctioned_cr=float(sch["budget_sanctioned"]),
@@ -516,7 +516,7 @@ class ExecutiveIntelligenceService:
                 ranked_entities=[
                     {"officer": "N. Muruganandam, IAS", "role": "Chief Secretary", "must_attend": True},
                     {"officer": "P. Senthilkumar, IAS", "role": "Principal Secretary, Health", "must_attend": True},
-                    {"officer": "Kirubakaran, IPS", "role": "Superintendent of Police", "must_attend": True},
+                    {"officer": "A. K. Arun Kabilan, IPS", "role": "Superintendent of Police", "must_attend": True},
                     {"officer": "Dr. R. Brindha Devi, IAS", "role": "District Collector, Salem", "must_attend": True}
                 ],
                 data_as_of=now_str

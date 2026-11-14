@@ -351,7 +351,7 @@ TAMIL_NADU_OFFICIALS_DIRECTORY: List[OfficerDirectoryItem] = [
     # 3. GROUP 1 OFFICERS (COLLECTORS & SPS)
     OfficerDirectoryItem(
         id="dir-grp1-01",
-        name_en="Krasthi Kumar Pati, IAS",
+        name_en="Kranthi Kumar Pati, IAS",
         name_ta="கிராந்தி குமார் பாடி, இ.ஆ.ப.",
         designation_en="District Collector & District Magistrate, Coimbatore",
         designation_ta="மாவட்ட ஆட்சித்தலைவர், கோயம்புத்தூர்",

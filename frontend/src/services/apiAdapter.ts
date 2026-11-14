@@ -19,6 +19,12 @@ import {
   MASTER_DISTRICTS,
   MASTER_FLAGSHIP_SCHEMES
 } from '../data/governanceData';
+import {
+  getVerifiedOfficialProfiles,
+  getVerifiedAutocomplete,
+  getCalendarDirectoryOfficers,
+  QUARANTINED_UNVERIFIED_RECORDS
+} from '../data/verifiedGovernmentDirectory';
 
 const DEFAULT_DATA_SOURCE: DataSourceMetadata = {
   source_name: "Government of Tamil Nadu Official Portal & Gazette",
@@ -77,302 +83,7 @@ function createOfficialProfile(data: Partial<OfficialGRMProfile> & {
   };
 }
 
-export const MASTER_OFFICIALS: OfficialGRMProfile[] = [
-  createOfficialProfile({
-    id: "grm-cm-01",
-    name_en: "M. K. Stalin",
-    name_ta: "மு. க. ஸ்டாலின்",
-    cadre: "MINISTER",
-    service_category: "State Political Executive",
-    designation_en: "Hon'ble Chief Minister of Tamil Nadu",
-    designation_ta: "மாண்புமிகு தமிழ்நாடு முதலமைச்சர்",
-    role_tier: "CHIEF_MINISTER",
-    department_en: "State Executive, Cabinet & Public",
-    department_ta: "மாநில தலைமை, அமைச்சரவை & பொதுத்துறை",
-    district_en: "Statewide (Secretariat, Chennai)",
-    district_ta: "மாநிலம் முழுவதும் (தலைமைச் செயலகம், சென்னை)",
-    taluk_en: "Chennai",
-    office_name: "Chief Minister's Secretariat Chamber",
-    office_address_en: "CMO, 2nd Floor, Main Building, Fort St. George, Chennai - 600009",
-    office_address_ta: "முதல்வர் அலுவலகம், புனித ஜார்ஜ் கோட்டை, சென்னை - 600009",
-    official_email: "cmcell@tn.gov.in",
-    cug_phone: "+91 44 2567 2345",
-    status: "AVAILABLE",
-    avatar_color: "from-amber-500 to-amber-700",
-    direct_reports: [
-      {
-        id: "grm-cs-01",
-        name: "N. Muruganandam, IAS",
-        cadre: "IAS",
-        designation: "Chief Secretary to Government",
-        department: "Public Department"
-      },
-      {
-        id: "grm-min-fin",
-        name: "Thiru Thangam Thennarasu",
-        cadre: "MINISTER",
-        designation: "Hon'ble Minister for Finance, Planning & HR",
-        department: "Finance Department"
-      }
-    ],
-    responsibilities: [
-      "Overall State Governance, Policy Formulation & $1T Economy Roadmap",
-      "Cabinet Approvals & Executive Decrees",
-      "Statewide Crisis & Disaster Response Command",
-      "Flagship Scheme Direct Review & Citizen Welfare Saturation"
-    ],
-    current_schemes: [
-      "Kalaignar Magalir Urimai Thittam (KMUT)",
-      "Chief Minister's Breakfast Scheme",
-      "Makkalai Thedi Maruthuvam",
-      "Pudhumai Penn Scheme"
-    ],
-    current_projects: [
-      "Chennai Metro Rail Corridor Phase 2 (₹63,246 Cr)",
-      "Semiconductor Fab Parks in Krishnagiri & Hosur",
-      "Parandur Greenfield International Airport"
-    ],
-    performance_score: 96.5
-  }),
-  createOfficialProfile({
-    id: "grm-cs-01",
-    name_en: "N. Muruganandam, IAS",
-    name_ta: "நா. முருகானந்தம், இ.ஆ.ப.",
-    cadre: "IAS",
-    batch_year: 1991,
-    service_category: "Indian Administrative Service",
-    designation_en: "Chief Secretary to Government",
-    designation_ta: "தலைமைச் செயலாளர்",
-    role_tier: "CHIEF_SECRETARY",
-    department_en: "Public Department & State Administration",
-    department_ta: "பொதுத்துறை & தலைமை நிர்வாகம்",
-    district_en: "Statewide (Chennai)",
-    district_ta: "மாநிலம் முழுவதும் (சென்னை)",
-    office_name: "Chief Secretary's Chamber",
-    office_address_en: "Chief Secretariat, Fort St. George, Chennai - 600009",
-    office_address_ta: "தலைமைச் செயலகம், புனித ஜார்ஜ் கோட்டை, சென்னை - 600009",
-    official_email: "cs@tn.gov.in",
-    cug_phone: "+91 44 2567 1555",
-    status: "AVAILABLE",
-    avatar_color: "from-blue-600 to-indigo-800",
-    direct_reports: [
-      { id: "grm-ps-ind-01", name: "V. Arun Roy, IAS", cadre: "IAS", designation: "Principal Secretary, Industries", department: "Industries" },
-      { id: "grm-ps-hlt-01", name: "P. Senthilkumar, IAS", cadre: "IAS", designation: "Principal Secretary, Health", department: "Health" },
-      { id: "grm-col-slm-01", name: "Dr. R. Brindha Devi, IAS", cadre: "IAS", designation: "Collector, Salem", department: "Revenue" },
-      { id: "grm-col-cbe-01", name: "Kranthi Kumar Pati, IAS", cadre: "IAS", designation: "Collector, Coimbatore", department: "Revenue" }
-    ],
-    responsibilities: [
-      "Head of Civil Services & Administrative Machinery",
-      "Coordination of all Secretariat Departments & Collectors",
-      "Law & Order Apex Monitoring with DGP",
-      "Implementation of CM Directives & Cabinet Decisions"
-    ],
-    current_schemes: ["Ungal Thogaiyil Mudhalamaicher", "Chief Minister's Fellowship"],
-    current_projects: ["State Infrastructure Monitoring Cell (e-Munnetram)"],
-    performance_score: 94.8
-  }),
-  createOfficialProfile({
-    id: "grm-col-slm-01",
-    name_en: "Dr. R. Brindha Devi, IAS",
-    name_ta: "மருத்துவர் இரா. பிருந்தாதேவி, இ.ஆ.ப.",
-    cadre: "IAS",
-    batch_year: 2012,
-    service_category: "Indian Administrative Service",
-    designation_en: "District Collector & District Magistrate, Salem",
-    designation_ta: "மாவட்ட ஆட்சியர், சேலம்",
-    role_tier: "DISTRICT_COLLECTOR",
-    department_en: "Revenue and District Administration",
-    department_ta: "வருவாய் மற்றும் மாவட்ட நிர்வாகம்",
-    district_en: "Salem",
-    district_ta: "சேலம்",
-    taluk_en: "Salem West",
-    office_name: "Salem District Collectorate",
-    office_address_en: "Collectorate Complex, Salem - 636001",
-    office_address_ta: "மாவட்ட ஆட்சியர் அலுவலகம், சேலம் - 636001",
-    official_email: "collr-slm@nic.in",
-    cug_phone: "+91 427 2450001",
-    status: "AVAILABLE",
-    avatar_color: "from-emerald-600 to-teal-800",
-    responsibilities: [
-      "Executive Head of District Revenue, Grievance Redressal and Law & Order Coordination",
-      "Salem Ring Road Expressway Land Acquisition Settlement",
-      "Kuruvai Cultivation Irrigation & Agriculture Input Monitoring"
-    ],
-    current_projects: ["Salem Ring Road Phase-2 (₹120 Cr)", "Mettur Dam Surplus Water Scheme"],
-    current_schemes: ["Kalaignar Magalir Urimai Thittam", "Chief Minister Breakfast Scheme"],
-    performance_score: 87.9
-  }),
-  createOfficialProfile({
-    id: "grm-col-cbe-01",
-    name_en: "Kranthi Kumar Pati, IAS",
-    name_ta: "கிராந்திகுமார் பாடி, இ.ஆ.ப.",
-    cadre: "IAS",
-    batch_year: 2015,
-    service_category: "Indian Administrative Service",
-    designation_en: "District Collector & District Magistrate, Coimbatore",
-    designation_ta: "மாவட்ட ஆட்சியர், கோயம்புத்தூர்",
-    role_tier: "DISTRICT_COLLECTOR",
-    department_en: "Revenue and District Administration",
-    department_ta: "வருவாய் மற்றும் மாவட்ட நிர்வாகம்",
-    district_en: "Coimbatore",
-    district_ta: "கோயம்புத்தூர்",
-    taluk_en: "Coimbatore South",
-    office_name: "Coimbatore District Collectorate",
-    office_address_en: "Collectorate, State Bank Road, Gopalapuram, Coimbatore - 641018",
-    office_address_ta: "மாவட்ட ஆட்சியர் அலுவலகம், கோயம்புத்தூர் - 641018",
-    official_email: "collr-cbe@nic.in",
-    cug_phone: "+91 422 2301114",
-    status: "AVAILABLE",
-    avatar_color: "from-cyan-600 to-blue-800",
-    responsibilities: [
-      "Industrial Infrastructure & Western Corridor Development",
-      "Pollachi Groundwater Stress & Industrial Effluent Monitoring",
-      "Airport Expansion Land Acquisition Phase 2"
-    ],
-    current_projects: ["Coimbatore International Airport Expansion (₹1,800 Cr)", "Semiconductor Fab Infrastructure"],
-    performance_score: 91.8
-  }),
-  createOfficialProfile({
-    id: "grm-sp-slm-kirubakaran",
-    name_en: "A. K. Arun Kabilan, IPS",
-    name_ta: "அ. க. அருண் கபிலன், இ.கா.ப.",
-    cadre: "IPS",
-    batch_year: 2014,
-    service_category: "Indian Police Service",
-    designation_en: "Superintendent of Police, Salem District",
-    designation_ta: "காவல் கண்காணிப்பாளர், சேலம் மாவட்டம்",
-    role_tier: "SUPERINTENDENT_OF_POLICE",
-    department_en: "Home & Police Administration",
-    department_ta: "உள்துறை மற்றும் காவல் நிர்வாகம்",
-    district_en: "Salem",
-    district_ta: "சேலம்",
-    office_name: "District Police Office Salem",
-    office_address_en: "DPO Complex, Kumarasamipatti, Salem - 636007",
-    office_address_ta: "மாவட்ட காவல் கண்காணிப்பாளர் அலுவலகம், சேலம் - 636007",
-    official_email: "sp-slm@tncops.gov.in",
-    cug_phone: "+91 427 2451000",
-    status: "AVAILABLE",
-    avatar_color: "from-slate-700 to-slate-900",
-    responsibilities: [
-      "District Law and Order Maintenance",
-      "Palar & Sarabanga Riverbed Anti-Sand Smuggling Squad",
-      "CCTNS Digitization and Highway Patrol Network"
-    ],
-    performance_score: 89.2
-  }),
-  createOfficialProfile({
-    id: "grm-ps-hlt-01",
-    name_en: "P. Senthilkumar, IAS",
-    name_ta: "ப. செந்தில்குமார், இ.ஆ.ப.",
-    cadre: "IAS",
-    batch_year: 1995,
-    service_category: "Indian Administrative Service",
-    designation_en: "Principal Secretary to Government, Health & Family Welfare",
-    designation_ta: "முதன்மைச் செயலாளர், மக்கள் நல்வாழ்வு மற்றும் குடும்ப நலத்துறை",
-    role_tier: "PRINCIPAL_SECRETARY",
-    department_en: "Health and Family Welfare Department",
-    department_ta: "மக்கள் நல்வாழ்வு மற்றும் குடும்ப நலத்துறை",
-    district_en: "Statewide (Chennai)",
-    district_ta: "சென்னை",
-    office_name: "Health Secretariat Chamber",
-    office_address_en: "4th Floor, Namakkal Kavignar Maaligai, Fort St. George, Chennai - 600009",
-    office_address_ta: "நாமக்கல் கவிஞர் மாளிகை, புனித ஜார்ஜ் கோட்டை, சென்னை - 600009",
-    official_email: "hfwsec@tn.gov.in",
-    cug_phone: "+91 44 2567 1875",
-    status: "AVAILABLE",
-    avatar_color: "from-rose-600 to-red-800",
-    responsibilities: [
-      "Overall State Public Health Strategy & Hospital Administration",
-      "TNMSC Essential Drug Warehouse Logistics & Anti-D Globulin Supplies",
-      "Makkalai Thedi Maruthuvam & 108 Ambulance Fleet Expansion"
-    ],
-    current_schemes: ["Makkalai Thedi Maruthuvam", "Innuyir Kaappom - Nammai Kaakkum 48"],
-    performance_score: 92.0
-  }),
-  createOfficialProfile({
-    id: "grm-comm-ct-01",
-    name_en: "Dr. Dheeraj Kumar, IAS",
-    name_ta: "மருத்துவர் தீரஜ் குமார், இ.ஆ.ப.",
-    cadre: "IAS",
-    batch_year: 1993,
-    service_category: "Indian Administrative Service",
-    designation_en: "Commissioner of Commercial Taxes",
-    designation_ta: "வணிக வரி ஆணையர்",
-    role_tier: "COMMISSIONER",
-    department_en: "Finance & Commercial Taxes Department",
-    department_ta: "நிதி & வணிக வரித்துறை",
-    district_en: "Statewide (Chennai)",
-    district_ta: "சென்னை",
-    office_name: "Ezhilagam Commercial Taxes Complex",
-    office_address_en: "Chepauk, Chennai - 600005",
-    office_address_ta: "எழிலகம், சேப்பாக்கம், சென்னை - 600005",
-    official_email: "cct@ctd.tn.gov.in",
-    cug_phone: "+91 44 2829 0909",
-    status: "AVAILABLE",
-    avatar_color: "from-amber-600 to-yellow-800",
-    responsibilities: [
-      "State Goods & Services Tax (SGST) Collection Target Execution",
-      "Tirupur Apparel Export Refund Clearance & Red-Tape Elimination",
-      "AI-Based E-Way Bill Anti-Evasion Analytics"
-    ],
-    performance_score: 93.6
-  }),
-  createOfficialProfile({
-    id: "grm-dig-cbe",
-    name_en: "K. Bhavaneeswari, IPS",
-    name_ta: "கே. பவானீஸ்வரி, இ.கா.ப.",
-    cadre: "IPS",
-    batch_year: 2004,
-    service_category: "Indian Police Service",
-    designation_en: "Inspector General of Police (West Zone, Coimbatore)",
-    designation_ta: "காவல்துறை தலைவர் (மேற்கு மண்டலம், கோவை)",
-    role_tier: "SUPERINTENDENT_OF_POLICE",
-    department_en: "Home & Police Administration",
-    department_ta: "உள்துறை மற்றும் காவல்",
-    district_en: "Coimbatore",
-    district_ta: "கோயம்புத்தூர்",
-    office_name: "West Zone Police Range Headquarters",
-    office_address_en: "Race Course Road, Coimbatore - 641018",
-    office_address_ta: "ரேஸ் கோர்ஸ் சாலை, கோயம்புத்தூர் - 641018",
-    official_email: "igp-west@tnpolice.gov.in",
-    cug_phone: "+91 422 2220100",
-    status: "AVAILABLE",
-    avatar_color: "from-slate-600 to-indigo-900",
-    responsibilities: [
-      "Operational Command of 8 Western Districts",
-      "Cyber Crime Enforcement Hub & Industrial Security"
-    ],
-    performance_score: 91.0
-  }),
-  createOfficialProfile({
-    id: "grm-jc-ct-kayalvizhi",
-    name_en: "Kayalvizhi, IRS",
-    name_ta: "கயல்விழி, இ.வ.ப.",
-    cadre: "IRS",
-    batch_year: 2011,
-    service_category: "Indian Revenue Service",
-    designation_en: "Joint Commissioner of Commercial Taxes, Madurai Division",
-    designation_ta: "வணிக வரி இணை ஆணையர், மதுரை பிரிவு",
-    role_tier: "COMMISSIONER",
-    department_en: "Commercial Taxes & Central GST Coordination",
-    department_ta: "வணிக வரிகள் மற்றும் மத்திய ஜிஎஸ்டி ஒருங்கிணைப்பு",
-    district_en: "Madurai",
-    district_ta: "மதுரை",
-    office_name: "Commercial Taxes Complex Madurai",
-    office_address_en: "Dr. Thangaraj Salai, Madurai - 625020",
-    office_address_ta: "டாக்டர் தங்கராஜ் சாலை, மதுரை - 625020",
-    official_email: "jc-ct-mdu@ctd.tn.gov.in",
-    cug_phone: "+91 452 2531200",
-    status: "AVAILABLE",
-    avatar_color: "from-purple-600 to-indigo-800",
-    responsibilities: [
-      "Commercial Taxes Administration across Southern Districts",
-      "GST Joint Audit Taskforce with Central Board of Indirect Taxes",
-      "Scrutiny of Input Tax Credit Anomalies in Spinning Mills"
-    ],
-    performance_score: 88.5
-  })
-];
+export const MASTER_OFFICIALS: OfficialGRMProfile[] = getVerifiedOfficialProfiles();
 
 export const MASTER_HIERARCHY_TREE: HierarchyNode = {
   id: "node-cm-01",
@@ -762,6 +473,10 @@ export function initDemoApiInterceptor() {
           });
         }
 
+        const quarantined_matches = q ? QUARANTINED_UNVERIFIED_RECORDS.filter(
+          (r) => r.raw_name.toLowerCase().includes(q) || r.cadre.toLowerCase().includes(q)
+        ) : [];
+
         return new Response(
           JSON.stringify({
             results,
@@ -770,8 +485,10 @@ export function initDemoApiInterceptor() {
               IAS: MASTER_OFFICIALS.filter((o) => o.cadre === 'IAS').length,
               IPS: MASTER_OFFICIALS.filter((o) => o.cadre === 'IPS').length,
               MINISTER: MASTER_OFFICIALS.filter((o) => o.cadre === 'MINISTER').length,
+              IFS: MASTER_OFFICIALS.filter((o) => o.cadre === 'IFS').length,
               IRS: MASTER_OFFICIALS.filter((o) => o.cadre === 'IRS').length
-            }
+            },
+            quarantined_matches
           }),
           { status: 200, headers: { 'Content-Type': 'application/json' } }
         );
@@ -780,11 +497,28 @@ export function initDemoApiInterceptor() {
       if (cleanUrl.includes('/api/v1/grm/autocomplete')) {
         const urlObj = new URL(urlString, 'http://localhost');
         const q = urlObj.searchParams.get('q') || '';
-        const items = getDemoAutocomplete(q);
+        const items = getVerifiedAutocomplete(q);
         return new Response(JSON.stringify(items), {
           status: 200,
           headers: { 'Content-Type': 'application/json' }
         });
+      }
+
+      if (cleanUrl.includes('/api/v1/calendar/directory/search')) {
+        const urlObj = new URL(urlString, 'http://localhost');
+        const q = urlObj.searchParams.get('query') || '';
+        const dept = urlObj.searchParams.get('department') || '';
+        const role = urlObj.searchParams.get('role_tier') || 'ALL';
+        const officers = getCalendarDirectoryOfficers(q, dept, role);
+        return new Response(
+          JSON.stringify({
+            total_matches: officers.length,
+            officers,
+            query_interpreted: q ? `Verified official search: ${q}` : "All verified officials",
+            quarantine_audit: QUARANTINED_UNVERIFIED_RECORDS
+          }),
+          { status: 200, headers: { 'Content-Type': 'application/json' } }
+        );
       }
 
       if (cleanUrl.includes('/api/v1/hierarchy/tree')) {

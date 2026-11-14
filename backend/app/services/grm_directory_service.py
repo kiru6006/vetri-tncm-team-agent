@@ -159,7 +159,7 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
             ),
             ReportingNode(
                 id="grm-col-cbe-01",
-                name_en="Krasthi Kumar Pati, IAS",
+                name_en="Kranthi Kumar Pati, IAS",
                 designation_en="District Collector, Coimbatore",
                 role_tier="DISTRICT_COLLECTOR",
                 official_email="collr-cbe@nic.in"
@@ -195,13 +195,13 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
         )
     ),
 
-    # 3. SUPERINTENDENT OF POLICE - SALEM (KIRUBAKARAN IPS)
+    # 3. SUPERINTENDENT OF POLICE - SALEM (A. K. ARUN KABILAN IPS)
     OfficialGRMProfile(
         id="grm-sp-slm-kirubakaran",
-        name_en="Kirubakaran, IPS",
-        name_ta="கிருபாகரன், இ.கா.ப.",
+        name_en="A. K. Arun Kabilan, IPS",
+        name_ta="ஏ. கே. அருண் கபிலன், இ.கா.ப.",
         cadre="IPS",
-        batch_year=2015,
+        batch_year=2014,
         designation_en="Superintendent of Police (SP), Salem District",
         designation_ta="காவல் கண்காணிப்பாளர், சேலம் மாவட்டம்",
         role_tier="GROUP_1",
@@ -273,7 +273,7 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
         ],
         recent_gos=["G.O. (Ms) No. 284 - Salem Highway AI Traffic Surveillance Sanctions"],
         recent_circulars=["SP Circular 04/2026 - Mettur Dam Tourism Safety & Festival Bandobast"],
-        ai_relationship_insights="SP Kirubakaran IPS maintains active coordination with District Collector Dr. R. Brindha Devi IAS on law & order, festival security, and illegal mining prevention. High cross-functional collaboration with Home, Revenue, and Transport departments.",
+        ai_relationship_insights="SP A. K. Arun Kabilan IPS maintains active coordination with District Collector Dr. R. Brindha Devi IAS on law & order, festival security, and illegal mining prevention. High cross-functional collaboration with Home, Revenue, and Transport departments.",
         cross_department_collaborators=["Revenue (Collectorate)", "Highways", "Transport", "Forest", "Judiciary & Courts"],
         data_source=DataSourceMetadata(
             source_name="Police Headquarters & CCTNS State Command Telemetry",
@@ -449,8 +449,8 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
         ],
         recent_gos=["G.O. (Ms) No. 182 - Mettur Canal Rejuvenation Package"],
         recent_circulars=["Collectorate Circular 2026/08 - e-Patta Settlement SLA Adherence"],
-        ai_relationship_insights="District Collector Dr. R. Brindha Devi IAS works in close coordination with SP Kirubakaran IPS on law & order and public event security. High synergy with Water Resources Department on Mettur dam discharge and lift irrigation.",
-        cross_department_collaborators=["Police (SP Kirubakaran IPS)", "Water Resources", "Rural Development", "Agriculture", "Social Welfare"],
+        ai_relationship_insights="District Collector Dr. R. Brindha Devi IAS works in close coordination with SP A. K. Arun Kabilan IPS on law & order and public event security. High synergy with Water Resources Department on Mettur dam discharge and lift irrigation.",
+        cross_department_collaborators=["Police (SP A. K. Arun Kabilan IPS)", "Water Resources", "Rural Development", "Agriculture", "Social Welfare"],
         data_source=DataSourceMetadata(
             source_name="38 District Collectorates & Revenue e-District Hub",
             source_url="https://tnega.tn.gov.in/edistrict/roster",
@@ -461,10 +461,10 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
         )
     ),
 
-    # 6. DISTRICT COLLECTOR - COIMBATORE (KRASTHI KUMAR PATI IAS)
+    # 6. DISTRICT COLLECTOR - COIMBATORE (KRANTHI KUMAR PATI IAS)
     OfficialGRMProfile(
         id="grm-col-cbe-01",
-        name_en="Krasthi Kumar Pati, IAS",
+        name_en="Kranthi Kumar Pati, IAS",
         name_ta="கிராந்தி குமார் பாடி, இ.ஆ.ப.",
         cadre="IAS",
         batch_year=2015,
@@ -596,7 +596,7 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
         ],
         recent_gos=["G.O. (Ms) No. 78 - Police Cyber Forensics Modernization"],
         recent_circulars=["SP Circular 09/2026 - Interstate Border Patrolling Directives"],
-        ai_relationship_insights="Coimbatore Rural Police maintains seamless coordination with District Collector Krasthi Kumar Pati IAS on traffic safety and border checkposts.",
+        ai_relationship_insights="Coimbatore Rural Police maintains seamless coordination with District Collector Kranthi Kumar Pati IAS on traffic safety and border checkposts.",
         cross_department_collaborators=["Revenue (Collectorate)", "Highways", "Transport", "Forest", "Kerala Police"],
         data_source=DataSourceMetadata(
             source_name="Police Headquarters & CCTNS State Command Telemetry",
@@ -920,7 +920,7 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
         avatar_color="from-blue-600 to-teal-700",
         reports_to=ReportingNode(
             id="grm-col-cbe-01",
-            name_en="Krasthi Kumar Pati, IAS",
+            name_en="Kranthi Kumar Pati, IAS",
             designation_en="District Collector, Coimbatore",
             role_tier="DISTRICT_COLLECTOR",
             official_email="collr-cbe@nic.in"
@@ -952,7 +952,7 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
         ],
         recent_gos=["G.O. (Ms) No. 94 - Urban Revenue Modernization"],
         recent_circulars=["Taluk Circular 05/2026 - Survey SLA Compliance"],
-        ai_relationship_insights="Tahsildar M. Shanmugasundaram collaborates directly with Collector Krasthi Kumar Pati IAS on infrastructure land settlement.",
+        ai_relationship_insights="Tahsildar M. Shanmugasundaram collaborates directly with Collector Kranthi Kumar Pati IAS on infrastructure land settlement.",
         cross_department_collaborators=["District Collector Coimbatore", "DRO", "Surveyors", "TANGEDCO", "Highways"],
         data_source=DataSourceMetadata(
             source_name="38 District Collectorates & Revenue e-District Hub",
@@ -1114,9 +1114,9 @@ def analyze_relationship_intelligence(req: RelationshipIntelligenceQuery) -> Rel
 
     # Priority matches based on semantic domains
     if "pocso" in t or "posco" in t or "crime" in t or "police" in t or "law" in t:
-        # Match Law Minister, SP Salem (Kirubakaran IPS), SP Coimbatore (Karthikeyan IPS), Chief Secretary
+        # Match Law Minister, SP Salem (A. K. Arun Kabilan IPS), SP Coimbatore (Karthikeyan IPS), Chief Secretary
         for o in OFFICIALS_GRM_MASTER:
-            if "kirubakaran" in o.name_en.lower() or "salem" in (o.district_en or "").lower():
+            if "kabilan" in o.name_en.lower() or "kirubakaran" in o.name_en.lower() or "salem" in (o.district_en or "").lower():
                 recommended.append(RecommendedOfficerItem(
                     officer=o,
                     relevance_score=98.5,
@@ -1150,8 +1150,8 @@ def analyze_relationship_intelligence(req: RelationshipIntelligenceQuery) -> Rel
             "G.O. (Ms) No. 284 - Special POCSO Fast-Track Prosecution Sanctions",
             "G.O. (Ms) No. 78 - Police Cyber Forensics Modernization"
         ]
-        summary_en = "High-level Law & Enforcement Bench convened. Recommended primary participants include SP Kirubakaran IPS (Salem), Chief Secretary, and SP K. Karthikeyan IPS (Coimbatore) to review prosecution velocity and cyber telemetry."
-        summary_ta = "சட்டம் ஒழுங்கு மற்றும் போக்சோ விரைவு நீதிமன்ற ஆய்வு. சேலம் எஸ்.பி கிருபாகரன் இ.கா.ப., தலைமைச் செயலாளர் மற்றும் கோவை எஸ்.பி கார்த்திகேயன் இ.கா.ப. பங்கேற்க பரிந்துரைக்கப்படுகிறது."
+        summary_en = "High-level Law & Enforcement Bench convened. Recommended primary participants include SP A. K. Arun Kabilan IPS (Salem), Chief Secretary, and SP K. Karthikeyan IPS (Coimbatore) to review prosecution velocity and cyber telemetry."
+        summary_ta = "சட்டம் ஒழுங்கு மற்றும் போக்சோ விரைவு நீதிமன்ற ஆய்வு. சேலம் எஸ்.பி ஏ. கே. அருண் கபிலன் இ.கா.ப., தலைமைச் செயலாளர் மற்றும் கோவை எஸ்.பி கார்த்திகேயன் இ.கா.ப. பங்கேற்க பரிந்துரைக்கப்படுகிறது."
 
     elif "tax" in t or "gst" in t or "revenue" in t or "fraud" in t or "commercial" in t:
         # Match Kayalvizhi IRS, Finance Minister, Chief Secretary

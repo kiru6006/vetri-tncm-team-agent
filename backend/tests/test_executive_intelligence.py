@@ -24,7 +24,7 @@ def test_knowledge_graph():
 def test_officer_executive_intelligence():
     intel = executive_intel_service.get_officer_executive_intelligence("off-sp-slm-kirubakaran")
     assert intel is not None
-    assert "Kirubakaran" in intel.name_en
+    assert "Arun Kabilan" in intel.name_en
     assert intel.cadre == "IPS"
     assert intel.department_kpi_score > 90.0
     assert intel.domain_statistics.get("pocso_trial_velocity_score") is not None
@@ -52,7 +52,7 @@ def test_scheme_intelligence():
 def test_ai_meeting_preparation():
     prep = executive_intel_service.prepare_meeting("off-sp-slm-kirubakaran", "Salem Water & Law Review")
     assert prep is not None
-    assert "Kirubakaran" in prep.prepared_for
+    assert "Arun Kabilan" in prep.prepared_for
     assert len(prep.recommended_questions_for_cm) >= 2
     assert len(prep.decision_options_for_cm) >= 1
     assert len(prep.meeting_agenda) >= 3

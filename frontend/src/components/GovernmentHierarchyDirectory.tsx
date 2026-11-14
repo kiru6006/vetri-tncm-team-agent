@@ -73,6 +73,7 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
   const [autocompleteResults, setAutocompleteResults] = useState<AutocompleteItem[]>([]);
   const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(false);
   const [searchResults, setSearchResults] = useState<OfficialGRMProfile[]>([]);
+  const [quarantinedMatches, setQuarantinedMatches] = useState<any[]>([]);
   const [isLoadingSearch, setIsLoadingSearch] = useState(false);
   const [totalMatches, setTotalMatches] = useState<number>(0);
   const [cadreCounts, setCadreCounts] = useState<{ [key: string]: number }>({});
@@ -131,6 +132,7 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
       if (res.ok) {
         const data = await res.json();
         setSearchResults(data.results || []);
+        setQuarantinedMatches(data.quarantined_matches || []);
         setTotalMatches(data.total_matches || 0);
         setCadreCounts(data.cadre_counts || {});
         if (data.results && data.results.length > 0 && !selectedProfile) {
@@ -677,6 +679,22 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
               </span>
             </div>
 
+            {quarantinedMatches.length > 0 && (
+              <div className="p-4 rounded-2xl bg-amber-950/40 border border-amber-600/40 text-amber-200 text-xs flex items-start gap-3">
+                <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-amber-300">Quarantine Defect Notice - Unverified Legacy Record Isolated</div>
+                  <div className="mt-1 space-y-1">
+                    {quarantinedMatches.map((qm: any) => (
+                      <div key={qm.id} className="text-amber-200/90">
+                        <span className="font-semibold text-amber-100">{qm.raw_name}</span> ({qm.cadre}): {qm.reason}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
             {isLoadingSearch ? (
               <div className="p-12 text-center text-slate-400 rounded-3xl bg-slate-900/80 border border-slate-800 flex items-center justify-center gap-3">
                 <RefreshCw className="w-5 h-5 animate-spin text-indigo-400" />
@@ -716,6 +734,10 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
                               <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold border ${getCadrePillColor(officer.cadre)}`}>
                                 {officer.cadre} {officer.batch_year ? `• Batch ${officer.batch_year}` : ''}
                               </span>
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">
+                                <ShieldCheck className="w-3 h-3 text-emerald-400" />
+                                {isTa ? 'அங்கீகரிக்கப்பட்டது' : 'VERIFIED CURRENT'}
+                              </span>
                               {getStatusBadge(officer.status)}
                             </div>
                             <p className="text-xs font-semibold text-emerald-300 mt-1">
@@ -741,7 +763,7 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
 
                       {/* Quick Meta Footer */}
                       <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 gap-2 flex-wrap">
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-3 flex-wrap">
                           <span className="flex items-center gap-1 text-slate-300 font-mono">
                             <Phone className="w-3 h-3 text-emerald-400" />
                             {officer.cug_phone}
@@ -750,6 +772,14 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
                             <Mail className="w-3 h-3 text-indigo-400" />
                             {officer.official_email}
                           </span>
+                          {officer.data_source?.source_name && (
+                            <span className="flex items-center gap-1 text-[11px] text-slate-400">
+                              <FileCheck className="w-3 h-3 text-emerald-400" />
+                              <span className="truncate max-w-[220px]" title={officer.data_source.source_name}>
+                                {officer.data_source.source_name}
+                              </span>
+                            </span>
+                          )}
                         </div>
 
                         {/* 1-Click Action Shortcuts */}

@@ -209,23 +209,23 @@ SAMPLE_OFFICIALS = [
     },
     {
         "id": "off-sp-slm-kirubakaran",
-        "full_name_en": "Kirubakaran, IPS",
-        "full_name_ta": "கிருபாகரன், இ.கா.ப.",
+        "full_name_en": "A. K. Arun Kabilan, IPS",
+        "full_name_ta": "ஏ. கே. அருண் கபிலன், இ.கா.ப.",
         "cadre": CadreEnum.IPS,
-        "batch_year": 2015,
+        "batch_year": 2014,
         "current_posting": "Superintendent of Police (SP), Salem District",
         "department_id": "dept-home-01",
         "ministry_id": "min-home-01",
         "designation_rank": "Superintendent of Police",
         "phone_landline": "+91 427 2451001",
         "phone_mobile": "+91 94981 00501",
-        "official_email": "sp-slm@tncctns.gov.in",
+        "official_email": "sp-slm@tnpolice.gov.in",
         "office_address": "District Police Office (DPO), Collectorate Complex, Salem 636001",
         "posting_effective_date": date(2024, 2, 10),
         "expected_retirement": date(2045, 5, 31),
         "status": OfficialStatusEnum.ACTIVE,
         "notes": "Law & Order, Crime Control, CCTNS & POCSO Special Fast-Track Supervision",
-        "source_refs": [{"source": "G.O.(Rt) No. 421, Home (Pol.I) Dept", "date": "2024-02-10"}]
+        "source_refs": [{"source": "G.O.(Rt) No. 421, Home (Pol.I) Dept / tnpolice.gov.in", "date": "2024-02-10"}]
     },
     {
         "id": "off-jc-ct-kayalvizhi",
@@ -269,7 +269,7 @@ SAMPLE_OFFICIALS = [
     },
     {
         "id": "off-col-cbe-krasthi",
-        "full_name_en": "Krasthi Kumar Pati, IAS",
+        "full_name_en": "Kranthi Kumar Pati, IAS",
         "full_name_ta": "கிராந்தி குமார் பாடி, இ.ஆ.ப.",
         "cadre": CadreEnum.IAS,
         "batch_year": 2015,
@@ -427,7 +427,7 @@ SAMPLE_DISTRICTS = [
             "population": 3482056,
             "area_sqkm": 5245,
             "collector_name": "Dr. R. Brindha Devi, IAS",
-            "sp_name": "Kirubakaran, IPS",
+            "sp_name": "A. K. Arun Kabilan, IPS",
             "kmut_beneficiaries": 542100,
             "grievance_redressal_rate": 96.4,
             "mettur_storage_ft": 68.4
@@ -443,7 +443,7 @@ SAMPLE_DISTRICTS = [
         "key_indicators": {
             "population": 3458045,
             "area_sqkm": 4723,
-            "collector_name": "Krasthi Kumar Pati, IAS",
+            "collector_name": "Kranthi Kumar Pati, IAS",
             "sp_name": "K. Karthikeyan, IPS",
             "kmut_beneficiaries": 489200,
             "grievance_redressal_rate": 97.2,

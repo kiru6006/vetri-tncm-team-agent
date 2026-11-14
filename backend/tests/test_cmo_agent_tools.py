@@ -17,11 +17,11 @@ from app.agent.orchestrator import cmo_orchestrator
 
 
 def test_find_official_by_name():
-    results = find_official("Kirubakaran")
+    results = find_official("Arun Kabilan")
     assert len(results) >= 1
-    assert "Kirubakaran" in results[0]["full_name_en"]
+    assert "Arun Kabilan" in results[0]["full_name_en"]
     assert results[0]["cadre"] == "IPS"
-    assert results[0]["official_email"] == "sp-slm@tncctns.gov.in"
+    assert results[0]["official_email"] == "sp-slm@tnpolice.gov.in"
     assert len(results[0]["source_refs"]) > 0
 
 
