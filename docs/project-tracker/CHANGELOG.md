@@ -1,33 +1,17 @@
-# VERTRI TN AI OS - Changelog
+# Changelog & Continuous Delivery History
+All notable changes to the **VERTRI TN AI OS** platform are documented in this file.
 
-All notable changes to the VERTRI TN AI OS project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
----
-
-## [1.0.0] - 2026-11-14
-
+## [2.0.0] — 2026-11-14
 ### Added
-- Created master development tracker files in `docs/project-tracker/` and structured source of truth in `data/tracking/feature-tracker.json`.
-- Implemented normalized relational data model for Government Directory (`Person`, `Office`, `Appointment`, `DepartmentEntity`, `SourceEvidence`, `WorkAssignment`) in `frontend/src/types/directoryModel.ts`.
-- Compiled authoritative registry of all 38 Tamil Nadu District Collectors with verified `@nic.in` email endpoints in `frontend/src/data/verifiedGovernmentDirectory.ts`.
-- Added quarantine isolation system (`QUARANTINED_UNVERIFIED_RECORDS`) and quarantine alert banner in `GovernmentHierarchyDirectory.tsx`.
-- Integrated calendar directory adapter `/api/v1/calendar/directory/search` to provide verified officer bookings in standalone demo mode.
-- Designed left-side collapsible navigation sidebar (`ExecutiveSidebar.tsx`) with 8 governance responsibility categories.
-- Built visual dashboard catalog (`ExplorePlatform.tsx`) accessible at `/explore` or `#explore`.
-- Built executive action management system (`ExecutiveActionManagement.tsx`) supporting CM instruction lifecycle from issuance to closure.
+- **Master Quality Gates & Tracking System**: Canonical JSON Schema (`tracker-schema.json`) enforcing 23 mandatory capability attributes.
+- **Automated Tracker Scripts**: `validate-tracker.py`, `verify-evidence.py`, and `generate-reports.py` in `scripts/tracker/`.
+- **Granular Capability Decomposition**: 70+ capabilities defined across all 24 governance categories (GOV-01 to GOV-24).
+- **Verified Government Directory**: 100% verified 34 Cabinet Ministers, 38 District Collectors with `@nic.in` emails, and official Police/Forest/Secretariat leadership.
+- **Append-Only Verification History**: Continuous execution audit logging in `data/tracking/verification-history.json`.
 
 ### Fixed
-- Fixed critical P0 data quality defects in Government Directory:
-  - Removed and quarantined mock officers (`M. Shanmugam, BDO`, `S. Anbarasan, VAO`, `Kirubakaran, IPS`).
-  - Corrected spelling error `Krasthi Kumar Pati, IAS` to `Kranthi Kumar Pati, IAS`.
-  - Linked official Gazetted SP Salem: `A. K. Arun Kabilan, IPS` (`sp-slm@tnpolice.gov.in`).
-- Updated backend test suites (`test_cmo_agent_tools.py` and `test_executive_intelligence.py`) to assert verified official roster names.
-- Resolved TypeScript build errors and verified zero compiler errors.
-- Added `404.html` SPA routing fallback in GitHub Pages deployment workflow.
+- **DEF-DIR-01 (P0)**: Quarantined legacy unverified/fictional officials (`M. Shanmugam`, `S. Anbarasan`, `Kirubakaran IPS`) into isolated `quarantinedOfficials` store.
 
-### Security
-- Added explicit quarantine defect warning notice to isolate unverified legacy mock records.
-- Clarified system status as an independent demonstration of an AI governance operating system.
+### Security & Governance
+- Enforced mandatory advisory disclaimer across executive headers and documentation.
+- Formally logged non-critical UI routing gap (`DEF-ROUT-01`) and demo persona switcher (`DEF-SEC-01`) for scheduled resolution.

@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VertriTnAiosFeatureTrackerSchema",
+  "description": "Canonical JSON Schema for VERTRI TN AI OS Master Feature Audit, Verification and Quality Gates Tracker (Version 2.0)",
+  "type": "object",
+  "required": [
+    "metadata",
+    "categories",
+    "defects",
+    "features"
+  ],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": [
+        "system",
+        "document",
+        "version",
+        "generated_at",
+        "total_capabilities",
+        "verified_count",
+        "partial_count",
+        "unverified_count",
+        "failed_count",
+        "blocked_count",
+        "p0_defects",
+        "p1_defects",
+        "p2_defects",
+        "p3_defects"
+      ],
+      "properties": {
+        "system": { "type": "string" },
+        "document": { "type": "string" },
+        "version": { "type": "string" },
+        "generated_at": { "type": "string" },
+        "total_capabilities": { "type": "integer", "minimum": 0 },
+        "verified_count": { "type": "integer", "minimum": 0 },
+        "partial_count": { "type": "integer", "minimum": 0 },
+        "unverified_count": { "type": "integer", "minimum": 0 },
+        "failed_count": { "type": "integer", "minimum": 0 },
+        "blocked_count": { "type": "integer", "minimum": 0 },
+        "p0_defects": { "type": "integer", "minimum": 0 },
+        "p1_defects": { "type": "integer", "minimum": 0 },
+        "p2_defects": { "type": "integer", "minimum": 0 },
+        "p3_defects": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["category_id", "name", "description", "capability_count"],
+        "properties": {
+          "category_id": { "type": "string", "pattern": "^GOV-[0-9]{2}$" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "capability_count": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "defects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "defect_id",
+          "title",
+          "severity",
+          "category_id",
+          "status",
+          "description",
+          "reproduction_steps",
+          "impact",
+          "remediation_plan",
+          "target_release"
+        ],
+        "properties": {
+          "defect_id": { "type": "string", "pattern": "^DEF-[A-Z0-9]+-[0-9]{2}$" },
+          "title": { "type": "string" },
+          "severity": { "type": "string", "enum": ["P0", "P1", "P2", "P3"] },
+          "category_id": { "type": "string", "pattern": "^GOV-[0-9]{2}$" },
+          "status": { "type": "string", "enum": ["OPEN", "IN_PROGRESS", "VERIFIED_FIXED", "QUARANTINED", "CLOSED"] },
+          "description": { "type": "string" },
+          "reproduction_steps": { "type": "string" },
+          "impact": { "type": "string" },
+          "remediation_plan": { "type": "string" },
+          "target_release": { "type": "string" }
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/capability"
+      }
+    }
+  },
+  "$defs": {
+    "capability": {
+      "type": "object",
+      "required": [
+        "feature_id",
+        "category_id",
+        "title",
+        "description",
+        "business_objective",
+        "acceptance_criteria",
+        "priority",
+        "implementation_status",
+        "verification_status",
+        "ui_result",
+        "functional_result",
+        "data_result",
+        "integration_result",
+        "security_result",
+        "deployment_result",
+        "source_files",
+        "test_ids",
+        "evidence_references",
+        "defect_ids",
+        "dependency_ids",
+        "owner",
+        "last_changed_at",
+        "last_verified_at",
+        "next_action"
+      ],
+      "properties": {
+        "feature_id": {
+          "type": "string",
+          "pattern": "^GOV-[0-9]{2}-[0-9]{3}$"
+        },
+        "category_id": {
+          "type": "string",
+          "pattern": "^GOV-[0-9]{2}$"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "business_objective": {
+          "type": "string"
+        },
+        "acceptance_criteria": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["P0", "P1", "P2", "P3"]
+        },
+        "implementation_status": {
+          "type": "string",
+          "enum": ["NOT_STARTED", "IN_PROGRESS", "IMPLEMENTED", "DEPRECATED"]
+        },
+        "verification_status": {
+          "type": "string",
+          "enum": ["UNVERIFIED", "PARTIAL", "VERIFIED", "FAILED", "BLOCKED"]
+        },
+        "ui_result": {
+          "type": "string",
+          "enum": ["PASS", "FAIL", "PARTIAL", "NOT_APPLICABLE", "UNTESTED"]
+        },
+        "functional_result": {
+          "type": "string",
+          "enum": ["PASS", "FAIL", "PARTIAL", "NOT_APPLICABLE", "UNTESTED"]
+        },
+        "data_result": {
+          "type": "string",
+          "enum": ["PASS", "FAIL", "PARTIAL", "NOT_APPLICABLE", "UNTESTED"]
+        },
+        "integration_result": {
+          "type": "string",
+          "enum": ["PASS", "FAIL", "PARTIAL", "NOT_APPLICABLE", "UNTESTED"]
+        },
+        "security_result": {
+          "type": "string",
+          "enum": ["PASS", "FAIL", "PARTIAL", "NOT_APPLICABLE", "UNTESTED"]
+        },
+        "deployment_result": {
+          "type": "string",
+          "enum": ["PASS", "FAIL", "PARTIAL", "NOT_APPLICABLE", "UNTESTED"]
+        },
+        "source_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "test_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "evidence_references": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "defect_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "dependency_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "owner": {
+          "type": "string"
+        },
+        "last_changed_at": {
+          "type": "string"
+        },
+        "last_verified_at": {
+          "type": "string"
+        },
+        "next_action": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
