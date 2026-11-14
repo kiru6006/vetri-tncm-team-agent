@@ -54,3 +54,4 @@ export function DataQualityBanner({ latestVerifiedDate }: DataQualityBannerProps
     </div>
   );
 }
+

@@ -2,6 +2,9 @@ import { ContactRecord, Category } from '@/types/contacts';
 
 import ministersData from '@/data/contacts/ministers.json';
 import chiefSecretaryData from '@/data/contacts/chief_secretary.json';
+import stateLeadershipData from '@/data/contacts/state_leadership.json';
+import mlasData from '@/data/contacts/mlas.json';
+import mpsData from '@/data/contacts/rajya_sabha_mps.json';
 import secretariatData from '@/data/contacts/secretariat.json';
 import iasData from '@/data/contacts/ias.json';
 import ipsData from '@/data/contacts/ips.json';
@@ -9,19 +12,24 @@ import ifosData from '@/data/contacts/ifos.json';
 import collectorsData from '@/data/contacts/district_collectors.json';
 import droData from '@/data/contacts/dro.json';
 import deptHeadsData from '@/data/contacts/department_heads.json';
+import undertakingsData from '@/data/contacts/undertakings.json';
 import municipalData from '@/data/contacts/municipal.json';
 import otherData from '@/data/contacts/other.json';
 
 const rawDataArrays = [
+  stateLeadershipData,
   ministersData,
-  chiefSecretaryData,
+  mlasData,
+  mpsData,
+  collectorsData,
   secretariatData,
+  deptHeadsData,
+  undertakingsData,
+  chiefSecretaryData,
   iasData,
   ipsData,
   ifosData,
-  collectorsData,
   droData,
-  deptHeadsData,
   municipalData,
   otherData,
 ];
@@ -114,3 +122,4 @@ export function getIndices() {
     byDepartment: byDepartmentCache || new Map(),
   };
 }
+

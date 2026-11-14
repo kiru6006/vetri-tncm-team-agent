@@ -1,50 +1,66 @@
 [
   {
-    "source_id": "src-tn-gazette-2026",
-    "url": "https://www.tn.gov.in/gazette/2026/256",
-    "title": "Tamil Nadu Government Gazette Extraordinary No. 256",
-    "authority": "Government of Tamil Nadu, Public Department",
+    "source_id": "SRC-TN-MASTER",
+    "url": "https://www.tn.gov.in/contact_directory.php",
+    "title": "Government of Tamil Nadu - Master Contact Directory",
+    "authority": "National Informatics Centre / Government of Tamil Nadu",
     "last_checked": "2026-11-14",
-    "notes": "Official gazette notification for Council of Ministers portfolios."
+    "notes": "Primary discovery hub for state leadership, secretariats, hods, and undertakings."
   },
   {
-    "source_id": "src-tn-cs-portal",
-    "url": "https://www.tn.gov.in/cs",
-    "title": "Chief Secretary to Government Portal",
-    "authority": "Chief Secretary's Office, Secretariat",
+    "source_id": "SRC-TN-MINISTERS",
+    "url": "https://www.tn.gov.in/minister_list.php",
+    "title": "Council of Ministers - Government of Tamil Nadu",
+    "authority": "Cabinet Secretariat / Department of Information and Public Relations",
     "last_checked": "2026-11-14",
-    "notes": "Verified institutional coordinates."
+    "notes": "Current 35-member Council of Ministers."
   },
   {
-    "source_id": "src-tn-police-portal",
-    "url": "https://www.tnpolice.gov.in/",
-    "title": "Tamil Nadu Police Official Portal",
-    "authority": "Director General of Police, Tamil Nadu",
+    "source_id": "SRC-TN-COLLECTORS",
+    "url": "https://www.tn.gov.in/district_collector.php",
+    "title": "District Collectors Directory - Government of Tamil Nadu",
+    "authority": "Revenue and Disaster Management Department",
     "last_checked": "2026-11-14",
-    "notes": "DGP office directory."
+    "notes": "Verified roster of all 38 District Collectors."
   },
   {
-    "source_id": "src-district-nic",
-    "url": "https://india.gov.in/",
-    "title": "National Informatics Centre (NIC) District Portals",
-    "authority": "Ministry of Electronics and Information Technology / Government of Tamil Nadu",
+    "source_id": "SRC-TN-ASSEMBLY",
+    "url": "https://assembly.tn.gov.in/17thassembly_members.php",
+    "title": "17th Tamil Nadu Legislative Assembly Members",
+    "authority": "Tamil Nadu Legislative Assembly Secretariat",
     "last_checked": "2026-11-14",
-    "notes": "District administration official Who's Who and directory pages across 38 districts."
+    "notes": "All 234 Assembly Constituencies."
   },
   {
-    "source_id": "src-tnurbantree",
-    "url": "https://tnurbantree.tn.gov.in/",
-    "title": "Tamil Nadu Urban Local Bodies Portal",
-    "authority": "Directorate of Municipal Administration",
+    "source_id": "SRC-TN-SECRETARIES",
+    "url": "https://www.tn.gov.in/secret_to_govt.php",
+    "title": "Secretaries to Government Directory",
+    "authority": "Public (Special) Department / Secretariat Administration",
     "last_checked": "2026-11-14",
-    "notes": "Official municipal corporations and municipalities contact directories."
+    "notes": "All Secretaries, Additional Chief Secretaries, and Principal Secretaries."
   },
   {
-    "source_id": "src-tnsdma",
-    "url": "https://tnsdma.tn.gov.in/",
-    "title": "Tamil Nadu State Disaster Management Authority",
-    "authority": "Revenue & Disaster Management Department",
+    "source_id": "SRC-TN-HOD",
+    "url": "https://www.tn.gov.in/cont_dir_All_hod_list.php",
+    "title": "All Heads of Departments (HoD)",
+    "authority": "Line Departments & Directorates",
     "last_checked": "2026-11-14",
-    "notes": "Disaster management control rooms and nodal officers."
+    "notes": "242 state commissionerates, directorates, and boards."
+  },
+  {
+    "source_id": "SRC-TN-UNDERTAKINGS",
+    "url": "https://www.tn.gov.in/cont_dir_All_und_tak.php",
+    "title": "All Undertakings / Public Sector Bodies",
+    "authority": "Finance (BPE) Department & PSUs",
+    "last_checked": "2026-11-14",
+    "notes": "172 statutory corporations, state enterprises, and cooperatives."
+  },
+  {
+    "source_id": "SRC-RS-MEMBERS",
+    "url": "https://rajyasabha.nic.in/Members/StateWise",
+    "title": "Rajya Sabha Members State-wise",
+    "authority": "Rajya Sabha Secretariat, Parliament of India",
+    "last_checked": "2026-11-14",
+    "notes": "18 Rajya Sabha seats for Tamil Nadu."
   }
 ]

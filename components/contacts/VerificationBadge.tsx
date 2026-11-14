@@ -74,3 +74,4 @@ export function VerificationBadge({ status, notes, className = '' }: Verificatio
     </span>
   );
 }
+

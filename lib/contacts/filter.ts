@@ -12,20 +12,25 @@ export interface ContactFilters {
 }
 
 const CATEGORY_PRIORITY: Record<Category, number> = {
-  CHIEF_SECRETARY: 1,
-  MINISTER: 2,
-  SECRETARIAT: 3,
-  DGP: 4,
-  IAS: 5,
-  IPS: 6,
-  IFOS: 7,
-  IRS: 8,
-  COLLECTOR: 9,
-  SP: 10,
-  DRO: 11,
-  DEPT_HEAD: 12,
-  MUNICIPAL_COMMISSIONER: 13,
-  OTHER: 14,
+  STATE_LEADERSHIP: 1,
+  CHIEF_SECRETARY: 2,
+  MINISTER: 3,
+  MLA: 4,
+  MP: 5,
+  SECRETARIAT: 6,
+  COLLECTOR: 7,
+  HOD: 8,
+  DEPT_HEAD: 9,
+  UNDERTAKING: 10,
+  IAS: 11,
+  IPS: 12,
+  DGP: 13,
+  SP: 14,
+  IFOS: 15,
+  IRS: 16,
+  DRO: 17,
+  MUNICIPAL_COMMISSIONER: 18,
+  OTHER: 19,
 };
 
 export function filterContacts(
@@ -105,3 +110,4 @@ export function filterContacts(
 
   return result;
 }
+

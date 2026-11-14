@@ -96,3 +96,4 @@ test.describe('Government Contacts Directory (/contacts)', () => {
     await expect(searchInput).toBeFocused();
   });
 });
+

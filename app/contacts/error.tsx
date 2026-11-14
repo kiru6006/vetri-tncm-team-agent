@@ -31,3 +31,4 @@ export default function ContactsError({
     </div>
   );
 }
+

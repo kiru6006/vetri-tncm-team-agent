@@ -31,3 +31,4 @@ export function EmptyState({ onReset, query }: EmptyStateProps) {
     </div>
   );
 }
+

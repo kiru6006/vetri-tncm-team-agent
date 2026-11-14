@@ -49,3 +49,4 @@ export async function logContactReveal(
     console.warn('Audit reveal logging failure (non-blocking):', err);
   }
 }
+

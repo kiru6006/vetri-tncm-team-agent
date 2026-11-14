@@ -285,3 +285,4 @@ export function ContactCard({ contact, userRole, onOpenDetails }: ContactCardPro
     </div>
   );
 }
+

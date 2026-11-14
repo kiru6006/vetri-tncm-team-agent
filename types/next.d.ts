@@ -7,3 +7,4 @@ declare module 'next/server' {
     static json<T = unknown>(body: T, init?: ResponseInit): NextResponse;
   }
 }
+

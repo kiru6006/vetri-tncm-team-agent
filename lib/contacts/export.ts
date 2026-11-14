@@ -86,3 +86,4 @@ export function triggerDownload(content: string, filename: string, mimeType: str
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+

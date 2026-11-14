@@ -253,3 +253,4 @@ export function ContactDetailSheet({ contact, onClose, userRole }: ContactDetail
     </div>
   );
 }
+

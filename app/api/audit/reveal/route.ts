@@ -15,3 +15,4 @@ export async function POST(request: NextRequest) {
     return new NextResponse(null, { status: 204 }); // Non-blocking audit
   }
 }
+

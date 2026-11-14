@@ -7,15 +7,17 @@
 ---
 
 ## 1. Overview
-The **Government Contacts Directory** page provides an authoritative, source-verified search and filtering interface for the Hon'ble Chief Minister and authorized Secretariat staff. It indexes officials across:
-- **Council of Ministers**
-- **Chief Secretary & Secretariat Leadership**
-- **IAS, IPS, IFoS, IRS Civil Services**
-- **All 38 District Collectors**
-- **District Revenue Officers (DROs), RDOs, and DRDA Project Directors**
-- **Superintendents of Police (SPs) & Police Commissioners**
-- **Heads of Departments (HODs)**
-- **Municipal Corporation & Municipality Commissioners**
+The **Government Contacts Directory** page provides an authoritative, source-verified search and filtering interface for the Hon'ble Chief Minister and authorized Secretariat staff. It indexes 787+ officials across 21 official categories:
+- **State Leadership & Constitutional Heads** (Governor, CM, CS, Chief Justice, Vigilance, CEO, State Guest Houses)
+- **Council of Ministers** (35 Cabinet Ministers per Government Gazette)
+- **Legislative Assembly (MLAs)** (All 234 Assembly Constituencies)
+- **Rajya Sabha MPs** (All 18 Members from Tamil Nadu)
+- **Secretaries to Government** (40 Additional Chief Secretaries & Principal Secretaries)
+- **All 38 District Collectors** (Verified with `@nic.in` emails, phones, and fax)
+- **Heads of Departments (HoD)** (242 Directorates, Commissionerates, Boards)
+- **Public Sector Undertakings & Boards** (172 State Enterprises & Corporations)
+- **Civil Services Cadres** (IAS, IPS, IFoS, IRS)
+- **Field & Municipal Leadership** (DROs, Municipal Commissioners)
 
 ---
 
@@ -118,3 +120,4 @@ To propose new attributes (e.g. `camp_office_phone`, `fax_number`, `cug_wireless
 2. Ensure optionality using `.optional().nullable()` to prevent breaking legacy records.
 3. Update `lib/contacts/loader.ts` and `lib/contacts/export.ts` to include the field in CSV/vCard exports.
 4. Update `ContactCard.tsx` and `ContactDetailSheet.tsx` with appropriate ARIA accessibility labels and RBAC masking rules.
+

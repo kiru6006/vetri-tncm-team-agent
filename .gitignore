@@ -47,3 +47,5 @@ lerna-debug.log*
 *.sqlite3
 pgdata/
 miniodata/
+data/cache_raw/
+

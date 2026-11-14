@@ -8,18 +8,17 @@ export interface CategoryTabItem {
 }
 
 export const CATEGORY_TABS: CategoryTabItem[] = [
-  { id: 'all', label: 'All' },
-  { id: 'ministers', label: 'Ministers', category: 'MINISTER' },
-  { id: 'cs', label: 'Chief Secretary', category: 'CHIEF_SECRETARY' },
-  { id: 'secretariat', label: 'Secretariat', category: 'SECRETARIAT' },
-  { id: 'ias', label: 'IAS Officers', category: 'IAS' },
-  { id: 'ips', label: 'IPS / DGP', category: ['IPS', 'DGP'] },
-  { id: 'ifos', label: 'IFoS Forest', category: 'IFOS' },
-  { id: 'collectors', label: 'Collectors', category: 'COLLECTOR' },
-  { id: 'dros', label: 'DROs', category: 'DRO' },
-  { id: 'sps', label: 'SPs', category: 'SP' },
-  { id: 'dept_heads', label: 'Dept Heads', category: 'DEPT_HEAD' },
-  { id: 'municipal', label: 'Municipal', category: 'MUNICIPAL_COMMISSIONER' },
+  { id: 'all', label: 'All Contacts' },
+  { id: 'leadership', label: 'State Leadership', category: ['STATE_LEADERSHIP', 'CHIEF_SECRETARY'] },
+  { id: 'ministers', label: 'Ministers (35)', category: 'MINISTER' },
+  { id: 'collectors', label: 'District Collectors (38)', category: 'COLLECTOR' },
+  { id: 'mlas', label: 'MLAs (234)', category: 'MLA' },
+  { id: 'mps', label: 'Rajya Sabha (18)', category: 'MP' },
+  { id: 'secretariat', label: 'Secretaries to Govt', category: 'SECRETARIAT' },
+  { id: 'hod', label: 'Heads of Depts (242)', category: ['HOD', 'DEPT_HEAD'] },
+  { id: 'undertakings', label: 'Govt Undertakings (172)', category: 'UNDERTAKING' },
+  { id: 'services', label: 'IAS / IPS / IFoS', category: ['IAS', 'IPS', 'IFOS', 'DGP', 'SP'] },
+  { id: 'field', label: 'DROs & Municipal', category: ['DRO', 'MUNICIPAL_COMMISSIONER'] },
 ];
 
 interface CategoryTabsProps {
@@ -68,3 +67,4 @@ export function CategoryTabs({ activeTab, onTabChange, categoryCounts }: Categor
     </div>
   );
 }
+

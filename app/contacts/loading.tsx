@@ -27,3 +27,4 @@ export default function ContactsLoading() {
     </div>
   );
 }
+

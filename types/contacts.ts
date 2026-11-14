@@ -12,9 +12,14 @@ export const VerificationStatus = z.enum([
 export type VerificationStatus = z.infer<typeof VerificationStatus>;
 
 export const Category = z.enum([
+  'STATE_LEADERSHIP',
   'MINISTER',
+  'MLA',
+  'MP',
   'CHIEF_SECRETARY',
   'SECRETARIAT',
+  'HOD',
+  'UNDERTAKING',
   'IAS',
   'IPS',
   'IFOS',
@@ -74,3 +79,4 @@ export interface UserSession {
   role: UserRole;
   department?: string;
 }
+
