@@ -62,7 +62,7 @@ Seamless synchronization of CM reviews, Cabinet meetings, assembly sessions, dis
 * **Conversational AI Prompt:**
   > *"Who is the SP of Salem and District Collector? Schedule a video review on Oct 4 at 3 PM."*
 * **System Action:**
-  1. AI identifies `Dr. R. Brindha Devi, IAS` (Collector) and `Kirubakaran, IPS` (SP).
+  1. AI identifies `Thiru K. Elambahavath, IAS.,` (Collector) and `A. K. Arun Kabilan, IPS` (SP).
   2. Pulls verified CUG contacts, active AMRUT 2.0 water projects, and POCSO trial rates.
   3. Pre-populates AI Meeting Briefing Dossier (Agenda, Critical Questions, G.O. References).
   4. Dispatches encrypted video meeting invite and books the Executive Calendar in 1 click.

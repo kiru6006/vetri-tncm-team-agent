@@ -9,8 +9,8 @@
 ## 1. Directory Rectification Overview
 
 The Government Contact Directory underwent a complete entity-level reconciliation against authoritative Government of Tamil Nadu publications:
-- Council of Ministers verified against `https://www.tn.gov.in/ministers_list.php`.
-- Chief Secretary, Additional Chief Secretaries, and 38 District Collectors verified against the Accountant General IAS Civil List (`https://agias.tn.gov.in`).
+- Council of Ministers verified against `https://www.tn.gov.in/ministers_list.php` and Government Gazette Extraordinary No. 256 (35 Ministers headed by Hon'ble Chief Minister Thiru C. Joseph Vijay).
+- Chief Secretary to Government Dr. M. Sai Kumar, IAS, Additional Chief Secretaries, and 38 District Collectors verified against `https://www.tn.gov.in/` and the Accountant General IAS Civil List (`https://agias.tn.gov.in`).
 - Police Leadership verified against `https://eservices.tnpolice.gov.in`.
 - Forest Cadre verified against `https://forests.tn.gov.in`.
 
@@ -18,46 +18,46 @@ The Government Contact Directory underwent a complete entity-level reconciliatio
 
 ## 2. 38 Tamil Nadu District Collectors Roster (Verified Current)
 
-| # | District | Collector Name | Cadre & Batch | Official Email | Headquarters |
+| # | District | Collector Name | Cadre | Official Email | Headquarters |
 |---|---|---|---|---|---|
-| 1 | **Chennai** | Rashmi Siddharth Zagade, IAS | IAS (TN: 2010) | `collr-chn@nic.in` | Singaravelar Maaligai, Rajaji Salai |
-| 2 | **Coimbatore** | Kranthi Kumar Pati, IAS | IAS (TN: 2015) | `collr-cbe@nic.in` | State Bank Road, Coimbatore |
-| 3 | **Madurai** | M. S. Sangeetha, IAS | IAS (TN: 2014) | `collr-mdu@nic.in` | Collectorate, Madurai |
-| 4 | **Salem** | Dr. R. Brindha Devi, IAS | IAS (TN: 2012) | `collr-slm@nic.in` | Bretts Road, Salem |
-| 5 | **Tiruppur** | T. Christuraj, IAS | IAS (TN: 2013) | `collr-tpr@nic.in` | Palladam Road, Tiruppur |
-| 6 | **Tiruchirappalli** | M. Pradeep Kumar, IAS | IAS (TN: 2014) | `collr-try@nic.in` | Cantonment, Tiruchirappalli |
-| 7 | **Thanjavur** | B. Priyanka Pankajam, IAS | IAS (TN: 2015) | `collr-tnj@nic.in` | Court Road, Thanjavur |
-| 8 | **Cuddalore** | A. Arun Thamburaj, IAS | IAS (TN: 2013) | `collr-cud@nic.in` | Beach Road, Cuddalore |
-| 9 | **Vellore** | V. R. Subbulaxmi, IAS | IAS (TN: 2016) | `collr-vel@nic.in` | Sathuvachari, Vellore |
-| 10 | **Erode** | Raja Gopal Sunkara, IAS | IAS (TN: 2015) | `collr-erd@nic.in` | Perundurai Road, Erode |
-| 11 | **Tirunelveli** | Dr. K. P. Karthikeyan, IAS | IAS (TN: 2014) | `collr-tnv@nic.in` | Kokkirakulam, Tirunelveli |
-| 12 | **Thoothukudi** | K. Elambahavath, IAS | IAS (TN: 2016) | `collr-tkd@nic.in` | Korampallam, Thoothukudi |
-| 13 | **Kanchipuram** | Kalaiselvi Mohan, IAS | IAS (TN: 2015) | `collr-kpm@nic.in` | Vandavasi Road, Kanchipuram |
-| 14 | **Chengalpattu** | S. Arunraj, IAS | IAS (TN: 2015) | `collr-cpt@nic.in` | GST Road, Chengalpattu |
-| 15 | **Tiruvallur** | Dr. T. Prabhushankar, IAS | IAS (TN: 2013) | `collr-tlr@nic.in` | Master Plan Complex, Tiruvallur |
-| 16 | **Dindigul** | M. N. Poongodi, IAS | IAS (TN: 2016) | `collr-dgl@nic.in` | Collectorate, Dindigul |
-| 17 | **Krishnagiri** | K. M. Sarayu, IAS | IAS (TN: 2015) | `collr-kgi@nic.in` | Rayakottai Road, Krishnagiri |
-| 18 | **Dharmapuri** | K. Shanthi, IAS | IAS (TN: 2014) | `collr-dpm@nic.in` | Collectorate, Dharmapuri |
-| 19 | **Namakkal** | Dr. S. Uma, IAS | IAS (TN: 2014) | `collr-nmk@nic.in` | Tiruchengode Road, Namakkal |
-| 20 | **Nilgiris** | Lakshmi Bhavya Tanneeru, IAS | IAS (TN: 2015) | `collr-nil@nic.in` | Finger Post, Udhagamandalam |
-| 21 | **Karur** | Dr. M. Thangavel, IAS | IAS (TN: 2015) | `collr-krr@nic.in` | Thanthonimalai, Karur |
-| 22 | **Perambalur** | K. Karpagam, IAS | IAS (TN: 2015) | `collr-pbl@nic.in` | Collectorate, Perambalur |
-| 23 | **Ariyalur** | J. Anne Mary Swarna, IAS | IAS (TN: 2016) | `collr-ari@nic.in` | Jayankondam Road, Ariyalur |
-| 24 | **Pudukkottai** | I. S. Mercy Ramya, IAS | IAS (TN: 2015) | `collr-pdk@nic.in` | Collectorate, Pudukkottai |
-| 25 | **Sivaganga** | Asha Ajith, IAS | IAS (TN: 2015) | `collr-svg@nic.in` | Maruthupandiar Nagar, Sivaganga |
-| 26 | **Ramanathapuram** | B. Vishnu Chandran, IAS | IAS (TN: 2015) | `collr-rmd@nic.in` | Collectorate, Ramanathapuram |
-| 27 | **Virudhunagar** | Dr. V. P. Jeyaseelan, IAS | IAS (TN: 2014) | `collr-vnr@nic.in` | Kooraikundu, Virudhunagar |
-| 28 | **Theni** | R. V. Shajeevana, IAS | IAS (TN: 2016) | `collr-tni@nic.in` | Allinagaram, Theni |
-| 29 | **Tenkasi** | A. K. Kamal Kishore, IAS | IAS (TN: 2015) | `collr-tks@nic.in` | Collectorate, Tenkasi |
-| 30 | **Kanyakumari** | R. Alagumeena, IAS | IAS (TN: 2016) | `collr-kkm@nic.in` | Nagercoil, Kanyakumari |
-| 31 | **Tiruvarur** | T. Charushree, IAS | IAS (TN: 2015) | `collr-tvr@nic.in` | Master Plan Complex, Tiruvarur |
-| 32 | **Nagapattinam** | P. Akash, IAS | IAS (TN: 2013) | `collr-ngp@nic.in` | Public Office Road, Nagapattinam |
-| 33 | **Mayiladuthurai** | A. P. Mahabharathi, IAS | IAS (TN: 2015) | `collr-myd@nic.in` | Collectorate, Mayiladuthurai |
-| 34 | **Viluppuram** | Dr. C. Palani, IAS | IAS (TN: 2014) | `collr-vpm@nic.in` | Master Plan Complex, Viluppuram |
-| 35 | **Kallakurichi** | M. S. Prasanth, IAS | IAS (TN: 2014) | `collr-klk@nic.in` | Collectorate, Kallakurichi |
-| 36 | **Tiruvannamalai** | D. Bhaskara Pandian, IAS | IAS (TN: 2014) | `collr-tvm@nic.in` | Vengikkal, Tiruvannamalai |
-| 37 | **Ranipet** | J. U. Chandrakala, IAS | IAS (TN: 2014) | `collr-rpt@nic.in` | Collectorate, Ranipet |
-| 38 | **Tirupathur** | K. Tharpagaraj, IAS | IAS (TN: 2014) | `collr-tpt@nic.in` | Collectorate, Tirupathur |
+| 1 | **Ariyalur** | Tmt N. Mirunalini, IAS., | IAS | `collrari@nic.in` | Collectorate, Ariyalur - 621704 |
+| 2 | **Chengalpattu** | Dr M. Veerappan, I.A.S., | IAS | `collrcpt@nic.in` | Collectorate, Chengalpattu - 603001 |
+| 3 | **Chennai** | Tmt S. Malathi Helen, IAS., | IAS | `collrchn@nic.in` | Singaravelar Maaligai, 62 Rajaji Salai, Chennai - 600001 |
+| 4 | **Coimbatore** | Thiru Pavankumar G Giriyappanavar, IAS., | IAS | `collrcbe@nic.in` | State Bank Road, Coimbatore - 641018 |
+| 5 | **Cuddalore** | Thiru Sibi Adhithya Senthil Kumar IAS., | IAS | `collrcud@nic.in` | Beach Road, Cuddalore - 607001 |
+| 6 | **Dharmapuri** | Thiru V. Saravanan, I.A.S., | IAS | `collrdpm@nic.in` | Collectorate, Dharmapuri - 636705 |
+| 7 | **Dindigul** | Tmt Durgamoorthi, IAS., | IAS | `collrdgl@nic.in` | Collectorate, Dindigul - 624004 |
+| 8 | **Erode** | Thiru S. Kandasamy, IAS., | IAS | `collrerd@nic.in` | Perundurai Road, Erode - 638011 |
+| 9 | **Kallakurichi** | Tmt J.E. Padmaja, IAS | IAS | `collrklk@nic.in` | Collectorate, Kallakurichi - 606202 |
+| 10 | **Kancheepuram** | Tmt D. Sneha IAS., | IAS | `collrkpm@nic.in` | Collectorate, Kancheepuram - 631501 |
+| 11 | **Kanniyakumari** | Thiru M. Prathap, IAS., | IAS | `collrkkm@nic.in` | Collectorate, Nagercoil - 629001 |
+| 12 | **Karur** | Thiru C. Muthukumaran, IAS., | IAS | `collrkrr@nic.in` | Thanthonimalai, Karur - 639007 |
+| 13 | **Krishnagiri** | Thiru C. Dinesh Kumar, IAS | IAS | `collrkgi@nic.in` | Rayakottai Road, Krishnagiri - 635001 |
+| 14 | **Madurai** | Thiru Nishant Krishna, IAS. | IAS | `collrmdu@nic.in` | Collectorate, Madurai - 625020 |
+| 15 | **Mayiladuthurai** | Thiru H.S Srikanth, IAS., | IAS | `collrmyd@nic.in` | Collectorate, Mayiladuthurai - 609001 |
+| 16 | **Nagapattinam** | Thiru K.J. Praveen Kumar, IAS., | IAS | `collrngp@nic.in` | Public Office Road, Nagapattinam - 611001 |
+| 17 | **Namakkal** | Thiru L. Madhubalan, IAS | IAS | `collrnmk@nic.in` | Tiruchengode Road, Namakkal - 637003 |
+| 18 | **Perambalur** | Thiru F. Abdul Razick, I.A.S | IAS | `collrpbl@nic.in` | Collectorate, Perambalur - 621212 |
+| 19 | **Pudukkottai** | Tmt M. Aruna, IAS., | IAS | `collrpdk@nic.in` | Collectorate, Pudukkottai - 622005 |
+| 20 | **Ramanathapuram** | Thiru M. Sivaguru Prabhakaran, I.A.S., | IAS | `collrrmd@nic.in` | Collectorate, Ramanathapuram - 623501 |
+| 21 | **Ranipet** | Tmt N. Priya, IAS., | IAS | `collrrpt@nic.in` | Collectorate, Ranipet - 632401 |
+| 22 | **Salem** | Thiru K. Elambahavath, IAS., | IAS | `collrslm@nic.in` | Collectorate, Salem - 636001 |
+| 23 | **Sivaganga** | Thiru P. Akash, I.A.S., | IAS | `collrsvg@nic.in` | Maruthupandiar Nagar, Sivaganga - 630562 |
+| 24 | **Tenkasi** | Thiru Ranjeet Singh, IAS., | IAS | `collrtks@nic.in` | Collectorate, Tenkasi - 627811 |
+| 25 | **Thanjavur** | Tmt R. Revathi, IAS., | IAS | `collrtnj@nic.in` | Court Road, Thanjavur - 613001 |
+| 26 | **Theni** | Dr R. Vaithinathan, I.A.S., | IAS | `collrtni@nic.in` | Allinagaram, Theni - 625531 |
+| 27 | **The Nilgiris** | Tmt Lakshmi Bhavya Tanneeru IAS., | IAS | `collrnil@nic.in` | Finger Post, Udhagamandalam - 643001 |
+| 28 | **Thoothukudi** | Thiru Vishu Mahajan, I.A.S., | IAS | `collrtkd@nic.in` | Korampallam, Thoothukudi - 628101 |
+| 29 | **Tiruchirappalli** | Thiru Pratik Tayal, I.A.S., | IAS | `collrtry@nic.in` | Cantonment, Tiruchirappalli - 620001 |
+| 30 | **Tirunelveli** | Thiru Anand Mohan, IAS., | IAS | `collrtnv@nic.in` | Kokkirakulam, Tirunelveli - 627009 |
+| 31 | **Tirupathur** | Thiru V. Nallasivan, IAS., | IAS | `collrtpt@nic.in` | Collectorate, Tirupathur - 635601 |
+| 32 | **Tiruppur** | Dr Manish Narnaware, IAS | IAS | `collrtpr@nic.in` | Palladam Road, Tiruppur - 641604 |
+| 33 | **Tiruvallur** | Tmt S. Kavitha, IAS., | IAS | `collrtlr@nic.in` | Master Plan Complex, Tiruvallur - 602001 |
+| 34 | **Tiruvannamalai** | Tmt Vandana Garg, IAS | IAS | `collrtvm@nic.in` | Vengikkal, Tiruvannamalai - 606604 |
+| 35 | **Tiruvarur** | Thiru V. Mohanachandran, IAS., | IAS | `collrtvr@nic.in` | Master Plan Complex, Tiruvarur - 610004 |
+| 36 | **Vellore** | Tmt P.S. Leela Alex, IAS., | IAS | `collrvel@nic.in` | Sathuvachari, Vellore - 632009 |
+| 37 | **Viluppuram** | Thiru S. Shiek Abdul Rahman, IAS., | IAS | `collrvpm@nic.in` | Master Plan Complex, Viluppuram - 605602 |
+| 38 | **Virudhunagar** | Tmt Sharanya Ari, I.A.S | IAS | `collrvnr@nic.in` | Kooraikundu, Virudhunagar - 626002 |
 
 ---
 

@@ -3,7 +3,7 @@
     "system": "VERTRI TN AI OS",
     "document": "Master Feature Audit, Verification and Quality Gates Tracker",
     "version": "2.0.0",
-    "generated_at": "2026-11-14T05:47:19Z",
+    "generated_at": "2026-11-14T11:26:42Z",
     "total_capabilities": 108,
     "verified_count": 95,
     "partial_count": 13,
@@ -311,8 +311,8 @@
         "GOV-20-001"
       ],
       "owner": "Executive UI Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add real-time telemetry WebSocket streaming when backend server is running"
     },
     {
@@ -350,8 +350,8 @@
         "GOV-01-001"
       ],
       "owner": "Executive AI Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Enable dynamic PDF briefing pack download"
     },
     {
@@ -390,8 +390,8 @@
         "GOV-11-001"
       ],
       "owner": "Governance Workflow Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate digital e-Sign PKI signature verification"
     },
     {
@@ -431,8 +431,8 @@
         "GOV-14-001"
       ],
       "owner": "AI Architecture Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Connect streaming token generation with markdown table rendering"
     },
     {
@@ -470,8 +470,8 @@
         "GOV-11-001"
       ],
       "owner": "Administrative Delivery Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add officer auto-SMS notification on SLA breach"
     },
     {
@@ -512,8 +512,8 @@
         "GOV-06-001"
       ],
       "owner": "Administrative Directory Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Implement dedicated MinistryPortfolioDetail modal (DEF-MIN-01)"
     },
     {
@@ -552,8 +552,8 @@
         "GOV-03-001"
       ],
       "owner": "Analytics Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add quarterly historical trend comparison graphs"
     },
     {
@@ -591,8 +591,8 @@
         "GOV-11-001"
       ],
       "owner": "Chief Secretary Office Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Build dedicated joint review workspace"
     },
     {
@@ -634,8 +634,8 @@
         "GOV-06-011"
       ],
       "owner": "Public Administration Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Decompose directorates into dedicated navigation cards (DEF-DEPT-01)"
     },
     {
@@ -674,8 +674,8 @@
         "GOV-06-002"
       ],
       "owner": "Personnel & Administrative Reforms Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Sync with latest G.O. Rt postings notifications"
     },
     {
@@ -715,8 +715,8 @@
         "GOV-03-001"
       ],
       "owner": "Institutional Architecture Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Expand sub-directorate drilldown tree"
     },
     {
@@ -755,8 +755,8 @@
         "GOV-09-002"
       ],
       "owner": "Public Finance Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add automated monthly budget variance alerts"
     },
     {
@@ -795,8 +795,8 @@
         "GOV-06-006"
       ],
       "owner": "Revenue Administration Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add Collectorate control room emergency hotline toggles"
     },
     {
@@ -835,8 +835,8 @@
         "GOV-04-001"
       ],
       "owner": "GIS & Data Analytics Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add taluk-level geospatial heat layers"
     },
     {
@@ -874,8 +874,8 @@
         "GOV-04-001"
       ],
       "owner": "District Operations Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Populate complete 312 taluk Tahsildar roster"
     },
     {
@@ -915,8 +915,8 @@
         "GOV-04-001"
       ],
       "owner": "Legislative Affairs Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Build dedicated AssemblyConstituenciesView component with full 234 MLA roster (DEF-CONST-01)"
     },
     {
@@ -954,8 +954,8 @@
         "GOV-09-002"
       ],
       "owner": "Rural Development Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add geo-tagged photo verification for completed MLACDS assets"
     },
     {
@@ -994,8 +994,8 @@
         "GOV-10-001"
       ],
       "owner": "Citizen Engagement Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Enable MLA dashboard view for constituency petition tracking"
     },
     {
@@ -1033,8 +1033,8 @@
         "GOV-20-001"
       ],
       "owner": "Administrative Directory Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Establish weekly automated hash verification against tn.gov.in"
     },
     {
@@ -1072,8 +1072,8 @@
         "GOV-06-001"
       ],
       "owner": "Personnel & Administrative Reforms Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Sync with G.O. Ms postings feed"
     },
     {
@@ -1112,8 +1112,8 @@
         "GOV-06-001"
       ],
       "owner": "Home & Police Administration Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add State Police Master Control Room direct dispatch link"
     },
     {
@@ -1150,8 +1150,8 @@
         "GOV-06-001"
       ],
       "owner": "Forest & Environment Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate forest circle fire alert contact routing"
     },
     {
@@ -1189,8 +1189,8 @@
         "GOV-03-001"
       ],
       "owner": "Public Enterprise Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add board meeting calendar sync"
     },
     {
@@ -1228,8 +1228,8 @@
         "GOV-04-001"
       ],
       "owner": "Revenue Administration Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Enable one-click encrypted SMS dispatch"
     },
     {
@@ -1267,8 +1267,8 @@
         "GOV-06-001"
       ],
       "owner": "Search Engine Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add autocomplete suggestions for common bureaucratic designations"
     },
     {
@@ -1307,8 +1307,8 @@
         "GOV-20-002"
       ],
       "owner": "Data Governance Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Automate anomaly detection for newly submitted contact updates"
     },
     {
@@ -1346,8 +1346,8 @@
         "GOV-20-004"
       ],
       "owner": "Audit & Legal Compliance Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Link directly to full PDF text of appointing Government Orders"
     },
     {
@@ -1385,8 +1385,8 @@
         "GOV-06-002"
       ],
       "owner": "Personnel Records Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Build visual timeline of past postings in officer profile modal"
     },
     {
@@ -1425,8 +1425,8 @@
         "GOV-20-001"
       ],
       "owner": "Database Architect",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Enforce foreign key constraints in backend PostgreSQL migration"
     },
     {
@@ -1463,8 +1463,8 @@
         "GOV-06-001"
       ],
       "owner": "Cybersecurity Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add automated SMTP MX and bounce-back verification script"
     },
     {
@@ -1501,8 +1501,8 @@
         "GOV-06-001"
       ],
       "owner": "Executive Office Tech Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Implement one-click batch VCard download for Cabinet Ministers"
     },
     {
@@ -1541,8 +1541,8 @@
         "GOV-12-001"
       ],
       "owner": "Mobile & UX Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add VoIP desktop call launcher support"
     },
     {
@@ -1580,8 +1580,8 @@
         "GOV-20-003"
       ],
       "owner": "Quality Assurance Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate automated monthly re-verification email reminders to Department nodal officers"
     },
     {
@@ -1620,8 +1620,8 @@
         "GOV-19-001"
       ],
       "owner": "Security Architect",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Enforce field-level encryption for internal executive hotlines"
     },
     {
@@ -1661,8 +1661,8 @@
         "GOV-03-001"
       ],
       "owner": "Infrastructure Program Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Build interactive Gantt timeline component (DEF-PROJ-01)"
     },
     {
@@ -1701,8 +1701,8 @@
         "GOV-07-001"
       ],
       "owner": "Disaster Mitigation & Civil Eng Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add Indian Meteorological Department (IMD) rainfall forecast overlay"
     },
     {
@@ -1741,8 +1741,8 @@
         "GOV-09-002"
       ],
       "owner": "Project Finance Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate automated contractor billing ledger sync"
     },
     {
@@ -1781,8 +1781,8 @@
         "GOV-14-003"
       ],
       "owner": "Risk Management Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Enable AI critical path simulation on delayed milestone updates"
     },
     {
@@ -1821,8 +1821,8 @@
         "GOV-03-001"
       ],
       "owner": "Social Welfare Policy Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add district-level beneficiary heat breakdown"
     },
     {
@@ -1860,8 +1860,8 @@
         "GOV-08-001"
       ],
       "owner": "Financial Inclusion Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate automated re-try queue with State Level Bankers' Committee (SLBC)"
     },
     {
@@ -1900,8 +1900,8 @@
         "GOV-04-002"
       ],
       "owner": "Demographic Analytics Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add field surveyor mobile sync for doorstep enrollment"
     },
     {
@@ -1940,8 +1940,8 @@
         "GOV-10-001"
       ],
       "owner": "Citizen Redressal Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add SMS appeal status updates to applicants"
     },
     {
@@ -1979,8 +1979,8 @@
         "GOV-03-001"
       ],
       "owner": "Public Finance Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add economic indicator correlation models (inflation, industrial power consumption)"
     },
     {
@@ -2017,8 +2017,8 @@
         "GOV-09-001"
       ],
       "owner": "Treasury Operations Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate automated IFHRMS treasury feed"
     },
     {
@@ -2056,8 +2056,8 @@
         "GOV-14-004"
       ],
       "owner": "Revenue Leakage Auditor",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add automated GeM / TNTenders API connector"
     },
     {
@@ -2094,8 +2094,8 @@
         "GOV-09-003"
       ],
       "owner": "Government Audit Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add PAC meeting recommendation action item linkage"
     },
     {
@@ -2136,8 +2136,8 @@
         "GOV-04-001"
       ],
       "owner": "Operations Room Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate automated social media / citizen video feed analyzer"
     },
     {
@@ -2175,8 +2175,8 @@
         "GOV-10-001"
       ],
       "owner": "Emergency Management Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Calibrate dynamic scoring based on weather alerts"
     },
     {
@@ -2215,8 +2215,8 @@
         "GOV-03-001"
       ],
       "owner": "Administrative Operations Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Build automatic jurisdiction boundary polygon checker"
     },
     {
@@ -2254,8 +2254,8 @@
         "GOV-10-001"
       ],
       "owner": "Media & Public Relations Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add Tamil language NLP sentiment classifier"
     },
     {
@@ -2293,8 +2293,8 @@
         "GOV-01-005"
       ],
       "owner": "Principal Secretary to CM",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add official digital seal generation"
     },
     {
@@ -2333,8 +2333,8 @@
         "GOV-06-001"
       ],
       "owner": "CMO Administrative Desk",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add OTP-verified acknowledgment flow"
     },
     {
@@ -2371,8 +2371,8 @@
         "GOV-11-001"
       ],
       "owner": "Delivery Assurance Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add WhatsApp automated reminder webhook"
     },
     {
@@ -2409,8 +2409,8 @@
         "GOV-11-001"
       ],
       "owner": "Inspection & Oversight Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add third-party citizen verification callback system"
     },
     {
@@ -2449,8 +2449,8 @@
         "GOV-06-001"
       ],
       "owner": "Secure Communications Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Enable voice note recording with automated speech-to-text transcription"
     },
     {
@@ -2487,8 +2487,8 @@
         "GOV-12-001"
       ],
       "owner": "Collaboration Systems Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add automatic channel creation upon emergency incident declaration"
     },
     {
@@ -2527,8 +2527,8 @@
         "GOV-11-001"
       ],
       "owner": "Workflow Collaboration Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add auto-closing thread when action item is verified closed"
     },
     {
@@ -2566,8 +2566,8 @@
         "GOV-12-001"
       ],
       "owner": "Crisis Operations Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add siren audio tone trigger for P0 statewide broadcasts"
     },
     {
@@ -2607,8 +2607,8 @@
         "GOV-06-001"
       ],
       "owner": "Protocol & Cabinet Secretariat Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate automated VIP availability lock"
     },
     {
@@ -2645,8 +2645,8 @@
         "GOV-13-001"
       ],
       "owner": "Executive Office Briefing Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add PDF watermarked dossier export"
     },
     {
@@ -2683,8 +2683,8 @@
         "GOV-13-001"
       ],
       "owner": "Secretariat Documentation Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add real-time Tamil speech-to-text assistant"
     },
     {
@@ -2723,8 +2723,8 @@
         "GOV-11-001"
       ],
       "owner": "Administrative Compliance Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add post-meeting compliance review dashboard"
     },
     {
@@ -2765,8 +2765,8 @@
         "GOV-01-002"
       ],
       "owner": "AI Agent Architect",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add multi-turn memory buffer with session context persistence"
     },
     {
@@ -2804,8 +2804,8 @@
         "GOV-06-001"
       ],
       "owner": "AI Knowledge Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add conversational voice agent interface"
     },
     {
@@ -2843,8 +2843,8 @@
         "GOV-07-004"
       ],
       "owner": "Predictive Analytics Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Train XGBoost model on 5 years of TN PWD project completion logs"
     },
     {
@@ -2883,8 +2883,8 @@
         "GOV-09-003"
       ],
       "owner": "Forensic Audit Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add automated entity resolution across corporate registries"
     },
     {
@@ -2922,8 +2922,8 @@
         "GOV-08-001"
       ],
       "owner": "Policy Evaluation Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate National Family Health Survey (NFHS-5) baseline data"
     },
     {
@@ -2963,8 +2963,8 @@
         "GOV-14-001"
       ],
       "owner": "AI Ethics & Safety Director",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Implement automated input-output toxic content scanner"
     },
     {
@@ -3003,8 +3003,8 @@
         "GOV-03-001"
       ],
       "owner": "Knowledge Management Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate OCR pipeline for legacy scanned Tamil gazettes"
     },
     {
@@ -3043,8 +3043,8 @@
         "GOV-15-001"
       ],
       "owner": "Information Retrieval Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add client-side TF-IDF / WebAssembly search fallback (DEF-KNOW-01)"
     },
     {
@@ -3085,8 +3085,8 @@
         "GOV-14-001"
       ],
       "owner": "NLP Research Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Deploy local quantized embedding model for zero-network environments"
     },
     {
@@ -3123,8 +3123,8 @@
         "GOV-15-001"
       ],
       "owner": "Legal Research Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Build automated clause citation graph"
     },
     {
@@ -3163,8 +3163,8 @@
         "GOV-10-002"
       ],
       "owner": "Emergency Alert Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add audio chime for incoming P0 emergency alerts"
     },
     {
@@ -3203,8 +3203,8 @@
         "GOV-06-012"
       ],
       "owner": "Messaging Infrastructure Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Connect National Informatics Centre (NIC) SMS Gateway integration"
     },
     {
@@ -3243,8 +3243,8 @@
         "GOV-11-002"
       ],
       "owner": "Incident Response Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add automated voice-call IVR escalation"
     },
     {
@@ -3283,8 +3283,8 @@
         "GOV-16-001"
       ],
       "owner": "Frontend Infrastructure Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Register public/sw.js service worker in main.tsx (DEF-NOTIF-01)"
     },
     {
@@ -3325,8 +3325,8 @@
       ],
       "dependency_ids": [],
       "owner": "Frontend Architecture Director",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Implement explicit route handlers for all sidebar options (DEF-ROUT-01)"
     },
     {
@@ -3365,8 +3365,8 @@
         "GOV-17-001"
       ],
       "owner": "Frontend Engineering Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add IndexedDB offline caching for large geospatial assets"
     },
     {
@@ -3403,8 +3403,8 @@
         "GOV-17-001"
       ],
       "owner": "Reliability Engineering Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add automated client Sentry error reporting"
     },
     {
@@ -3442,8 +3442,8 @@
         "GOV-17-001"
       ],
       "owner": "Design System Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Export reusable Figma UI kit"
     },
     {
@@ -3482,8 +3482,8 @@
       "defect_ids": [],
       "dependency_ids": [],
       "owner": "QA Engineering Director",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Expand route coverage to 100% of sub-endpoints"
     },
     {
@@ -3521,8 +3521,8 @@
       "defect_ids": [],
       "dependency_ids": [],
       "owner": "Build Engineering Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate Vitest component testing in CI"
     },
     {
@@ -3562,8 +3562,8 @@
         "GOV-21-001"
       ],
       "owner": "DevOps & Quality Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Run tracker validation automatically on every Git commit hook"
     },
     {
@@ -3601,8 +3601,8 @@
         "GOV-18-002"
       ],
       "owner": "Automated Testing Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add headless Playwright run to GitHub Actions CI workflow"
     },
     {
@@ -3641,8 +3641,8 @@
       ],
       "dependency_ids": [],
       "owner": "Chief Information Security Officer",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Enforce server-side JWT session validation for persona changes (DEF-SEC-01)"
     },
     {
@@ -3682,8 +3682,8 @@
         "GOV-19-001"
       ],
       "owner": "Identity Management Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Complete e-Pramaan staging environment certificate handshake"
     },
     {
@@ -3721,8 +3721,8 @@
         "GOV-19-001"
       ],
       "owner": "Compliance & Governance Auditor",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Implement cryptographic SHA-256 block-hash chaining on audit entries"
     },
     {
@@ -3760,8 +3760,8 @@
         "GOV-19-001"
       ],
       "owner": "Data Privacy Officer",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add automated regex scanner for unmasked bank account numbers"
     },
     {
@@ -3797,8 +3797,8 @@
       "defect_ids": [],
       "dependency_ids": [],
       "owner": "Master Data Management Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Generate automated database schema migration scripts"
     },
     {
@@ -3837,8 +3837,8 @@
         "GOV-20-001"
       ],
       "owner": "Data Quality Director",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add automated checksum alert if quarantine dataset is modified"
     },
     {
@@ -3876,8 +3876,8 @@
         "GOV-20-001"
       ],
       "owner": "Data Operations Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Deploy automated Playwright crawler against tn.gov.in"
     },
     {
@@ -3914,8 +3914,8 @@
         "GOV-20-001"
       ],
       "owner": "Data Governance Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Build interactive data lineage graph view"
     },
     {
@@ -3954,8 +3954,8 @@
         "GOV-18-003"
       ],
       "owner": "DevOps Engineer",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add automated Playwright E2E step to GitHub Actions"
     },
     {
@@ -3993,8 +3993,8 @@
         "GOV-21-001"
       ],
       "owner": "Cloud Infrastructure Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Configure custom domain with SSL cert renewal"
     },
     {
@@ -4032,8 +4032,8 @@
         "GOV-21-001"
       ],
       "owner": "Container Infrastructure Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Author Kubernetes Helm charts for State Data Centre deployment"
     },
     {
@@ -4071,8 +4071,8 @@
         "GOV-21-001"
       ],
       "owner": "Release Manager",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add automated GitHub Release asset upload"
     },
     {
@@ -4111,8 +4111,8 @@
         "GOV-17-004"
       ],
       "owner": "Accessibility Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Run automated axe-core accessibility audit in CI"
     },
     {
@@ -4150,8 +4150,8 @@
         "GOV-22-001"
       ],
       "owner": "UX Ergonomics Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add keyboard shortcut cheat sheet (? key modal)"
     },
     {
@@ -4189,8 +4189,8 @@
         "GOV-22-001"
       ],
       "owner": "Assistive Tech Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Conduct manual testing with VoiceOver on macOS"
     },
     {
@@ -4228,8 +4228,8 @@
         "GOV-22-001"
       ],
       "owner": "Responsive Web Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add explicit 'Low Bandwidth Mode' toggle in header settings"
     },
     {
@@ -4268,8 +4268,8 @@
         "GOV-17-001"
       ],
       "owner": "Tamil Localization Lead",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Complete 100% string dictionary extraction into i18n JSON resource files"
     },
     {
@@ -4308,8 +4308,8 @@
         "GOV-06-007"
       ],
       "owner": "Computational Linguistics Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate Tamil Virtual Academy (TVA) spellchecker library"
     },
     {
@@ -4346,8 +4346,8 @@
         "GOV-23-001"
       ],
       "owner": "Senior Tamil Administrative Consultant",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Publish formal administrative terminology reference guide"
     },
     {
@@ -4384,8 +4384,8 @@
         "GOV-23-001"
       ],
       "owner": "Document Systems Specialist",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Embed licensed open-source Noto Sans Tamil font subset in PDF generator"
     },
     {
@@ -4421,8 +4421,8 @@
       "defect_ids": [],
       "dependency_ids": [],
       "owner": "Site Reliability Engineer",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Integrate Prometheus / Grafana metrics exporter endpoint"
     },
     {
@@ -4460,8 +4460,8 @@
         "GOV-24-001"
       ],
       "owner": "Resilience Architect",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Add background ping heartbeat every 30 seconds"
     },
     {
@@ -4498,8 +4498,8 @@
         "GOV-24-001"
       ],
       "owner": "Database Administrator",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Configure automated replication to secondary ELCOT disaster recovery site"
     },
     {
@@ -4536,8 +4536,8 @@
         "GOV-24-001"
       ],
       "owner": "Disaster Recovery Director",
-      "last_changed_at": "2026-11-14T05:47:19Z",
-      "last_verified_at": "2026-11-14T05:47:19Z",
+      "last_changed_at": "2026-11-14T11:26:42Z",
+      "last_verified_at": "2026-11-14T11:26:42Z",
       "next_action": "Conduct annual live unannounced failover test"
     }
   ]

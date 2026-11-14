@@ -28,3 +28,9 @@
 - **Source B (Live Portal):** 42 Secretariat departments, including modern portfolios such as Artificial Intelligence, Information Technology and Digital Services Department, and Natural Resources.
 - **Reconciliation Decision:** Upstream 42 Secretariat Departments and 40 active Secretaries are fully ingested.
 
+### Conflict 5: Chief Secretary to Government Transition
+- **Source A (Legacy System Data):** Prior administration civil service postings listed earlier incumbent as Chief Secretary.
+- **Source B (Authoritative Live Portal & Civil List):** `https://www.tn.gov.in/cs.php` and Public (Special.A) Department register.
+- **Reconciliation Decision:** Dr. M. Sai Kumar, IAS is the verified Chief Secretary to Government of Tamil Nadu (1990 batch). All backend services, hierarchy trees, and frontend adapters have been synchronized to Dr. M. Sai Kumar, IAS as the administrative head of civil services.
+
+

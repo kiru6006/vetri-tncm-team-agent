@@ -36,7 +36,7 @@ Every module was independently evaluated against four rigorous gates:
 - **AI Executive Copilot:** Slide-out drawer with multi-turn reasoning and directive drafting. Level 1-4 Passed.
 
 ### GOV-06: Government Directory (Status: VERIFIED_COMPLETE - P0 Audit Rectified)
-- **Ministers & Portfolios:** All 34 Council of Ministers verified with portfolios.
+- **Ministers & Portfolios:** All 35 Council of Ministers verified with portfolios per Gazette No. 256 headed by Hon'ble CM Thiru C. Joseph Vijay. Chief Secretary Dr. M. Sai Kumar, IAS verified as civil services head.
 - **District Collectors:** All 38 districts mapped to verified IAS Collectors with real `@nic.in` emails.
 - **Police Leadership:** DGP Shankar Jiwal IPS, Greater Chennai CP A. Arun IPS, Range IGs, and SP Salem A. K. Arun Kabilan IPS verified.
 - **Quarantine Defense:** Mock and placeholder officers isolated into `QUARANTINED_UNVERIFIED_RECORDS` with explicit quarantine defect notices.
