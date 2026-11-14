@@ -10,7 +10,7 @@ Following a Critical/P0 data quality audit, all ministerial and administrative c
 
 | Entity Category | Total Records | Verified Count | Quarantined Count | Source Grounding |
 |---|---|---|---|---|
-| **Council of Ministers** | 34 | 34 (100%) | 0 | tn.gov.in/ministers |
+| **Council of Ministers** | 35 | 35 (100%) | 0 | tn.gov.in/ministers & Gazette 256 |
 | **District Collectors** | 38 | 38 (100%) | 0 | tn.gov.in/district_collectors |
 | **IAS Senior Leadership** | 45 | 45 (100%) | 0 | Public (Special A) Dept G.O. |
 | **IPS Police Leadership** | 28 | 28 (100%) | 1 (Quarantined) | Home (Police) Dept G.O. |

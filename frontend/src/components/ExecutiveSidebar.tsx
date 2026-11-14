@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuthStore } from '../stores/authStore';
 import {
   LayoutDashboard,
@@ -35,7 +35,8 @@ import {
   Flame,
   FileText,
   Activity,
-  FolderGit2
+  FolderGit2,
+  X
 } from 'lucide-react';
 
 interface SidebarSection {
@@ -91,6 +92,25 @@ export const ExecutiveSidebar: React.FC<ExecutiveSidebarProps> = ({
       [sectionTitle]: !prev[sectionTitle]
     }));
   };
+
+  // Lock body scroll and listen for Escape key on mobile
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onCloseMobile();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileOpen, onCloseMobile]);
 
   const SECTIONS: SidebarSection[] = [
     {
@@ -475,16 +495,16 @@ export const ExecutiveSidebar: React.FC<ExecutiveSidebarProps> = ({
       {/* Sidebar Container */}
       <aside
         className={`fixed top-0 bottom-0 left-0 z-50 flex flex-col bg-slate-950 border-r border-slate-800/80 transition-all duration-300 ease-in-out ${
-          sidebarCollapsed ? 'w-18' : 'w-72'
+          sidebarCollapsed ? 'w-18' : 'w-72 max-w-[85vw]'
         } ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
         {/* Brand Header */}
-        <div className="h-16 flex items-center justify-between px-4 border-b border-slate-800/80 bg-slate-900/50">
+        <div className="h-16 flex items-center justify-between px-3 sm:px-4 border-b border-slate-800/80 bg-slate-900/50">
           <button
             onClick={() => handleNavClick('cm-command')}
-            className="flex items-center gap-3 text-left overflow-hidden group cursor-pointer"
+            className="flex items-center gap-2.5 sm:gap-3 text-left overflow-hidden group cursor-pointer"
           >
             <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500/20 via-slate-800 to-rose-900/40 border border-amber-500/40 shrink-0 group-hover:scale-105 transition-transform">
               <span className="text-amber-400 font-extrabold text-base">வெ</span>
@@ -500,6 +520,17 @@ export const ExecutiveSidebar: React.FC<ExecutiveSidebarProps> = ({
               </div>
             )}
           </button>
+
+          {/* Mobile Close Button */}
+          {mobileOpen && (
+            <button
+              onClick={onCloseMobile}
+              title="Close menu"
+              className="lg:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
 
           {/* Desktop Collapse Toggle */}
           <button

@@ -253,10 +253,10 @@ export const ExecutiveMeetingWorkspace: React.FC<ExecutiveMeetingWorkspaceProps>
           </div>
 
           {/* Sub-Tabs: Pre-Briefing / Minutes (MoM) / Action Items */}
-          <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+          <div className="flex items-center overflow-x-auto no-scrollbar gap-2 border-b border-slate-800 pb-3">
             <button
               onClick={() => setActiveTab('briefing')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shrink-0 ${
                 activeTab === 'briefing'
                   ? 'bg-emerald-500 text-slate-950 shadow-md'
                   : 'text-slate-400 hover:text-white'
@@ -268,7 +268,7 @@ export const ExecutiveMeetingWorkspace: React.FC<ExecutiveMeetingWorkspaceProps>
 
             <button
               onClick={() => setActiveTab('minutes')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shrink-0 ${
                 activeTab === 'minutes'
                   ? 'bg-emerald-500 text-slate-950 shadow-md'
                   : 'text-slate-400 hover:text-white'
@@ -280,7 +280,7 @@ export const ExecutiveMeetingWorkspace: React.FC<ExecutiveMeetingWorkspaceProps>
 
             <button
               onClick={() => setActiveTab('actions')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shrink-0 ${
                 activeTab === 'actions'
                   ? 'bg-emerald-500 text-slate-950 shadow-md'
                   : 'text-slate-400 hover:text-white'

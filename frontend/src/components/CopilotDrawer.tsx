@@ -52,6 +52,16 @@ export const CopilotDrawer: React.FC<Props> = ({ isOpen, onClose, onExecuteDirec
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
 
+  // Handle ESC key and scroll lock when Copilot is open
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   const handleSend = async (queryText?: string) => {
     const q = queryText || inputQuery;
     if (!q.trim() || isLoading) return;
@@ -169,7 +179,14 @@ export const CopilotDrawer: React.FC<Props> = ({ isOpen, onClose, onExecuteDirec
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-[540px] glass-card border-l border-slate-700/80 shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
+    <>
+      {/* Mobile Drawer Backdrop */}
+      <div
+        onClick={onClose}
+        className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm sm:hidden transition-opacity"
+      />
+
+      <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-[540px] glass-card border-l border-slate-700/80 shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
       {/* Copilot Header */}
       <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/80">
         <div className="flex items-center gap-3">
@@ -349,5 +366,6 @@ export const CopilotDrawer: React.FC<Props> = ({ isOpen, onClose, onExecuteDirec
         </button>
       </div>
     </div>
+    </>
   );
 };

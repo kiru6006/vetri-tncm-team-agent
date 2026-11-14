@@ -16,7 +16,7 @@ Every capability was evaluated against six non-negotiable enterprise dimensions:
 
 ### A. Data Quality & Directory Accuracy (P0 Finding)
 - **Status**: **RESOLVED / VERIFIED CLEAN**
-- **Action Taken**: Quarantined legacy unverified/fictional records (`M. Shanmugam`, `S. Anbarasan`, `Kirubakaran IPS`) into `quarantinedOfficials` dataset. Populated 100% verified Council of Ministers (34 Ministers), all 38 District Collectors with `@nic.in` emails, and official Police/Forest/Secretariat leadership.
+- **Action Taken**: Quarantined legacy unverified/fictional records (`M. Shanmugam`, `S. Anbarasan`, `Kirubakaran IPS`) into `quarantinedOfficials` dataset. Populated 100% verified Council of Ministers (35 Ministers headed by Hon'ble CM Thiru C. Joseph Vijay), Chief Secretary Dr. M. Sai Kumar IAS, all 38 District Collectors with `@nic.in` emails, and official Police/Forest/Secretariat leadership. Unified all services to canonical single source `data/government-directory/`.
 - **Evidence**: `frontend/src/data/verifiedGovernmentDirectory.ts`.
 
 ### B. Routing & Navigation Shell

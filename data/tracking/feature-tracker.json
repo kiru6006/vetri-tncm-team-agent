@@ -171,7 +171,7 @@
       "description": "Fictional or unverified records (e.g. M. Shanmugam, S. Anbarasan, Kirubakaran IPS) were present in directory data.",
       "reproduction_steps": "Query directory for non-existent civil service batch appointments.",
       "impact": "Data integrity risk and potential misinformation in official communications.",
-      "remediation_plan": "Quarantined unverified records into quarantinedOfficials dataset and populated verified 34 Ministers, 38 Collectors, and official police leadership.",
+      "remediation_plan": "Quarantined unverified records into quarantinedOfficials dataset and populated verified 35 Ministers (under Hon'ble CM Thiru C. Joseph Vijay), Chief Secretary Dr. M. Sai Kumar IAS, 38 Collectors, and official police leadership.",
       "target_release": "v2.0.0"
     },
     {
@@ -478,10 +478,10 @@
       "feature_id": "GOV-02-001",
       "category_id": "GOV-02",
       "title": "Council of Ministers Directory & Portfolios",
-      "description": "Complete directory of all 34 Cabinet Ministers of Tamil Nadu with verified portfolios, official contact coordinates, and department mappings.",
+      "description": "Complete directory of all 35 Cabinet Ministers of Tamil Nadu with verified portfolios, official contact coordinates, and department mappings.",
       "business_objective": "Maintain accurate record of ministerial responsibility and executive command.",
       "acceptance_criteria": [
-        "Render 34 verified Cabinet Ministers",
+        "Render 35 verified Cabinet Ministers",
         "Display exact official Tamil and English ministerial designations",
         "Show mapped administrative departments for each minister",
         "Search by minister name, portfolio keyword, or department"
@@ -1002,7 +1002,7 @@
       "feature_id": "GOV-06-001",
       "category_id": "GOV-06",
       "title": "Verified Council of Ministers Entity Store",
-      "description": "Cryptographically validated and official-source-verified dataset of all 34 Cabinet Ministers of Tamil Nadu.",
+      "description": "Cryptographically validated and official-source-verified dataset of all 35 Cabinet Ministers of Tamil Nadu.",
       "business_objective": "Eliminate unverified or fictional ministerial entries across the entire platform.",
       "acceptance_criteria": [
         "100% verified against tn.gov.in official council of ministers portal",
@@ -4320,7 +4320,7 @@
       "business_objective": "Guarantee linguistic dignity and official administrative accuracy.",
       "acceptance_criteria": [
         "Use official Secretariat terminology rather than colloquial machine translations",
-        "Verified Tamil designations for all 34 Cabinet Ministers and 38 District Collectors",
+        "Verified Tamil designations for all 35 Cabinet Ministers and 38 District Collectors",
         "Review of all terminology by senior Tamil administrative consultant"
       ],
       "priority": "P0",

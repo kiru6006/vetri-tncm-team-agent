@@ -126,7 +126,7 @@ export const App: React.FC = () => {
         />
 
         {/* Dynamic Route Content */}
-        <main className="flex-1 p-3 sm:p-6 max-w-7xl w-full mx-auto overflow-x-hidden">
+        <main className="flex-1 p-3 sm:p-6 max-w-7xl w-full mx-auto">
           {/* Executive Office Routes */}
           {(currentRoute === 'cm-command' ||
             currentRoute === '' ||
@@ -276,8 +276,8 @@ export const App: React.FC = () => {
 
       {/* District Detail Modal */}
       {selectedDistrict && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="glass-card rounded-2xl border border-slate-700 max-w-lg w-full p-6 space-y-4 animate-in zoom-in-95 duration-200 shadow-2xl">
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
+          <div className="glass-card rounded-2xl border border-slate-700 max-w-lg w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 space-y-4 animate-in zoom-in-95 duration-200 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2">
                 <span className="px-2 py-0.5 rounded bg-slate-800 font-mono font-bold text-amber-400 text-xs">
@@ -326,7 +326,7 @@ export const App: React.FC = () => {
                   setSelectedDistrict(null);
                   handleOpenCopilot(`Analyze district ${selectedDistrict.nameEn} performance and key bottlenecks`);
                 }}
-                className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold transition-all flex items-center gap-1.5"
+                className="px-4 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold transition-all flex items-center gap-1.5"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>
@@ -343,7 +343,7 @@ export const App: React.FC = () => {
       {/* Floating Chief Minister AI Copilot FAB Button */}
       <button
         onClick={() => handleOpenCopilot()}
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-extrabold text-xs shadow-2xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-105 active:scale-95 transition-all border border-amber-300 cursor-pointer"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-extrabold text-xs shadow-2xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-105 active:scale-95 transition-all border border-amber-300 cursor-pointer"
       >
         <Sparkles className="w-4 h-4 fill-slate-950" />
         <span>{isTa ? 'முதல்வர் AI ஆலோசகர்' : 'CM AI Copilot'}</span>

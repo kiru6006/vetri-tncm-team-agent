@@ -11,7 +11,7 @@
 | **GATE-04** | Master Tracker Schema Validation | 100% Schema Valid | 0 schema violations | **PASSED** |
 | **GATE-05** | Evidence File Verification | 100% Files on Disk | 100% verified | **PASSED** |
 | **GATE-06** | Critical P0 Defect Threshold | 0 Open P0 Defects | 0 Open P0 | **PASSED** |
-| **GATE-07** | Directory Data Accuracy | 100% Ministers & Collectors Verified | 34 Ministers, 38 Collectors verified | **PASSED** |
+| **GATE-07** | Directory Data Accuracy | 100% Ministers & Collectors Verified | 35 Ministers, 38 Collectors verified | **PASSED** |
 | **GATE-08** | Advisory AI Disclaimer | Visible on all views | Rendered in header and modal | **PASSED** |
 
 ## Recommendation

@@ -101,14 +101,14 @@ export const ExecutiveWorkspace: React.FC<ExecutiveWorkspaceProps> = ({
   return (
     <div className="space-y-6 pb-12 animate-in fade-in duration-200">
       {/* 1. TOP HERO: Executive Decision Cockpit */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-slate-700 p-6 md:p-8">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-slate-700 p-4 sm:p-6 md:p-8">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
               {isTa ? 'முதல்வர் ஆட்சி நுண்ணறிவு & கட்டளை மையம்' : 'CM Governance Intelligence & Executive Command'}
             </div>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
               {isTa ? briefing?.greeting_ta || "வணக்கம் மாண்புமிகு முதலமைச்சர் அவர்களுக்கு" : briefing?.greeting_en || "Good Morning, Hon'ble Chief Minister"}
             </h1>
             <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
@@ -119,18 +119,18 @@ export const ExecutiveWorkspace: React.FC<ExecutiveWorkspaceProps> = ({
           </div>
 
           {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-3 gap-3 bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shrink-0">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-3 bg-slate-900/90 border border-slate-800 rounded-2xl p-2.5 sm:p-4 shrink-0">
             <div className="text-center">
-              <div className="text-[10px] text-slate-400 uppercase font-bold">Critical Decisions</div>
-              <div className="text-2xl font-bold font-mono text-rose-400 mt-1">{criticalCount}</div>
+              <div className="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold">Critical</div>
+              <div className="text-lg sm:text-2xl font-bold font-mono text-rose-400 mt-0.5 sm:mt-1">{criticalCount}</div>
             </div>
-            <div className="text-center border-x border-slate-800 px-3">
-              <div className="text-[10px] text-slate-400 uppercase font-bold">Warnings</div>
-              <div className="text-2xl font-bold font-mono text-amber-400 mt-1">{warningCount}</div>
+            <div className="text-center border-x border-slate-800 px-1.5 sm:px-3">
+              <div className="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold">Warnings</div>
+              <div className="text-lg sm:text-2xl font-bold font-mono text-amber-400 mt-0.5 sm:mt-1">{warningCount}</div>
             </div>
             <div className="text-center">
-              <div className="text-[10px] text-slate-400 uppercase font-bold">Exposure</div>
-              <div className="text-2xl font-bold font-mono text-emerald-400 mt-1">₹{totalFinancialExposure.toFixed(0)} Cr</div>
+              <div className="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold">Exposure</div>
+              <div className="text-lg sm:text-2xl font-bold font-mono text-emerald-400 mt-0.5 sm:mt-1">₹{totalFinancialExposure.toFixed(0)} Cr</div>
             </div>
           </div>
         </div>
@@ -217,12 +217,12 @@ export const ExecutiveWorkspace: React.FC<ExecutiveWorkspaceProps> = ({
           </div>
 
           {/* Category Tabs */}
-          <div className="flex flex-wrap gap-1.5 pt-1">
+          <div className="flex overflow-x-auto no-scrollbar gap-1.5 pt-1 pb-1">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all shrink-0 cursor-pointer ${
                   selectedCategory === cat
                     ? 'bg-amber-400 text-slate-950 font-bold'
                     : 'bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800'
@@ -335,8 +335,8 @@ export const ExecutiveWorkspace: React.FC<ExecutiveWorkspaceProps> = ({
 
       {/* MODAL: Full Issue Evidence & History Dossier */}
       {activeIssueDetail && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="glass-card rounded-2xl border border-slate-700 max-w-2xl w-full p-6 space-y-4 animate-in zoom-in-95 duration-200 shadow-2xl">
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
+          <div className="glass-card rounded-2xl border border-slate-700 max-w-2xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 space-y-4 animate-in zoom-in-95 duration-200 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-2">
                 <span className="px-2 py-0.5 rounded bg-slate-800 font-mono font-bold text-amber-400 text-xs">
@@ -406,13 +406,13 @@ export const ExecutiveWorkspace: React.FC<ExecutiveWorkspaceProps> = ({
                 </p>
               </div>
 
-              <div className="pt-2 flex justify-end gap-2 border-t border-slate-800">
+              <div className="pt-2 flex flex-col-reverse sm:flex-row justify-end gap-2 border-t border-slate-800">
                 <button
                   onClick={() => {
                     setActiveIssueDetail(null);
                     onOpenCopilot(`Analyze issue ${activeIssueDetail.id}: ${activeIssueDetail.titleEn}`);
                   }}
-                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold"
+                  className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-center"
                 >
                   Analyze with AI Copilot
                 </button>
@@ -421,7 +421,7 @@ export const ExecutiveWorkspace: React.FC<ExecutiveWorkspaceProps> = ({
                     setActiveIssueDetail(null);
                     setCurrentRoute('action-tracker');
                   }}
-                  className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold"
+                  className="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-center"
                 >
                   Issue Executive Direction
                 </button>

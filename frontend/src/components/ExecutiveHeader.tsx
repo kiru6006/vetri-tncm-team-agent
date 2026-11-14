@@ -124,23 +124,23 @@ export const ExecutiveHeader: React.FC<ExecutiveHeaderProps> = ({
       </div>
 
       {/* Center: Global AI Search */}
-      <div className="flex-1 max-w-md mx-2 sm:mx-6">
+      <div className="flex-1 min-w-[110px] max-w-md mx-1 sm:mx-6">
         <form onSubmit={handleGlobalSearch} className="relative">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400 absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={
               isTa
-                ? "AI தேடல்: 'சேலம் சாலை', 'உர இருப்பு', 'வருவாய்'..."
-                : "Search or ask AI: 'Salem road delay', 'DAP stock', 'Collector Salem'..."
+                ? "AI தேடல்: 'சேலம் சாலை'..."
+                : "Search or ask AI: 'Salem road'..."
             }
-            className="w-full pl-9 pr-9 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400/80 transition-all shadow-inner"
+            className="w-full pl-8 sm:pl-9 pr-8 sm:pr-9 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-[11px] sm:text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400/80 transition-all shadow-inner"
           />
           <button
             type="submit"
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-amber-300"
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-amber-300 p-1"
             title="Ask Copilot"
           >
             <Sparkles className="w-3.5 h-3.5" />
@@ -149,11 +149,11 @@ export const ExecutiveHeader: React.FC<ExecutiveHeaderProps> = ({
       </div>
 
       {/* Right Controls: Notifications, Messages, Calendar, Language, Role/Profile */}
-      <div className="flex items-center gap-1.5 sm:gap-2.5">
+      <div className="flex items-center gap-1 sm:gap-2.5 shrink-0">
         {/* Messages Shortcut */}
         <button
           onClick={() => setCurrentRoute('messages')}
-          className="relative p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
+          className="hidden sm:inline-flex relative p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
           title={isTa ? "செய்திகள்" : "Messages"}
         >
           <MessageSquare className="w-4 h-4" />
@@ -163,7 +163,7 @@ export const ExecutiveHeader: React.FC<ExecutiveHeaderProps> = ({
         {/* Calendar Shortcut */}
         <button
           onClick={() => setCurrentRoute('calendar')}
-          className="relative p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
+          className="hidden sm:inline-flex relative p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
           title={isTa ? "நாள்காட்டி" : "Calendar & Meetings"}
         >
           <Calendar className="w-4 h-4" />
@@ -173,7 +173,7 @@ export const ExecutiveHeader: React.FC<ExecutiveHeaderProps> = ({
         <div className="relative" ref={notifRef}>
           <button
             onClick={() => setNotificationsOpen(!notificationsOpen)}
-            className="relative p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
+            className="relative p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors touch-target-44 flex items-center justify-center"
             title={isTa ? "முக்கிய அறிவிப்புகள்" : "Critical Alerts"}
           >
             <Bell className="w-4 h-4" />
@@ -185,7 +185,7 @@ export const ExecutiveHeader: React.FC<ExecutiveHeaderProps> = ({
           </button>
 
           {notificationsOpen && (
-            <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl glass-card border border-slate-700 shadow-2xl p-3 z-50 animate-in fade-in slide-in-from-top-2">
+            <div className="absolute right-[-3rem] sm:right-0 mt-2 w-[calc(100vw-1.5rem)] max-w-sm sm:w-96 rounded-2xl glass-card border border-slate-700 shadow-2xl p-3 z-50 animate-in fade-in slide-in-from-top-2">
               <div className="flex items-center justify-between pb-2 border-b border-slate-800">
                 <div className="flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 text-rose-400" />
@@ -268,10 +268,10 @@ export const ExecutiveHeader: React.FC<ExecutiveHeaderProps> = ({
         <div className="relative" ref={roleRef}>
           <button
             onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
-            className="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-850 border border-slate-700/80 text-xs font-semibold text-slate-200 transition-colors"
+            className="flex items-center gap-1 sm:gap-2 px-2 sm:px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-850 border border-slate-700/80 text-[11px] sm:text-xs font-semibold text-slate-200 transition-colors touch-target-44"
           >
             <Shield className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span className="truncate max-w-[85px] sm:max-w-none">
+            <span className="truncate max-w-[65px] sm:max-w-none">
               {isTa
                 ? rolesList.find((r) => r.role === activeRole)?.labelTa
                 : rolesList.find((r) => r.role === activeRole)?.labelEn}
@@ -280,7 +280,7 @@ export const ExecutiveHeader: React.FC<ExecutiveHeaderProps> = ({
           </button>
 
           {roleDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-72 rounded-2xl glass-card border border-slate-700 shadow-2xl py-2 z-50 animate-in fade-in slide-in-from-top-2">
+            <div className="absolute right-0 mt-2 w-[calc(100vw-1.5rem)] max-w-xs sm:w-72 rounded-2xl glass-card border border-slate-700 shadow-2xl py-2 z-50 animate-in fade-in slide-in-from-top-2">
               <div className="px-3.5 py-1.5 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
                 {isTa ? 'அதிகாரப் பார்வை மாற்றம்' : 'Switch Simulated Role'}
               </div>

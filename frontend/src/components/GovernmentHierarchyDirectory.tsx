@@ -375,7 +375,7 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
       <div key={node.id} className="space-y-1">
         <div
           onClick={() => setSelectedHierarchyNode(node)}
-          style={{ paddingLeft: `${level * 22 + 12}px` }}
+          style={{ paddingLeft: `${Math.min(level * 14 + 8, 48)}px` }}
           className={`flex items-center justify-between py-2.5 pr-3 rounded-xl cursor-pointer transition-all duration-150 ${
             isSelected
               ? 'bg-indigo-600/20 border border-indigo-500/60 text-white shadow-lg'
@@ -474,10 +474,10 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
           </div>
 
           {/* Subtabs Switcher */}
-          <div className="flex items-center p-1.5 rounded-2xl bg-slate-950/90 border border-slate-800 shrink-0 shadow-inner">
+          <div className="flex items-center overflow-x-auto no-scrollbar p-1.5 rounded-2xl bg-slate-950/90 border border-slate-800 max-w-full shrink-0 shadow-inner">
             <button
               onClick={() => setActiveTab('directory')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
+              className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 shrink-0 ${
                 activeTab === 'directory'
                   ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
                   : 'text-slate-400 hover:text-white'
@@ -488,7 +488,7 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
             </button>
             <button
               onClick={() => setActiveTab('hierarchy')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
+              className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 shrink-0 ${
                 activeTab === 'hierarchy'
                   ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
                   : 'text-slate-400 hover:text-white'
@@ -499,7 +499,7 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
             </button>
             <button
               onClick={() => setActiveTab('intelligence')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
+              className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 shrink-0 ${
                 activeTab === 'intelligence'
                   ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
                   : 'text-slate-400 hover:text-white'
@@ -510,7 +510,7 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
             </button>
             <button
               onClick={() => setActiveTab('sync')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
+              className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 shrink-0 ${
                 activeTab === 'sync'
                   ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
                   : 'text-slate-400 hover:text-white'
@@ -535,15 +535,15 @@ export const GovernmentHierarchyDirectory: React.FC<GovernmentHierarchyDirectory
               }}
               placeholder={
                 isTa
-                  ? 'பெயர், துறை, மாவட்டம், கேடர் (IAS/IPS/IRS), திட்டம் அல்லது இயற்கை மொழியில் தேடவும்: "Kirubakaran IPS", "Kayalvizhi IRS", "சேலம் ஆட்சியர்", "நீர் வளத்துறை"...'
-                  : 'Search by Name, Cadre (IAS/IPS/IRS/IFS), Department, District, Scheme: "Kirubakaran IPS", "Kayalvizhi IRS", "Collector Salem", "Water Resources"...'
+                  ? 'பெயர், துறை, மாவட்டம், கேடர் (IAS/IPS/IRS), திட்டம்...'
+                  : 'Search by Name, Cadre (IAS/IPS/IRS/IFS), Department, District, Scheme...'
               }
-              className="w-full pl-12 pr-32 py-4 rounded-2xl bg-slate-950/90 border border-slate-700/80 hover:border-indigo-500/60 focus:border-indigo-500 text-white placeholder-slate-400 text-sm focus:outline-none shadow-2xl transition duration-200"
+              className="w-full pl-11 sm:pl-12 pr-24 sm:pr-32 py-3 sm:py-4 rounded-2xl bg-slate-950/90 border border-slate-700/80 hover:border-indigo-500/60 focus:border-indigo-500 text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none shadow-2xl transition duration-200"
             />
-            <div className="absolute right-3 flex items-center gap-2">
+            <div className="absolute right-2.5 sm:right-3 flex items-center gap-2">
               <button
                 type="submit"
-                className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5"
+                className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md transition flex items-center gap-1.5"
               >
                 <span>{isTa ? 'தேடு' : 'Search'}</span>
                 <ChevronRight className="w-3.5 h-3.5" />

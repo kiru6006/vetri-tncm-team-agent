@@ -202,12 +202,12 @@ export const ExplorePlatform: React.FC = () => {
           <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
             {isTa ? 'பயனர் அதிகாரம் வாரியாக வடிகட்டு:' : 'Filter by Intended Role:'}
           </div>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex overflow-x-auto no-scrollbar gap-1.5 pb-1">
             {ROLE_FILTERS.map((role) => (
               <button
                 key={role}
                 onClick={() => setSelectedRole(role)}
-                className={`px-3 py-1 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                className={`px-3 py-1 rounded-xl text-xs font-semibold transition-all shrink-0 cursor-pointer ${
                   selectedRole === role
                     ? 'bg-amber-400 text-slate-950 font-bold shadow-md shadow-amber-500/10'
                     : 'bg-slate-900/80 text-slate-300 hover:bg-slate-800 border border-slate-700/80'
@@ -224,12 +224,12 @@ export const ExplorePlatform: React.FC = () => {
           <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
             {isTa ? 'துறை வகை வாரியாக:' : 'Filter by Governance Category:'}
           </div>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex overflow-x-auto no-scrollbar gap-1.5 pb-1">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all shrink-0 cursor-pointer ${
                   selectedCategory === cat
                     ? 'bg-indigo-600 text-white font-bold'
                     : 'bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800'
