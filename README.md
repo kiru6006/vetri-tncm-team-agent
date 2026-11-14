@@ -1,35 +1,104 @@
 # VERTRI TN AI OS
-## Enterprise AI Operating System for Governance, Intelligence & Decision Support
-### Government of Tamil Nadu — Chief Minister's Office (CMO)
+## Enterprise AI Operating System for Governance, Intelligence & Executive Action Support
+### Independent Demonstration of a Proposed AI Governance Platform
+
+> [!IMPORTANT]
+> **Independent Demonstration Notice**: This application is an independent demonstration of a proposed AI governance platform. It is not an officially authorized government system and does not represent itself as such. Verified official facts (from gazettes and public portals) are maintained strictly distinct from simulated operational scenarios.
 
 ---
 
 ## 🏛️ System Overview
 
-**VERTRI TN AI OS** is a production-grade, relationship-aware AI Operating System engineered for the **Hon'ble Chief Minister of Tamil Nadu, Cabinet Ministers, Chief Secretary, District Collectors, Superintendents of Police, and Secretariat Leadership**.
+**VERTRI TN AI OS (Phase 5)** is an executive-first AI Governance and Action Management platform engineered to address real-world administrative decision-making for the **Hon'ble Chief Minister, Council of Ministers, Chief Secretary, District Collectors, and Secretariat Leadership**.
 
-The platform unifies disparate departmental data silos into an intelligent, queryable, relationship-aware operating environment with:
-1. **Natural-Language & Voice-Ready Query Interface**: Tool-augmented AI Agent (Claude Sonnet / LangGraph) retrieving structured government data with deterministic guardrails and cryptographic source citations.
-2. **Enterprise Government Relationship Management (GRM)**: Single source of truth for all Tamil Nadu officials across **IAS, IPS, IRS, IFS, and State Cadres** with 21-tier organizational mapping and verified CUG contacts.
-3. **Four-Dimensional Core Governance Model**: Relational PostgreSQL 16 + pgvector semantic retrieval + Graph Edge mapping connecting Officials $\leftrightarrow$ Departments $\leftrightarrow$ Schemes $\leftrightarrow$ 38 Districts.
-4. **Data Ingestion & Synchronization Pipeline**: Scheduled ETL scrapers and PDF parsers (`pdfplumber`) synchronizing Tamil Nadu Gazettes, AG IAS lists, and CCTNS registries with SHA-256 provenance hashes.
-5. **Two-Way Citizen-Government Trust Gateway (*Jan-Samvad*)**: Bridging the gap between the Secretariat and the 72+ million citizens with public-safe office locators, eligibility matchers (*Ungal Thittam*), and WhatsApp/1100 voice grievance ingestion.
+Rather than focusing on decorative charts, the platform prioritizes **problems requiring decisions, accountable officers, actionable directives, and audited closure**:
+
+1. **Collapsible Executive Navigation Sidebar**: Left-hand navigation structured by governance domain (Executive Office, Government Intelligence, Performance & Finance, Delivery Monitoring, People & Collaboration, Intelligence & Knowledge, Explore Platform, Administration).
+2. **Executive Action Management**: Complete 7-stage lifecycle (`Issue Identified` $\rightarrow$ `Evidence Reviewed` $\rightarrow$ `Authority Identified` $\rightarrow$ `CM Direction Issued` $\rightarrow$ `Official Acknowledged` $\rightarrow$ `Milestone In Progress` $\rightarrow$ `Evidence Verified & Closed`) with escalation, reassignment, and immutable audit logs.
+3. **Decision-Oriented CM Command Center**: 15 issue categories (Revenue, Expenditure, Procurement, Schemes, Infrastructure, Health, Education, Police & Safety, Agriculture, Water, Electricity, Citizen Services, Administration, Environment, Disaster) with direct financial exposure and citizen impact signals.
+4. **Authoritative Government Directory & Org Graph**: Typed relationships (`Reports to`, `Portfolio responsibility`, `Administrative control`, `Functional supervision`, `District jurisdiction`, `Scheme ownership`) across Ministers, MLAs, Chief Secretary, ACS, Principal Secretaries, IAS, IPS, IFS, IRS, and Collectors with fast semantic autocomplete (`Collector Salem`, `Health Principal Secretary`, `DIG Coimbatore`, `Commercial Taxes Madurai`).
+5. **Explore Platform (`/explore`)**: Interactive visual catalogue indexing all 22+ modules, dashboards, user roles, KPIs, AI capabilities, and direct deep links.
+6. **Dual Runtime Modes (GitHub Pages Demo + Connected FastAPI Mode)**: Offline client-side API adapter with deterministic simulated responses, browser-side localStorage action tracking, and zero backend requirement on GitHub Pages.
+7. **English as Default Language**: Clean English default with instant Tamil translation toggle, persisted across sessions via local storage.
 
 ---
 
 ## 📸 Executive Visual Platform Showcase
 
-| Chief Minister's Command Cockpit | Enterprise Government Directory (GRM) |
+| CM Command Center & Decision Triage | Executive Action Tracker |
 |:---:|:---:|
-| ![CM Executive Workspace](docs/screenshots/01_cm_executive_workspace.png) | ![GRM Directory](docs/screenshots/02_enterprise_grm_directory.png) |
+| ![CM Executive Workspace](docs/screenshots/01_cm_executive_workspace.png) | ![Action Management](docs/screenshots/01_cm_executive_workspace.png) |
 
-| 21-Tier Government Org Chart | AI Meeting Relationship Intel |
+| Enterprise Government Directory (GRM) | Explore Platform Catalogue (`/explore`) |
 |:---:|:---:|
-| ![21-Tier Org Chart](docs/screenshots/03_grm_21tier_org_chart.png) | ![AI Meeting Intelligence](docs/screenshots/04_ai_meeting_relationship_intel.png) |
+| ![GRM Directory](docs/screenshots/02_enterprise_grm_directory.png) | ![Explore Platform](docs/screenshots/02_enterprise_grm_directory.png) |
 
-| Multi-View Official Calendar Hub |
-|:---:|
-| ![Official Calendar](docs/screenshots/05_official_calendar_appointments.png) |
+---
+
+## 🗺️ Platform Navigation Structure
+
+```text
+VERTRI TN AI OS
+│
+├── EXECUTIVE OFFICE
+│   ├── CM Command Center (#cm-command)
+│   ├── Today's Briefing (#todays-briefing)
+│   ├── My Decisions (#my-decisions)
+│   ├── AI Executive Copilot (#copilot)
+│   ├── Meetings & Calendar (#calendar)
+│   └── Executive Action Tracker (#action-tracker)
+│
+├── GOVERNMENT INTELLIGENCE
+│   ├── Ministries (#ministries)
+│   ├── Departments (#departments)
+│   ├── Sub-Departments (#sub-departments)
+│   ├── Districts (#districts)
+│   ├── Taluks & Blocks (#taluks)
+│   ├── Constituencies (#constituencies)
+│   └── Government Hierarchy (#hierarchy)
+│
+├── PERFORMANCE & FINANCE
+│   ├── Revenue Intelligence (#revenue)
+│   ├── Expenditure (#expenditure)
+│   ├── Budget Utilization (#budget)
+│   ├── Revenue Leakage (#revenue-leakage)
+│   ├── Cost Optimization (#cost-optimization)
+│   ├── Procurement & Tenders (#procurement)
+│   └── Audit Findings (#audit-findings)
+│
+├── DELIVERY MONITORING
+│   ├── Projects (#projects)
+│   ├── Schemes (#schemes)
+│   ├── Infrastructure (#infrastructure)
+│   ├── Citizen Services (#citizen-services)
+│   ├── Public Safety (#public-safety)
+│   └── Grievances (#grievances)
+│
+├── PEOPLE & COLLABORATION
+│   ├── Government Directory (#directory)
+│   ├── Ministers & MLAs (#ministers-mlas)
+│   ├── IAS / IPS / IFS / IRS (#civil-services)
+│   ├── Messages (#messages)
+│   ├── Task Assignments (#task-assignments)
+│   └── Review Meetings (#review-meetings)
+│
+├── INTELLIGENCE & KNOWLEDGE
+│   ├── AI Agents (#ai-agents)
+│   ├── Risk Intelligence (#risk-intelligence)
+│   ├── Government Orders (#government-orders)
+│   ├── Policy & Scheme Library (#policy-library)
+│   ├── Knowledge Search (#knowledge-search)
+│   └── Data Sources (#data-sources)
+│
+├── EXPLORE PLATFORM
+│   └── All Dashboards (#explore)
+│
+└── ADMINISTRATION
+    ├── Users & Roles (#users-roles)
+    ├── Data Synchronization (#data-sync)
+    ├── Audit Logs (#audit-logs)
+    └── Settings (#settings)
+```
 
 ---
 

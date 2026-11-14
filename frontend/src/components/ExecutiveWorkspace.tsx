@@ -1,23 +1,38 @@
-import React from 'react';
-import { 
-  CheckCircle2, 
-  Clock, 
-  AlertTriangle, 
-  TrendingUp, 
-  CloudRain, 
-  Calendar, 
-  Sparkles, 
-  FileText, 
-  Users, 
-  ShieldAlert,
-  ArrowRight,
-  Zap,
-  Building2,
-  BrainCircuit,
-  MessageSquare
-} from 'lucide-react';
+import React, { useState, useMemo } from 'react';
 import { useAuthStore } from '../stores/authStore';
-import { ExecutiveBriefing, MyActionsToday, ActionItemTriage, MorningBriefingPriority } from '../types';
+import {
+  ExecutiveBriefing,
+  MyActionsToday,
+  ActionItemTriage
+} from '../types';
+import {
+  GOVERNANCE_ISSUES_MASTER,
+  GovernanceIssue,
+  TN_DEPARTMENTS
+} from '../data/governanceData';
+import {
+  AlertTriangle,
+  Sparkles,
+  ArrowRight,
+  Shield,
+  FileText,
+  Building2,
+  Calendar,
+  MessageSquare,
+  CheckCircle2,
+  TrendingUp,
+  MapPin,
+  Clock,
+  Filter,
+  Search,
+  ExternalLink,
+  Plus,
+  Flame,
+  Info,
+  Layers,
+  IndianRupee,
+  Activity
+} from 'lucide-react';
 
 interface ExecutiveWorkspaceProps {
   briefing: ExecutiveBriefing | null;
@@ -32,322 +47,389 @@ export const ExecutiveWorkspace: React.FC<ExecutiveWorkspaceProps> = ({
   onOpenCopilot,
   onSelectAction
 }) => {
-  const { user, language } = useAuthStore();
+  const { language, setCurrentRoute } = useAuthStore();
   const isTa = language === 'ta';
 
-  // Fallback defaults if loading
-  const stateScore = briefing?.state_score ?? 88.4;
-  const pendingApprovals = briefing?.pending_approvals_count ?? 7;
-  const meetingsCount = briefing?.scheduled_meetings_today ?? 3;
+  const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const [selectedSeverity, setSelectedSeverity] = useState<string>('ALL');
+  const [selectedDistrict, setSelectedDistrict] = useState<string>('ALL');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeIssueDetail, setActiveIssueDetail] = useState<GovernanceIssue | null>(null);
+
+  const CATEGORIES = [
+    'ALL',
+    'Infrastructure',
+    'Agriculture',
+    'Health',
+    'Revenue',
+    'Water',
+    'Disaster',
+    'Police & Safety',
+    'Environment',
+    'Citizen Services',
+    'Education',
+    'Electricity'
+  ];
+
+  const SEVERITIES = ['ALL', 'CRITICAL', 'WARNING', 'ATTENTION'];
+
+  const filteredIssues = useMemo(() => {
+    return GOVERNANCE_ISSUES_MASTER.filter((issue) => {
+      if (selectedCategory !== 'ALL' && issue.category !== selectedCategory) return false;
+      if (selectedSeverity !== 'ALL' && issue.severity !== selectedSeverity) return false;
+      if (selectedDistrict !== 'ALL' && issue.district !== selectedDistrict) return false;
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        return (
+          issue.titleEn.toLowerCase().includes(q) ||
+          issue.titleTa.toLowerCase().includes(q) ||
+          issue.district.toLowerCase().includes(q) ||
+          issue.responsibleOfficial.nameEn.toLowerCase().includes(q)
+        );
+      }
+      return true;
+    });
+  }, [selectedCategory, selectedSeverity, selectedDistrict, searchQuery]);
+
+  const criticalCount = GOVERNANCE_ISSUES_MASTER.filter((i) => i.severity === 'CRITICAL').length;
+  const warningCount = GOVERNANCE_ISSUES_MASTER.filter((i) => i.severity === 'WARNING').length;
+  const totalFinancialExposure = GOVERNANCE_ISSUES_MASTER.reduce(
+    (acc, curr) => acc + (curr.financialImpactCr || 0),
+    0
+  );
 
   return (
-    <div className="space-y-8 animate-fadeIn pb-12">
-      {/* 1. TOP HERO: Executive Greeting & Strategic AI Direction */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-950 via-slate-900 to-indigo-950 border border-emerald-500/20 shadow-2xl p-6 md:p-8">
-        <div className="absolute top-0 right-0 -mt-8 -mr-8 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 -mb-12 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+    <div className="space-y-6 pb-12 animate-in fade-in duration-200">
+      {/* 1. TOP HERO: Executive Decision Cockpit */}
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-slate-700 p-6 md:p-8">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
-              {isTa ? 'அரசு தலைமை செயற்கை நுண்ணறிவு கட்டுப்பாட்டு மையம்' : 'Official AI Operating Cockpit • Govt of Tamil Nadu'}
+              {isTa ? 'முதல்வர் ஆட்சி நுண்ணறிவு & கட்டளை மையம்' : 'CM Governance Intelligence & Executive Command'}
             </div>
-            
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-              {isTa ? briefing?.greeting_ta : briefing?.greeting_en}
+              {isTa ? briefing?.greeting_ta || "வணக்கம் மாண்புமிகு முதலமைச்சர் அவர்களுக்கு" : briefing?.greeting_en || "Good Morning, Hon'ble Chief Minister"}
             </h1>
-
-            <p className="text-sm md:text-base text-slate-300 flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-emerald-400" />
-              <span>{briefing?.briefing_date}</span>
-              <span className="text-slate-600">•</span>
-              <span className="text-emerald-300 font-medium">
-                {isTa ? 'மாநில ஆளுமை குறியீடு:' : 'State Performance Index:'} {stateScore} / 100
-              </span>
+            <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
+              {isTa
+                ? 'இன்று முடிவு எடுக்கப்பட வேண்டிய முக்கிய சிக்கல்கள், தொடர்புடைய துறைகள், நிதி தாக்கம் மற்றும் அதிகாரிகளுக்கான நேரடி வழிகாட்டுதல்கள்.'
+                : 'Decision-first intelligence: 15 active cross-department challenges requiring executive intervention, identified authorities, and measurable closure timelines.'}
             </p>
-
-            {/* AI Strategic Intelligence Directive */}
-            <div className="mt-4 p-4 rounded-xl bg-slate-900/80 border border-indigo-500/30 shadow-inner flex items-start gap-3">
-              <BrainCircuit className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
-              <div>
-                <span className="text-xs font-bold text-indigo-300 uppercase tracking-wider block mb-1">
-                  {isTa ? 'AI மூலோபாய ஆலோசனை (Chief Executive AI Directive)' : 'AI Strategic Intelligence Recommendation'}
-                </span>
-                <p className="text-sm text-slate-200 leading-relaxed">
-                  {isTa ? briefing?.ai_strategic_advice_ta : briefing?.ai_strategic_advice_en}
-                </p>
-              </div>
-            </div>
           </div>
 
-          {/* Quick Stat Tiles */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-3 shrink-0">
-            <div className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/50 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg">
-                104%
-              </div>
-              <div>
-                <div className="text-xs text-slate-400">{isTa ? 'வணிக வரி' : 'Commercial Tax'}</div>
-                <div className="text-sm font-bold text-white">{isTa ? 'இலக்கை விட அதிகம்' : 'Above Target'}</div>
-              </div>
+          {/* Quick Metrics Bar */}
+          <div className="grid grid-cols-3 gap-3 bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shrink-0">
+            <div className="text-center">
+              <div className="text-[10px] text-slate-400 uppercase font-bold">Critical Decisions</div>
+              <div className="text-2xl font-bold font-mono text-rose-400 mt-1">{criticalCount}</div>
             </div>
-
-            <div className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/50 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg">
-                {pendingApprovals}
-              </div>
-              <div>
-                <div className="text-xs text-slate-400">{isTa ? 'நிலுவை ஒப்புதல்கள்' : 'Pending Approvals'}</div>
-                <div className="text-sm font-bold text-white">{isTa ? 'இன்றைய தீர்வு' : 'Awaiting Decision'}</div>
-              </div>
+            <div className="text-center border-x border-slate-800 px-3">
+              <div className="text-[10px] text-slate-400 uppercase font-bold">Warnings</div>
+              <div className="text-2xl font-bold font-mono text-amber-400 mt-1">{warningCount}</div>
             </div>
-
-            <div className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/50 flex items-center gap-3 col-span-2 sm:col-span-1">
-              <div className="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-lg">
-                {meetingsCount}
-              </div>
-              <div>
-                <div className="text-xs text-slate-400">{isTa ? 'முக்கிய கூட்டங்கள்' : 'Meetings Today'}</div>
-                <div className="text-sm font-bold text-white">{isTa ? 'அமைச்சரவை / VC' : 'Cabinet & Reviews'}</div>
-              </div>
+            <div className="text-center">
+              <div className="text-[10px] text-slate-400 uppercase font-bold">Exposure</div>
+              <div className="text-2xl font-bold font-mono text-emerald-400 mt-1">₹{totalFinancialExposure.toFixed(0)} Cr</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 2. CORE WORKSPACE: 2-COLUMN SPLIT (Left: My Actions Today / Right: Morning Briefing & Citizen Sentiment) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        {/* LEFT COLUMN (7 Cols): My Actions Today Triage */}
-        <div className="lg:col-span-7 space-y-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-red-500/20 border border-red-500/30 flex items-center justify-center text-red-400">
-                <Zap className="w-4 h-4" />
-              </div>
-              <div>
-                <h2 className="text-xl font-bold text-white tracking-tight">
-                  {isTa ? 'இன்றைய எனது நடவடிக்கைகள் (My Actions Today)' : 'My Actions Today'}
-                </h2>
-                <p className="text-xs text-slate-400">
-                  {isTa 
-                    ? `${actionsToday?.total_actions_pending ?? 5} உடனடி முடிவுகளுக்கான விவகாரங்கள் முன்னுரிமை வரிசையில்` 
-                    : `${actionsToday?.total_actions_pending ?? 5} high-impact matters awaiting executive intervention`}
-                </p>
-              </div>
+      {/* 2. EXECUTIVE QUESTIONS CALLOUT BAR */}
+      <div className="glass-card rounded-2xl border border-slate-800 p-4">
+        <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+          {isTa ? 'ஆட்சியர் & துறை ஆய்வுகளுக்கான முக்கிய கேள்விகள் (AI பரிந்துரை):' : 'Key Executive Inquiries for Today\'s Review:'}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <button
+            onClick={() => onOpenCopilot("Show top 10 unresolved issues in Salem and responsible officers")}
+            className="p-3 rounded-xl bg-slate-900/70 border border-slate-800 hover:border-amber-400/50 text-left transition-all group cursor-pointer"
+          >
+            <div className="flex items-center justify-between text-[11px] text-amber-300 font-bold mb-1">
+              <span>Salem Ring Road Delay</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+            <p className="text-[11px] text-slate-400 line-clamp-2">
+              Why is survey block 41/2 pending joint patta sub-division? Who is the accountable Collector/DRO?
+            </p>
+          </button>
+
+          <button
+            onClick={() => onOpenCopilot("What is the current DAP fertilizer buffer stock in Cauvery Delta?")}
+            className="p-3 rounded-xl bg-slate-900/70 border border-slate-800 hover:border-amber-400/50 text-left transition-all group cursor-pointer"
+          >
+            <div className="flex items-center justify-between text-[11px] text-amber-300 font-bold mb-1">
+              <span>Cauvery Delta Water & DAP</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+            <p className="text-[11px] text-slate-400 line-clamp-2">
+              Has Mettur discharge reached 15,000 cusecs? Has TANFED railhead dispatch reached Thanjavur?
+            </p>
+          </button>
+
+          <button
+            onClick={() => onOpenCopilot("Review pending export IGST refunds in Tirupur commercial taxes")}
+            className="p-3 rounded-xl bg-slate-900/70 border border-slate-800 hover:border-amber-400/50 text-left transition-all group cursor-pointer"
+          >
+            <div className="flex items-center justify-between text-[11px] text-amber-300 font-bold mb-1">
+              <span>Tirupur Tax Refund Camp</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+            <p className="text-[11px] text-slate-400 line-clamp-2">
+              Status of ₹340 Cr export refund clearance cell in Tirupur commercial tax circle.
+            </p>
+          </button>
+        </div>
+      </div>
+
+      {/* 3. ISSUE FILTERING & COMMAND CARDS */}
+      <div className="space-y-4">
+        {/* Controls */}
+        <div className="glass-card rounded-2xl border border-slate-800 p-4 space-y-3">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+            <div className="relative w-full md:w-80">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={isTa ? "பிரச்சனை, மாவட்டம், அதிகாரி..." : "Search issues, districts, officers..."}
+                className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400"
+              />
             </div>
 
-            <button 
-              onClick={() => onOpenCopilot('Summarize all pending approvals and high-priority action items for today')}
-              className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              {isTa ? 'AI ஆய்வு' : 'AI Triage'}
-            </button>
+            <div className="flex items-center gap-2 self-end md:self-auto text-xs">
+              <select
+                value={selectedSeverity}
+                onChange={(e) => setSelectedSeverity(e.target.value)}
+                className="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-slate-200 text-xs focus:outline-none"
+              >
+                {SEVERITIES.map((s) => (
+                  <option key={s} value={s}>{s === 'ALL' ? 'All Severities' : s}</option>
+                ))}
+              </select>
+
+              <span className="text-[11px] font-mono text-slate-400">
+                {filteredIssues.length} issues identified
+              </span>
+            </div>
           </div>
 
-          <div className="space-y-3.5">
-            {actionsToday?.actions.map((act) => (
-              <div 
-                key={act.id} 
-                onClick={() => onSelectAction && onSelectAction(act)}
-                className="group relative rounded-xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 hover:bg-slate-850 p-5 shadow-lg transition-all duration-200 cursor-pointer"
+          {/* Category Tabs */}
+          <div className="flex flex-wrap gap-1.5 pt-1">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all cursor-pointer ${
+                  selectedCategory === cat
+                    ? 'bg-amber-400 text-slate-950 font-bold'
+                    : 'bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800'
+                }`}
               >
-                {/* Category & Severity Badge */}
-                <div className="flex items-center justify-between gap-3 mb-2.5">
-                  <div className="flex items-center gap-2">
-                    <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
-                      act.priority === 'CRITICAL' 
-                        ? 'bg-red-500/20 border border-red-500/40 text-red-400' 
-                        : act.priority === 'HIGH'
-                        ? 'bg-amber-500/20 border border-amber-500/40 text-amber-400'
-                        : 'bg-indigo-500/20 border border-indigo-500/40 text-indigo-300'
-                    }`}>
-                      {act.priority}
-                    </span>
-                    <span className="text-xs font-semibold text-slate-400">
-                      {act.department}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-1 text-xs text-slate-400">
-                    <Clock className="w-3.5 h-3.5 text-amber-400" />
-                    <span>{act.deadline}</span>
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-base font-semibold text-white group-hover:text-emerald-300 transition mb-2">
-                  {isTa ? act.title_ta : act.title_en}
-                </h3>
-
-                {/* Bottleneck / Issue */}
-                <p className="text-xs text-slate-300 leading-relaxed mb-3">
-                  <span className="text-slate-500 font-medium">{isTa ? 'சிக்கல்: ' : 'Bottleneck: '}</span>
-                  {isTa ? act.bottleneck_ta : act.bottleneck_en}
-                </p>
-
-                {/* Financial / Impact Metric */}
-                {act.financial_impact_cr && act.financial_impact_cr > 0 && (
-                  <div className="inline-block mb-3 px-2.5 py-1 rounded bg-slate-800/80 border border-slate-700 text-xs font-bold text-emerald-400">
-                    {isTa ? `நிதி தாக்கம்: ₹${act.financial_impact_cr} கோடி` : `Financial Value: ₹${act.financial_impact_cr} Cr`}
-                  </div>
-                )}
-
-                {/* AI Recommended Decision */}
-                <div className="p-3 rounded-lg bg-emerald-950/40 border border-emerald-500/30 flex items-start gap-2.5">
-                  <Sparkles className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <div className="text-xs text-emerald-200 leading-normal">
-                    <span className="font-bold text-emerald-300 mr-1">
-                      {isTa ? 'பரிந்துரைக்கப்பட்ட முடிவு:' : 'Recommended Action:'}
-                    </span>
-                    {isTa ? act.ai_recommended_action_ta : act.ai_recommended_action_en}
-                  </div>
-                </div>
-
-                {/* Hover CTA */}
-                <div className="mt-3 flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800/80">
-                  <span>{isTa ? `பொறுப்பு அலுவலர்: ${act.responsible_officer}` : `Officer: ${act.responsible_officer}`}</span>
-                  <span className="inline-flex items-center gap-1 text-emerald-400 font-semibold group-hover:translate-x-1 transition">
-                    {isTa ? 'நடவடிக்கை எடு' : 'Authorize Action'}
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </div>
+                {cat}
+              </button>
             ))}
           </div>
         </div>
 
-        {/* RIGHT COLUMN (5 Cols): Morning Briefing Priorities, Weather & Sentiment */}
-        <div className="lg:col-span-5 space-y-6">
-          
-          {/* A. Morning Briefing Priorities */}
-          <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                  <FileText className="w-4 h-4" />
-                </div>
-                <h2 className="text-lg font-bold text-white tracking-tight">
-                  {isTa ? 'இன்றைய காலை அறிக்கை' : "Today's Priorities"}
-                </h2>
-              </div>
-              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300">
-                {briefing?.top_priorities.length ?? 3} {isTa ? 'விவகாரங்கள்' : 'Items'}
-              </span>
-            </div>
-
-            <div className="space-y-3">
-              {briefing?.top_priorities.map((prio) => (
-                <div key={prio.id} className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:border-slate-600 transition space-y-2">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-slate-400 uppercase tracking-wider">{prio.department}</span>
-                    <span className="text-red-400 font-bold">{prio.severity}</span>
-                  </div>
-                  <h4 className="text-sm font-semibold text-white">
-                    {isTa ? prio.title_ta : prio.title_en}
-                  </h4>
-                  <div className="text-xs text-amber-300/90 bg-amber-500/10 px-2.5 py-1 rounded border border-amber-500/20">
-                    ⚡ {prio.metric_signal}
-                  </div>
-                  <p className="text-xs text-slate-300">
-                    {isTa ? prio.recommended_decision_ta : prio.recommended_decision_en}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* B. Extreme Weather & Disaster Alerts */}
-          <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center">
-                <CloudRain className="w-4 h-4" />
-              </div>
-              <h2 className="text-lg font-bold text-white tracking-tight">
-                {isTa ? 'வானிலை & பேரிடர் எச்சரிக்கைகள்' : 'Weather & Disaster Alerts'}
-              </h2>
-            </div>
-
-            <div className="space-y-3">
-              {briefing?.weather_alerts.map((w, idx) => (
-                <div key={idx} className="p-3.5 rounded-xl bg-orange-950/20 border border-orange-500/30 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-orange-400">{isTa ? w.region_ta : w.region_en}</span>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-orange-500/20 text-orange-300 border border-orange-500/40">
-                      {w.alert_level} ALERT
+        {/* Issues Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredIssues.map((issue) => (
+            <div
+              key={issue.id}
+              className={`p-5 rounded-2xl border transition-all flex flex-col justify-between ${
+                issue.severity === 'CRITICAL'
+                  ? 'bg-rose-950/20 border-rose-800/40 hover:border-rose-700'
+                  : issue.severity === 'WARNING'
+                  ? 'bg-amber-950/20 border-amber-800/40 hover:border-amber-700'
+                  : 'bg-slate-900/40 border-slate-800 hover:border-slate-700'
+              }`}
+            >
+              <div className="space-y-3">
+                {/* Header info */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-900 text-slate-300 border border-slate-800">
+                      {issue.id}
+                    </span>
+                    <span className="text-[11px] font-bold text-slate-300">
+                      {issue.district}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    {isTa ? w.description_ta : w.description_en}
-                  </p>
-                  <div className="text-[11px] text-emerald-400 font-medium">
-                    🛡️ {w.preparedness_status}
+
+                  <span
+                    className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                      issue.severity === 'CRITICAL'
+                        ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
+                        : issue.severity === 'WARNING'
+                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                        : 'bg-blue-500/20 text-blue-300 border border-blue-500/40'
+                    }`}
+                  >
+                    {issue.severity}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="text-sm font-bold text-white leading-snug">
+                  {isTa ? issue.titleTa : issue.titleEn}
+                </h3>
+
+                {/* Responsible Officer */}
+                <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+                  <div className="text-[10px] uppercase font-bold text-slate-400">Accountable Officer</div>
+                  <div className="text-xs font-bold text-slate-200">
+                    {issue.responsibleOfficial.nameEn}
+                  </div>
+                  <div className="text-[11px] text-slate-400">
+                    {issue.responsibleOfficial.designationEn} • {issue.departmentEn}
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* C. Citizen Sentiment & Social Voice */}
-          <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
-                  <Users className="w-4 h-4" />
+                {/* Impact */}
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="p-2 rounded-lg bg-slate-900/60 border border-slate-800/80">
+                    <div className="text-[10px] text-slate-400">Financial Impact</div>
+                    <div className="font-mono font-bold text-amber-400 mt-0.5">
+                      {issue.financialImpactCr ? `₹${issue.financialImpactCr} Cr` : 'N/A'}
+                    </div>
+                  </div>
+                  <div className="p-2 rounded-lg bg-slate-900/60 border border-slate-800/80">
+                    <div className="text-[10px] text-slate-400">Citizen Impact</div>
+                    <div className="font-mono font-bold text-indigo-300 mt-0.5">
+                      {issue.citizenImpactCount ? `${(issue.citizenImpactCount / 1000).toFixed(0)}K Citizens` : 'Statewide'}
+                    </div>
+                  </div>
                 </div>
-                <h2 className="text-lg font-bold text-white tracking-tight">
-                  {isTa ? 'மக்கள் மனநிலை & சமூக குரல்' : 'Citizen Sentiment'}
-                </h2>
+
+                {/* Recommended CM Action */}
+                <div className="p-2.5 rounded-xl bg-amber-500/5 border border-amber-500/20 text-[11px] text-amber-200 leading-relaxed">
+                  <span className="font-bold text-amber-400">Next CM Step: </span>
+                  {isTa ? issue.recommendedActionTa : issue.recommendedActionEn}
+                </div>
               </div>
-              <span className="text-xs font-bold text-emerald-400">
-                {briefing?.citizen_sentiment.sentiment_score_pct ?? 81.4}% Positive
-              </span>
+
+              {/* Action Buttons */}
+              <div className="pt-4 mt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+                <button
+                  onClick={() => setActiveIssueDetail(issue)}
+                  className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-colors cursor-pointer"
+                >
+                  View Evidence
+                </button>
+
+                <button
+                  onClick={() => setCurrentRoute('action-tracker')}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold transition-colors cursor-pointer"
+                >
+                  <span>Issue Direction</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* MODAL: Full Issue Evidence & History Dossier */}
+      {activeIssueDetail && (
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="glass-card rounded-2xl border border-slate-700 max-w-2xl w-full p-6 space-y-4 animate-in zoom-in-95 duration-200 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-0.5 rounded bg-slate-800 font-mono font-bold text-amber-400 text-xs">
+                  {activeIssueDetail.id}
+                </span>
+                <span className="text-xs text-slate-400">
+                  {activeIssueDetail.district} • {activeIssueDetail.category}
+                </span>
+              </div>
+              <button
+                onClick={() => setActiveIssueDetail(null)}
+                className="text-slate-400 hover:text-white p-1 rounded-lg"
+              >
+                ✕
+              </button>
             </div>
 
-            <div className="space-y-2">
-              {briefing?.citizen_sentiment.trending_topics.map((t, idx) => (
-                <div key={idx} className="flex items-center justify-between p-2.5 rounded-lg bg-slate-800/50 border border-slate-700/50 text-xs">
-                  <span className="text-slate-200 font-medium truncate max-w-[200px]">{t.topic}</span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-emerald-400 font-semibold">{t.sentiment}</span>
-                    <span className="text-slate-500 text-[10px]">({t.mentions})</span>
+            <div className="space-y-4 text-xs">
+              <div>
+                <h3 className="text-base font-bold text-white">
+                  {isTa ? activeIssueDetail.titleTa : activeIssueDetail.titleEn}
+                </h3>
+                <p className="text-slate-300 mt-1 leading-relaxed">
+                  {activeIssueDetail.sourceAndEvidence}
+                </p>
+              </div>
+
+              {/* Responsible Official */}
+              <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+                <div>
+                  <div className="text-[10px] uppercase font-bold text-slate-400">Accountable Officer</div>
+                  <div className="text-sm font-bold text-white">{activeIssueDetail.responsibleOfficial.nameEn}</div>
+                  <div className="text-slate-400">{activeIssueDetail.responsibleOfficial.designationEn}</div>
+                  <div className="font-mono text-cyan-400 text-[11px] mt-0.5">
+                    {activeIssueDetail.responsibleOfficial.email} • {activeIssueDetail.responsibleOfficial.phone}
                   </div>
                 </div>
-              ))}
+                <span className="px-2.5 py-1 rounded bg-slate-800 font-mono font-bold text-amber-400">
+                  {activeIssueDetail.responsibleOfficial.cadre}
+                </span>
+              </div>
+
+              {/* Evidence Attachments */}
+              <div>
+                <div className="text-[10px] uppercase font-bold text-slate-400 mb-1.5">Evidence & Telemetry Attachments</div>
+                <div className="space-y-1.5">
+                  {activeIssueDetail.evidenceAttachments.map((att, idx) => (
+                    <div
+                      key={idx}
+                      className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between"
+                    >
+                      <div className="flex items-center gap-2">
+                        <FileText className="w-4 h-4 text-amber-400" />
+                        <span className="text-slate-200">{att.name}</span>
+                      </div>
+                      <span className="text-[10px] font-mono text-slate-400">{att.type} • {att.date}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Next Steps */}
+              <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30">
+                <div className="font-bold text-amber-400 mb-0.5">Recommended CM Direction:</div>
+                <p className="text-slate-200 leading-relaxed">
+                  {isTa ? activeIssueDetail.recommendedActionTa : activeIssueDetail.recommendedActionEn}
+                </p>
+              </div>
+
+              <div className="pt-2 flex justify-end gap-2 border-t border-slate-800">
+                <button
+                  onClick={() => {
+                    setActiveIssueDetail(null);
+                    onOpenCopilot(`Analyze issue ${activeIssueDetail.id}: ${activeIssueDetail.titleEn}`);
+                  }}
+                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold"
+                >
+                  Analyze with AI Copilot
+                </button>
+                <button
+                  onClick={() => {
+                    setActiveIssueDetail(null);
+                    setCurrentRoute('action-tracker');
+                  }}
+                  className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold"
+                >
+                  Issue Executive Direction
+                </button>
+              </div>
             </div>
           </div>
-
         </div>
-
-      </div>
-
-      {/* 3. QUICK COPILOT PROMPT BAR AT WORKSPACE BOTTOM */}
-      <div className="p-4 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950/60 to-slate-900 border border-indigo-500/30 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
-            <MessageSquare className="w-5 h-5" />
-          </div>
-          <div>
-            <h4 className="text-sm font-bold text-white">
-              {isTa ? 'உரையாடல் AI வழிகாட்டி எப்போதும் தயார்' : 'Chief Minister & Executive AI Copilot Ready'}
-            </h4>
-            <p className="text-xs text-slate-400">
-              {isTa ? 'கேளுங்கள்: "இன்றைய மாவட்ட மதிப்பாய்வு தயார் செய்" அல்லது "₹100 கோடிக்கு மேற்பட்ட திட்டங்களை காட்டு"' : 'Ask: "Show delayed projects above ₹100 Cr" or "Prepare today\'s cabinet briefing notes"'}
-            </p>
-          </div>
-        </div>
-
-        <button
-          onClick={() => onOpenCopilot()}
-          className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition shrink-0"
-        >
-          <Sparkles className="w-4 h-4" />
-          {isTa ? 'AI உடன் உரையாடு' : 'Launch Copilot'}
-        </button>
-      </div>
-
+      )}
     </div>
   );
 };

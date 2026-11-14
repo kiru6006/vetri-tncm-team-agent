@@ -16,11 +16,22 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  test-and-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python Dependencies & Run Tests
+        run: |
+          pip install -r backend/requirements.txt pytest
+          PYTHONPATH=backend python -m pytest backend/tests
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -29,14 +40,26 @@ jobs:
           cache: 'npm'
           cache-dependency-path: frontend/package-lock.json
 
-      - name: Install Dependencies
+      - name: Install Frontend Dependencies
         run: cd frontend && npm ci
+
+      - name: Run TypeScript Check
+        run: cd frontend && npm run typecheck
+
+      - name: Run Frontend Tests
+        run: cd frontend && npm test
 
       - name: Build Production Assets
         run: cd frontend && npm run build
 
       - name: Ensure 404.html Fallback for SPA Routing
         run: cp frontend/dist/index.html frontend/dist/404.html
+
+      - name: Validate Generated Production Assets
+        run: |
+          test -f frontend/dist/index.html || { echo "index.html missing"; exit 1; }
+          test -f frontend/dist/404.html || { echo "404.html fallback missing"; exit 1; }
+          ls -lh frontend/dist/assets/
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
@@ -48,7 +71,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs: test-and-build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
