@@ -1,5 +1,5 @@
 # Master Feature Audit, Verification and Capability Tracker
-**System:** VETTRI TN AI OS | **Version:** 2.0.0 | **Timestamp:** 2026-11-14T11:26:42Z
+**System:** VETTRI TN AI OS | **Version:** 2.0.0 | **Timestamp:** 2026-11-15T11:27:52Z
 **Canonical Source:** `data/tracking/feature-tracker.json`
 
 ## Capability Summary by Category
@@ -221,9 +221,9 @@
 ### `GOV-02-001`: Council of Ministers Directory & Portfolios
 - **Category**: GOV-02
 - **Objective**: Maintain accurate record of ministerial responsibility and executive command.
-- **Description**: Complete directory of all 35 Cabinet Ministers of Tamil Nadu with verified portfolios, official contact coordinates, and department mappings.
+- **Description**: Complete directory of all 34 Cabinet Ministers of Tamil Nadu with verified portfolios, official contact coordinates, and department mappings.
 - **Acceptance Criteria**:
-  - [x] Render 35 verified Cabinet Ministers
+  - [x] Render 34 verified Cabinet Ministers
   - [x] Display exact official Tamil and English ministerial designations
   - [x] Show mapped administrative departments for each minister
   - [x] Search by minister name, portfolio keyword, or department
@@ -408,7 +408,7 @@
 ### `GOV-06-001`: Verified Council of Ministers Entity Store
 - **Category**: GOV-06
 - **Objective**: Eliminate unverified or fictional ministerial entries across the entire platform.
-- **Description**: Cryptographically validated and official-source-verified dataset of all 35 Cabinet Ministers of Tamil Nadu.
+- **Description**: Cryptographically validated and official-source-verified dataset of all 34 Cabinet Ministers of Tamil Nadu.
 - **Acceptance Criteria**:
   - [x] 100% verified against tn.gov.in official council of ministers portal
   - [x] Verified portfolios, official secretariat phone numbers, and official emails
@@ -1597,7 +1597,7 @@
 - **Description**: Strict alignment with official Government of Tamil Nadu administrative glossary (e.g. தலைமைச் செயலாளர், மாவட்ட ஆட்சியர், அரசாணை).
 - **Acceptance Criteria**:
   - [x] Use official Secretariat terminology rather than colloquial machine translations
-  - [x] Verified Tamil designations for all 35 Cabinet Ministers and 38 District Collectors
+  - [x] Verified Tamil designations for all 34 Cabinet Ministers and 38 District Collectors
   - [x] Review of all terminology by senior Tamil administrative consultant
 - **Verification Status**: `VERIFIED` (UI: PASS, Functional: PASS, Data: PASS, Integration: PASS, Security: PASS, Deploy: PASS)
 - **Source Files**: `frontend/src/data/verifiedGovernmentDirectory.ts`

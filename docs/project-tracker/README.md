@@ -1,5 +1,5 @@
 # VETTRI TN AI OS — Project Quality & Verification Tracker
-**Version:** 2.0.0 | **Generated:** 2026-11-14T11:26:42Z | **Standard:** Enterprise Government Architecture & Quality Assurance
+**Version:** 2.0.0 | **Generated:** 2026-11-15T11:27:52Z | **Standard:** Enterprise Government Architecture & Quality Assurance
 
 Welcome to the canonical governance, audit, and quality tracker for **VETTRI TN AI OS** (Tamil Nadu Chief Minister AI Operating System).
 
@@ -16,7 +16,7 @@ Welcome to the canonical governance, audit, and quality tracker for **VETTRI TN 
 | **Partially Complete** | **13** (12.0%) | Operational with scheduled minor enhancements |
 | **Unverified / Failed** | **0** (0.0%) | Zero ungrounded or failed capabilities |
 | **Active P0 Defects** | **0** | All Critical P0 defects resolved & quarantined |
-| **Active P1 Defects** | **2** | Scheduled for Sprint 2.1 |
+| **Active P1 Defects** | **1** | Scheduled for Sprint 2.1 |
 | **Active P2 Defects** | **6** | Scheduled for Sprint 2.1 - 2.2 |
 
 ## Document Index

@@ -1,5 +1,5 @@
 # Government Directory & Data Quality Report
-**Audit Date:** 2026-11-14T11:26:42Z | **Standard:** Zero Unverified Officials Policy
+**Audit Date:** 2026-11-15T11:27:52Z | **Standard:** Zero Unverified Officials Policy
 
 ## 1. Audit Overview
 Following a Critical/P0 data quality audit, all ministerial and administrative civil service rosters were independently verified against official Government of Tamil Nadu sources:
@@ -10,7 +10,7 @@ Following a Critical/P0 data quality audit, all ministerial and administrative c
 
 | Entity Category | Total Records | Verified Count | Quarantined Count | Source Grounding |
 |---|---|---|---|---|
-| **Council of Ministers** | 35 | 35 (100%) | 0 | tn.gov.in/ministers & Gazette 256 |
+| **Council of Ministers** | 34 | 34 (100%) | 0 | tn.gov.in/ministers |
 | **District Collectors** | 38 | 38 (100%) | 0 | tn.gov.in/district_collectors |
 | **IAS Senior Leadership** | 45 | 45 (100%) | 0 | Public (Special A) Dept G.O. |
 | **IPS Police Leadership** | 28 | 28 (100%) | 1 (Quarantined) | Home (Police) Dept G.O. |

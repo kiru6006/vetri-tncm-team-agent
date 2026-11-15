@@ -1,5 +1,5 @@
 # Master Defect Register
-**System:** VETTRI TN AI OS | **Version:** 2.0.0 | **Timestamp:** 2026-11-14T11:26:42Z
+**System:** VETTRI TN AI OS | **Version:** 2.0.0 | **Timestamp:** 2026-11-15T11:27:52Z
 
 | Defect ID | Severity | Category | Status | Title | Target Release |
 |---|---|---|---|---|---|
@@ -20,7 +20,7 @@
 - **Description**: Fictional or unverified records (e.g. M. Shanmugam, S. Anbarasan, Kirubakaran IPS) were present in directory data.
 - **Reproduction Steps**: Query directory for non-existent civil service batch appointments.
 - **Impact Assessment**: Data integrity risk and potential misinformation in official communications.
-- **Remediation Plan**: Quarantined unverified records into quarantinedOfficials dataset and populated verified 35 Ministers (under Hon'ble CM Thiru C. Joseph Vijay), Chief Secretary Dr. M. Sai Kumar IAS, 38 Collectors, 40 Secretaries, 234 MLAs, 18 MPs, and official police leadership. Single source of truth unified in data/government-directory/.
+- **Remediation Plan**: Quarantined unverified records into quarantinedOfficials dataset and populated verified 34 Ministers, 38 Collectors, and official police leadership.
 - **Target Release**: `v2.0.0`
 
 ### `DEF-ROUT-01`: Sidebar and Catalog Routes Without Explicit View Handlers
