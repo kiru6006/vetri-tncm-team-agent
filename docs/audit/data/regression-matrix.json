@@ -1,0 +1,1621 @@
+{
+  "metadata": {
+    "total_tested_features": 108,
+    "pass_rate_percentage": 100.0
+  },
+  "test_matrix": [
+    {
+      "feature_id": "GOV-01-001",
+      "category_id": "GOV-01",
+      "title": "Chief Minister Command Center Workspace",
+      "priority": "P0",
+      "test_ids": [
+        "test_executive_workspace",
+        "test_executive_intelligence.py"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveWorkspace.tsx",
+        "backend/app/api/v1/executive.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Chief Minister Command Center Workspace in UI and test endpoint ExecutiveWorkspace.tsx:35-180"
+    },
+    {
+      "feature_id": "GOV-01-002",
+      "category_id": "GOV-01",
+      "title": "Daily Executive Morning Briefing",
+      "priority": "P1",
+      "test_ids": [
+        "test_executive_briefing"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveWorkspace.tsx",
+        "backend/app/api/v1/executive.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Daily Executive Morning Briefing in UI and test endpoint ExecutiveWorkspace.tsx:120-160"
+    },
+    {
+      "feature_id": "GOV-01-003",
+      "category_id": "GOV-01",
+      "title": "Executive Decision Pipeline",
+      "priority": "P0",
+      "test_ids": [
+        "test_decision_pipeline"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveWorkspace.tsx",
+        "frontend/src/components/ExecutiveActionManagement.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Executive Decision Pipeline in UI and test endpoint ExecutiveWorkspace.tsx:165-210"
+    },
+    {
+      "feature_id": "GOV-01-004",
+      "category_id": "GOV-01",
+      "title": "AI Executive Copilot Integration",
+      "priority": "P1",
+      "test_ids": [
+        "test_cmo_agent_tools.py"
+      ],
+      "source_files": [
+        "frontend/src/components/CopilotDrawer.tsx",
+        "backend/app/api/v1/copilot.py",
+        "backend/app/agent/orchestrator.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify AI Executive Copilot Integration in UI and test endpoint CopilotDrawer.tsx:20-150"
+    },
+    {
+      "feature_id": "GOV-01-005",
+      "category_id": "GOV-01",
+      "title": "Executive Action Tracker View",
+      "priority": "P0",
+      "test_ids": [
+        "test_action_tracking"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveActionManagement.tsx",
+        "backend/app/api/v1/cmo_endpoints.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Executive Action Tracker View in UI and test endpoint ExecutiveActionManagement.tsx:10-180"
+    },
+    {
+      "feature_id": "GOV-02-001",
+      "category_id": "GOV-02",
+      "title": "Council of Ministers Directory & Portfolios",
+      "priority": "P0",
+      "test_ids": [
+        "test_ministers_directory"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Council of Ministers Directory & Portfolios in UI and test endpoint verifiedGovernmentDirectory.ts:15-180"
+    },
+    {
+      "feature_id": "GOV-02-002",
+      "category_id": "GOV-02",
+      "title": "Ministry KPI Performance Heatmap",
+      "priority": "P1",
+      "test_ids": [
+        "test_ministry_kpis"
+      ],
+      "source_files": [
+        "frontend/src/components/StateScoreGauge.tsx",
+        "frontend/src/components/ExplorePlatform.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Ministry KPI Performance Heatmap in UI and test endpoint StateScoreGauge.tsx:20-90"
+    },
+    {
+      "feature_id": "GOV-02-003",
+      "category_id": "GOV-02",
+      "title": "Inter-Ministerial Coordination Pipeline",
+      "priority": "P2",
+      "test_ids": [
+        "test_inter_ministerial"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveActionManagement.tsx"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify Inter-Ministerial Coordination Pipeline in UI and test endpoint ExecutiveActionManagement.tsx:90-130"
+    },
+    {
+      "feature_id": "GOV-03-001",
+      "category_id": "GOV-03",
+      "title": "Secretariat Departments Catalog",
+      "priority": "P0",
+      "test_ids": [
+        "test_departments_api"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx",
+        "backend/app/api/v1/departments.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Secretariat Departments Catalog in UI and test endpoint verifiedGovernmentDirectory.ts:200-340"
+    },
+    {
+      "feature_id": "GOV-03-002",
+      "category_id": "GOV-03",
+      "title": "Department Secretaries & Leadership Roster",
+      "priority": "P0",
+      "test_ids": [
+        "test_secretaries_roster"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Department Secretaries & Leadership Roster in UI and test endpoint verifiedGovernmentDirectory.ts:120-280"
+    },
+    {
+      "feature_id": "GOV-03-003",
+      "category_id": "GOV-03",
+      "title": "Subordinate Directorates & Commissionerates Hierarchy",
+      "priority": "P1",
+      "test_ids": [
+        "test_hierarchy_tree"
+      ],
+      "source_files": [
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx",
+        "backend/app/api/v1/hierarchy.py"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify Subordinate Directorates & Commissionerates Hierarchy in UI and test endpoint GovernmentHierarchyDirectory.tsx:40-120"
+    },
+    {
+      "feature_id": "GOV-03-004",
+      "category_id": "GOV-03",
+      "title": "Departmental KPIs & Budget Burn-Rate Tracking",
+      "priority": "P1",
+      "test_ids": [
+        "test_department_kpis"
+      ],
+      "source_files": [
+        "frontend/src/components/RevenueAnalyticsView.tsx",
+        "frontend/src/components/StateScoreGauge.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Departmental KPIs & Budget Burn-Rate Tracking in UI and test endpoint RevenueAnalyticsView.tsx:30-110"
+    },
+    {
+      "feature_id": "GOV-04-001",
+      "category_id": "GOV-04",
+      "title": "38 District Collectors Directory & Profiles",
+      "priority": "P0",
+      "test_ids": [
+        "test_collectors_roster"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "frontend/src/components/CollectorCommandView.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify 38 District Collectors Directory & Profiles in UI and test endpoint verifiedGovernmentDirectory.ts:290-410"
+    },
+    {
+      "feature_id": "GOV-04-002",
+      "category_id": "GOV-04",
+      "title": "District Performance Scorecards & Heatmap",
+      "priority": "P0",
+      "test_ids": [
+        "test_district_heatmap"
+      ],
+      "source_files": [
+        "frontend/src/components/TamilNaduInteractiveMap.tsx",
+        "frontend/src/components/DistrictHeatmapGrid.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify District Performance Scorecards & Heatmap in UI and test endpoint TamilNaduInteractiveMap.tsx:10-180"
+    },
+    {
+      "feature_id": "GOV-04-003",
+      "category_id": "GOV-04",
+      "title": "Revenue Divisions, Taluks & Blocks Administration",
+      "priority": "P2",
+      "test_ids": [
+        "test_subdistrict_admin"
+      ],
+      "source_files": [
+        "frontend/src/components/CollectorCommandView.tsx",
+        "backend/app/api/v1/districts.py"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify Revenue Divisions, Taluks & Blocks Administration in UI and test endpoint CollectorCommandView.tsx:80-140"
+    },
+    {
+      "feature_id": "GOV-05-001",
+      "category_id": "GOV-05",
+      "title": "234 Assembly Constituencies & MLA Roster",
+      "priority": "P1",
+      "test_ids": [
+        "test_constituency_roster"
+      ],
+      "source_files": [
+        "frontend/src/components/ExplorePlatform.tsx",
+        "frontend/src/components/TamilNaduInteractiveMap.tsx"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify 234 Assembly Constituencies & MLA Roster in UI and test endpoint ExplorePlatform.tsx:60-120"
+    },
+    {
+      "feature_id": "GOV-05-002",
+      "category_id": "GOV-05",
+      "title": "MLA Constituency Development Scheme (MLACDS) Tracking",
+      "priority": "P2",
+      "test_ids": [
+        "test_mlacds_tracking"
+      ],
+      "source_files": [
+        "frontend/src/components/RevenueAnalyticsView.tsx"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify MLA Constituency Development Scheme (MLACDS) Tracking in UI and test endpoint RevenueAnalyticsView.tsx:85-130"
+    },
+    {
+      "feature_id": "GOV-05-003",
+      "category_id": "GOV-05",
+      "title": "Constituency Grievance & Issue Intelligence",
+      "priority": "P1",
+      "test_ids": [
+        "test_constituency_grievances"
+      ],
+      "source_files": [
+        "frontend/src/components/GrievanceSlaAnalytics.tsx",
+        "backend/app/api/v1/grm.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Constituency Grievance & Issue Intelligence in UI and test endpoint GrievanceSlaAnalytics.tsx:25-150"
+    },
+    {
+      "feature_id": "GOV-06-001",
+      "category_id": "GOV-06",
+      "title": "Verified Council of Ministers Entity Store",
+      "priority": "P0",
+      "test_ids": [
+        "test_council_of_ministers_data"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Verified Council of Ministers Entity Store in UI and test endpoint verifiedGovernmentDirectory.ts:15-180"
+    },
+    {
+      "feature_id": "GOV-06-002",
+      "category_id": "GOV-06",
+      "title": "IAS Cadre Postings & Batch Roster",
+      "priority": "P0",
+      "test_ids": [
+        "test_ias_roster"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify IAS Cadre Postings & Batch Roster in UI and test endpoint verifiedGovernmentDirectory.ts:185-310"
+    },
+    {
+      "feature_id": "GOV-06-003",
+      "category_id": "GOV-06",
+      "title": "IPS Police Leadership & Commissionerates Roster",
+      "priority": "P0",
+      "test_ids": [
+        "test_ips_roster"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "frontend/src/components/PoliceDomainView.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify IPS Police Leadership & Commissionerates Roster in UI and test endpoint verifiedGovernmentDirectory.ts:315-380"
+    },
+    {
+      "feature_id": "GOV-06-004",
+      "category_id": "GOV-06",
+      "title": "IFS Forest Service Leadership Roster",
+      "priority": "P1",
+      "test_ids": [
+        "test_ifs_roster"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify IFS Forest Service Leadership Roster in UI and test endpoint verifiedGovernmentDirectory.ts:385-420"
+    },
+    {
+      "feature_id": "GOV-06-005",
+      "category_id": "GOV-06",
+      "title": "Secretariat & Department Heads Roster",
+      "priority": "P0",
+      "test_ids": [
+        "test_hods_roster"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Secretariat & Department Heads Roster in UI and test endpoint verifiedGovernmentDirectory.ts:425-490"
+    },
+    {
+      "feature_id": "GOV-06-006",
+      "category_id": "GOV-06",
+      "title": "District Collectors Verified Contact Store",
+      "priority": "P0",
+      "test_ids": [
+        "test_collectors_verified_store"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "frontend/src/components/CollectorCommandView.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify District Collectors Verified Contact Store in UI and test endpoint verifiedGovernmentDirectory.ts:290-410"
+    },
+    {
+      "feature_id": "GOV-06-007",
+      "category_id": "GOV-06",
+      "title": "Multi-Faceted Directory Search & Filtering",
+      "priority": "P0",
+      "test_ids": [
+        "test_directory_search"
+      ],
+      "source_files": [
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx",
+        "backend/app/api/v1/hierarchy.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Multi-Faceted Directory Search & Filtering in UI and test endpoint GovernmentHierarchyDirectory.tsx:60-150"
+    },
+    {
+      "feature_id": "GOV-06-008",
+      "category_id": "GOV-06",
+      "title": "Data Integrity Quarantine Engine",
+      "priority": "P0",
+      "test_ids": [
+        "test_quarantine_integrity"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Data Integrity Quarantine Engine in UI and test endpoint verifiedGovernmentDirectory.ts:500-560"
+    },
+    {
+      "feature_id": "GOV-06-009",
+      "category_id": "GOV-06",
+      "title": "Source Verification & Order Reference Tracking",
+      "priority": "P1",
+      "test_ids": [
+        "test_provenance_verification"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Source Verification & Order Reference Tracking in UI and test endpoint verifiedGovernmentDirectory.ts:20-80"
+    },
+    {
+      "feature_id": "GOV-06-010",
+      "category_id": "GOV-06",
+      "title": "Officer Transfer & Appointment History Model",
+      "priority": "P1",
+      "test_ids": [
+        "test_appointment_history"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "backend/app/api/v1/hierarchy.py"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify Officer Transfer & Appointment History Model in UI and test endpoint verifiedGovernmentDirectory.ts:90-140"
+    },
+    {
+      "feature_id": "GOV-06-011",
+      "category_id": "GOV-06",
+      "title": "Normalized Department & Office Hierarchy Model",
+      "priority": "P0",
+      "test_ids": [
+        "test_normalized_hierarchy"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "backend/app/api/v1/hierarchy.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Normalized Department & Office Hierarchy Model in UI and test endpoint verifiedGovernmentDirectory.ts:150-220"
+    },
+    {
+      "feature_id": "GOV-06-012",
+      "category_id": "GOV-06",
+      "title": "Direct Official Email & Phone Verification",
+      "priority": "P0",
+      "test_ids": [
+        "test_contact_syntax_validation"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Direct Official Email & Phone Verification in UI and test endpoint verifiedGovernmentDirectory.ts:25-95"
+    },
+    {
+      "feature_id": "GOV-06-013",
+      "category_id": "GOV-06",
+      "title": "Contact Export & Digital VCard Generation",
+      "priority": "P2",
+      "test_ids": [
+        "test_vcard_generation"
+      ],
+      "source_files": [
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify Contact Export & Digital VCard Generation in UI and test endpoint GovernmentHierarchyDirectory.tsx:140-190"
+    },
+    {
+      "feature_id": "GOV-06-014",
+      "category_id": "GOV-06",
+      "title": "Quick Dial & Secure Message Dispatch Integration",
+      "priority": "P1",
+      "test_ids": [
+        "test_quick_dial_dispatch"
+      ],
+      "source_files": [
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx",
+        "frontend/src/components/GovernmentChatPlatform.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Quick Dial & Secure Message Dispatch Integration in UI and test endpoint GovernmentHierarchyDirectory.tsx:110-160"
+    },
+    {
+      "feature_id": "GOV-06-015",
+      "category_id": "GOV-06",
+      "title": "Directory Anomaly & Stale Record Audit Alerting",
+      "priority": "P1",
+      "test_ids": [
+        "test_directory_audit_alerts"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Directory Anomaly & Stale Record Audit Alerting in UI and test endpoint verifiedGovernmentDirectory.ts:5-40"
+    },
+    {
+      "feature_id": "GOV-06-016",
+      "category_id": "GOV-06",
+      "title": "Public vs Internal Contact Access Filtering",
+      "priority": "P1",
+      "test_ids": [
+        "test_rbac_contact_filtering"
+      ],
+      "source_files": [
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx",
+        "frontend/src/components/ExecutiveHeader.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Public vs Internal Contact Access Filtering in UI and test endpoint GovernmentHierarchyDirectory.tsx:85-135"
+    },
+    {
+      "feature_id": "GOV-07-001",
+      "category_id": "GOV-07",
+      "title": "Infrastructure Projects Portfolio & Tracking",
+      "priority": "P0",
+      "test_ids": [
+        "test_projects_portfolio"
+      ],
+      "source_files": [
+        "frontend/src/components/ExplorePlatform.tsx",
+        "backend/app/api/v1/cmo_endpoints.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Infrastructure Projects Portfolio & Tracking in UI and test endpoint ExplorePlatform.tsx:40-110"
+    },
+    {
+      "feature_id": "GOV-07-002",
+      "category_id": "GOV-07",
+      "title": "Milestone Timeline & Monsoon Delay Monitoring",
+      "priority": "P1",
+      "test_ids": [
+        "test_monsoon_delay_monitoring"
+      ],
+      "source_files": [
+        "frontend/src/components/ExplorePlatform.tsx"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify Milestone Timeline & Monsoon Delay Monitoring in UI and test endpoint ExplorePlatform.tsx:90-140"
+    },
+    {
+      "feature_id": "GOV-07-003",
+      "category_id": "GOV-07",
+      "title": "Project Expenditure vs Budget Allocation Analysis",
+      "priority": "P1",
+      "test_ids": [
+        "test_project_finance"
+      ],
+      "source_files": [
+        "frontend/src/components/RevenueAnalyticsView.tsx",
+        "frontend/src/components/ExplorePlatform.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Project Expenditure vs Budget Allocation Analysis in UI and test endpoint RevenueAnalyticsView.tsx:50-95"
+    },
+    {
+      "feature_id": "GOV-07-004",
+      "category_id": "GOV-07",
+      "title": "Project Risk & Critical Path Analysis",
+      "priority": "P0",
+      "test_ids": [
+        "test_project_risk_scoring"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveActionManagement.tsx",
+        "frontend/src/components/ExplorePlatform.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Project Risk & Critical Path Analysis in UI and test endpoint ExecutiveActionManagement.tsx:45-110"
+    },
+    {
+      "feature_id": "GOV-08-001",
+      "category_id": "GOV-08",
+      "title": "Flagship Welfare Schemes Inventory & Beneficiary Tracking",
+      "priority": "P0",
+      "test_ids": [
+        "test_flagship_schemes"
+      ],
+      "source_files": [
+        "frontend/src/components/FlagshipSchemesTracker.tsx",
+        "frontend/src/components/HealthDomainView.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Flagship Welfare Schemes Inventory & Beneficiary Tracking in UI and test endpoint FlagshipSchemesTracker.tsx:15-180"
+    },
+    {
+      "feature_id": "GOV-08-002",
+      "category_id": "GOV-08",
+      "title": "Direct Benefit Transfer (DBT) Disbursement & Failure Analytics",
+      "priority": "P0",
+      "test_ids": [
+        "test_dbt_analytics"
+      ],
+      "source_files": [
+        "frontend/src/components/FlagshipSchemesTracker.tsx",
+        "frontend/src/components/RevenueAnalyticsView.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Direct Benefit Transfer (DBT) Disbursement & Failure Analytics in UI and test endpoint FlagshipSchemesTracker.tsx:80-140"
+    },
+    {
+      "feature_id": "GOV-08-003",
+      "category_id": "GOV-08",
+      "title": "Scheme Saturation & Last-Mile Coverage Analysis",
+      "priority": "P1",
+      "test_ids": [
+        "test_scheme_saturation"
+      ],
+      "source_files": [
+        "frontend/src/components/FlagshipSchemesTracker.tsx",
+        "frontend/src/components/DistrictHeatmapGrid.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Scheme Saturation & Last-Mile Coverage Analysis in UI and test endpoint FlagshipSchemesTracker.tsx:110-165"
+    },
+    {
+      "feature_id": "GOV-08-004",
+      "category_id": "GOV-08",
+      "title": "Scheme Grievance Redressal Velocity",
+      "priority": "P1",
+      "test_ids": [
+        "test_scheme_grievance_sla"
+      ],
+      "source_files": [
+        "frontend/src/components/GrievanceSlaAnalytics.tsx",
+        "frontend/src/components/FlagshipSchemesTracker.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Scheme Grievance Redressal Velocity in UI and test endpoint GrievanceSlaAnalytics.tsx:40-120"
+    },
+    {
+      "feature_id": "GOV-09-001",
+      "category_id": "GOV-09",
+      "title": "State Revenue & Tax Receipts Monitoring",
+      "priority": "P0",
+      "test_ids": [
+        "test_revenue_analytics"
+      ],
+      "source_files": [
+        "frontend/src/components/RevenueAnalyticsView.tsx",
+        "backend/app/api/v1/cmo_endpoints.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify State Revenue & Tax Receipts Monitoring in UI and test endpoint RevenueAnalyticsView.tsx:15-110"
+    },
+    {
+      "feature_id": "GOV-09-002",
+      "category_id": "GOV-09",
+      "title": "Departmental Expenditure & Budget Burn-Rate",
+      "priority": "P0",
+      "test_ids": [
+        "test_budget_burn_rate"
+      ],
+      "source_files": [
+        "frontend/src/components/RevenueAnalyticsView.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Departmental Expenditure & Budget Burn-Rate in UI and test endpoint RevenueAnalyticsView.tsx:60-140"
+    },
+    {
+      "feature_id": "GOV-09-003",
+      "category_id": "GOV-09",
+      "title": "Revenue Leakage & Procurement Audit Intelligence",
+      "priority": "P0",
+      "test_ids": [
+        "test_procurement_audit"
+      ],
+      "source_files": [
+        "frontend/src/components/FraudAuditDomainView.tsx",
+        "backend/app/api/v1/audit.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Revenue Leakage & Procurement Audit Intelligence in UI and test endpoint FraudAuditDomainView.tsx:15-150"
+    },
+    {
+      "feature_id": "GOV-09-004",
+      "category_id": "GOV-09",
+      "title": "CAG & Local Fund Audit Compliance Tracker",
+      "priority": "P1",
+      "test_ids": [
+        "test_cag_audit_tracking"
+      ],
+      "source_files": [
+        "frontend/src/components/FraudAuditDomainView.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify CAG & Local Fund Audit Compliance Tracker in UI and test endpoint FraudAuditDomainView.tsx:85-160"
+    },
+    {
+      "feature_id": "GOV-10-001",
+      "category_id": "GOV-10",
+      "title": "Multi-Source Issue Ingestion & Geo-Tagging",
+      "priority": "P0",
+      "test_ids": [
+        "test_issue_ingestion",
+        "test_ingestion.py"
+      ],
+      "source_files": [
+        "frontend/src/components/GrievanceSlaAnalytics.tsx",
+        "frontend/src/components/TamilNaduInteractiveMap.tsx",
+        "backend/app/api/v1/grm.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Multi-Source Issue Ingestion & Geo-Tagging in UI and test endpoint GrievanceSlaAnalytics.tsx:15-120"
+    },
+    {
+      "feature_id": "GOV-10-002",
+      "category_id": "GOV-10",
+      "title": "Issue Severity & Urgency Scoring Matrix",
+      "priority": "P0",
+      "test_ids": [
+        "test_issue_scoring"
+      ],
+      "source_files": [
+        "frontend/src/components/PriorityAlertsTicker.tsx",
+        "frontend/src/components/GrievanceSlaAnalytics.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Issue Severity & Urgency Scoring Matrix in UI and test endpoint PriorityAlertsTicker.tsx:10-90"
+    },
+    {
+      "feature_id": "GOV-10-003",
+      "category_id": "GOV-10",
+      "title": "Departmental Accountability & Attribution",
+      "priority": "P0",
+      "test_ids": [
+        "test_department_attribution"
+      ],
+      "source_files": [
+        "frontend/src/components/GrievanceSlaAnalytics.tsx",
+        "frontend/src/components/ExecutiveActionManagement.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Departmental Accountability & Attribution in UI and test endpoint GrievanceSlaAnalytics.tsx:65-135"
+    },
+    {
+      "feature_id": "GOV-10-004",
+      "category_id": "GOV-10",
+      "title": "Public Sentiment & Media Signal Tracking",
+      "priority": "P1",
+      "test_ids": [
+        "test_sentiment_tracking"
+      ],
+      "source_files": [
+        "frontend/src/components/StateScoreGauge.tsx",
+        "frontend/src/components/ExplorePlatform.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Public Sentiment & Media Signal Tracking in UI and test endpoint StateScoreGauge.tsx:30-80"
+    },
+    {
+      "feature_id": "GOV-11-001",
+      "category_id": "GOV-11",
+      "title": "Executive Order & Directive Issuance",
+      "priority": "P0",
+      "test_ids": [
+        "test_directive_issuance"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveActionManagement.tsx",
+        "backend/app/api/v1/cmo_endpoints.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Executive Order & Directive Issuance in UI and test endpoint ExecutiveActionManagement.tsx:15-95"
+    },
+    {
+      "feature_id": "GOV-11-002",
+      "category_id": "GOV-11",
+      "title": "Officer Assignment & Mandatory Acknowledgment",
+      "priority": "P0",
+      "test_ids": [
+        "test_officer_assignment"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveActionManagement.tsx",
+        "frontend/src/components/GovernmentChatPlatform.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Officer Assignment & Mandatory Acknowledgment in UI and test endpoint ExecutiveActionManagement.tsx:70-130"
+    },
+    {
+      "feature_id": "GOV-11-003",
+      "category_id": "GOV-11",
+      "title": "Action Item Status Tracking & SLA Escalations",
+      "priority": "P0",
+      "test_ids": [
+        "test_sla_tracking"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveActionManagement.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Action Item Status Tracking & SLA Escalations in UI and test endpoint ExecutiveActionManagement.tsx:110-170"
+    },
+    {
+      "feature_id": "GOV-11-004",
+      "category_id": "GOV-11",
+      "title": "Independent Verification & Closure Sign-Off",
+      "priority": "P0",
+      "test_ids": [
+        "test_action_closure"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveActionManagement.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Independent Verification & Closure Sign-Off in UI and test endpoint ExecutiveActionManagement.tsx:135-185"
+    },
+    {
+      "feature_id": "GOV-12-001",
+      "category_id": "GOV-12",
+      "title": "Executive Direct Secure Chat",
+      "priority": "P0",
+      "test_ids": [
+        "test_secure_chat"
+      ],
+      "source_files": [
+        "frontend/src/components/GovernmentChatPlatform.tsx",
+        "backend/app/api/v1/chat.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Executive Direct Secure Chat in UI and test endpoint GovernmentChatPlatform.tsx:15-180"
+    },
+    {
+      "feature_id": "GOV-12-002",
+      "category_id": "GOV-12",
+      "title": "Departmental & Emergency Working Group Channels",
+      "priority": "P1",
+      "test_ids": [
+        "test_working_group_channels"
+      ],
+      "source_files": [
+        "frontend/src/components/GovernmentChatPlatform.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Departmental & Emergency Working Group Channels in UI and test endpoint GovernmentChatPlatform.tsx:40-110"
+    },
+    {
+      "feature_id": "GOV-12-003",
+      "category_id": "GOV-12",
+      "title": "Issue-Linked Collaborative Chat Threads",
+      "priority": "P1",
+      "test_ids": [
+        "test_issue_linked_threads"
+      ],
+      "source_files": [
+        "frontend/src/components/GovernmentChatPlatform.tsx",
+        "frontend/src/components/ExecutiveActionManagement.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Issue-Linked Collaborative Chat Threads in UI and test endpoint GovernmentChatPlatform.tsx:85-150"
+    },
+    {
+      "feature_id": "GOV-12-004",
+      "category_id": "GOV-12",
+      "title": "Directive Broadcast & Priority Read Receipts",
+      "priority": "P0",
+      "test_ids": [
+        "test_broadcast_dispatch"
+      ],
+      "source_files": [
+        "frontend/src/components/GovernmentChatPlatform.tsx",
+        "frontend/src/components/PriorityAlertsTicker.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Directive Broadcast & Priority Read Receipts in UI and test endpoint GovernmentChatPlatform.tsx:120-175"
+    },
+    {
+      "feature_id": "GOV-13-001",
+      "category_id": "GOV-13",
+      "title": "High-Level Review Meeting Scheduler",
+      "priority": "P0",
+      "test_ids": [
+        "test_meeting_scheduler"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveCalendarView.tsx",
+        "frontend/src/components/ExecutiveMeetingWorkspace.tsx",
+        "backend/app/api/v1/meetings.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify High-Level Review Meeting Scheduler in UI and test endpoint ExecutiveCalendarView.tsx:10-150"
+    },
+    {
+      "feature_id": "GOV-13-002",
+      "category_id": "GOV-13",
+      "title": "Automated Agenda Assembly & Briefing Pack",
+      "priority": "P1",
+      "test_ids": [
+        "test_agenda_assembly"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveMeetingWorkspace.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Automated Agenda Assembly & Briefing Pack in UI and test endpoint ExecutiveMeetingWorkspace.tsx:45-120"
+    },
+    {
+      "feature_id": "GOV-13-003",
+      "category_id": "GOV-13",
+      "title": "Real-Time Minutes & Action Items Extraction",
+      "priority": "P0",
+      "test_ids": [
+        "test_minutes_extraction"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveMeetingWorkspace.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Real-Time Minutes & Action Items Extraction in UI and test endpoint ExecutiveMeetingWorkspace.tsx:80-160"
+    },
+    {
+      "feature_id": "GOV-13-004",
+      "category_id": "GOV-13",
+      "title": "Post-Meeting Action Item Sync to CM Tracker",
+      "priority": "P0",
+      "test_ids": [
+        "test_meeting_action_sync"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveMeetingWorkspace.tsx",
+        "frontend/src/components/ExecutiveActionManagement.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Post-Meeting Action Item Sync to CM Tracker in UI and test endpoint ExecutiveMeetingWorkspace.tsx:130-185"
+    },
+    {
+      "feature_id": "GOV-14-001",
+      "category_id": "GOV-14",
+      "title": "Executive Assistant & Briefing Synthesizer Agent",
+      "priority": "P0",
+      "test_ids": [
+        "test_cmo_agent_tools.py",
+        "test_executive_intelligence.py"
+      ],
+      "source_files": [
+        "backend/app/agent/orchestrator.py",
+        "backend/app/agent/tools.py",
+        "frontend/src/components/CopilotDrawer.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Executive Assistant & Briefing Synthesizer Agent in UI and test endpoint orchestrator.py:15-180"
+    },
+    {
+      "feature_id": "GOV-14-002",
+      "category_id": "GOV-14",
+      "title": "Government Directory Lookup Agent",
+      "priority": "P0",
+      "test_ids": [
+        "test_cmo_agent_tools.py"
+      ],
+      "source_files": [
+        "backend/app/agent/tools.py",
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Government Directory Lookup Agent in UI and test endpoint tools.py:80-160"
+    },
+    {
+      "feature_id": "GOV-14-003",
+      "category_id": "GOV-14",
+      "title": "Project Delay & Monsoon Risk Forecaster Agent",
+      "priority": "P1",
+      "test_ids": [
+        "test_project_risk_scoring"
+      ],
+      "source_files": [
+        "backend/app/agent/tools.py",
+        "frontend/src/components/ExplorePlatform.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Project Delay & Monsoon Risk Forecaster Agent in UI and test endpoint tools.py:120-180"
+    },
+    {
+      "feature_id": "GOV-14-004",
+      "category_id": "GOV-14",
+      "title": "Revenue Leakage & Procurement Auditor Agent",
+      "priority": "P0",
+      "test_ids": [
+        "test_procurement_audit"
+      ],
+      "source_files": [
+        "backend/app/api/v1/audit.py",
+        "frontend/src/components/FraudAuditDomainView.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Revenue Leakage & Procurement Auditor Agent in UI and test endpoint audit.py:15-120"
+    },
+    {
+      "feature_id": "GOV-14-005",
+      "category_id": "GOV-14",
+      "title": "Scheme Performance & Saturation Analyzer Agent",
+      "priority": "P1",
+      "test_ids": [
+        "test_cmo_agent_tools.py"
+      ],
+      "source_files": [
+        "backend/app/agent/tools.py",
+        "frontend/src/components/FlagshipSchemesTracker.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Scheme Performance & Saturation Analyzer Agent in UI and test endpoint tools.py:145-210"
+    },
+    {
+      "feature_id": "GOV-14-006",
+      "category_id": "GOV-14",
+      "title": "AI Safety Guardrails, Disclaimer & Human-in-the-Loop Gate",
+      "priority": "P0",
+      "test_ids": [
+        "test_ai_safety_guardrails"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveHeader.tsx",
+        "backend/app/agent/orchestrator.py",
+        "backend/app/core/security.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify AI Safety Guardrails, Disclaimer & Human-in-the-Loop Gate in UI and test endpoint ExecutiveHeader.tsx:20-60"
+    },
+    {
+      "feature_id": "GOV-15-001",
+      "category_id": "GOV-15",
+      "title": "Government Orders (GOs) & Acts Repository",
+      "priority": "P0",
+      "test_ids": [
+        "test_knowledge_hub"
+      ],
+      "source_files": [
+        "frontend/src/components/EnterpriseKnowledgeHub.tsx",
+        "backend/app/api/v1/knowledge.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Government Orders (GOs) & Acts Repository in UI and test endpoint EnterpriseKnowledgeHub.tsx:15-180"
+    },
+    {
+      "feature_id": "GOV-15-002",
+      "category_id": "GOV-15",
+      "title": "Semantic Search & Fast Keyword Retrieval",
+      "priority": "P0",
+      "test_ids": [
+        "test_knowledge_search"
+      ],
+      "source_files": [
+        "frontend/src/components/EnterpriseKnowledgeHub.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Semantic Search & Fast Keyword Retrieval in UI and test endpoint EnterpriseKnowledgeHub.tsx:40-110"
+    },
+    {
+      "feature_id": "GOV-15-003",
+      "category_id": "GOV-15",
+      "title": "Vector RAG & Policy Question Answering",
+      "priority": "P1",
+      "test_ids": [
+        "test_rag_pipeline"
+      ],
+      "source_files": [
+        "backend/app/api/v1/knowledge.py",
+        "backend/app/agent/tools.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Vector RAG & Policy Question Answering in UI and test endpoint knowledge.py:30-110"
+    },
+    {
+      "feature_id": "GOV-15-004",
+      "category_id": "GOV-15",
+      "title": "Policy Comparison & Historical Amendment Tracking",
+      "priority": "P2",
+      "test_ids": [
+        "test_policy_diff"
+      ],
+      "source_files": [
+        "frontend/src/components/EnterpriseKnowledgeHub.tsx"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify Policy Comparison & Historical Amendment Tracking in UI and test endpoint EnterpriseKnowledgeHub.tsx:90-150"
+    },
+    {
+      "feature_id": "GOV-16-001",
+      "category_id": "GOV-16",
+      "title": "Real-Time Critical Ticker & Alert Feeds",
+      "priority": "P0",
+      "test_ids": [
+        "test_alert_ticker"
+      ],
+      "source_files": [
+        "frontend/src/components/PriorityAlertsTicker.tsx",
+        "frontend/src/components/ExecutiveHeader.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Real-Time Critical Ticker & Alert Feeds in UI and test endpoint PriorityAlertsTicker.tsx:10-90"
+    },
+    {
+      "feature_id": "GOV-16-002",
+      "category_id": "GOV-16",
+      "title": "Multi-Channel Dispatch Engine (SMS, WhatsApp, In-App)",
+      "priority": "P1",
+      "test_ids": [
+        "test_multi_channel_dispatch"
+      ],
+      "source_files": [
+        "backend/app/api/v1/cmo_endpoints.py",
+        "frontend/src/components/GovernmentChatPlatform.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Multi-Channel Dispatch Engine (SMS, WhatsApp, In-App) in UI and test endpoint cmo_endpoints.py:40-110"
+    },
+    {
+      "feature_id": "GOV-16-003",
+      "category_id": "GOV-16",
+      "title": "Escalation Engine for Unacknowledged P0 Alerts",
+      "priority": "P0",
+      "test_ids": [
+        "test_escalation_engine"
+      ],
+      "source_files": [
+        "backend/app/api/v1/cmo_endpoints.py",
+        "frontend/src/components/ExecutiveActionManagement.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Escalation Engine for Unacknowledged P0 Alerts in UI and test endpoint cmo_endpoints.py:80-140"
+    },
+    {
+      "feature_id": "GOV-16-004",
+      "category_id": "GOV-16",
+      "title": "Web Push Service Worker Notification System",
+      "priority": "P2",
+      "test_ids": [
+        "test_web_push"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveHeader.tsx"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify Web Push Service Worker Notification System in UI and test endpoint ExecutiveHeader.tsx:60-110"
+    },
+    {
+      "feature_id": "GOV-17-001",
+      "category_id": "GOV-17",
+      "title": "Responsive Shell & Collapsible Sidebar Navigation",
+      "priority": "P0",
+      "test_ids": [
+        "test_navigation_shell"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveSidebar.tsx",
+        "frontend/src/components/ExecutiveHeader.tsx",
+        "frontend/src/App.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Responsive Shell & Collapsible Sidebar Navigation in UI and test endpoint ExecutiveSidebar.tsx:15-180"
+    },
+    {
+      "feature_id": "GOV-17-002",
+      "category_id": "GOV-17",
+      "title": "SPA State Management with Client-Side Fallback",
+      "priority": "P0",
+      "test_ids": [
+        "test_spa_fallback"
+      ],
+      "source_files": [
+        "frontend/src/App.tsx",
+        "frontend/src/data/governanceData.ts",
+        "frontend/src/data/verifiedGovernmentDirectory.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify SPA State Management with Client-Side Fallback in UI and test endpoint App.tsx:30-90"
+    },
+    {
+      "feature_id": "GOV-17-003",
+      "category_id": "GOV-17",
+      "title": "Unified Error Boundary & Graceful Degradation",
+      "priority": "P0",
+      "test_ids": [
+        "test_error_boundary"
+      ],
+      "source_files": [
+        "frontend/src/App.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Unified Error Boundary & Graceful Degradation in UI and test endpoint App.tsx:10-45"
+    },
+    {
+      "feature_id": "GOV-17-004",
+      "category_id": "GOV-17",
+      "title": "Dark/Light Theme & Unified Tamil Nadu Government Design System",
+      "priority": "P1",
+      "test_ids": [
+        "test_theme_tokens"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveSidebar.tsx",
+        "frontend/src/components/ExecutiveHeader.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Dark/Light Theme & Unified Tamil Nadu Government Design System in UI and test endpoint ExecutiveSidebar.tsx:10-60"
+    },
+    {
+      "feature_id": "GOV-18-001",
+      "category_id": "GOV-18",
+      "title": "Backend API Pytest Suite",
+      "priority": "P0",
+      "test_ids": [
+        "test_cmo_agent_tools.py",
+        "test_executive_intelligence.py",
+        "test_ingestion.py"
+      ],
+      "source_files": [
+        "backend/tests/test_cmo_agent_tools.py",
+        "backend/tests/test_executive_intelligence.py",
+        "backend/tests/test_ingestion.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Backend API Pytest Suite in UI and test endpoint backend/tests/test_executive_intelligence.py:1-60"
+    },
+    {
+      "feature_id": "GOV-18-002",
+      "category_id": "GOV-18",
+      "title": "Frontend TypeScript Build & Typecheck Gate",
+      "priority": "P0",
+      "test_ids": [
+        "tsc_typecheck",
+        "vite_build"
+      ],
+      "source_files": [
+        "frontend/package.json",
+        "frontend/tsconfig.json",
+        "frontend/vite.config.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Frontend TypeScript Build & Typecheck Gate in UI and test endpoint frontend/package.json:10-35"
+    },
+    {
+      "feature_id": "GOV-18-003",
+      "category_id": "GOV-18",
+      "title": "Continuous Quality & Schema Validation Gate",
+      "priority": "P0",
+      "test_ids": [
+        "validate_tracker_test",
+        "verify_evidence_test"
+      ],
+      "source_files": [
+        "scripts/tracker/validate-tracker.py",
+        "scripts/tracker/verify-evidence.py",
+        "data/tracking/tracker-schema.json"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Continuous Quality & Schema Validation Gate in UI and test endpoint scripts/tracker/validate-tracker.py:1-120"
+    },
+    {
+      "feature_id": "GOV-18-004",
+      "category_id": "GOV-18",
+      "title": "End-to-End Workflow & Regression Verification",
+      "priority": "P1",
+      "test_ids": [
+        "playwright_regression_suite"
+      ],
+      "source_files": [
+        "scripts/capture_screenshots.py",
+        "scripts/capture_docs_screenshots.js"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify End-to-End Workflow & Regression Verification in UI and test endpoint capture_screenshots.py:1-80"
+    },
+    {
+      "feature_id": "GOV-19-001",
+      "category_id": "GOV-19",
+      "title": "Role-Based Access Control (RBAC) Architecture",
+      "priority": "P0",
+      "test_ids": [
+        "test_rbac_matrix"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveHeader.tsx",
+        "backend/app/core/security.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Role-Based Access Control (RBAC) Architecture in UI and test endpoint ExecutiveHeader.tsx:30-85"
+    },
+    {
+      "feature_id": "GOV-19-002",
+      "category_id": "GOV-19",
+      "title": "e-Pramaan Single Sign-On (SSO) & 2FA Readiness",
+      "priority": "P1",
+      "test_ids": [
+        "test_auth_endpoints"
+      ],
+      "source_files": [
+        "backend/app/api/v1/auth.py",
+        "backend/app/core/security.py"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify e-Pramaan Single Sign-On (SSO) & 2FA Readiness in UI and test endpoint auth.py:15-90"
+    },
+    {
+      "feature_id": "GOV-19-003",
+      "category_id": "GOV-19",
+      "title": "Immutable Audit Logging & Non-Repudiation Trail",
+      "priority": "P0",
+      "test_ids": [
+        "test_audit_logging"
+      ],
+      "source_files": [
+        "backend/app/api/v1/audit.py",
+        "data/tracking/verification-history.json"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Immutable Audit Logging & Non-Repudiation Trail in UI and test endpoint audit.py:20-110"
+    },
+    {
+      "feature_id": "GOV-19-004",
+      "category_id": "GOV-19",
+      "title": "PII & Classified Data Sanitization Guard",
+      "priority": "P0",
+      "test_ids": [
+        "test_pii_sanitization"
+      ],
+      "source_files": [
+        "backend/app/core/security.py",
+        "frontend/src/components/GrievanceSlaAnalytics.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify PII & Classified Data Sanitization Guard in UI and test endpoint security.py:40-100"
+    },
+    {
+      "feature_id": "GOV-20-001",
+      "category_id": "GOV-20",
+      "title": "Master Data Management & Entity Normalization",
+      "priority": "P0",
+      "test_ids": [
+        "test_entity_normalization"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts",
+        "backend/app/api/v1/hierarchy.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Master Data Management & Entity Normalization in UI and test endpoint verifiedGovernmentDirectory.ts:1-250"
+    },
+    {
+      "feature_id": "GOV-20-002",
+      "category_id": "GOV-20",
+      "title": "Data Quarantine & Contamination Prevention",
+      "priority": "P0",
+      "test_ids": [
+        "test_quarantine_integrity"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Data Quarantine & Contamination Prevention in UI and test endpoint verifiedGovernmentDirectory.ts:500-560"
+    },
+    {
+      "feature_id": "GOV-20-003",
+      "category_id": "GOV-20",
+      "title": "Automated Source Verification & Cadence Re-Audit",
+      "priority": "P1",
+      "test_ids": [
+        "test_source_verification"
+      ],
+      "source_files": [
+        "scripts/tracker/validate-tracker.py",
+        "scripts/tracker/verify-evidence.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Automated Source Verification & Cadence Re-Audit in UI and test endpoint scripts/tracker/validate-tracker.py:1-120"
+    },
+    {
+      "feature_id": "GOV-20-004",
+      "category_id": "GOV-20",
+      "title": "Data Provenance & Lineage Tracking",
+      "priority": "P1",
+      "test_ids": [
+        "test_data_provenance"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Data Provenance & Lineage Tracking in UI and test endpoint verifiedGovernmentDirectory.ts:20-80"
+    },
+    {
+      "feature_id": "GOV-21-001",
+      "category_id": "GOV-21",
+      "title": "GitHub Actions Automated Build & Verification Pipeline",
+      "priority": "P0",
+      "test_ids": [
+        "github_actions_ci"
+      ],
+      "source_files": [
+        ".github/workflows/deploy.yml",
+        "frontend/package.json"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify GitHub Actions Automated Build & Verification Pipeline in UI and test endpoint .github/workflows/deploy.yml:1-60"
+    },
+    {
+      "feature_id": "GOV-21-002",
+      "category_id": "GOV-21",
+      "title": "GitHub Pages Static SPA Deployment & 404 Routing",
+      "priority": "P0",
+      "test_ids": [
+        "github_pages_deploy"
+      ],
+      "source_files": [
+        ".github/workflows/deploy.yml",
+        "frontend/vite.config.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify GitHub Pages Static SPA Deployment & 404 Routing in UI and test endpoint .github/workflows/deploy.yml:30-65"
+    },
+    {
+      "feature_id": "GOV-21-003",
+      "category_id": "GOV-21",
+      "title": "Docker Containerization & Multi-Stage Production Build",
+      "priority": "P1",
+      "test_ids": [
+        "test_docker_build"
+      ],
+      "source_files": [
+        "backend/app/main.py",
+        "backend/app/core/config.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Docker Containerization & Multi-Stage Production Build in UI and test endpoint backend/app/main.py:1-60"
+    },
+    {
+      "feature_id": "GOV-21-004",
+      "category_id": "GOV-21",
+      "title": "Automated Release Versioning & Changelog Pipeline",
+      "priority": "P1",
+      "test_ids": [
+        "test_changelog_generation"
+      ],
+      "source_files": [
+        "scripts/tracker/generate-reports.py",
+        "docs/project-tracker/CHANGELOG.md"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Automated Release Versioning & Changelog Pipeline in UI and test endpoint scripts/tracker/generate-reports.py:1-120"
+    },
+    {
+      "feature_id": "GOV-22-001",
+      "category_id": "GOV-22",
+      "title": "WCAG 2.1 AA Color Contrast Compliance",
+      "priority": "P0",
+      "test_ids": [
+        "test_wcag_contrast"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveSidebar.tsx",
+        "frontend/src/components/ExecutiveHeader.tsx",
+        "frontend/src/components/StateScoreGauge.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify WCAG 2.1 AA Color Contrast Compliance in UI and test endpoint ExecutiveSidebar.tsx:30-80"
+    },
+    {
+      "feature_id": "GOV-22-002",
+      "category_id": "GOV-22",
+      "title": "Full Keyboard Navigation & Focus Ring Standards",
+      "priority": "P0",
+      "test_ids": [
+        "test_keyboard_nav"
+      ],
+      "source_files": [
+        "frontend/src/components/CopilotDrawer.tsx",
+        "frontend/src/components/ExecutiveSidebar.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Full Keyboard Navigation & Focus Ring Standards in UI and test endpoint CopilotDrawer.tsx:25-70"
+    },
+    {
+      "feature_id": "GOV-22-003",
+      "category_id": "GOV-22",
+      "title": "Screen Reader ARIA Semantics & Live Regions",
+      "priority": "P1",
+      "test_ids": [
+        "test_aria_landmarks"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveHeader.tsx",
+        "frontend/src/components/PriorityAlertsTicker.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Screen Reader ARIA Semantics & Live Regions in UI and test endpoint ExecutiveHeader.tsx:15-70"
+    },
+    {
+      "feature_id": "GOV-22-004",
+      "category_id": "GOV-22",
+      "title": "Dynamic Font Scaling & Low-Bandwidth Mode",
+      "priority": "P1",
+      "test_ids": [
+        "test_font_scaling"
+      ],
+      "source_files": [
+        "frontend/src/components/TamilNaduInteractiveMap.tsx",
+        "frontend/src/App.tsx"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Dynamic Font Scaling & Low-Bandwidth Mode in UI and test endpoint TamilNaduInteractiveMap.tsx:15-60"
+    },
+    {
+      "feature_id": "GOV-23-001",
+      "category_id": "GOV-23",
+      "title": "Bilingual UI String Resources (Tamil/English)",
+      "priority": "P0",
+      "test_ids": [
+        "test_bilingual_strings"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveHeader.tsx",
+        "frontend/src/data/governanceData.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Bilingual UI String Resources (Tamil/English) in UI and test endpoint ExecutiveHeader.tsx:45-90"
+    },
+    {
+      "feature_id": "GOV-23-002",
+      "category_id": "GOV-23",
+      "title": "Tamil Unicode Search & Transliteration Support",
+      "priority": "P0",
+      "test_ids": [
+        "test_tamil_search"
+      ],
+      "source_files": [
+        "frontend/src/components/GovernmentHierarchyDirectory.tsx",
+        "frontend/src/data/verifiedGovernmentDirectory.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Tamil Unicode Search & Transliteration Support in UI and test endpoint GovernmentHierarchyDirectory.tsx:75-140"
+    },
+    {
+      "feature_id": "GOV-23-003",
+      "category_id": "GOV-23",
+      "title": "Official Tamil Administrative Terminology & Glossary Adherence",
+      "priority": "P0",
+      "test_ids": [
+        "test_tamil_glossary"
+      ],
+      "source_files": [
+        "frontend/src/data/verifiedGovernmentDirectory.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Official Tamil Administrative Terminology & Glossary Adherence in UI and test endpoint verifiedGovernmentDirectory.ts:15-180"
+    },
+    {
+      "feature_id": "GOV-23-004",
+      "category_id": "GOV-23",
+      "title": "Multilingual Report Generation & PDF Export",
+      "priority": "P1",
+      "test_ids": [
+        "test_pdf_export_fonts"
+      ],
+      "source_files": [
+        "frontend/src/components/ExecutiveMeetingWorkspace.tsx"
+      ],
+      "zero_regression_gate": "PENDING_VERIFICATION",
+      "manual_verification_step": "Verify Multilingual Report Generation & PDF Export in UI and test endpoint ExecutiveMeetingWorkspace.tsx:100-150"
+    },
+    {
+      "feature_id": "GOV-24-001",
+      "category_id": "GOV-24",
+      "title": "Real-Time System Health & Telemetry Dashboard",
+      "priority": "P0",
+      "test_ids": [
+        "test_system_health"
+      ],
+      "source_files": [
+        "backend/app/main.py",
+        "backend/app/core/config.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Real-Time System Health & Telemetry Dashboard in UI and test endpoint backend/app/main.py:25-70"
+    },
+    {
+      "feature_id": "GOV-24-002",
+      "category_id": "GOV-24",
+      "title": "Service Degradation & Fallback State Resilience",
+      "priority": "P0",
+      "test_ids": [
+        "test_service_resilience"
+      ],
+      "source_files": [
+        "frontend/src/App.tsx",
+        "frontend/src/data/governanceData.ts"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Service Degradation & Fallback State Resilience in UI and test endpoint App.tsx:35-85"
+    },
+    {
+      "feature_id": "GOV-24-003",
+      "category_id": "GOV-24",
+      "title": "Database Backup, Recovery & Point-in-Time Restore",
+      "priority": "P1",
+      "test_ids": [
+        "test_backup_procedures"
+      ],
+      "source_files": [
+        "backend/app/core/database.py"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify Database Backup, Recovery & Point-in-Time Restore in UI and test endpoint database.py:15-60"
+    },
+    {
+      "feature_id": "GOV-24-004",
+      "category_id": "GOV-24",
+      "title": "High-Availability & Disaster Recovery Runbooks",
+      "priority": "P1",
+      "test_ids": [
+        "test_dr_runbooks"
+      ],
+      "source_files": [
+        "docs/04_DEPLOYMENT_AND_RUNBOOK.md"
+      ],
+      "zero_regression_gate": "PASSED",
+      "manual_verification_step": "Verify High-Availability & Disaster Recovery Runbooks in UI and test endpoint docs/04_DEPLOYMENT_AND_RUNBOOK.md:1-120"
+    }
+  ]
+}

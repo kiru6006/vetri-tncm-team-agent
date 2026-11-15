@@ -1,0 +1,59 @@
+{
+  "waves": [
+    {
+      "wave_id": "Wave 0",
+      "title": "Security & Baseline Stabilization",
+      "timeframe": "Week 1 - 2",
+      "approval_gate": "Gate 0: Security & Routing Sign-off",
+      "items": [
+        "Enforce Depends(get_current_active_user) across all 27 open endpoints in backend/app/api/v1/",
+        "Implement view handlers in App.tsx for unhandled routes (#audit-logs, #settings, #ai-agents, #risk-intelligence, #users-roles)",
+        "Add automated RBAC role permission checks to all mutation routes"
+      ]
+    },
+    {
+      "wave_id": "Wave 1",
+      "title": "Data Architecture & Deduplication",
+      "timeframe": "Week 3 - 4",
+      "approval_gate": "Gate 1: Data Integrity & Build Optimization Sign-off",
+      "items": [
+        "Establish frontend/src/data/canonical/ as sole source of truth and symlink data/ directories",
+        "Configure Vite chunk splitting for echarts and analytical dependencies to drop initial bundle under 400KB",
+        "Harmonize root Next.js contacts directory code with Vite component architecture"
+      ]
+    },
+    {
+      "wave_id": "Wave 2",
+      "title": "Agentic AI Integration",
+      "timeframe": "Week 5 - 6",
+      "approval_gate": "Gate 2: AI Grounding & Accuracy Sign-off",
+      "items": [
+        "Mount LangGraph multi-agent supervisor into FastAPI backend copilot endpoints",
+        "Integrate real SQLite and directory retrieval tools into agent toolchain",
+        "Implement streaming responses (SSE) and strict hallucination mitigation with source citations"
+      ]
+    },
+    {
+      "wave_id": "Wave 3",
+      "title": "Governance Workflows & Advanced Features",
+      "timeframe": "Week 7 - 8",
+      "approval_gate": "Gate 3: Workflow Completeness Sign-off",
+      "items": [
+        "Implement 7-stage CM Action Item lifecycle engine matching Secretariat MOP rules",
+        "Add interactive Gantt timeline visualization to Infrastructure Projects view",
+        "Implement 234 MLA individual constituency scorecards in Constituencies view"
+      ]
+    },
+    {
+      "wave_id": "Wave 4",
+      "title": "Enterprise Production Hardening",
+      "timeframe": "Week 9 - 10",
+      "approval_gate": "Gate 4: Final TNeGA SDC Production Readiness Sign-off",
+      "items": [
+        "Migrate SQLite database to PostgreSQL with pgvector extension",
+        "Implement full bilingual Tamil/English UI localization switch",
+        "Deploy production container setup with SSL, rate limiting, and NIC audit compliance"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "total_findings": 15,
+    "generated_at": "2026-11-15T13:50:00Z"
+  },
+  "findings": [
+    {
+      "finding_id": "FIND-SEC-01",
+      "domain": "SECURITY_IAM",
+      "severity": "P0",
+      "title": "Unauthenticated Administrative and Operational Endpoints",
+      "description": "27 out of 56 FastAPI endpoints in backend/app/api/v1/ do not enforce Depends(get_current_active_user), allowing anonymous calls to critical endpoints including /api/v1/cmo/action-items, /api/v1/calendar/book, and /api/v1/grm/sync/trigger.",
+      "affected_files": [
+        "backend/app/api/v1/cmo_endpoints.py",
+        "backend/app/api/v1/calendar.py",
+        "backend/app/api/v1/grm.py",
+        "backend/app/api/v1/copilot.py",
+        "backend/app/api/v1/audit.py"
+      ],
+      "impact": "Potential unauthenticated state manipulation, meeting injection, and data scraping in staging/production environments.",
+      "remediation": "Apply Depends(get_current_active_user) dependency to all router endpoints and enforce RBAC role permissions.",
+      "target_wave": "Wave 0"
+    },
+    {
+      "finding_id": "FIND-ROUT-01",
+      "domain": "FRONTEND_ROUTING",
+      "severity": "P1",
+      "title": "Client Hash Routes Without View Handlers",
+      "description": "Sidebar links for #audit-logs, #settings, #ai-agents, #risk-intelligence, and #users-roles render an empty workspace due to missing cases in App.tsx switch statement.",
+      "affected_files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ExecutiveSidebar.tsx"
+      ],
+      "impact": "Users clicking these navigation items see a blank main view, creating perceived application failure.",
+      "remediation": "Implement dedicated view components or fallback informative dashboards for all 43 sidebar routes.",
+      "target_wave": "Wave 0"
+    },
+    {
+      "finding_id": "FIND-DATA-01",
+      "domain": "DATA_ARCHITECTURE",
+      "severity": "P1",
+      "title": "Canonical Government Directory Triplication",
+      "description": "12 canonical JSON files representing official administrative entities are duplicated verbatim across 3 disparate filesystem locations.",
+      "affected_files": [
+        "frontend/src/data/canonical/",
+        "data/contacts/",
+        "data/government-directory/"
+      ],
+      "impact": "Updates to official datasets in one location lead to drift and inconsistency across application components.",
+      "remediation": "Establish frontend/src/data/canonical/ as the single source of truth; link or script synchronizations.",
+      "target_wave": "Wave 1"
+    },
+    {
+      "finding_id": "FIND-AI-01",
+      "domain": "AI_AGENT_SYSTEMS",
+      "severity": "P1",
+      "title": "Dual Decoupled AI Agent Architectures",
+      "description": "FastAPI backend runs a rudimentary regex-based simulation orchestrator while agents/app/ contains an unmounted LangGraph multi-agent supervisor.",
+      "affected_files": [
+        "backend/app/agent/orchestrator.py",
+        "backend/app/api/v1/copilot.py",
+        "agents/app/main.py"
+      ],
+      "impact": "Copilot queries receive simulated regex canned responses rather than real grounded data tool executions.",
+      "remediation": "Mount LangGraph supervisor into backend/app/api/v1/copilot.py with streaming responses and grounded citations.",
+      "target_wave": "Wave 2"
+    },
+    {
+      "finding_id": "FIND-PERF-01",
+      "domain": "PERFORMANCE",
+      "severity": "P2",
+      "title": "Large Monolithic Visualization Bundle",
+      "description": "Vite production build generates a 1,027 kB monolithic chunk for ECharts and charting libraries without dynamic code-splitting.",
+      "affected_files": [
+        "frontend/src/components/ExecutiveWorkspace.tsx",
+        "frontend/src/components/StateBudgetDashboard.tsx",
+        "frontend/vite.config.ts"
+      ],
+      "impact": "Increased Initial Page Load (LCP) on low-bandwidth mobile devices in rural administrative blocks.",
+      "remediation": "Configure manualChunks in vite.config.ts and implement React.lazy for heavy analytical views.",
+      "target_wave": "Wave 1"
+    },
+    {
+      "finding_id": "FIND-DEVOPS-01",
+      "domain": "DEVOPS_DEPLOYMENT",
+      "severity": "P2",
+      "title": "Decoupled Next.js Directory Artifacts in Repository Root",
+      "description": "The repository root contains app/contacts/ Next.js files but root package.json lacks Next.js dependency, relying instead on frontend/ Vite SPA.",
+      "affected_files": [
+        "app/contacts/",
+        "components/contacts/",
+        "package.json"
+      ],
+      "impact": "Developer confusion regarding deployment entry points and build systems.",
+      "remediation": "Clarify dual-stack architecture in documentation and provide unified workspace script.",
+      "target_wave": "Wave 1"
+    },
+    {
+      "finding_id": "DEF-DIR-01",
+      "domain": "GOVERNANCE_CAPABILITY",
+      "severity": "P0",
+      "title": "Legacy Fictional and Unverified Officials in Directory Dataset",
+      "description": "Fictional or unverified records (e.g. M. Shanmugam, S. Anbarasan, Kirubakaran IPS) were present in directory data.",
+      "affected_files": [
+        "data/tracking/feature-tracker.json"
+      ],
+      "impact": "Identified capability gap in governance operational matrix.",
+      "remediation": "Quarantined unverified records into quarantinedOfficials dataset and populated verified 35 Ministers (under Hon'ble CM Thiru C. Joseph Vijay), Chief Secretary Dr. M. Sai Kumar IAS, 38 Collectors, and official police leadership.",
+      "target_wave": "Wave 0"
+    },
+    {
+      "finding_id": "DEF-ROUT-01",
+      "domain": "GOVERNANCE_CAPABILITY",
+      "severity": "P1",
+      "title": "Sidebar and Catalog Routes Without Explicit View Handlers",
+      "description": "Navigating to certain routes (#copilot, #audit-logs, #ai-agents, #risk-intelligence, #users-roles, #settings) renders blank content without fallback or redirection.",
+      "affected_files": [
+        "data/tracking/feature-tracker.json"
+      ],
+      "impact": "Identified capability gap in governance operational matrix.",
+      "remediation": "Implement explicit view handlers or route-to-modal triggers in App.tsx renderCurrentView switch block with a default fallback view.",
+      "target_wave": "Wave 0"
+    },
+    {
+      "finding_id": "DEF-SEC-01",
+      "domain": "GOVERNANCE_CAPABILITY",
+      "severity": "P1",
+      "title": "Persona Switching Operates Without Production Authentication",
+      "description": "Switching executive personas is currently handled client-side without cryptographic authentication or SSO token exchange.",
+      "affected_files": [
+        "data/tracking/feature-tracker.json"
+      ],
+      "impact": "Identified capability gap in governance operational matrix.",
+      "remediation": "Integrate backend auth endpoints (/api/v1/auth/login) with OAuth2 / e-Pramaan SAML/OIDC bridge and enforce permission checks.",
+      "target_wave": "Wave 0"
+    },
+    {
+      "finding_id": "DEF-CONST-01",
+      "domain": "GOVERNANCE_CAPABILITY",
+      "severity": "P2",
+      "title": "Constituencies Route Renders District Heatmap Instead of 234 MLA Scorecards",
+      "description": "Route #constituencies displays 38 revenue districts instead of individual 234 Assembly constituencies with sitting MLA details.",
+      "affected_files": [
+        "data/tracking/feature-tracker.json"
+      ],
+      "impact": "Identified capability gap in governance operational matrix.",
+      "remediation": "Create dedicated AssemblyConstituenciesView component with 234 constituency dataset, sitting MLA roster, and local scheme allocation metrics.",
+      "target_wave": "Wave 3"
+    },
+    {
+      "finding_id": "DEF-PROJ-01",
+      "domain": "GOVERNANCE_CAPABILITY",
+      "severity": "P2",
+      "title": "Infrastructure Projects View Lacks Interactive Gantt Timeline",
+      "description": "Project milestone tracking displays list and cards but lacks interactive Gantt visualization for critical path and monsoon window monitoring.",
+      "affected_files": [
+        "data/tracking/feature-tracker.json"
+      ],
+      "impact": "Identified capability gap in governance operational matrix.",
+      "remediation": "Add interactive SVG/Canvas Gantt chart component with dependency link overlays and milestone drag inspection.",
+      "target_wave": "Wave 3"
+    },
+    {
+      "finding_id": "DEF-MIN-01",
+      "domain": "GOVERNANCE_CAPABILITY",
+      "severity": "P2",
+      "title": "Ministries View Lacks Dedicated Hierarchical Portfolio Breakdown",
+      "description": "Ministry cards in the directory combine portfolios into a single text block without dedicated sub-portfolio KPI drilldowns.",
+      "affected_files": [
+        "data/tracking/feature-tracker.json"
+      ],
+      "impact": "Identified capability gap in governance operational matrix.",
+      "remediation": "Implement MinistryPortfolioDetail modal breaking down portfolios into distinct departments and subordinate commissionerates.",
+      "target_wave": "Wave 3"
+    },
+    {
+      "finding_id": "DEF-DEPT-01",
+      "domain": "GOVERNANCE_CAPABILITY",
+      "severity": "P2",
+      "title": "Subordinate Directorates Roll Up Directly into Secretariat Cards",
+      "description": "Departments view presents top-level Secretariat departments without separate navigable cards for commissionerates (e.g. Land Administration, Commercial Taxes).",
+      "affected_files": [
+        "data/tracking/feature-tracker.json"
+      ],
+      "impact": "Identified capability gap in governance operational matrix.",
+      "remediation": "Introduce hierarchical tree navigation in GovernmentHierarchyDirectory showing Secretariat -> Directorate -> Regional Office.",
+      "target_wave": "Wave 3"
+    },
+    {
+      "finding_id": "DEF-KNOW-01",
+      "domain": "GOVERNANCE_CAPABILITY",
+      "severity": "P2",
+      "title": "Knowledge Hub Substring Search Fallback When Backend Vector RAG Offline",
+      "description": "In standalone client demo mode, Knowledge Hub uses keyword substring search rather than true vector semantic similarity.",
+      "affected_files": [
+        "data/tracking/feature-tracker.json"
+      ],
+      "impact": "Identified capability gap in governance operational matrix.",
+      "remediation": "Add lightweight client-side TF-IDF / WebAssembly semantic index fallback for zero-backend environments.",
+      "target_wave": "Wave 3"
+    },
+    {
+      "finding_id": "DEF-NOTIF-01",
+      "domain": "GOVERNANCE_CAPABILITY",
+      "severity": "P2",
+      "title": "Web Push Notifications Require Service Worker Registration",
+      "description": "Notification center modal displays in-app alerts, but background Web Push requires service worker registration.",
+      "affected_files": [
+        "data/tracking/feature-tracker.json"
+      ],
+      "impact": "Identified capability gap in governance operational matrix.",
+      "remediation": "Register public/sw.js service worker with PushManager subscribe hook in main.tsx.",
+      "target_wave": "Wave 3"
+    }
+  ]
+}

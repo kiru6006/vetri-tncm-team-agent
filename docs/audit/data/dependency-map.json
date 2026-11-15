@@ -1,0 +1,77 @@
+{
+  "modules": [
+    {
+      "module_id": "MOD-FE-CORE",
+      "name": "Frontend Core & Navigation",
+      "path": "frontend/src/App.tsx",
+      "depends_on": [
+        "MOD-FE-COMPONENTS",
+        "MOD-FE-STORE",
+        "MOD-FE-DATA"
+      ]
+    },
+    {
+      "module_id": "MOD-FE-COMPONENTS",
+      "name": "Executive View Components (40 views)",
+      "path": "frontend/src/components/",
+      "depends_on": [
+        "MOD-FE-DATA",
+        "MOD-FE-STORE"
+      ]
+    },
+    {
+      "module_id": "MOD-FE-DATA",
+      "name": "Canonical Government Data Layer",
+      "path": "frontend/src/data/canonical/",
+      "depends_on": []
+    },
+    {
+      "module_id": "MOD-BE-API",
+      "name": "FastAPI v1 Routers (14 routers)",
+      "path": "backend/app/api/v1/",
+      "depends_on": [
+        "MOD-BE-SERVICES",
+        "MOD-BE-SCHEMAS",
+        "MOD-BE-CORE"
+      ]
+    },
+    {
+      "module_id": "MOD-BE-SERVICES",
+      "name": "Business Intelligence Services",
+      "path": "backend/app/services/",
+      "depends_on": [
+        "MOD-BE-DB",
+        "MOD-FE-DATA"
+      ]
+    },
+    {
+      "module_id": "MOD-AGENTS",
+      "name": "LangGraph Multi-Agent Supervisor",
+      "path": "agents/app/",
+      "depends_on": [
+        "MOD-BE-DB"
+      ]
+    }
+  ],
+  "external_dependencies": {
+    "frontend": [
+      "react@19.0.0",
+      "lucide-react@0.469.0",
+      "echarts@5.6.0",
+      "echarts-for-react@3.0.2",
+      "tailwindcss@4.0.0-beta.8"
+    ],
+    "backend": [
+      "fastapi@0.115.0",
+      "pydantic@2.9.2",
+      "sqlalchemy@2.0.36",
+      "uvicorn@0.32.0",
+      "python-jose@3.3.0"
+    ],
+    "agents": [
+      "langgraph",
+      "langchain",
+      "mcp"
+    ]
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "summary": {
+    "D1_exact_duplicate_sets": 13,
+    "total_duplicated_files": 38,
+    "D2_structural_duplicates": 4,
+    "D3_schema_duplicates": 3
+  },
+  "D1_exact_duplicates": [
+    {
+      "hash": "5a88e54e18e8ac27e18f87af4e12d3367f10b04901778a4adf9b4f84bb19123b",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "demo/index.html",
+        "demo/404.html"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "0e6debbc72c929108f2aadfb2fe6b09a2c8780a7ec8a7c388be6822b7141a65e",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/rajya-sabha-mps.json",
+        "data/contacts/rajya_sabha_mps.json",
+        "data/government-directory/rajya-sabha-mps.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "93892c0057a3093bf4e37e7a7d1a40ca77ffbf4e4deaf77dcb7e4d4894bd339d",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/sources.json",
+        "data/contacts/sources.json",
+        "data/government-directory/sources.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "bec0ce11d47dfd49c404e6fc41f4b058cf2e9ef734788d92ef763e2a1f362309",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/heads-of-departments.json",
+        "data/contacts/department_heads.json",
+        "data/government-directory/heads-of-departments.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "18e06d17cdbd6691e6045e47ac2f986558ac815e5d2cd52aa8a839de0ba74b81",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/undertakings.json",
+        "data/contacts/undertakings.json",
+        "data/government-directory/undertakings.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "70ac32b2ec5de258e071e652d82797c12dc77dc8876810fd8dcfaec3bc321fbb",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/cm_office.json",
+        "data/contacts/cm_office.json",
+        "data/government-directory/cm_office.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "81d11bcf81a24545e3bd5a7c9955ef7508f300412478d945a35c849ad857a90a",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/secretariat.json",
+        "data/contacts/secretariat.json",
+        "data/government-directory/secretariat.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "c86ab58022b01573fc88b9ac5afb711b29d7c24ea614e6fd611fb0ee8a76fdc5",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/mlas.json",
+        "data/contacts/mlas.json",
+        "data/government-directory/mlas.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "a33c838a686b52ac1e9f0e9b908d99132f438051d49641e42c03514d65aaefd6",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/district-collectors.json",
+        "data/contacts/district_collectors.json",
+        "data/government-directory/district-collectors.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "dc601a90d4d832a8ebdee413dfc7a1247e98efdf3df6920937abba57859dcef3",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/constitutional.json",
+        "data/contacts/constitutional.json",
+        "data/government-directory/constitutional.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "fbfa631520a814b66768326777c22707ec62091b3eeb5af593bb3900282434e6",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/state-leadership.json",
+        "data/contacts/state_leadership.json",
+        "data/government-directory/state-leadership.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "cf576d9449133af6f02da8e3f43d971e49c04ff5b7a5552d2c62923c5c71aa0d",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/ministers.json",
+        "data/contacts/ministers.json",
+        "data/government-directory/ministers.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    },
+    {
+      "hash": "de431b17d336e0a131925fa5a96104f16a3995cfec36e89c4aa323c2a8bbda76",
+      "type": "D1_EXACT_DUPLICATE",
+      "files": [
+        "frontend/src/data/canonical/governor_staff.json",
+        "data/contacts/governor_staff.json",
+        "data/government-directory/governor_staff.json"
+      ],
+      "remediation": "Retain canonical source in frontend/src/data/canonical/, replace others with symlinks or package imports."
+    }
+  ],
+  "D2_structural_duplicates": [
+    {
+      "id": "DUP-D2-01",
+      "title": "Government Directory View vs Next.js Contacts Search",
+      "files": [
+        "frontend/src/components/GovernmentDirectoryView.tsx",
+        "components/contacts/DirectorySearch.tsx"
+      ],
+      "severity": "MEDIUM",
+      "action": "Unify directory filter UI into shared component once Next.js / Vite integration strategy is finalized."
+    },
+    {
+      "id": "DUP-D2-02",
+      "title": "Executive AI Copilot Logic vs Agents Supervisor",
+      "files": [
+        "backend/app/agent/orchestrator.py",
+        "agents/app/main.py"
+      ],
+      "severity": "HIGH",
+      "action": "Mount LangGraph supervisor directly into FastAPI backend to eliminate mock regex orchestrator."
+    }
+  ],
+  "D3_schema_duplicates": [
+    {
+      "id": "DUP-D3-01",
+      "title": "Directory Contact Schema across Frontend and Backend",
+      "files": [
+        "frontend/src/types/directory.ts",
+        "backend/app/schemas/cmo.py",
+        "lib/contacts/types.ts"
+      ],
+      "severity": "MEDIUM",
+      "action": "Consolidate to OpenAPI-generated TypeScript interfaces."
+    }
+  ]
+}
