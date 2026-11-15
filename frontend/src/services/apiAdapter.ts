@@ -26,6 +26,10 @@ import {
   QUARANTINED_UNVERIFIED_RECORDS,
   buildCanonicalHierarchyTree
 } from '../data/verifiedGovernmentDirectory';
+import {
+  CANONICAL_MEETINGS,
+  CANONICAL_CALENDAR_APPOINTMENTS
+} from '../data/canonicalMeetingsData';
 
 const DEFAULT_DATA_SOURCE: DataSourceMetadata = {
   source_name: "Government of Tamil Nadu Official Portal & Gazette",
@@ -357,6 +361,66 @@ export function initDemoApiInterceptor() {
 
       if (cleanUrl.includes('/api/v1/hierarchy/tree')) {
         return new Response(JSON.stringify(MASTER_HIERARCHY_TREE), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (cleanUrl.includes('/api/v1/meetings')) {
+        return new Response(JSON.stringify(CANONICAL_MEETINGS), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (cleanUrl.includes('/api/v1/calendar/appointments')) {
+        const urlObj = new URL(urlString, 'http://localhost');
+        const role = urlObj.searchParams.get('role_filter') || 'ALL';
+        const date = urlObj.searchParams.get('date_filter');
+
+        let appts = [...CANONICAL_CALENDAR_APPOINTMENTS];
+        if (role !== 'ALL') {
+          appts = appts.filter(a => a.participant_role === role);
+        }
+        if (date) {
+          appts = appts.filter(a => a.scheduled_date === date);
+        }
+
+        return new Response(JSON.stringify(appts), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+
+      if (cleanUrl.includes('/api/v1/calendar/book')) {
+        const payload = init?.body ? JSON.parse(init.body as string) : {};
+        const newAppt = {
+          id: `appt-${Date.now()}`,
+          title_en: payload.title || "Executive Briefing",
+          title_ta: payload.title || "நிர்வாக ஆய்வு",
+          appointment_type: payload.appointment_type || "SECRETARY_BRIEFING",
+          scheduled_date: payload.scheduled_date || new Date().toISOString().split('T')[0],
+          scheduled_time: payload.scheduled_time || "02:00 PM - 02:45 PM",
+          duration_minutes: payload.duration_minutes || 45,
+          location: payload.location || "Chief Minister's Secretariat Chamber",
+          status: "CONFIRMED" as const,
+          priority: (payload.priority || "HIGH") as any,
+          host_name: "Hon'ble Chief Minister",
+          host_role: "CHIEF_MINISTER",
+          participant_name_en: payload.participant_name || "Official",
+          participant_name_ta: payload.participant_name || "அதிகாரி",
+          participant_designation: payload.participant_designation || "Government Official",
+          participant_role: payload.participant_role || "GROUP_1",
+          participant_department: payload.department || "General Administration",
+          participant_district: payload.district || "Statewide",
+          participant_contact: payload.contact_phone || "+91 44 2567 0000",
+          participant_email: payload.participant_email || "official@tn.gov.in",
+          agenda_en: payload.agenda || "Official Consultation",
+          agenda_ta: payload.agenda || "அலுவல்சார் ஆலோசனை",
+          protocol_clearance_status: "VERIFIED"
+        };
+        CANONICAL_CALENDAR_APPOINTMENTS.unshift(newAppt as any);
+        return new Response(JSON.stringify(newAppt), {
           status: 200,
           headers: { 'Content-Type': 'application/json' }
         });

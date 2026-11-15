@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { useAuthStore } from '../stores/authStore';
-import { IndianRupee, TrendingUp, AlertTriangle, ArrowUpRight, ShieldAlert } from 'lucide-react';
+import { IndianRupee, TrendingUp, AlertTriangle, ArrowUpRight, ShieldAlert, BarChart3 } from 'lucide-react';
+import { StatCard } from './common';
 
 export const RevenueAnalyticsView: React.FC = () => {
   const { language } = useAuthStore();
@@ -75,43 +76,35 @@ export const RevenueAnalyticsView: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Telemetry KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'நடப்பு நிதி ஆண்டு வசூல்' : 'Total Revenue Collected (H1)'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-white flex items-center gap-1">
-            <IndianRupee className="w-5 h-5 text-amber-400" />
-            ₹87,280 Cr
-          </div>
-          <div className="flex items-center gap-1 text-xs text-emerald-400 font-medium">
-            <TrendingUp className="w-3.5 h-3.5" />
-            <span>+11.4% YoY Growth</span>
-          </div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'இலக்கு சாதனை %' : 'Overall Target Achievement'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-emerald-400">102.3%</div>
-          <div className="text-xs text-slate-400">Above budgeted fiscal expectations</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'வணிக வரி பங்கு' : 'Commercial Tax Share'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-cyan-400">₹70,200 Cr</div>
-          <div className="text-xs text-slate-400">80.4% of Own Tax Revenue (SOTR)</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'AI கண்டறிந்த வரி கசிவு' : 'AI Flagged Revenue Leakage'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-rose-400">₹60.7 Cr</div>
-          <div className="text-xs text-rose-300 font-medium">2 Industrial Clusters under scrutiny</div>
-        </div>
+        <StatCard
+          label={language === 'ta' ? 'நடப்பு நிதி ஆண்டு வசூல்' : 'Total Revenue Collected (H1)'}
+          value="₹87,280 Cr"
+          subValue="YoY Growth"
+          trend={{ value: '+11.4%', isPositive: true }}
+          icon={IndianRupee}
+          variant="amber"
+        />
+        <StatCard
+          label={language === 'ta' ? 'இலக்கு சாதனை %' : 'Overall Target Achievement'}
+          value="102.3%"
+          subValue="Above budgeted fiscal expectations"
+          icon={TrendingUp}
+          variant="emerald"
+        />
+        <StatCard
+          label={language === 'ta' ? 'வணிக வரி பங்கு' : 'Commercial Tax Share'}
+          value="₹70,200 Cr"
+          subValue="80.4% of Own Tax Revenue (SOTR)"
+          icon={BarChart3}
+          variant="cyan"
+        />
+        <StatCard
+          label={language === 'ta' ? 'AI கண்டறிந்த வரி கசிவு' : 'AI Flagged Revenue Leakage'}
+          value="₹60.7 Cr"
+          subValue="2 Industrial Clusters under scrutiny"
+          icon={ShieldAlert}
+          variant="rose"
+        />
       </div>
 
       {/* Main Chart + Top Districts Grid */}

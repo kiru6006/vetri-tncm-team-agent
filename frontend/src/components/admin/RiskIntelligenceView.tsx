@@ -61,3 +61,4 @@ export const RiskIntelligenceView: React.FC = () => (
     </div>
   </div>
 );
+

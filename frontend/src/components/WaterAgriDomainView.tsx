@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthStore } from '../stores/authStore';
-import { Droplets, Sprout, TrendingUp, AlertTriangle, Layers, CheckCircle2 } from 'lucide-react';
+import { Droplets, Sprout, TrendingUp, AlertTriangle, Layers, CheckCircle2, PackageCheck } from 'lucide-react';
+import { StatCard } from './common';
 
 export const WaterAgriDomainView: React.FC = () => {
   const { language } = useAuthStore();
@@ -26,37 +27,34 @@ export const WaterAgriDomainView: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Water & Agri KPI Summary */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'மேட்டூர் அணை நீர் மட்டம்' : 'Mettur Dam Storage Level'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-cyan-400">68.4 Ft / 120 Ft</div>
-          <div className="text-xs text-slate-400">Inflow: 12,450 Cusecs • Delta Discharge Active</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'குறுவை சாகுபடி பரப்பு' : 'Kuruvai Cultivation Area'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-emerald-400">3.85 Lakh Acres</div>
-          <div className="text-xs text-slate-400">97.4% Target Cultivation Completed</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'நேரடி நெல் கொள்முதல் (DPC)' : 'Paddy Procurement (DPC)'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-amber-400">18.5 Lakh MT</div>
-          <div className="text-xs text-slate-400">₹4,250 Cr DBT Credited to Farmers within 48h</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'உரக் கையிருப்பு நிலை' : 'Fertilizer Buffer Stocks'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-white">45,000 MT</div>
-          <div className="text-xs text-amber-300 font-medium">Tiruvarur DAP buffer refilled today</div>
-        </div>
+        <StatCard
+          label={language === 'ta' ? 'மேட்டூர் அணை நீர் மட்டம்' : 'Mettur Dam Storage Level'}
+          value="68.4 Ft / 120 Ft"
+          subValue="Inflow: 12,450 Cusecs • Delta Discharge Active"
+          icon={Droplets}
+          variant="cyan"
+        />
+        <StatCard
+          label={language === 'ta' ? 'குறுவை சாகுபடி பரப்பு' : 'Kuruvai Cultivation Area'}
+          value="3.85 Lakh Acres"
+          subValue="97.4% Target Cultivation Completed"
+          icon={Sprout}
+          variant="emerald"
+        />
+        <StatCard
+          label={language === 'ta' ? 'நேரடி நெல் கொள்முதல் (DPC)' : 'Paddy Procurement (DPC)'}
+          value="18.5 Lakh MT"
+          subValue="₹4,250 Cr DBT Credited to Farmers"
+          icon={TrendingUp}
+          variant="amber"
+        />
+        <StatCard
+          label={language === 'ta' ? 'உரக் கையிருப்பு நிலை' : 'Fertilizer Buffer Stocks'}
+          value="45,000 MT"
+          subValue="Tiruvarur DAP buffer refilled today"
+          icon={PackageCheck}
+          variant="default"
+        />
       </div>
 
       {/* 15 Major Reservoir Telemetry Matrix */}

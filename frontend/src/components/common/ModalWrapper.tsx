@@ -54,3 +54,4 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
     </div>
   );
 };
+

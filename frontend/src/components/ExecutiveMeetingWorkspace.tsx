@@ -17,6 +17,8 @@ import {
 } from 'lucide-react';
 import { useAuthStore } from '../stores/authStore';
 import { MeetingBriefingPack, MeetingActionItem } from '../types';
+import { CANONICAL_MEETINGS } from '../data/canonicalMeetingsData';
+import { PageHeader, ModalWrapper } from './common';
 
 interface ExecutiveMeetingWorkspaceProps {
   onOpenCopilot?: (prompt: string) => void;
@@ -30,8 +32,8 @@ export const ExecutiveMeetingWorkspace: React.FC<ExecutiveMeetingWorkspaceProps>
   const { language } = useAuthStore();
   const isTa = language === 'ta';
 
-  const [meetings, setMeetings] = useState<MeetingBriefingPack[]>([]);
-  const [selectedMeetingId, setSelectedMeetingId] = useState<string>('mtg-cab-01');
+  const [meetings, setMeetings] = useState<MeetingBriefingPack[]>(CANONICAL_MEETINGS);
+  const [selectedMeetingId, setSelectedMeetingId] = useState<string>(CANONICAL_MEETINGS[0]?.meeting_id || 'mtg-cab-01');
   const [activeTab, setActiveTab] = useState<'briefing' | 'minutes' | 'actions'>('briefing');
   const [newMeetingModal, setNewMeetingModal] = useState(false);
   const [meetingTitle, setMeetingTitle] = useState('');
@@ -47,73 +49,7 @@ export const ExecutiveMeetingWorkspace: React.FC<ExecutiveMeetingWorkspaceProps>
         }
       })
       .catch(() => {
-        // Fallback seed
-        setMeetings([
-          {
-            meeting_id: "mtg-cab-01",
-            title_en: "Cabinet Review on Mega Industrial Investments & Monsoon Preparedness",
-            title_ta: "மெகா தொழில் முதலீடுகள் மற்றும் பருவமழை தயார்நிலை குறித்த அமைச்சரவை ஆய்வு",
-            meeting_type: "CABINET",
-            scheduled_time: "Today, 11:30 AM (Secretariat Cabinet Room)",
-            chairperson_name: "Hon'ble Chief Minister",
-            chairperson_designation: "Chief Minister of Tamil Nadu",
-            attendees: [
-              {
-                officer_id: "off-cm-01",
-                name_en: "Hon'ble Chief Minister",
-                name_ta: "மாண்புமிகு முதலமைச்சர்",
-                designation: "Chief Minister",
-                tier_role: "CHIEF_MINISTER",
-                status: "CONFIRMED"
-              },
-              {
-                officer_id: "off-cs-01",
-                name_en: "Dr. M. Sai Kumar, IAS",
-                name_ta: "முனைவர் எம். சாய் குமார், இ.ஆ.ப.",
-                designation: "Chief Secretary",
-                tier_role: "CHIEF_SECRETARY",
-                status: "CONFIRMED"
-              }
-            ],
-            agenda_items: [
-              "1. Special Incentive Package for Phase 2 Semiconductor Fab (₹4,800 Cr capex)",
-              "2. Monsoon Disaster Mitigation Infrastructure: Approval of ₹620 Cr emergency fund allocation",
-              "3. Progress review on Chennai Metro Phase 2 underground tunneling corridor"
-            ],
-            ai_pre_briefing_en: "AI Pre-Briefing: 3 Global proposals awaiting SIPCOT land allotment totaling ₹4,800 Cr with 14,200 direct jobs. Monsoon preparedness across 38 districts shows 96% desilting completion.",
-            ai_pre_briefing_ta: "AI முன் தயாரிப்பு சுருக்கம்: ₹4,800 கோடி முதலீட்டில் சிப்காட் நில ஒதுக்கீடு அமைச்சரவை ஒப்புதலுக்காக உள்ளது. பருவமழை தயார்நிலையில் 96% தூர்வாரும் பணிகள் முடிவடைந்துள்ளன.",
-            key_risks_flagged: [
-              "Power grid transmission capacity at Hosur SIPCOT needs synchronization with TANGEDCO by Q1 2027.",
-              "Orange rainfall alert in coastal delta districts may coincide with early Kuruvai harvest operations."
-            ],
-            historical_decisions: [
-              "Cabinet approved SIPCOT Mega EV Industrial Park Policy in Q1 2026."
-            ],
-            suggested_decision_options: [
-              {
-                option_code: "APPROVE_FULL_INCENTIVE",
-                label_en: "Approve complete Special Incentive Package (Capital Subsidy + 15% Power Tariff offset)",
-                label_ta: "முழு சிறப்பு ஊக்கத்தொகை தொகுப்பிற்கு ஒப்புதல் அளிக்கவும்",
-                fiscal_impact: "₹720 Cr over 5 years",
-                recommended: true
-              }
-            ],
-            auto_generated_minutes_en: "Minutes: Cabinet unanimously approved Special Incentive Package for Semiconductor Fab in Krishnagiri and sanctioned ₹620 Cr emergency monsoon mitigation allocation under SDRF.",
-            auto_generated_minutes_ta: "கூட்ட நடவடிக்கைகள்: கிருஷ்ணகிரியில் ₹4,800 கோடி குறைக்கடத்தி தொழிற்சாலைக்கான சிறப்பு சலுகை மற்றும் ₹620 கோடி அவசர பருவமழை நிதி ஒதுக்கீட்டிற்கு அமைச்சரவை ஒப்புதல் அளித்தது.",
-            action_items: [
-              {
-                id: "act-mtg-01",
-                meeting_id: "mtg-cab-01",
-                task_en: "Issue Government Order (G.O. Ms) for Semiconductor Fab Special Package",
-                task_ta: "குறைக்கடத்தி தொழிற்சாலை சிறப்பு சலுகைக்கான அரசாணை வெளியிடவும்",
-                responsible_officer_name: "V. Arun Roy, IAS",
-                responsible_officer_designation: "Secretary, Industries",
-                deadline: "Today, 18:00 hrs",
-                status: "IN_PROGRESS"
-              }
-            ]
-          }
-        ]);
+        setMeetings(CANONICAL_MEETINGS);
       });
   }, []);
 
@@ -398,60 +334,57 @@ export const ExecutiveMeetingWorkspace: React.FC<ExecutiveMeetingWorkspaceProps>
       </div>
 
       {/* NEW MEETING MODAL */}
-      {newMeetingModal && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="glass-card rounded-2xl border border-indigo-500/40 max-w-lg w-full p-6 space-y-4 shadow-2xl animate-in zoom-in-95 duration-200">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h3 className="text-lg font-bold text-white">
-                {isTa ? 'புதிய அரசு ஆய்வுக் கூட்டம் திட்டமிடுதல்' : 'Schedule Review Meeting'}
-              </h3>
-              <button onClick={() => setNewMeetingModal(false)} className="text-slate-400 hover:text-white">✕</button>
+      <ModalWrapper
+        isOpen={newMeetingModal}
+        onClose={() => setNewMeetingModal(false)}
+        title={isTa ? 'புதிய அரசு ஆய்வுக் கூட்டம் திட்டமிடுதல்' : 'Schedule Review Meeting'}
+        badge="REVIEW"
+        maxWidth="lg"
+      >
+        <div className="space-y-4">
+          <div className="space-y-3">
+            <div>
+              <label className="text-xs font-bold text-slate-300 block mb-1">Meeting Title</label>
+              <input
+                type="text"
+                value={meetingTitle}
+                onChange={(e) => setMeetingTitle(e.target.value)}
+                placeholder="e.g. Special Cabinet Review on Monsoon Readiness"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500"
+              />
             </div>
 
-            <div className="space-y-3">
-              <div>
-                <label className="text-xs font-bold text-slate-300 block mb-1">Meeting Title</label>
-                <input
-                  type="text"
-                  value={meetingTitle}
-                  onChange={(e) => setMeetingTitle(e.target.value)}
-                  placeholder="e.g. Special Cabinet Review on Monsoon Readiness"
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-
-              <div>
-                <label className="text-xs font-bold text-slate-300 block mb-1">Meeting Classification</label>
-                <select
-                  value={meetingType}
-                  onChange={(e) => setMeetingType(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500"
-                >
-                  <option value="CABINET">Cabinet Meeting</option>
-                  <option value="COLLECTOR_REVIEW">District Collectors Review</option>
-                  <option value="DEPARTMENT_REVIEW">Department Performance Review</option>
-                  <option value="CRISIS_MANAGEMENT">Crisis & Disaster Response</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="pt-3 flex justify-end gap-2">
-              <button
-                onClick={() => setNewMeetingModal(false)}
-                className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold"
+            <div>
+              <label className="text-xs font-bold text-slate-300 block mb-1">Meeting Classification</label>
+              <select
+                value={meetingType}
+                onChange={(e) => setMeetingType(e.target.value)}
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500"
               >
-                Cancel
-              </button>
-              <button
-                onClick={handleCreateMeeting}
-                className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold"
-              >
-                Create & Generate AI Briefing
-              </button>
+                <option value="CABINET">Cabinet Meeting</option>
+                <option value="COLLECTOR_REVIEW">District Collectors Review</option>
+                <option value="DEPARTMENT_REVIEW">Department Performance Review</option>
+                <option value="CRISIS_MANAGEMENT">Crisis & Disaster Response</option>
+              </select>
             </div>
           </div>
+
+          <div className="pt-3 flex justify-end gap-2">
+            <button
+              onClick={() => setNewMeetingModal(false)}
+              className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleCreateMeeting}
+              className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold cursor-pointer transition-all"
+            >
+              Create & Generate AI Briefing
+            </button>
+          </div>
         </div>
-      )}
+      </ModalWrapper>
 
     </div>
   );

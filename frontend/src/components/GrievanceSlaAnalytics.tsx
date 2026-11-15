@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthStore } from '../stores/authStore';
-import { CheckCircle2, Clock, AlertCircle, TrendingUp, Users, ArrowUpRight } from 'lucide-react';
+import { CheckCircle2, Clock, AlertCircle, TrendingUp, Users, ArrowUpRight, Inbox, ShieldAlert } from 'lucide-react';
+import { StatCard } from './common';
 
 export const GrievanceSlaAnalytics: React.FC = () => {
   const { language } = useAuthStore();
@@ -27,40 +28,34 @@ export const GrievanceSlaAnalytics: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Grievance Summary Metrics */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'மொத்த மனுக்கள் (முதல்வரின் முகவரி)' : 'Total CM Helpline Petitions'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-white">1,48,250</div>
-          <div className="text-xs text-slate-400">Integrated citizen helpline portal</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'தீர்க்கப்பட்ட விகிதம்' : 'Resolution Saturation Rate'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-emerald-400">95.4%</div>
-          <div className="flex items-center gap-1 text-xs text-emerald-400">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>1,41,370 Citizens Benefited</span>
-          </div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'சராசரி தீர்வு காலம்' : 'Average Turnaround Speed'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-cyan-400">6.2 Days</div>
-          <div className="text-xs text-slate-400">Down from 18.5 days historically</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? '30 நாட்களுக்கு மேல் நிலுவை' : 'Critical Backlog (>30 Days)'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-rose-400">184</div>
-          <div className="text-xs text-rose-300 font-medium">Auto-escalated to Chief Secretary</div>
-        </div>
+        <StatCard
+          label={language === 'ta' ? 'மொத்த மனுக்கள் (முதல்வரின் முகவரி)' : 'Total CM Helpline Petitions'}
+          value="1,48,250"
+          subValue="Integrated citizen helpline portal"
+          icon={Inbox}
+          variant="default"
+        />
+        <StatCard
+          label={language === 'ta' ? 'தீர்க்கப்பட்ட விகிதம்' : 'Resolution Saturation Rate'}
+          value="95.4%"
+          subValue="1,41,370 Citizens Benefited"
+          icon={CheckCircle2}
+          variant="emerald"
+        />
+        <StatCard
+          label={language === 'ta' ? 'சராசரி தீர்வு காலம்' : 'Average Turnaround Speed'}
+          value="6.2 Days"
+          subValue="Down from 18.5 days historically"
+          icon={Clock}
+          variant="cyan"
+        />
+        <StatCard
+          label={language === 'ta' ? '30 நாட்களுக்கு மேல் நிலுவை' : 'Critical Backlog (>30 Days)'}
+          value="184"
+          subValue="Auto-escalated to Chief Secretary"
+          icon={ShieldAlert}
+          variant="rose"
+        />
       </div>
 
       {/* Category Breakdown Table */}

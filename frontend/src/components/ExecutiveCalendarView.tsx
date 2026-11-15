@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthStore } from '../stores/authStore';
 import { CalendarAppointment, OfficerDirectoryItem } from '../types';
+import { CANONICAL_CALENDAR_APPOINTMENTS } from '../data/canonicalMeetingsData';
 import {
   Calendar as CalendarIcon,
   Clock,
@@ -39,8 +40,8 @@ export const ExecutiveCalendarView: React.FC<ExecutiveCalendarViewProps> = ({ on
   const [projectFilter, setProjectFilter] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState<string>('');
   
-  const [appointments, setAppointments] = useState<CalendarAppointment[]>([]);
-  const [selectedApptId, setSelectedApptId] = useState<string | null>(null);
+  const [appointments, setAppointments] = useState<CalendarAppointment[]>(CANONICAL_CALENDAR_APPOINTMENTS);
+  const [selectedApptId, setSelectedApptId] = useState<string | null>(CANONICAL_CALENDAR_APPOINTMENTS[0]?.id || null);
   const [directoryOfficers, setDirectoryOfficers] = useState<OfficerDirectoryItem[]>([]);
   const [isLoadingDirectory, setIsLoadingDirectory] = useState(false);
   const [selectedDossierOfficer, setSelectedDossierOfficer] = useState<OfficerDirectoryItem | null>(null);
@@ -81,71 +82,11 @@ export const ExecutiveCalendarView: React.FC<ExecutiveCalendarViewProps> = ({ on
         }
       })
       .catch(() => {
-        // Fallback seed
-        const fallback: CalendarAppointment[] = [
-          {
-            id: "appt-cm-01",
-            title_en: "Quarterly Irrigation & Kuruvai Water Inflow Review with Delta MLAs",
-            title_ta: "டெல்டா தொகுதி சட்டமன்ற உறுப்பினர்களுடன் குறுவை பாசன நீர் மறுசீராய்வு கூட்டம்",
-            appointment_type: "MLA_DELEGATION",
-            scheduled_date: new Date().toISOString().split('T')[0],
-            scheduled_time: "10:00 AM - 10:45 AM",
-            duration_minutes: 45,
-            location: "Chief Minister's Secretariat Chamber, Fort St. George",
-            status: "CONFIRMED",
-            priority: "CRITICAL",
-            host_name: "Hon'ble Chief Minister",
-            host_role: "CHIEF_MINISTER",
-            participant_name_en: "Thiruvaiyaru & Mannargudi MLA Delegation",
-            participant_name_ta: "திருவையாறு & மன்னார்குடி சட்டமன்ற உறுப்பினர்கள் குழு",
-            participant_designation: "Members of Legislative Assembly (MLAs)",
-            participant_role: "MLA",
-            participant_department: "Water Resources & Agriculture",
-            participant_district: "Thanjavur & Tiruvarur",
-            participant_contact: "+91 94433 12091",
-            participant_email: "mla.thiruvaiyaru@tnassembly.gov.in",
-            participant_emails: ["mla.thiruvaiyaru@tnassembly.gov.in", "mla.mannargudi@tnassembly.gov.in"],
-            agenda_en: "Request for staggered release of 15,000 cusecs from Mettur dam for tail-end delta canals in Vennar sub-basin.",
-            agenda_ta: "வெண்ணாறு உபவடிநிலத்தில் கடைமடை பாசன கால்வாய்களுக்கு மேட்டூரிலிருந்து 15,000 கனஅடி நீர் திறக்க கோரிக்கை.",
-            ai_prepared_notes_en: "Mettur reservoir storage at 68.4 ft (31.2 TMC). Tail-end reaches in Tiruvarur have 12% moisture deficit. Releasing 15,000 cusecs for 6 days is hydrologically sustainable.",
-            ai_prepared_notes_ta: "மேட்டூர் அணை நீர் இருப்பு 68.4 அடி. திருவாரூர் கடைமடை பகுதியில் 12% ஈரப்பதம் குறைவு. 6 நாட்களுக்கு 15,000 கனஅடி நீர் திறப்பு சாத்தியமானது.",
-            historical_decisions_context: ["Special Kuruvai Cultivation Package G.O. Ms No. 84 sanctioned in June 2026."],
-            required_files_gos: ["G.O. (Ms) No. 84 - WRD Delta Water Schedule"],
-            protocol_clearance_status: "VIP_SECURITY"
-          },
-          {
-            id: "appt-cm-02",
-            title_en: "High-Level Briefing on Semiconductor Fab Land Allotment & Power Substation",
-            title_ta: "குறைக்கடத்தி தொழிற்சாலை நில ஒதுக்கீடு மற்றும் மின் துணை நிலையம் குறித்த உயர்மட்ட கூட்டம்",
-            appointment_type: "SECRETARY_BRIEFING",
-            scheduled_date: new Date().toISOString().split('T')[0],
-            scheduled_time: "11:30 AM - 12:15 PM",
-            duration_minutes: 45,
-            location: "Cabinet Room, 2nd Floor, Secretariat",
-            status: "CONFIRMED",
-            priority: "HIGH",
-            host_name: "Hon'ble Chief Minister",
-            host_role: "CHIEF_MINISTER",
-            participant_name_en: "V. Arun Roy, IAS & Rajesh Lakhoni, IAS",
-            participant_name_ta: "வி. அருண் ராய், இ.ஆ.ப. & ராஜேஷ் லக்கானி, இ.ஆ.ப.",
-            participant_designation: "Principal Secretary Industries & CMD TANGEDCO",
-            participant_role: "PRINCIPAL_SECRETARY",
-            participant_department: "Industries & Energy",
-            participant_district: "Krishnagiri (Hosur)",
-            participant_contact: "+91 44 2567 1822",
-            participant_email: "indsec@tn.gov.in",
-            participant_emails: ["indsec@tn.gov.in", "cmd@tnebnet.org"],
-            agenda_en: "Review SIPCOT Krishnagiri 400kV dedicated transmission line timeline and Cabinet Incentive Note.",
-            agenda_ta: "சிப்காட் ஓசூர் 400kV பிரத்யேக மின்பாதை கால அட்டவணை மற்றும் அமைச்சரவை சலுகைக் குறிப்பு ஆய்வு.",
-            ai_prepared_notes_en: "₹4,800 Cr project requires 120 MW continuous power. Substation civil work at 74%.",
-            ai_prepared_notes_ta: "₹4,800 கோடி திட்டத்திற்கு 120 மெகாவாட் மின்சாரம் தேவை.",
-            historical_decisions_context: ["Cabinet approved Tamil Nadu Semiconductor Policy 2024."],
-            required_files_gos: ["Draft Cabinet Note - SIPCOT Allotment 2026"],
-            protocol_clearance_status: "VERIFIED"
-          }
-        ];
-        setAppointments(fallback);
-        setSelectedApptId(fallback[0].id);
+        const filtered = role === 'ALL'
+          ? CANONICAL_CALENDAR_APPOINTMENTS
+          : CANONICAL_CALENDAR_APPOINTMENTS.filter(a => a.participant_role === role);
+        setAppointments(filtered);
+        if (filtered.length > 0) setSelectedApptId(filtered[0].id);
       });
   };
 

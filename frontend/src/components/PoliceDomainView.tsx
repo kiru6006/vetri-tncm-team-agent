@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthStore } from '../stores/authStore';
-import { Shield, Radio, Video, Clock, AlertTriangle, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Shield, Radio, Video, Clock, AlertTriangle, CheckCircle2, ChevronRight, Activity, Car, Camera, Check } from 'lucide-react';
+import { StatCard } from './common';
 
 export const PoliceDomainView: React.FC = () => {
   const { language } = useAuthStore();
@@ -44,37 +45,34 @@ export const PoliceDomainView: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Police KPI Summary */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'மாநில குற்றக் குறியீடு' : 'State Crime Index'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-emerald-400">12.4 / 100</div>
-          <div className="text-xs text-slate-400">Lowest among large industrialized states</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'நெடுஞ்சாலை ரோந்து உதவி நேரம்' : 'Highway Patrol Response'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-cyan-400">7.8 Mins</div>
-          <div className="text-xs text-emerald-400 font-medium">94.2% Emergency Calls within 10 mins</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'CCTV கண்காணிப்பு கேமரா இயக்கம்' : 'CCTV Network Uptime'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-white">96.4%</div>
-          <div className="text-xs text-slate-400">1,42,000+ AI Integrated Street Feeds</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'அசம்பாவிதங்கள் அற்ற நிலை' : 'Communal Incident Metric'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-emerald-400">0 Reported</div>
-          <div className="text-xs text-slate-400">100% Peace Score across 38 districts</div>
-        </div>
+        <StatCard
+          label={language === 'ta' ? 'மாநில குற்றக் குறியீடு' : 'State Crime Index'}
+          value="12.4 / 100"
+          subValue="Lowest among large industrialized states"
+          icon={Shield}
+          variant="emerald"
+        />
+        <StatCard
+          label={language === 'ta' ? 'நெடுஞ்சாலை ரோந்து உதவி நேரம்' : 'Highway Patrol Response'}
+          value="7.8 Mins"
+          subValue="94.2% Emergency Calls within 10 mins"
+          icon={Car}
+          variant="cyan"
+        />
+        <StatCard
+          label={language === 'ta' ? 'CCTV கண்காணிப்பு கேமரா இயக்கம்' : 'CCTV Network Uptime'}
+          value="96.4%"
+          subValue="1,42,000+ AI Integrated Street Feeds"
+          icon={Camera}
+          variant="default"
+        />
+        <StatCard
+          label={language === 'ta' ? 'அசம்பாவிதங்கள் அற்ற நிலை' : 'Communal Incident Metric'}
+          value="0 Reported"
+          subValue="100% Peace Score across 38 districts"
+          icon={CheckCircle2}
+          variant="emerald"
+        />
       </div>
 
       {/* DGP Daily SITREP & Police Station Feeds */}

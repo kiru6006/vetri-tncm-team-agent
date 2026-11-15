@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthStore } from '../stores/authStore';
-import { Activity, AlertTriangle, CheckCircle2, HeartPulse, Building2, Pill, ShieldAlert, ArrowUpRight } from 'lucide-react';
+import { Activity, AlertTriangle, CheckCircle2, HeartPulse, Building2, Pill, ShieldAlert, ArrowUpRight, UserCheck } from 'lucide-react';
+import { StatCard } from './common';
 
 export const HealthDomainView: React.FC = () => {
   const { language } = useAuthStore();
@@ -32,37 +33,34 @@ export const HealthDomainView: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Health KPI Summary */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'ஆரம்ப சுகாதார நிலைய வருகை' : 'PHC Doctor Attendance'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-emerald-400">98.5%</div>
-          <div className="text-xs text-slate-400">Biometric verified across 2,286 PHCs</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'மக்களைத் தேடி மருத்துவம்' : 'Doorstep Health (MTM)'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-cyan-400">1.04 Cr</div>
-          <div className="text-xs text-slate-400">Direct doorstep beneficiaries covered</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'TNMSC மருந்து இருப்பு எச்சரிக்கை' : 'TNMSC Drug Stockouts Flagged'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-rose-400">1 Critical</div>
-          <div className="text-xs text-rose-300 font-medium">Madurai GRH buffer below 5 days</div>
-        </div>
-
-        <div className="glass-card rounded-2xl p-4 border border-slate-800 space-y-2">
-          <span className="text-[11px] text-slate-400 font-bold uppercase">
-            {language === 'ta' ? 'தொற்றுநோய் ஆபத்து நிலை' : 'State Epidemic Risk'}
-          </span>
-          <div className="text-2xl font-bold font-mono text-emerald-400">LOW (Green)</div>
-          <div className="text-xs text-slate-400">Zero active viral outbreak clusters</div>
-        </div>
+        <StatCard
+          label={language === 'ta' ? 'ஆரம்ப சுகாதார நிலைய வருகை' : 'PHC Doctor Attendance'}
+          value="98.5%"
+          subValue="Biometric verified across 2,286 PHCs"
+          icon={UserCheck}
+          variant="emerald"
+        />
+        <StatCard
+          label={language === 'ta' ? 'மக்களைத் தேடி மருத்துவம்' : 'Doorstep Health (MTM)'}
+          value="1.04 Cr"
+          subValue="Direct doorstep beneficiaries covered"
+          icon={HeartPulse}
+          variant="cyan"
+        />
+        <StatCard
+          label={language === 'ta' ? 'TNMSC மருந்து இருப்பு எச்சரிக்கை' : 'TNMSC Drug Stockouts Flagged'}
+          value="1 Critical"
+          subValue="Madurai GRH buffer below 5 days"
+          icon={ShieldAlert}
+          variant="rose"
+        />
+        <StatCard
+          label={language === 'ta' ? 'தொற்றுநோய் ஆபத்து நிலை' : 'State Epidemic Risk'}
+          value="LOW (Green)"
+          subValue="Zero active viral outbreak clusters"
+          icon={Activity}
+          variant="emerald"
+        />
       </div>
 
       {/* TNMSC Drug Inventory & Major Hospital ICU Occupancy */}
