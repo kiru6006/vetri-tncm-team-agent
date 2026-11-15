@@ -140,7 +140,7 @@ print("Wrote doc 18")
 # DOC 19: MODERNIZATION ROADMAP
 # ==============================================================================
 doc19_path = os.path.join(AUDIT_DIR, "19-modernization-roadmap.md")
-content_19 = f"""# 19 — Phased Modernization Roadmap: VERTRI TN AI OS
+content_19 = f"""# 19 — Phased Modernization Roadmap: VETTRI TN AI OS
 
 > [!IMPORTANT]
 > Zero-Disruption Phased Plan: 5 sequential waves with formal approval gates. No existing features are deleted or deprecated.
@@ -247,7 +247,7 @@ print("Wrote doc 20")
 # DOC 21: ARCHITECTURE DECISIONS (ADRs)
 # ==============================================================================
 doc21_path = os.path.join(AUDIT_DIR, "21-architecture-decisions.md")
-content_21 = f"""# 21 — Architecture Decision Records (ADRs): VERTRI TN AI OS
+content_21 = f"""# 21 — Architecture Decision Records (ADRs): VETTRI TN AI OS
 
 > [!NOTE]
 > Captures key architectural decisions, rationale, trade-offs, and compliance considerations.
@@ -304,7 +304,7 @@ doc22_path = os.path.join(AUDIT_DIR, "22-release-readiness-assessment.md")
 content_22 = f"""# 22 — Release Readiness Assessment and Final Audit Board Sign-Off
 
 > [!IMPORTANT]
-> Final evaluation of the VERTRI TN AI OS platform against enterprise production standards.
+> Final evaluation of the VETTRI TN AI OS platform against enterprise production standards.
 
 ---
 

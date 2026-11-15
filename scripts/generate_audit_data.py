@@ -18,7 +18,7 @@ defects = tracker.get("defects", [])
 with open(os.path.join(DATA_DIR, "feature-inventory.json"), "w") as f:
     json.dump({
         "metadata": {
-            "title": "VERTRI TN AI OS Complete Feature Inventory",
+            "title": "VETTRI TN AI OS Complete Feature Inventory",
             "total_categories": len(categories),
             "total_features": len(features),
             "verified_at": "2026-11-15T13:50:00Z",

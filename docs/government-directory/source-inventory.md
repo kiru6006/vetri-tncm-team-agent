@@ -2,7 +2,7 @@
 
 **Document Version:** 1.0.0  
 **Audit Date:** 2026-11-14  
-**Auditing Authority:** VERTRI TN AI OS Technical Governance Team  
+**Auditing Authority:** VETTRI TN AI OS Technical Governance Team  
 **Master Entry Point:** `https://www.tn.gov.in/contact_directory.php`
 
 ---

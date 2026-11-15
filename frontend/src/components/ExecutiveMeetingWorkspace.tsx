@@ -60,8 +60,8 @@ export const ExecutiveMeetingWorkspace: React.FC<ExecutiveMeetingWorkspaceProps>
             attendees: [
               {
                 officer_id: "off-cm-01",
-                name_en: "Thiru C. Joseph Vijay",
-                name_ta: "திரு சி. ஜோசப் விஜய்",
+                name_en: "Hon'ble Chief Minister",
+                name_ta: "மாண்புமிகு முதலமைச்சர்",
                 designation: "Chief Minister",
                 tier_role: "CHIEF_MINISTER",
                 status: "CONFIRMED"

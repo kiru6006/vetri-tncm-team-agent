@@ -74,7 +74,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       nameEn = "Dr. M. Sai Kumar, IAS (Chief Secretary)";
       nameTa = "முனைவர் எம். சாய் குமார், இ.ஆ.ப. (தலைமைச் செயலாளர்)";
     } else if (role === 'DISTRICT_COLLECTOR') {
-      nameEn = "Kranthi Kumar Pati, IAS (Collector, Coimbatore)";
+      nameEn = "Thiru Pavankumar G Giriyappanavar, IAS., (Collector, Coimbatore)";
       nameTa = "கிராந்திகுமார் பாடி, இ.ஆ.ப. (மாவட்ட ஆட்சியர், கோவை)";
     } else if (role === 'DEPARTMENT_SECRETARY') {
       nameEn = "T. Udhayachandran, IAS (Finance Secretary)";

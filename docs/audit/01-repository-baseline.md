@@ -1,6 +1,6 @@
-# VERTRI TN AI OS — Master Enterprise Architecture & Feature Audit
+# VETTRI TN AI OS — Master Enterprise Architecture & Feature Audit
 ## Document 01: Repository Baseline & Technical Environment Record
-**System:** VERTRI TN AI OS  
+**System:** VETTRI TN AI OS  
 **Evaluation Date:** 2026-11-15T13:50:00+05:30  
 **Commit SHA:** `86462a9a7fd5058d4f49d5e845fc6938e6505b0f`  
 **Git Branch:** `main` (Remote: `origin/main` synchronized)  
@@ -132,3 +132,4 @@ The active client-side routing in [frontend/src/App.tsx](file:///Users/apple/pro
 38. `#data-sources`: Upstream Gazette & Data Connectors
 39. `#role_view`: Persona-Adaptive Executive Cockpit
 40. Deep Links (`#copilot`, `#audit-logs`, `#ai-agents`, `#risk-intelligence`, `#users-roles`, `#settings`): Currently routed to fallback or drawer triggers.
+

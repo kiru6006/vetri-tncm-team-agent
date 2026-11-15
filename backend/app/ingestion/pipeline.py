@@ -1,5 +1,5 @@
 """
-Master Ingestion Pipeline for VERTRI TN AI OS.
+Master Ingestion Pipeline for VETTRI TN AI OS.
 Orchestrates scheduled ETL jobs, aggregates sync outputs, and maintains cryptographic audit records.
 """
 

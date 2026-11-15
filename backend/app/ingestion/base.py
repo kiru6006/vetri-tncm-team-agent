@@ -1,5 +1,5 @@
 """
-Abstract Base Ingestion Adapter for VERTRI TN AI OS.
+Abstract Base Ingestion Adapter for VETTRI TN AI OS.
 Standardizes data fetching, parsing, Pydantic validation, fuzzy deduplication, and SHA-256 audit diff logging.
 """
 

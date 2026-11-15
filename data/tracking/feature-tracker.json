@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "system": "VERTRI TN AI OS",
+    "system": "VETTRI TN AI OS",
     "document": "Master Feature Audit, Verification and Quality Gates Tracker",
     "version": "2.0.0",
     "generated_at": "2026-11-14T11:26:42Z",
@@ -179,7 +179,7 @@
       "title": "Sidebar and Catalog Routes Without Explicit View Handlers",
       "severity": "P1",
       "category_id": "GOV-17",
-      "status": "OPEN",
+      "status": "VERIFIED_FIXED",
       "description": "Navigating to certain routes (#copilot, #audit-logs, #ai-agents, #risk-intelligence, #users-roles, #settings) renders blank content without fallback or redirection.",
       "reproduction_steps": "Click 'AI Agents' or 'Audit Logs' in the navigation sidebar.",
       "impact": "User sees empty main content pane without error message or redirect.",

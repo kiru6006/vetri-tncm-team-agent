@@ -1,4 +1,4 @@
-# VERTRI TN AI OS — Responsive Defects Register
+# VETTRI TN AI OS — Responsive Defects Register
 ## Version 2.0 | Log of Responsive Defects, Root Causes, and Applied Remediations
 
 ### 1. Defect Summary Table

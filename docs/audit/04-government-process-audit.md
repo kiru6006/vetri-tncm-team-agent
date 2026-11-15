@@ -1,4 +1,4 @@
-# 04 — Government Process and Policy Audit: VERTRI TN AI OS
+# 04 — Government Process and Policy Audit: VETTRI TN AI OS
 
 > [!NOTE]
 > Evaluates application workflows against statutory procedures: the Tamil Nadu Secretariat Manual of Office Procedure (MOP), District Collector Review Guidelines, and Mudhalvar Mukavari Citizen Charter.
@@ -32,7 +32,7 @@ stateDiagram-v2
 
 ## 2. Tamil Nadu Secretariat Manual of Office Procedure (MOP) Alignment
 
-| Secretariat MOP Standard | Regulatory Requirement | VERTRI TN AI OS Implementation | Gap / Recommendation |
+| Secretariat MOP Standard | Regulatory Requirement | VETTRI TN AI OS Implementation | Gap / Recommendation |
 |---|---|---|---|
 | **Note File Movement** | Tracking file creation, paragraph numbering, and officer initials | Modeled as flat action items in `cmo_endpoints.py` | Add structured note sheet metadata (`note_number`, `current_desk`, `flag_reference`) |
 | **G.O. Classification** | Distinguish between G.O. Ms. (Manuscript - major policy) and G.O. Rt. (Routine - staff/minor) | Generic string field `go_reference` | Enforce G.O. type enum (`MS`, `RT`, `MISC`) and Gazette issue date |

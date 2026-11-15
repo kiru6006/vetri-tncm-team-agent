@@ -1,14 +1,14 @@
-# VERTRI TN AI OS — Accessibility (WCAG 2.2 AA) Audit Report
+# VETTRI TN AI OS — Accessibility (WCAG 2.2 AA) Audit Report
 ## Version 2.0 | Mobile Accessibility, Color Contrast, and Screen Reader Evaluation
 
 ### 1. Executive Summary
-An accessibility audit was conducted across the VERTRI TN AI OS interface according to **WCAG 2.2 Level AA** standards, with special focus on mobile touchscreen usability, keyboard operability, safe area ergonomics, and dual-language (Tamil / English) rendering.
+An accessibility audit was conducted across the VETTRI TN AI OS interface according to **WCAG 2.2 Level AA** standards, with special focus on mobile touchscreen usability, keyboard operability, safe area ergonomics, and dual-language (Tamil / English) rendering.
 
 ---
 
 ### 2. WCAG 2.2 AA Compliance Matrix
 
-| Criterion | Level | Requirement | Implementation in VERTRI TN AI OS | Status |
+| Criterion | Level | Requirement | Implementation in VETTRI TN AI OS | Status |
 |:---|:---|:---|:---|:---|
 | **1.4.3 Contrast (Minimum)** | AA | Contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. | All text tokens (`text-white`, `text-slate-100`, `text-slate-300`, `text-amber-400`) achieve ≥ 7.5:1 against `#07090e` and `rgba(13, 18, 31, 0.85)`. | **COMPLIANT** |
 | **1.4.11 Non-text Contrast** | AA | Contrast ratio of at least 3:1 for UI components and graphical objects. | Border highlights (`rgba(255, 255, 255, 0.25)`), icons, and status badges meet or exceed 3:1 contrast. | **COMPLIANT** |

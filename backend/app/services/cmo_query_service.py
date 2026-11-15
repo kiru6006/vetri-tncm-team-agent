@@ -1,5 +1,5 @@
 """
-CMO Query Service: Production-grade data access layer for VERTRI TN AI OS.
+CMO Query Service: Production-grade data access layer for VETTRI TN AI OS.
 Implements fast multi-attribute searching, relational joins, cross-queries, and audit timelines.
 """
 

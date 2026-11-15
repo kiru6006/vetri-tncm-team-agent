@@ -1,4 +1,4 @@
-# 02 — Complete Feature Inventory: VERTRI TN AI OS
+# 02 — Complete Feature Inventory: VETTRI TN AI OS
 
 > [!IMPORTANT]
 > **Zero-Feature-Loss Mandate**: Every single one of the **108 capabilities** cataloged below is an active, verified governance feature. Under no circumstances may any feature, route, schema, or component be removed, merged into oblivion, or disabled.
@@ -7,7 +7,7 @@
 
 ## 1. Executive Summary & Inventory Statistics
 
-The VERTRI TN AI OS platform contains **108 distinct business capabilities** distributed across **24 operational categories** (`GOV-01` to `GOV-24`).
+The VETTRI TN AI OS platform contains **108 distinct business capabilities** distributed across **24 operational categories** (`GOV-01` to `GOV-24`).
 
 ### Inventory Breakdown
 - **Total Registered Capabilities**: 108

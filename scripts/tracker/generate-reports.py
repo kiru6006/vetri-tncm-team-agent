@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 generate-reports.py
-Master generator for VERTRI TN AI OS:
+Master generator for VETTRI TN AI OS:
 1. data/tracking/feature-tracker.json (Canonical 24 categories, 70+ capabilities)
 2. data/tracking/verification-history.json (Append-only audit ledger)
 3. docs/project-tracker/*.md (9 comprehensive governance reports)
@@ -1314,7 +1314,7 @@ for cat in CATEGORIES:
 
 MASTER_DATA = {
     "metadata": {
-        "system": "VERTRI TN AI OS",
+        "system": "VETTRI TN AI OS",
         "document": "Master Feature Audit, Verification and Quality Gates Tracker",
         "version": "2.0.0",
         "generated_at": NOW_ISO,
@@ -1369,14 +1369,14 @@ print(f"Updated {HIST_FILE} (total runs logged: {len(hist_entries)}).")
 def generate_markdown_reports():
     # Report 1: README.md
     with open(DOCS_DIR / "README.md", "w", encoding="utf-8") as f:
-        f.write(f"""# VERTRI TN AI OS — Project Quality & Verification Tracker
+        f.write(f"""# VETTRI TN AI OS — Project Quality & Verification Tracker
 **Version:** 2.0.0 | **Generated:** {NOW_ISO} | **Standard:** Enterprise Government Architecture & Quality Assurance
 
-Welcome to the canonical governance, audit, and quality tracker for **VERTRI TN AI OS** (Tamil Nadu Chief Minister AI Operating System).
+Welcome to the canonical governance, audit, and quality tracker for **VETTRI TN AI OS** (Tamil Nadu Chief Minister AI Operating System).
 
 > [!IMPORTANT]
 > **Independent Advisory Demonstration Disclaimer**:
-> VERTRI TN AI OS is an independent demonstration of a proposed AI governance platform. It is not an officially commissioned or authorized government system unless explicitly authorized by the Government of Tamil Nadu.
+> VETTRI TN AI OS is an independent demonstration of a proposed AI governance platform. It is not an officially commissioned or authorized government system unless explicitly authorized by the Government of Tamil Nadu.
 
 ## Executive Verification Dashboard
 
@@ -1405,7 +1405,7 @@ Welcome to the canonical governance, audit, and quality tracker for **VERTRI TN 
     # Report 2: MASTER_FEATURE_TRACKER.md
     with open(DOCS_DIR / "MASTER_FEATURE_TRACKER.md", "w", encoding="utf-8") as f:
         f.write(f"""# Master Feature Audit, Verification and Capability Tracker
-**System:** VERTRI TN AI OS | **Version:** 2.0.0 | **Timestamp:** {NOW_ISO}
+**System:** VETTRI TN AI OS | **Version:** 2.0.0 | **Timestamp:** {NOW_ISO}
 **Canonical Source:** `data/tracking/feature-tracker.json`
 
 ## Capability Summary by Category
@@ -1451,7 +1451,7 @@ Welcome to the canonical governance, audit, and quality tracker for **VERTRI TN 
 **Audit Panel:** Principal Enterprise Architect, Former TN Chief Secretary, Public Finance Specialist, AI/ML Architect, Full-Stack QA Director, Cybersecurity Lead, and Data Governance Specialist.
 
 ## 1. Executive Summary & Verification Methodology
-The panel independently executed a comprehensive audit across the entire VERTRI TN AI OS codebase, inspecting **{total_caps} capabilities** across all **24 governance categories**.
+The panel independently executed a comprehensive audit across the entire VETTRI TN AI OS codebase, inspecting **{total_caps} capabilities** across all **24 governance categories**.
 Every capability was evaluated against six non-negotiable enterprise dimensions:
 1. **User Interface (UI)**: Visual rendering, responsiveness, WCAG 2.1 AA accessibility, and error boundary containment.
 2. **Functional Integrity**: Core business logic execution, state transitions, and form validation.
@@ -1490,7 +1490,7 @@ Every capability was evaluated against six non-negotiable enterprise dimensions:
     # Report 4: DEFECT_REGISTER.md
     with open(DOCS_DIR / "DEFECT_REGISTER.md", "w", encoding="utf-8") as f:
         f.write(f"""# Master Defect Register
-**System:** VERTRI TN AI OS | **Version:** 2.0.0 | **Timestamp:** {NOW_ISO}
+**System:** VETTRI TN AI OS | **Version:** 2.0.0 | **Timestamp:** {NOW_ISO}
 
 | Defect ID | Severity | Category | Status | Title | Target Release |
 |---|---|---|---|---|---|
@@ -1618,7 +1618,7 @@ flowchart LR
     # Report 9: CHANGELOG.md
     with open(DOCS_DIR / "CHANGELOG.md", "w", encoding="utf-8") as f:
         f.write(f"""# Changelog & Continuous Delivery History
-All notable changes to the **VERTRI TN AI OS** platform are documented in this file.
+All notable changes to the **VETTRI TN AI OS** platform are documented in this file.
 
 ## [2.0.0] — {NOW_ISO[:10]}
 ### Added

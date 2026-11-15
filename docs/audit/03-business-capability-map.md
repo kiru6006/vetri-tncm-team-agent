@@ -1,7 +1,7 @@
 # 03 — Business Capability Map: Tamil Nadu Governance Architecture
 
 > [!NOTE]
-> This capability map represents the enterprise taxonomy of Tamil Nadu State Governance as operationalized in the VERTRI TN AI OS platform.
+> This capability map represents the enterprise taxonomy of Tamil Nadu State Governance as operationalized in the VETTRI TN AI OS platform.
 
 ---
 

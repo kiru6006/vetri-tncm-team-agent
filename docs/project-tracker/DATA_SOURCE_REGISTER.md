@@ -1,4 +1,4 @@
-# VERTRI TN AI OS - Data Source Register
+# VETTRI TN AI OS - Data Source Register
 
 **Registry Standard:** Official Tamil Nadu Gazette & Authoritative Government Datasets  
 **Last Synchronized:** 2026-11-14 11:02:16 IST

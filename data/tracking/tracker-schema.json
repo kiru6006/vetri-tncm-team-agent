@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "VertriTnAiosFeatureTrackerSchema",
-  "description": "Canonical JSON Schema for VERTRI TN AI OS Master Feature Audit, Verification and Quality Gates Tracker (Version 2.0)",
+  "description": "Canonical JSON Schema for VETTRI TN AI OS Master Feature Audit, Verification and Quality Gates Tracker (Version 2.0)",
   "type": "object",
   "required": [
     "metadata",

@@ -1,4 +1,4 @@
-# VERTRI TN AI OS — Responsive Component Inventory
+# VETTRI TN AI OS — Responsive Component Inventory
 ## Version 2.0 | Architectural Component Breakdown Across All Form Factors
 
 ### 1. Executive Summary

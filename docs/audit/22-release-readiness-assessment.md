@@ -1,7 +1,7 @@
 # 22 — Release Readiness Assessment and Final Audit Board Sign-Off
 
 > [!IMPORTANT]
-> Final evaluation of the VERTRI TN AI OS platform against enterprise production standards.
+> Final evaluation of the VETTRI TN AI OS platform against enterprise production standards.
 
 ---
 

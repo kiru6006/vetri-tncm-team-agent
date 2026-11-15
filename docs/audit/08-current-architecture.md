@@ -1,4 +1,4 @@
-# 08 — Current Architecture (As-Is): VERTRI TN AI OS
+# 08 — Current Architecture (As-Is): VETTRI TN AI OS
 
 > [!NOTE]
 > Formal documentation of the existing as-is architecture, component boundaries, and operational runtime.

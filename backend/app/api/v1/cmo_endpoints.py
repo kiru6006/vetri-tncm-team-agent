@@ -1,10 +1,10 @@
 """
-CMO REST API Endpoints for VERTRI TN AI OS.
+CMO REST API Endpoints for VETTRI TN AI OS.
 Exposes the 8 tools and natural language AI query endpoint.
 """
 
 from typing import Optional, List, Dict, Any
-from fastapi import APIRouter, Query, HTTPException, Response
+from fastapi import APIRouter, Query, HTTPException, Response, Depends
 from app.schemas.cmo_agent import (
     ChatQueryRequest,
     ChatQueryResponse,
@@ -17,6 +17,7 @@ from app.schemas.cmo_agent import (
     CrossQueryParams,
     CrossQueryResponse
 )
+from app.core.security import get_current_user_claims, get_optional_user_claims
 from app.agent.orchestrator import cmo_orchestrator
 from app.services.cmo_query_service import cmo_service
 from app.agent.tools import export_contacts
@@ -25,7 +26,7 @@ router = APIRouter(prefix="/cmo", tags=["Chief Minister's Office AI Agent"])
 
 
 @router.post("/chat", response_model=ChatQueryResponse)
-async def query_cmo_agent(payload: ChatQueryRequest):
+async def query_cmo_agent(payload: ChatQueryRequest, claims: dict = Depends(get_current_user_claims)):
     """
     Query the CMO AI Agent with natural language queries.
     Uses tool calling and synthesizes executive response cards with source citations.
@@ -42,7 +43,8 @@ async def query_cmo_agent(payload: ChatQueryRequest):
 async def search_officials(
     q: Optional[str] = Query(default="", description="Search query"),
     cadre: Optional[str] = Query(default=None, description="Cadre filter (IAS, IPS, IRS, IFS)"),
-    department: Optional[str] = Query(default=None, description="Department filter")
+    department: Optional[str] = Query(default=None, description="Department filter"),
+    claims: dict = Depends(get_optional_user_claims)
 ):
     """
     Find officials matching query terms and filters.
@@ -56,7 +58,7 @@ async def search_officials(
 
 
 @router.get("/departments/{dept_id}", response_model=DepartmentOverview)
-async def get_department_overview_endpoint(dept_id: str):
+async def get_department_overview_endpoint(dept_id: str, claims: dict = Depends(get_optional_user_claims)):
     """
     Retrieve full department overview, leadership, and active schemes.
     """
@@ -69,7 +71,8 @@ async def get_department_overview_endpoint(dept_id: str):
 @router.get("/schemes/{scheme_id}", response_model=SchemeProgress)
 async def get_scheme_progress_endpoint(
     scheme_id: str,
-    district: Optional[str] = Query(default=None, description="Filter by district")
+    district: Optional[str] = Query(default=None, description="Filter by district"),
+    claims: dict = Depends(get_optional_user_claims)
 ):
     """
     Retrieve scheme execution progress, budgets, and milestones.
@@ -81,7 +84,7 @@ async def get_scheme_progress_endpoint(
 
 
 @router.get("/districts/{district_name}", response_model=DistrictOverview)
-async def get_district_overview_endpoint(district_name: str):
+async def get_district_overview_endpoint(district_name: str, claims: dict = Depends(get_optional_user_claims)):
     """
     Retrieve 38-District overview, deployed Collector/SP, and active schemes.
     """
@@ -98,7 +101,8 @@ async def get_contacts_endpoint(
     rank: Optional[str] = Query(default=None),
     keyword: Optional[str] = Query(default=None),
     page: int = Query(default=1, ge=1),
-    page_size: int = Query(default=20, ge=1, le=100)
+    page_size: int = Query(default=20, ge=1, le=100),
+    claims: dict = Depends(get_optional_user_claims)
 ):
     """
     Faceted contact directory search across 5 dimensions.
@@ -117,7 +121,8 @@ async def get_personnel_changes_endpoint(
     date_from: Optional[str] = Query(default="2024-01-01"),
     date_to: Optional[str] = Query(default="2026-09-28"),
     cadre: Optional[str] = Query(default=None),
-    department: Optional[str] = Query(default=None)
+    department: Optional[str] = Query(default=None),
+    claims: dict = Depends(get_optional_user_claims)
 ):
     """
     Retrieve official transfers, promotions, and gazette posting history.
@@ -126,7 +131,7 @@ async def get_personnel_changes_endpoint(
 
 
 @router.post("/cross-query", response_model=CrossQueryResponse)
-async def cross_query_endpoint(payload: CrossQueryParams):
+async def cross_query_endpoint(payload: CrossQueryParams, claims: dict = Depends(get_current_user_claims)):
     """
     Execute relational cross-query across officials, schemes, and districts.
     """
@@ -136,7 +141,8 @@ async def cross_query_endpoint(payload: CrossQueryParams):
 @router.get("/export")
 async def export_directory_endpoint(
     format: str = Query(default="csv", description="Format: csv, pdf, or vcard"),
-    cadre: Optional[str] = Query(default="ALL")
+    cadre: Optional[str] = Query(default="ALL"),
+    claims: dict = Depends(get_optional_user_claims)
 ):
     """
     Export official directory contacts into downloadable CSV, PDF, or vCard format.
@@ -174,7 +180,7 @@ from app.services.executive_intelligence_service import executive_intel_service
 
 
 @router.get("/graph/{entity_id}", response_model=KnowledgeGraphResponse)
-async def get_knowledge_graph_endpoint(entity_id: str):
+async def get_knowledge_graph_endpoint(entity_id: str, claims: dict = Depends(get_optional_user_claims)):
     """
     Retrieve interconnected Government Knowledge Graph nodes and edges for any entity.
     """
@@ -182,7 +188,7 @@ async def get_knowledge_graph_endpoint(entity_id: str):
 
 
 @router.get("/officers/{officer_id}/intelligence", response_model=OfficerExecutiveIntelligence)
-async def get_officer_intelligence_endpoint(officer_id: str):
+async def get_officer_intelligence_endpoint(officer_id: str, claims: dict = Depends(get_optional_user_claims)):
     """
     Retrieve full executive intelligence dossier for an official (workload, projects,
     citizen complaints, crime/revenue metrics, and AI discussion topics).
@@ -194,7 +200,7 @@ async def get_officer_intelligence_endpoint(officer_id: str):
 
 
 @router.get("/departments/{dept_id}/intelligence", response_model=DepartmentIntelligence)
-async def get_department_intelligence_endpoint(dept_id: str):
+async def get_department_intelligence_endpoint(dept_id: str, claims: dict = Depends(get_optional_user_claims)):
     """
     Retrieve department intelligence diagnostic (budget utilization, revenue leakages,
     top governance risks, and operational issues).
@@ -206,7 +212,7 @@ async def get_department_intelligence_endpoint(dept_id: str):
 
 
 @router.get("/schemes/{scheme_id}/intelligence", response_model=SchemeIntelligence)
-async def get_scheme_intelligence_endpoint(scheme_id: str):
+async def get_scheme_intelligence_endpoint(scheme_id: str, claims: dict = Depends(get_optional_user_claims)):
     """
     Retrieve scheme intelligence (physical vs financial progress, audit findings,
     citizen feedback, and predictive completion date).
@@ -218,7 +224,7 @@ async def get_scheme_intelligence_endpoint(scheme_id: str):
 
 
 @router.post("/meetings/prepare", response_model=MeetingPreparationResponse)
-async def prepare_meeting_endpoint(payload: MeetingPreparationRequest):
+async def prepare_meeting_endpoint(payload: MeetingPreparationRequest, claims: dict = Depends(get_current_user_claims)):
     """
     Automatically generate an AI Pre-Meeting Briefing Strategy Dossier (agenda,
     critical questions for the Hon'ble CM, decision options, media coverage, and assembly questions).
@@ -227,7 +233,7 @@ async def prepare_meeting_endpoint(payload: MeetingPreparationRequest):
 
 
 @router.get("/decisions/{query_key}", response_model=ExecutiveDecisionSupportResponse)
-async def get_executive_decision_support_endpoint(query_key: str):
+async def get_executive_decision_support_endpoint(query_key: str, claims: dict = Depends(get_optional_user_claims)):
     """
     Resolve high-level executive queries (e.g. FOCUS_TODAY, FLOOD_PREPAREDNESS, CABINET_BRIEFING).
     """

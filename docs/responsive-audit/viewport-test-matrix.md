@@ -1,4 +1,4 @@
-# VERTRI TN AI OS — Viewport Test Matrix
+# VETTRI TN AI OS — Viewport Test Matrix
 ## Version 2.0 | Multi-Device Verification Matrix (320px to 1920px)
 
 ### 1. Viewport Test Matrix Specifications

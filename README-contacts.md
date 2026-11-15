@@ -1,6 +1,6 @@
 # Government Contacts Directory — Operational Guide
 
-**System:** VERTRI TN AI OS  
+**System:** VETTRI TN AI OS  
 **Route:** `/contacts` (and alias `/directory`)  
 **Standard:** Zero Fabricated Data, Explicit Source Provenance, RBAC Communication Masking
 

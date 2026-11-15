@@ -1,11 +1,11 @@
-# VERTRI TN AI OS — Project Quality & Verification Tracker
+# VETTRI TN AI OS — Project Quality & Verification Tracker
 **Version:** 2.0.0 | **Generated:** 2026-11-14T11:26:42Z | **Standard:** Enterprise Government Architecture & Quality Assurance
 
-Welcome to the canonical governance, audit, and quality tracker for **VERTRI TN AI OS** (Tamil Nadu Chief Minister AI Operating System).
+Welcome to the canonical governance, audit, and quality tracker for **VETTRI TN AI OS** (Tamil Nadu Chief Minister AI Operating System).
 
 > [!IMPORTANT]
 > **Independent Advisory Demonstration Disclaimer**:
-> VERTRI TN AI OS is an independent demonstration of a proposed AI governance platform. It is not an officially commissioned or authorized government system unless explicitly authorized by the Government of Tamil Nadu.
+> VETTRI TN AI OS is an independent demonstration of a proposed AI governance platform. It is not an officially commissioned or authorized government system unless explicitly authorized by the Government of Tamil Nadu.
 
 ## Executive Verification Dashboard
 

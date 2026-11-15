@@ -1,8 +1,8 @@
-# VERTRI TN AI OS — Design System & Responsive Tokens Review
+# VETTRI TN AI OS — Design System & Responsive Tokens Review
 ## Version 2.0 | Design Token Architecture and Multi-Breakpoint System
 
 ### 1. Architectural Foundations
-The design system for **VERTRI TN AI OS** is implemented using Tailwind CSS v4, custom CSS variables, and glassmorphic primitive classes designed for high-density governance intelligence.
+The design system for **VETTRI TN AI OS** is implemented using Tailwind CSS v4, custom CSS variables, and glassmorphic primitive classes designed for high-density governance intelligence.
 
 ---
 

@@ -1,5 +1,5 @@
 # Changelog & Continuous Delivery History
-All notable changes to the **VERTRI TN AI OS** platform are documented in this file.
+All notable changes to the **VETTRI TN AI OS** platform are documented in this file.
 
 ## [2.0.0] — 2026-11-14
 ### Added

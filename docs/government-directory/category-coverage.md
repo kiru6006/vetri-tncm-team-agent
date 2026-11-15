@@ -2,7 +2,7 @@
 
 **Document Version:** 1.0.0  
 **Audit Date:** 2026-11-14  
-**Context:** VERTRI TN AI OS Governance Platform  
+**Context:** VETTRI TN AI OS Governance Platform  
 **Audit Baseline:** Existing local datasets in `data/contacts/` vs Live Portal Records (`https://www.tn.gov.in/contact_directory.php`)
 
 ---

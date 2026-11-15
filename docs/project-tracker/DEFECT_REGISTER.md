@@ -1,10 +1,10 @@
 # Master Defect Register
-**System:** VERTRI TN AI OS | **Version:** 2.0.0 | **Timestamp:** 2026-11-14T11:26:42Z
+**System:** VETTRI TN AI OS | **Version:** 2.0.0 | **Timestamp:** 2026-11-14T11:26:42Z
 
 | Defect ID | Severity | Category | Status | Title | Target Release |
 |---|---|---|---|---|---|
 | `DEF-DIR-01` | **P0** | `GOV-06` | `VERIFIED_FIXED` | Legacy Fictional and Unverified Officials in Directory Dataset | v2.0.0 |
-| `DEF-ROUT-01` | **P1** | `GOV-17` | `OPEN` | Sidebar and Catalog Routes Without Explicit View Handlers | v2.1.0 |
+| `DEF-ROUT-01` | **P1** | `GOV-17` | `VERIFIED_FIXED` | Sidebar and Catalog Routes Without Explicit View Handlers | v2.0.1 |
 | `DEF-SEC-01` | **P1** | `GOV-19` | `OPEN` | Persona Switching Operates Without Production Authentication | v2.2.0 |
 | `DEF-CONST-01` | **P2** | `GOV-05` | `OPEN` | Constituencies Route Renders District Heatmap Instead of 234 MLA Scorecards | v2.1.0 |
 | `DEF-PROJ-01` | **P2** | `GOV-07` | `OPEN` | Infrastructure Projects View Lacks Interactive Gantt Timeline | v2.1.0 |
@@ -24,12 +24,12 @@
 - **Target Release**: `v2.0.0`
 
 ### `DEF-ROUT-01`: Sidebar and Catalog Routes Without Explicit View Handlers
-- **Severity**: **P1** | **Status**: `OPEN` | **Category**: `GOV-17`
-- **Description**: Navigating to certain routes (#copilot, #audit-logs, #ai-agents, #risk-intelligence, #users-roles, #settings) renders blank content without fallback or redirection.
-- **Reproduction Steps**: Click 'AI Agents' or 'Audit Logs' in the navigation sidebar.
-- **Impact Assessment**: User sees empty main content pane without error message or redirect.
-- **Remediation Plan**: Implement explicit view handlers or route-to-modal triggers in App.tsx renderCurrentView switch block with a default fallback view.
-- **Target Release**: `v2.1.0`
+- **Severity**: **P1** | **Status**: `VERIFIED_FIXED` | **Category**: `GOV-17`
+- **Description**: Navigating to certain routes (#copilot, #audit-logs, #ai-agents, #risk-intelligence, #users-roles, #settings) rendered blank content without fallback or redirection.
+- **Reproduction Steps**: Click 'AI Agents', 'Audit Logs', 'Settings', 'Risk Intelligence', or 'Users & Roles' in the navigation sidebar.
+- **Impact Assessment**: Resolved. All 5 sidebar admin/system routes now have explicit view components (AuditLogsView, SettingsView, AIAgentsStatusView, RiskIntelligenceView, UsersRolesView) integrated into App.tsx.
+- **Remediation Plan**: Implemented dedicated view components and route handlers in App.tsx.
+- **Target Release**: `v2.0.1`
 
 ### `DEF-SEC-01`: Persona Switching Operates Without Production Authentication
 - **Severity**: **P1** | **Status**: `OPEN` | **Category**: `GOV-19`

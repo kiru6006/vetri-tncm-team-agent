@@ -1,4 +1,4 @@
-import{a as E}from"./vendor-icons-XlsLcDaQ.js";var o={exports:{}},i={};/**
+import{a as E}from"./vendor-icons-Dozzp7B0.js";var o={exports:{}},i={};/**
  * @license React
  * react-dom.production.js
  *

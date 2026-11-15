@@ -1,6 +1,6 @@
-# VERTRI TN AI OS — Master Enterprise Architecture & Feature Audit
+# VETTRI TN AI OS — Master Enterprise Architecture & Feature Audit
 ## Document 00: Independent Executive Summary & Board Evaluation
-**System:** VERTRI TN AI OS (Version 2.0.0-PROTOTYPE)  
+**System:** VETTRI TN AI OS (Version 2.0.0-PROTOTYPE)  
 **Evaluation Date:** 2026-11-15 | **Security Clearance:** PUBLIC PROTOTYPE / RESTRICTED ARCHITECTURE  
 **Audit Board:** Independent Enterprise Architecture, Full-Stack, AI, Data, Security & Governance Review Panel  
 **Audit Mode:** MODE A — READ-ONLY DISCOVERY, CODE INSPECTION & FEATURE PRESERVATION  
@@ -8,7 +8,7 @@
 ---
 
 ### 1. Executive Mission & Scope
-The Independent Architecture Review Board conducted a thorough, line-by-line inspection of the **VERTRI TN AI OS** repository. The platform is an independent demonstration of an AI-powered state governance intelligence platform tailored for the **Chief Minister, Council of Ministers, Chief Secretary, District Collectors, and Secretariat Leadership of Tamil Nadu**.
+The Independent Architecture Review Board conducted a thorough, line-by-line inspection of the **VETTRI TN AI OS** repository. The platform is an independent demonstration of an AI-powered state governance intelligence platform tailored for the **Chief Minister, Council of Ministers, Chief Secretary, District Collectors, and Secretariat Leadership of Tamil Nadu**.
 
 **Primary Directive Enforced:**
 > **100% FEATURE AND BUSINESS CAPABILITY PRESERVATION.** No existing feature, route, API contract, workflow, or data domain was removed, disabled, or merged during this audit.
@@ -76,3 +76,4 @@ The modernization roadmap is strictly partitioned into non-destructive waves:
 - **Wave 2 (Architecture Consolidation):** Harmonize Next.js contacts components into the Vite production shell or vice-versa, establishing a single authoritative build.
 - **Wave 3 (AI & Enterprise Integration):** Connect the LangGraph cognitive engine to live backend databases with strict safety guardrails.
 - **Wave 4 (Production Hardening):** Deploy e-Pramaan SSO, Redis rate-limiting, and PostgreSQL replication.
+

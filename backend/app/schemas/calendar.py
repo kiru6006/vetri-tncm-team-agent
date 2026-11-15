@@ -16,7 +16,7 @@ class CalendarAppointment(BaseModel):
     priority: str = "HIGH"  # CRITICAL, HIGH, MEDIUM, ROUTINE
 
     # Host & Participant Details
-    host_name: str = "Thiru C. Joseph Vijay"
+    host_name: str = "Hon'ble Chief Minister"
     host_role: str = "CHIEF_MINISTER"
     participant_name_en: str
     participant_name_ta: str

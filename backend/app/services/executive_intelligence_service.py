@@ -1,6 +1,6 @@
 """
 Executive Intelligence Service: Core intelligence reasoning, Knowledge Graph traversal,
-departmental diagnostics, and meeting preparation for VERTRI TN AI OS Phase 4.
+departmental diagnostics, and meeting preparation for VETTRI TN AI OS Phase 4.
 """
 
 from datetime import datetime, date
@@ -227,7 +227,7 @@ class ExecutiveIntelligenceService:
             office_address=off["office_address"],
             reporting_officer={"name": "Dr. M. Sai Kumar, IAS", "designation": "Chief Secretary to Government"},
             reporting_hierarchy=[
-                {"tier": "1", "name": "Thiru C. Joseph Vijay", "designation": "Hon'ble Chief Minister"},
+                {"tier": "1", "name": "Hon'ble Chief Minister", "designation": "Hon'ble Chief Minister"},
                 {"tier": "4", "name": "Dr. M. Sai Kumar, IAS", "designation": "Chief Secretary"},
                 {"tier": "11", "name": off["full_name_en"], "designation": off["current_posting"]}
             ],
@@ -352,7 +352,7 @@ class ExecutiveIntelligenceService:
             principal_secretary_name="Principal Secretary to Government",
             executing_officers=[
                 {"name": "Dr. R. Brindha Devi, IAS", "role": "District Collector, Salem"},
-                {"name": "Kranthi Kumar Pati, IAS", "role": "District Collector, Coimbatore"}
+                {"name": "Thiru Pavankumar G Giriyappanavar, IAS.,", "role": "District Collector, Coimbatore"}
             ],
             district_coverage=["Salem", "Coimbatore", "Madurai", "Chennai", "Kallakurichi"],
             budget_sanctioned_cr=float(sch["budget_sanctioned"]),

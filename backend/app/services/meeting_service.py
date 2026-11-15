@@ -20,8 +20,8 @@ MEETINGS_DATABASE: List[MeetingBriefingPack] = [
         attendees=[
             MeetingAttendee(
                 officer_id="off-cm-01",
-                name_en="Thiru C. Joseph Vijay",
-                name_ta="திரு சி. ஜோசப் விஜய்",
+                name_en="Hon'ble Chief Minister",
+                name_ta="மாண்புமிகு முதலமைச்சர்",
                 designation="Chief Minister",
                 tier_role="CHIEF_MINISTER",
                 status="CONFIRMED"
@@ -145,8 +145,8 @@ MEETINGS_DATABASE: List[MeetingBriefingPack] = [
             ),
             MeetingAttendee(
                 officer_id="off-col-cbe-01",
-                name_en="Kranthi Kumar Pati, IAS",
-                name_ta="கிராந்தி குமார் பாடி, இ.ஆ.ப.",
+                name_en="Thiru Pavankumar G Giriyappanavar, IAS.,",
+                name_ta="திரு பவன்குமார் ஜி கிரியப்பனவர், இ.ஆ.ப.",
                 designation="Collector, Coimbatore",
                 tier_role="DISTRICT_COLLECTOR",
                 status="CONFIRMED"

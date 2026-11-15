@@ -1,8 +1,8 @@
-# VERTRI TN AI OS — Responsive Route Inventory
+# VETTRI TN AI OS — Responsive Route Inventory
 ## Version 2.0 | Comprehensive Governance Platform Route Directory
 
 ### 1. Overview
-This document catalogs all functional routes and view states in **VERTRI TN AI OS** (`vetri-tncm-aios`), their associated components, supported viewport breakpoints, and responsive state classification following the 100% Responsive UI/UX remediation.
+This document catalogs all functional routes and view states in **VETTRI TN AI OS** (`vetri-tncm-aios`), their associated components, supported viewport breakpoints, and responsive state classification following the 100% Responsive UI/UX remediation.
 
 | Status Legend | Description |
 |:---|:---|

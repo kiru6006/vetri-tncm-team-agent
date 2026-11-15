@@ -126,7 +126,7 @@ export function QuickContactsSheet({ isOpen, onClose, contacts }: QuickContactsS
 
           {/* Footer Timestamp */}
           <div className="mt-3 pt-2 border-t border-slate-200 dark:border-slate-800 text-2xs text-slate-400 flex items-center justify-between print:text-black">
-            <span>Verified from official Tamil Nadu District Portals · VERTRI TN AI OS</span>
+            <span>Verified from official Tamil Nadu District Portals · VETTRI TN AI OS</span>
             <span>Generated: {new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
           </div>
         </div>

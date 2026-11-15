@@ -1,4 +1,4 @@
-# VERTRI TN AI OS — Executive Summary & Strategic Governance Critique
+# VETTRI TN AI OS — Executive Summary & Strategic Governance Critique
 ## Enterprise AI Operating System for Governance, Intelligence & Decision Support
 **Government of Tamil Nadu — Chief Minister's Office (CMO)**
 
@@ -6,7 +6,7 @@
 
 ## 🏛️ 1. Executive Mission & Vision
 
-**VERTRI TN AI OS** is a unified, relationship-aware AI Operating System engineered for the **Hon'ble Chief Minister of Tamil Nadu (மாண்புமிகு தமிழ்நாடு முதலமைச்சர்)**, Cabinet Ministers, Chief Secretary, District Collectors, Superintendents of Police, and Secretariat Leadership.
+**VETTRI TN AI OS** is a unified, relationship-aware AI Operating System engineered for the **Hon'ble Chief Minister of Tamil Nadu (மாண்புமிகு தமிழ்நாடு முதலமைச்சர்)**, Cabinet Ministers, Chief Secretary, District Collectors, Superintendents of Police, and Secretariat Leadership.
 
 The system unifies disparate departmental data silos into an intelligent, queryable, relationship-aware operating environment delivering:
 1. **Natural-Language & Voice-Ready Query Interface**: Tool-augmented AI Agent (Claude Sonnet / LangGraph) retrieving structured government data with deterministic guardrails and cryptographic source citations.

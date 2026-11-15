@@ -7,7 +7,7 @@ AUDIT_DIR = os.path.join(REPO_ROOT, "docs", "audit")
 # DOC 05: FRONTEND CODE REVIEW
 # ==============================================================================
 doc05_path = os.path.join(AUDIT_DIR, "05-frontend-code-review.md")
-content_05 = f"""# 05 — Frontend Architecture and Code Review: VERTRI TN AI OS
+content_05 = f"""# 05 — Frontend Architecture and Code Review: VETTRI TN AI OS
 
 > [!NOTE]
 > Review covers both the primary active SPA dashboard in `frontend/` (Vite 6 + React 19 + Tailwind CSS v4) and the root `app/contacts/` Next.js prototype.
@@ -69,7 +69,7 @@ print("Wrote doc 05")
 # DOC 06: BACKEND CODE REVIEW
 # ==============================================================================
 doc06_path = os.path.join(AUDIT_DIR, "06-backend-code-review.md")
-content_06 = f"""# 06 — Backend Architecture and Code Review: VERTRI TN AI OS
+content_06 = f"""# 06 — Backend Architecture and Code Review: VETTRI TN AI OS
 
 > [!NOTE]
 > Detailed technical review of FastAPI modular monolith implementation in `backend/app/`.
@@ -132,7 +132,7 @@ print("Wrote doc 06")
 # DOC 07: DUPLICATION ANALYSIS
 # ==============================================================================
 doc07_path = os.path.join(AUDIT_DIR, "07-duplication-analysis.md")
-content_07 = f"""# 07 — Comprehensive Duplication Analysis: VERTRI TN AI OS
+content_07 = f"""# 07 — Comprehensive Duplication Analysis: VETTRI TN AI OS
 
 > [!NOTE]
 > Systematically catalogs exact file copies (D1), structural code duplicates (D2), data model redundancies (D3), and service-level overlaps across the codebase.

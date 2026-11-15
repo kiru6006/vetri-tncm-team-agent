@@ -7,7 +7,7 @@ AUDIT_DIR = os.path.join(REPO_ROOT, "docs", "audit")
 # DOC 08: CURRENT ARCHITECTURE
 # ==============================================================================
 doc08_path = os.path.join(AUDIT_DIR, "08-current-architecture.md")
-content_08 = f"""# 08 — Current Architecture (As-Is): VERTRI TN AI OS
+content_08 = f"""# 08 — Current Architecture (As-Is): VETTRI TN AI OS
 
 > [!NOTE]
 > Formal documentation of the existing as-is architecture, component boundaries, and operational runtime.
@@ -55,7 +55,7 @@ print("Wrote doc 08")
 # DOC 09: TARGET ARCHITECTURE
 # ==============================================================================
 doc09_path = os.path.join(AUDIT_DIR, "09-target-architecture.md")
-content_09 = f"""# 09 — Target Enterprise Architecture (To-Be): VERTRI TN AI OS
+content_09 = f"""# 09 — Target Enterprise Architecture (To-Be): VETTRI TN AI OS
 
 > [!NOTE]
 > Preserves all 108 existing capabilities while unifying data layers, securing all 56 endpoints, and mounting the LangGraph multi-agent engine.
@@ -153,7 +153,7 @@ print("Wrote doc 10")
 # DOC 11: AI AGENT AUDIT
 # ==============================================================================
 doc11_path = os.path.join(AUDIT_DIR, "11-ai-agent-audit.md")
-content_11 = f"""# 11 — AI and Agentic Systems Architecture Audit: VERTRI TN AI OS
+content_11 = f"""# 11 — AI and Agentic Systems Architecture Audit: VETTRI TN AI OS
 
 > [!NOTE]
 > Audit evaluates the dual AI architectures in the repository: the active backend regex orchestrator vs the standalone LangGraph supervisor.

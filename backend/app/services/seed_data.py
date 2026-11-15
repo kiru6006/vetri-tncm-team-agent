@@ -5,7 +5,7 @@ Contains authentic information for all 38 Districts, Taluks, Flagship Schemes, M
 
 TN_38_DISTRICTS = [
     {"code": "CHE", "name_en": "Chennai", "name_ta": "சென்னை", "hq_en": "Chennai", "hq_ta": "சென்னை", "zone": "North", "lat": 13.0827, "lng": 80.2707, "pop": 7088403, "area": 426.0, "score": 92.4, "collector": "Rashmi Siddharth Zagade, IAS"},
-    {"code": "CBE", "name_en": "Coimbatore", "name_ta": "கோயம்புத்தூர்", "hq_en": "Coimbatore", "hq_ta": "கோயம்புத்தூர்", "zone": "West", "lat": 11.0168, "lng": 76.9558, "pop": 3458045, "area": 4723.0, "score": 91.8, "collector": "Kranthi Kumar Pati, IAS"},
+    {"code": "CBE", "name_en": "Coimbatore", "name_ta": "கோயம்புத்தூர்", "hq_en": "Coimbatore", "hq_ta": "கோயம்புத்தூர்", "zone": "West", "lat": 11.0168, "lng": 76.9558, "pop": 3458045, "area": 4723.0, "score": 91.8, "collector": "Thiru Pavankumar G Giriyappanavar, IAS.,"},
     {"code": "MDU", "name_en": "Madurai", "name_ta": "மதுரை", "hq_en": "Madurai", "hq_ta": "மதுரை", "zone": "South", "lat": 9.9252, "lng": 78.1198, "pop": 3038252, "area": 3741.0, "score": 86.5, "collector": "M. S. Sangeetha, IAS"},
     {"code": "TPR", "name_en": "Tirupur", "name_ta": "திருப்பூர்", "hq_en": "Tirupur", "hq_ta": "திருப்பூர்", "zone": "West", "lat": 11.1085, "lng": 77.3411, "pop": 2479052, "area": 5186.0, "score": 83.2, "collector": "T. Christuraj, IAS"},
     {"code": "SLM", "name_en": "Salem", "name_ta": "சேலம்", "hq_en": "Salem", "hq_ta": "சேலம்", "zone": "West", "lat": 11.6643, "lng": 78.1460, "pop": 3482056, "area": 5245.0, "score": 87.9, "collector": "R. Brindha Devi, IAS"},

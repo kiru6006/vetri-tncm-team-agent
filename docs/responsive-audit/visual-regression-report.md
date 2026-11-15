@@ -1,8 +1,8 @@
-# VERTRI TN AI OS — Visual Stability & Regression Report
+# VETTRI TN AI OS — Visual Stability & Regression Report
 ## Version 2.0 | Layout Stability, Breakpoint Transitions, and Zero-Overflow Verification
 
 ### 1. Executive Summary
-This report documents visual regression and layout stability checks performed across all routes in **VERTRI TN AI OS**. Tests focused on preventing unwanted horizontal scrolling, verifying text overflow handling, and confirming seamless breakpoint transitions from mobile portrait (320px) to ultra-wide desktop (1920px).
+This report documents visual regression and layout stability checks performed across all routes in **VETTRI TN AI OS**. Tests focused on preventing unwanted horizontal scrolling, verifying text overflow handling, and confirming seamless breakpoint transitions from mobile portrait (320px) to ultra-wide desktop (1920px).
 
 ---
 

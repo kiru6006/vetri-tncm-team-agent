@@ -1,4 +1,4 @@
-# VERTRI TN AI OS — System Architecture & API Specification
+# VETTRI TN AI OS — System Architecture & API Specification
 ## Multi-Tier Enterprise Architecture, Data Model & Agent Engine
 
 ---

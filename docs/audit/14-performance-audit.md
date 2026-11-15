@@ -1,4 +1,4 @@
-# 14 — Performance and Scalability Audit: VERTRI TN AI OS
+# 14 — Performance and Scalability Audit: VETTRI TN AI OS
 
 > [!NOTE]
 > Profiling and bundle size breakdown for frontend SPA and backend API response latency.

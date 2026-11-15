@@ -1,7 +1,7 @@
 # Government Contact Directory Defect & Audit Report
 **Severity**: Critical / P0 Data Quality Defect  
 **Audit Scope**: Backend Services, Database Seeders, Ingestion Adapters, Frontend State Adapters, and AI Knowledge Graph.  
-**Platform**: VERTRI TN AI OS (Independent Demonstration Platform)
+**Platform**: VETTRI TN AI OS (Independent Demonstration Platform)
 
 ---
 

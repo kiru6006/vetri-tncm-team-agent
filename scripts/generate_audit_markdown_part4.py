@@ -104,7 +104,7 @@ print("Wrote doc 13")
 # DOC 14: PERFORMANCE AUDIT
 # ==============================================================================
 doc14_path = os.path.join(AUDIT_DIR, "14-performance-audit.md")
-content_14 = f"""# 14 — Performance and Scalability Audit: VERTRI TN AI OS
+content_14 = f"""# 14 — Performance and Scalability Audit: VETTRI TN AI OS
 
 > [!NOTE]
 > Profiling and bundle size breakdown for frontend SPA and backend API response latency.

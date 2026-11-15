@@ -512,7 +512,7 @@ export const ExecutiveSidebar: React.FC<ExecutiveSidebarProps> = ({
             {!sidebarCollapsed && (
               <div className="truncate">
                 <div className="text-sm font-bold text-white tracking-tight flex items-center gap-1.5 truncate">
-                  <span>{isTa ? 'வெற்றி TN AI OS' : 'VERTRI TN AI OS'}</span>
+                  <span>{isTa ? 'வெற்றி TN AI OS' : 'VETTRI TN AI OS'}</span>
                 </div>
                 <div className="text-[10px] text-amber-400 font-medium truncate">
                   {isTa ? 'தலைமை நிர்வாக தளம்' : 'Executive AI Governance'}

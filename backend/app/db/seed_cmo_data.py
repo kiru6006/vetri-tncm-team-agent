@@ -1,5 +1,5 @@
 """
-Master Seed Script for VERTRI TN AI OS - CMO 4-Dimensional Relational Governance Model.
+Master Seed Script for VETTRI TN AI OS - CMO 4-Dimensional Relational Governance Model.
 Populates authentic Tamil Nadu officials, departments, schemes, 38 districts, assignments & personnel changes.
 """
 
@@ -268,21 +268,21 @@ SAMPLE_OFFICIALS = [
         "source_refs": [{"source": "G.O.(Rt) No. 204, Public (Special.A)", "date": "2024-01-28"}]
     },
     {
-        "id": "off-col-cbe-krasthi",
-        "full_name_en": "Kranthi Kumar Pati, IAS",
-        "full_name_ta": "கிராந்தி குமார் பாடி, இ.ஆ.ப.",
+        "id": "off-col-cbe-pavan",
+        "full_name_en": "Thiru Pavankumar G Giriyappanavar, IAS.,",
+        "full_name_ta": "திரு பவன்குமார் ஜி கிரியப்பனவர், இ.ஆ.ப.",
         "cadre": CadreEnum.IAS,
-        "batch_year": 2015,
+        "batch_year": 2016,
         "current_posting": "District Collector & District Magistrate, Coimbatore",
         "department_id": "dept-rev-01",
         "ministry_id": "min-rev-01",
         "designation_rank": "District Collector",
         "phone_landline": "+91 422 2301114",
         "phone_mobile": "+91 94440 00422",
-        "official_email": "collr-cbe@nic.in",
+        "official_email": "collrcoi@nic.in",
         "office_address": "District Collectorate, State Bank Road, Coimbatore 641018",
-        "posting_effective_date": date(2023, 1, 30),
-        "expected_retirement": date(2045, 7, 31),
+        "posting_effective_date": date(2024, 6, 1),
+        "expected_retirement": date(2048, 7, 31),
         "status": OfficialStatusEnum.ACTIVE,
         "notes": "Coimbatore Metro, MSME Industrial Revival & Pillur III Water Supply",
         "source_refs": [{"source": "G.O.(Rt) No. 340, Public (Special.A)", "date": "2023-01-30"}]
@@ -443,7 +443,7 @@ SAMPLE_DISTRICTS = [
         "key_indicators": {
             "population": 3458045,
             "area_sqkm": 4723,
-            "collector_name": "Kranthi Kumar Pati, IAS",
+            "collector_name": "Thiru Pavankumar G Giriyappanavar, IAS.,",
             "sp_name": "K. Karthikeyan, IPS",
             "kmut_beneficiaries": 489200,
             "grievance_redressal_rate": 97.2,

@@ -1,4 +1,4 @@
-# VERTRI TN AI OS — Ministers & Officials Use Cases Playbook
+# VETTRI TN AI OS — Ministers & Officials Use Cases Playbook
 ## Executive Operational Guide for Tamil Nadu State Leadership
 **Target Audience:** Hon'ble Chief Minister, Cabinet Ministers, Chief Secretary, Principal Secretaries, District Collectors, Superintendents of Police, and Field Administrative Officers.
 

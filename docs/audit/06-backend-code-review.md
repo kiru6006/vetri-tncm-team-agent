@@ -1,4 +1,4 @@
-# 06 — Backend Architecture and Code Review: VERTRI TN AI OS
+# 06 — Backend Architecture and Code Review: VETTRI TN AI OS
 
 > [!NOTE]
 > Detailed technical review of FastAPI modular monolith implementation in `backend/app/`.

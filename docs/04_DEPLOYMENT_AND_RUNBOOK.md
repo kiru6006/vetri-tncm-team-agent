@@ -1,4 +1,4 @@
-# VERTRI TN AI OS — Deployment & Operational Runbook
+# VETTRI TN AI OS — Deployment & Operational Runbook
 ## Production Infrastructure, Containers, CI/CD & Observability
 
 ---

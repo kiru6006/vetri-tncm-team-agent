@@ -1,4 +1,4 @@
-# VERTRI TN AI OS
+# VETTRI TN AI OS
 ## Enterprise AI Operating System for Governance, Intelligence & Executive Action Support
 ### Independent Demonstration of a Proposed AI Governance Platform
 
@@ -9,7 +9,7 @@
 
 ## 🏛️ System Overview
 
-**VERTRI TN AI OS (Phase 5)** is an executive-first AI Governance and Action Management platform engineered to address real-world administrative decision-making for the **Hon'ble Chief Minister, Council of Ministers, Chief Secretary, District Collectors, and Secretariat Leadership**.
+**VETTRI TN AI OS (Phase 5)** is an executive-first AI Governance and Action Management platform engineered to address real-world administrative decision-making for the **Hon'ble Chief Minister, Council of Ministers, Chief Secretary, District Collectors, and Secretariat Leadership**.
 
 Rather than focusing on decorative charts, the platform prioritizes **problems requiring decisions, accountable officers, actionable directives, and audited closure**:
 
@@ -34,22 +34,22 @@ Rather than focusing on decorative charts, the platform prioritizes **problems r
 
 | Module | Current Assessment | What is Done (Verified in Repository) | What is Pending (Sprint Roadmap) |
 |---|---|---|---|
-| **Executive CM Dashboard** | **Reported (Verified)** | High-level state governance KPIs, state score gauge, priority alerts ticker, decision triage pipeline, daily morning brief cards. Backed by `ExecutiveWorkspace.tsx` and `/api/v1/executive/workspace`. | Real-time telemetry WebSocket streaming when connected to live backend server. |
-| **Department & Ministry Dashboards** | **Reported (Verified)** | All 35 Cabinet Ministers (headed by Hon'ble CM Thiru C. Joseph Vijay) and 42 Secretariat departments cataloged with portfolios, leadership rosters, and departmental KPIs. Backed by `GovernmentHierarchyDirectory.tsx`. | Subordinate directorates separate navigation cards ([DEF-DEPT-01](docs/project-tracker/DEFECT_REGISTER.md#def-dept-01)); dedicated ministerial portfolio drilldown modal ([DEF-MIN-01](docs/project-tracker/DEFECT_REGISTER.md#def-min-01)). |
-| **District Intelligence** | **Reported (Verified)** | Interactive 38-district SVG/Leaflet Tamil Nadu map, color-coded district performance heatmaps, Collector Command View, all 38 verified District Collectors. Backed by `TamilNaduInteractiveMap.tsx` and `CollectorCommandView.tsx`. | Taluk-level geospatial heat layers and complete 312-taluk Tahsildar roster integration. |
-| **Project Monitoring** | **Reported (Verified)** | State infrastructure portfolio tracking (Metro Rail, Highways, SIPCOT, Desalination Plants), financial vs physical completion %, milestone delay risk indicators. Backed by `ExplorePlatform.tsx`. | Interactive SVG/Canvas Gantt chart component for critical path and monsoon window monitoring ([DEF-PROJ-01](docs/project-tracker/DEFECT_REGISTER.md#def-proj-01)). |
-| **Scheme Monitoring** | **Reported (Verified)** | Marquee flagship welfare schemes tracking (Kalaignar Magalir Urimai Thittam, Pudhumai Penn, Breakfast Scheme, Makkalai Thedi Maruthuvam), beneficiary counts, DBT disbursement and bank rejection analytics. Backed by `FlagshipSchemesTracker.tsx`. | District-level saturation gap analysis breakdown and field surveyor mobile sync. |
-| **Government Contact Directory** | **Reported (Verified)** *(DEF-DIR-01 Fixed)* | Complete 21-category official integration across `https://www.tn.gov.in/contact_directory.php`: 35 Cabinet Ministers with portfolios, 38 District Collectors with `@nic.in` emails, 234 MLAs, 18 Rajya Sabha MPs, 40 Secretaries to Govt, 4 Constitutional Officers, 6 CM Office staff, 2 Governor staff, 242 Heads of Depts, 172 Undertakings, State Leadership & Guest Houses (787+ verified records). Backed by `/contacts` route, canonical datasets in `data/government-directory/`, and `docs/government-directory/`. Features HoD `fetch_contact_page()` deep links, Cabinet-only filter, District-sorted MLAs, and 2-column A4 CM Quick Contacts printable sheet. | Automated weekly crawler for gazette posting changes. |
-| **Global Search & AI Copilot** | **Reported (Verified)** | Slide-out Copilot drawer, global AI search modal, FastAPI backend orchestrator with 7 callable agent tools (`find_official`, `get_department_overview`, `get_scheme_progress`, etc.), zero hallucination on verified directory. Backed by `CopilotDrawer.tsx` and `backend/app/agent/`. | Token-streaming response rendering with interactive markdown table formatting. |
-| **Meeting Calendar** | **Reported (Verified)** | Executive calendar view, review meeting scheduler (Cabinet, Collector conferences), automated briefing dossier assembly, real-time meeting minutes extraction, 1-click action item sync. Backed by `ExecutiveCalendarView.tsx` and `ExecutiveMeetingWorkspace.tsx`. | Bi-directional calendar sync with Google Workspace / MS Exchange. |
-| **Messaging & Collaboration** | **Reported (Verified)** | Secure executive peer-to-peer chat, departmental working group channels (`#disaster-management`), issue-linked discussion threads anchored to CM Action IDs, directive broadcast banners. Backed by `GovernmentChatPlatform.tsx`. | Voice note recording with automated Tamil speech-to-text transcription. |
-| **CM Action Tracker** | **Reported (Verified)** | Complete 7-stage executive directive lifecycle (`Issued` $\rightarrow$ `Assigned` $\rightarrow$ `Acknowledged` $\rightarrow$ `In Progress` $\rightarrow$ `Verified & Closed`), SLA countdown timers, auto-escalation notices, independent verification sign-off. Backed by `ExecutiveActionManagement.tsx`. | Automated WhatsApp and SMS webhook reminders for impending SLA breaches. |
-| **Revenue & Leakage Intelligence** | **Reported (Verified)** | State tax receipts monitoring (Commercial Taxes, Excise, Stamp Duty), departmental budget burn rates, procurement tender audit intelligence (bid-rigging and cartel anomaly detection), CAG audit compliance tracker. Backed by `RevenueAnalyticsView.tsx` and `FraudAuditDomainView.tsx`. | Automated GeM / TNTenders portal ingestion API adapter. |
-| **Notifications & Alerts** | **Reported (Verified)** | Persistent header priority alerts ticker, in-app notification center modal, multi-channel dispatch endpoints (In-App, SMS, Email). Backed by `PriorityAlertsTicker.tsx` and `ExecutiveHeader.tsx`. | Web Push background service worker (`sw.js`) registration for wake-on-alert notifications ([DEF-NOTIF-01](docs/project-tracker/DEFECT_REGISTER.md#def-notif-01)). |
-| **Government Knowledge Hub** | **Reported (Verified)** | Central repository for Government Orders (G.O. Ms, G.O. Rt) and statutory Acts, sub-100ms keyword retrieval, department/year filtering, backend RAG endpoints. Backed by `EnterpriseKnowledgeHub.tsx` and `backend/app/api/v1/knowledge.py`. | Client-side WebAssembly / TF-IDF search fallback when backend vector RAG server is offline ([DEF-KNOW-01](docs/project-tracker/DEFECT_REGISTER.md#def-know-01)). |
-| **Left Sidebar & Mobile UI** | **Reported (Verified)** | Complete 100% responsive UI/UX architecture verified across 10 device viewports (320px–1920px). Zero document overflow, minimum 44x44px touch targets, mobile drawer with body scroll-lock and ESC close, responsive header dropdowns (`w-[calc(100vw-1.5rem)]`), and safe-area insets (`viewport-fit=cover`). 100% feature preservation. Audited in `docs/responsive-audit/`. | Native PWA offline cache service worker sync. |
-| **Explore All Dashboards Page** | **Reported (Verified)** | Comprehensive visual catalogue indexing 22+ modules, dashboards, KPIs, user roles, and direct deep links. Backed by `ExplorePlatform.tsx` (`/explore`). | User-customizable dashboard bookmarks and role-based shortcut pinning. |
-| **GitHub Pages Deployment** | **Reported (Verified)** | Automated GitHub Actions CI/CD deployment (`.github/workflows/deploy.yml`), Vite production bundling, SPA `404.html` client routing, offline demo mode with rich verified local datasets. | Custom domain mapping with automated SSL renewal. |
+| **Executive CM Dashboard** | **✅ Implemented** | High-level state governance KPIs, state score gauge, priority alerts ticker, decision triage pipeline, daily morning brief cards. Backed by `ExecutiveWorkspace.tsx` and `/api/v1/executive/workspace`. | Real-time telemetry WebSocket streaming when connected to live backend server. |
+| **Department & Ministry Dashboards** | **✅ Implemented** | All 35 Cabinet Ministers (headed by Hon'ble CM Thiru C. Joseph Vijay) and 42 Secretariat departments cataloged with portfolios, leadership rosters, and departmental KPIs. Backed by `GovernmentHierarchyDirectory.tsx`. | Subordinate directorates separate navigation cards ([DEF-DEPT-01](docs/project-tracker/DEFECT_REGISTER.md#def-dept-01)); dedicated ministerial portfolio drilldown modal ([DEF-MIN-01](docs/project-tracker/DEFECT_REGISTER.md#def-min-01)). |
+| **District Intelligence** | **✅ Implemented** | Interactive 38-district SVG/Leaflet Tamil Nadu map, color-coded district performance heatmaps, Collector Command View, all 38 verified District Collectors. Backed by `TamilNaduInteractiveMap.tsx` and `CollectorCommandView.tsx`. | Taluk-level geospatial heat layers and complete 312-taluk Tahsildar roster integration. |
+| **Project Monitoring** | **✅ Implemented** | State infrastructure portfolio tracking (Metro Rail, Highways, SIPCOT, Desalination Plants), financial vs physical completion %, milestone delay risk indicators. Backed by `ExplorePlatform.tsx`. | Interactive SVG/Canvas Gantt chart component for critical path and monsoon window monitoring ([DEF-PROJ-01](docs/project-tracker/DEFECT_REGISTER.md#def-proj-01)). |
+| **Scheme Monitoring** | **✅ Implemented** | Marquee flagship welfare schemes tracking (Kalaignar Magalir Urimai Thittam, Pudhumai Penn, Breakfast Scheme, Makkalai Thedi Maruthuvam), beneficiary counts, DBT disbursement and bank rejection analytics. Backed by `FlagshipSchemesTracker.tsx`. | District-level saturation gap analysis breakdown and field surveyor mobile sync. |
+| **Government Contact Directory** | **✅ Implemented** *(DEF-DIR-01 Fixed)* | Complete 21-category official integration across `https://www.tn.gov.in/contact_directory.php`: 35 Cabinet Ministers with portfolios, 38 District Collectors with `@nic.in` emails, 234 MLAs, 18 Rajya Sabha MPs, 40 Secretaries to Govt, 4 Constitutional Officers, 6 CM Office staff, 2 Governor staff, 242 Heads of Depts, 172 Undertakings, State Leadership & Guest Houses (787+ verified records). Backed by `/contacts` route, canonical datasets in `data/government-directory/`, and `docs/government-directory/`. Features HoD `fetch_contact_page()` deep links, Cabinet-only filter, District-sorted MLAs, and 2-column A4 CM Quick Contacts printable sheet. | Automated weekly crawler for gazette posting changes. |
+| **Global Search & AI Copilot** | **⚠️ Partial** (see DEFECT_REGISTER.md) | Slide-out Copilot drawer, global AI search modal, FastAPI backend orchestrator with 7 callable agent tools (`find_official`, `get_department_overview`, `get_scheme_progress`, etc.), grounded retrieval on verified directory. Backed by `CopilotDrawer.tsx` and `backend/app/agent/`. | Token-streaming response rendering with interactive markdown table formatting. |
+| **Meeting Calendar** | **✅ Implemented** | Executive calendar view, review meeting scheduler (Cabinet, Collector conferences), automated briefing dossier assembly, real-time meeting minutes extraction, 1-click action item sync. Backed by `ExecutiveCalendarView.tsx` and `ExecutiveMeetingWorkspace.tsx`. | Bi-directional calendar sync with Google Workspace / MS Exchange. |
+| **Messaging & Collaboration** | **✅ Implemented** | Secure executive peer-to-peer chat, departmental working group channels (`#disaster-management`), issue-linked discussion threads anchored to CM Action IDs, directive broadcast banners. Backed by `GovernmentChatPlatform.tsx`. | Voice note recording with automated Tamil speech-to-text transcription. |
+| **CM Action Tracker** | **✅ Implemented** | Complete 7-stage executive directive lifecycle (`Issued` $\rightarrow$ `Assigned` $\rightarrow$ `Acknowledged` $\rightarrow$ `In Progress` $\rightarrow$ `Verified & Closed`), SLA countdown timers, auto-escalation notices, independent verification sign-off. Backed by `ExecutiveActionManagement.tsx`. | Automated WhatsApp and SMS webhook reminders for impending SLA breaches. |
+| **Revenue & Leakage Intelligence** | **✅ Implemented** | State tax receipts monitoring (Commercial Taxes, Excise, Stamp Duty), departmental budget burn rates, procurement tender audit intelligence (bid-rigging and cartel anomaly detection), CAG audit compliance tracker. Backed by `RevenueAnalyticsView.tsx` and `FraudAuditDomainView.tsx`. | Automated GeM / TNTenders portal ingestion API adapter. |
+| **Notifications & Alerts** | **✅ Implemented** | Persistent header priority alerts ticker, in-app notification center modal, multi-channel dispatch endpoints (In-App, SMS, Email). Backed by `PriorityAlertsTicker.tsx` and `ExecutiveHeader.tsx`. | Web Push background service worker (`sw.js`) registration for wake-on-alert notifications ([DEF-NOTIF-01](docs/project-tracker/DEFECT_REGISTER.md#def-notif-01)). |
+| **Government Knowledge Hub** | **✅ Implemented** | Central repository for Government Orders (G.O. Ms, G.O. Rt) and statutory Acts, sub-100ms keyword retrieval, department/year filtering, backend RAG endpoints. Backed by `EnterpriseKnowledgeHub.tsx` and `backend/app/api/v1/knowledge.py`. | Client-side WebAssembly / TF-IDF search fallback when backend vector RAG server is offline ([DEF-KNOW-01](docs/project-tracker/DEFECT_REGISTER.md#def-know-01)). |
+| **Left Sidebar & Mobile UI** | **✅ Implemented** | Complete 100% responsive UI/UX architecture verified across 10 device viewports (320px–1920px). Zero document overflow, minimum 44x44px touch targets, mobile drawer with body scroll-lock and ESC close, responsive header dropdowns (`w-[calc(100vw-1.5rem)]`), and safe-area insets (`viewport-fit=cover`). 100% feature preservation. Audited in `docs/responsive-audit/`. | Native PWA offline cache service worker sync. |
+| **Explore All Dashboards Page** | **✅ Implemented** | Comprehensive visual catalogue indexing 22+ modules, dashboards, KPIs, user roles, and direct deep links. Backed by `ExplorePlatform.tsx` (`/explore`). | User-customizable dashboard bookmarks and role-based shortcut pinning. |
+| **GitHub Pages Deployment** | **✅ Implemented** | Automated GitHub Actions CI/CD deployment (`.github/workflows/deploy.yml`), Vite production bundling, SPA `404.html` client routing, offline demo mode with rich verified local datasets. | Custom domain mapping with automated SSL renewal. |
 
 > Detailed capability-level evaluation, acceptance criteria, and defect tracking are maintained in [docs/project-tracker/MASTER_FEATURE_TRACKER.md](docs/project-tracker/MASTER_FEATURE_TRACKER.md) and [docs/project-tracker/DEFECT_REGISTER.md](docs/project-tracker/DEFECT_REGISTER.md).
 
@@ -82,7 +82,7 @@ The **Government Contacts Directory** (`/contacts`, alias `/directory`) provides
 3. **Constituency District Sorting**: In the MLAs tab, a dedicated toggle groups and sorts assembly constituencies by district.
 4. **Institutional Cards & `fetch_contact_page()`**: HoDs and Undertakings render clean institutional cards without fabricating personal names (`NOT_PUBLICLY_AVAILABLE`), complete with direct action buttons linking to department subpages.
 5. **CM Quick Contacts Sheet (Print / A4 PDF)**: A dedicated executive modal generates a compact 2-column A4 printable standing dossier featuring the Governor, CM, CS, DGP, and all 38 District Collectors.
-6. **RBAC & PII Masking**: Communication coordinates (`office_phone`, `office_email`) are unredacted for `CM`/`PS`/`SECRETARY`, gated for `ANALYST`, and strictly stripped for `READONLY` users (with cryptographic logging to `/api/audit/reveal`).
+6. **RBAC & PII Masking**: Communication coordinates (`office_phone`, `office_email`) are unredacted for `CM`/`PS`/`SECRETARY`, gated for `ANALYST`, and strictly stripped for `READONLY` users (with cryptographic logging to `/api/audit/reveal`) (enforced when FastAPI backend is running; GitHub Pages demo is static client-only hosting).
 7. **Directory Documentation**:
    - [Source Inventory](docs/government-directory/source-inventory.md)
    - [Category Coverage & Gap Analysis](docs/government-directory/category-coverage.md)
@@ -97,18 +97,18 @@ The **Government Contacts Directory** (`/contacts`, alias `/directory`) provides
 
 | CM Command Center & Decision Triage | Executive Action Tracker |
 |:---:|:---:|
-| ![CM Executive Workspace](docs/screenshots/01_cm_executive_workspace.png) | ![Action Management](docs/screenshots/01_cm_executive_workspace.png) |
+| ![CM Executive Workspace](docs/screenshots/01_cm_executive_workspace.png) | [screenshot pending] |
 
 | Enterprise Government Directory (GRM) | Explore Platform Catalogue (`/explore`) |
 |:---:|:---:|
-| ![GRM Directory](docs/screenshots/02_enterprise_grm_directory.png) | ![Explore Platform](docs/screenshots/02_enterprise_grm_directory.png) |
+| ![GRM Directory](docs/screenshots/02_enterprise_grm_directory.png) | [screenshot pending] |
 
 ---
 
 ## 🗺️ Platform Navigation Structure
 
 ```text
-VERTRI TN AI OS
+VETTRI TN AI OS
 │
 ├── EXECUTIVE OFFICE
 │   ├── CM Command Center (#cm-command)
@@ -174,7 +174,7 @@ VERTRI TN AI OS
 
 ## 📱 100% Responsive UI/UX & Mobile Architecture (320px to 1920px)
 
-VERTRI TN AI OS is engineered for flawless executive operations on smartphones, tablets, and large Secretariat command walls. 
+VETTRI TN AI OS is engineered for flawless executive operations on smartphones, tablets, and large Secretariat command walls. 
 
 ### 1. Viewport Coverage & Multi-Form-Factor Compliance
 
@@ -259,13 +259,13 @@ The system orchestrates an Anthropic Claude 3.5 Sonnet agent using a strict tool
 
 ## 🔒 Security, Clearance & PII Guardrails
 
-1. **No Hallucination**: Contact details and financial metrics are queried directly from verified PostgreSQL records. If absent, the agent reports `"Data not available in official records — source: {last_sync}"`.
+1. **Mock Mode on Demo**: Agent runs in **MOCK MODE** (regex simulation) on GitHub Pages demo. Real grounded AI targeted in Wave 2. Contact details and financial metrics are queried directly from verified PostgreSQL records when backend is live. If absent, the agent reports `"Data not available in official records — source: {last_sync}"`.
 2. **Mandatory Source Citation**: Every claim links to verified Government Orders or official portal URLs.
 3. **Role-Based Clearance (RBAC)**:
    - `CM_CS_CABINET`: Unredacted CUG lines, encrypted video meet triggers, direct executive directives.
    - `ANALYST_STAFF`: Official office PBX and department reception channels only.
    - `PUBLIC`: *Jan-Samvad* public reception hours, nodal RTI officers, and complaint desks.
-4. **Immutable Audit Trail**: 100% of queries, tool calls, and data sync jobs are cryptographically logged.
+4. **Immutable Audit Trail**: 100% of queries, tool calls, and data sync jobs are cryptographically logged (enforced when FastAPI backend is running; GitHub Pages demo is static client-only hosting).
 
 ---
 
@@ -291,41 +291,6 @@ npm run dev # Starts development server on port 3000
 cd frontend
 npm run build
 ```
-
----
-
-## 📱 100% Responsive UI/UX & Mobile Architecture (320px to 1920px)
-
-VERTRI TN AI OS is engineered for flawless executive operations on smartphones, tablets, and large Secretariat command walls. 
-
-### 1. Viewport Coverage & Multi-Form-Factor Compliance
-
-The platform is audited and tested across 10 standard device resolutions:
-- **Small Android Phones** (`320 × 568`) — Compact metrics, scrollable tabs, zero horizontal page overflow.
-- **Standard Android Phones** (`360 × 800`, `390 × 844`) — Fluid flex/grid layouts, touch targets ≥44px.
-- **iPhone SE / Small iPhones** (`375 × 667`) — Safe area insets respected, modal sheets constrained to `max-h-[90vh]`.
-- **Modern iPhones** (`393 × 852`, `430 × 932`) — Dynamic Island & safe-bottom offset for floating Copilot FAB.
-- **iPad Mini & Standard iPads** (`768 × 1024`, `810 × 1080`) — Adaptive 2-column grids with quick touch interaction.
-- **iPad Air & iPad Pro** (`820 × 1180`, `1024 × 1366`) — Full executive split views and expanded chart inspection.
-- **Desktop & Command Displays** (`1440 × 900`, `1920 × 1080`) — Full 12-column executive command cockpit.
-
-### 2. Core Responsive Innovations
-1. **No Masking Hacks**: Removed global `overflow-x: hidden` from `body`. Layout containment is achieved natively with Tailwind CSS flex/grid and container boundaries.
-2. **Safe Area Insets**: `<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />` paired with `.safe-top` and `.safe-bottom` utilities.
-3. **Ergonomic Mobile Navigation**: Mobile drawer constrained to `min(288px, 85vw)` with `document.body` scroll lock, keyboard `Escape` dismissal, and a dedicated `X` close button.
-4. **Adaptive Messaging UX**: Government Chat Platform on mobile features a native view switcher (Channels List ↔ Active Conversation) with a back button, eliminating vertical scroll fatigue.
-5. **100% Feature Preservation**: Zero business logic, data points, filters, tabs, or action buttons were omitted or permanently hidden.
-
-### 3. Responsive Audit Documentation
-- [Route Inventory](docs/responsive-audit/route-inventory.md)
-- [Component Inventory](docs/responsive-audit/component-inventory.md)
-- [Viewport Test Matrix](docs/responsive-audit/viewport-test-matrix.md)
-- [Responsive Defects Register](docs/responsive-audit/responsive-defects.md)
-- [Design System & Responsive Tokens](docs/responsive-audit/design-system-review.md)
-- [Accessibility (WCAG 2.2 AA) Report](docs/responsive-audit/accessibility-report.md)
-- [Visual Stability & Regression Report](docs/responsive-audit/visual-regression-report.md)
-- [Feature Preservation Report](docs/responsive-audit/feature-preservation-report.md)
-- [Final QA & Release Readiness Report](docs/responsive-audit/final-qa-report.md)
 
 ---
 

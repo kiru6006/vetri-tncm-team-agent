@@ -27,7 +27,7 @@ for feat in features:
     st = feat.get("implementation_status", "UNKNOWN")
     status_counts[st] = status_counts.get(st, 0) + 1
 
-content_02 = f"""# 02 — Complete Feature Inventory: VERTRI TN AI OS
+content_02 = f"""# 02 — Complete Feature Inventory: VETTRI TN AI OS
 
 > [!IMPORTANT]
 > **Zero-Feature-Loss Mandate**: Every single one of the **108 capabilities** cataloged below is an active, verified governance feature. Under no circumstances may any feature, route, schema, or component be removed, merged into oblivion, or disabled.
@@ -36,7 +36,7 @@ content_02 = f"""# 02 — Complete Feature Inventory: VERTRI TN AI OS
 
 ## 1. Executive Summary & Inventory Statistics
 
-The VERTRI TN AI OS platform contains **108 distinct business capabilities** distributed across **24 operational categories** (`GOV-01` to `GOV-24`).
+The VETTRI TN AI OS platform contains **108 distinct business capabilities** distributed across **24 operational categories** (`GOV-01` to `GOV-24`).
 
 ### Inventory Breakdown
 - **Total Registered Capabilities**: 108
@@ -107,7 +107,7 @@ doc03_path = os.path.join(AUDIT_DIR, "03-business-capability-map.md")
 content_03 = f"""# 03 — Business Capability Map: Tamil Nadu Governance Architecture
 
 > [!NOTE]
-> This capability map represents the enterprise taxonomy of Tamil Nadu State Governance as operationalized in the VERTRI TN AI OS platform.
+> This capability map represents the enterprise taxonomy of Tamil Nadu State Governance as operationalized in the VETTRI TN AI OS platform.
 
 ---
 
@@ -195,7 +195,7 @@ print("Wrote doc 03")
 # DOC 04: GOVERNMENT PROCESS AUDIT
 # ==============================================================================
 doc04_path = os.path.join(AUDIT_DIR, "04-government-process-audit.md")
-content_04 = f"""# 04 — Government Process and Policy Audit: VERTRI TN AI OS
+content_04 = f"""# 04 — Government Process and Policy Audit: VETTRI TN AI OS
 
 > [!NOTE]
 > Evaluates application workflows against statutory procedures: the Tamil Nadu Secretariat Manual of Office Procedure (MOP), District Collector Review Guidelines, and Mudhalvar Mukavari Citizen Charter.
@@ -229,7 +229,7 @@ stateDiagram-v2
 
 ## 2. Tamil Nadu Secretariat Manual of Office Procedure (MOP) Alignment
 
-| Secretariat MOP Standard | Regulatory Requirement | VERTRI TN AI OS Implementation | Gap / Recommendation |
+| Secretariat MOP Standard | Regulatory Requirement | VETTRI TN AI OS Implementation | Gap / Recommendation |
 |---|---|---|---|
 | **Note File Movement** | Tracking file creation, paragraph numbering, and officer initials | Modeled as flat action items in `cmo_endpoints.py` | Add structured note sheet metadata (`note_number`, `current_desk`, `flag_reference`) |
 | **G.O. Classification** | Distinguish between G.O. Ms. (Manuscript - major policy) and G.O. Rt. (Routine - staff/minor) | Generic string field `go_reference` | Enforce G.O. type enum (`MS`, `RT`, `MISC`) and Gazette issue date |

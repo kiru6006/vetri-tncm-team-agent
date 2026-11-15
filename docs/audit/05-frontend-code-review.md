@@ -1,4 +1,4 @@
-# 05 — Frontend Architecture and Code Review: VERTRI TN AI OS
+# 05 — Frontend Architecture and Code Review: VETTRI TN AI OS
 
 > [!NOTE]
 > Review covers both the primary active SPA dashboard in `frontend/` (Vite 6 + React 19 + Tailwind CSS v4) and the root `app/contacts/` Next.js prototype.

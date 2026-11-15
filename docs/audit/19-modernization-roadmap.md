@@ -1,4 +1,4 @@
-# 19 — Phased Modernization Roadmap: VERTRI TN AI OS
+# 19 — Phased Modernization Roadmap: VETTRI TN AI OS
 
 > [!IMPORTANT]
 > Zero-Disruption Phased Plan: 5 sequential waves with formal approval gates. No existing features are deleted or deprecated.

@@ -1,4 +1,4 @@
-# 11 — AI and Agentic Systems Architecture Audit: VERTRI TN AI OS
+# 11 — AI and Agentic Systems Architecture Audit: VETTRI TN AI OS
 
 > [!NOTE]
 > Audit evaluates the dual AI architectures in the repository: the active backend regex orchestrator vs the standalone LangGraph supervisor.

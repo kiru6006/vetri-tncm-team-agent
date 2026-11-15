@@ -3,7 +3,7 @@ import { getAllContacts } from '@/lib/contacts/loader';
 import { ContactDirectoryPage } from '@/components/contacts/ContactDirectoryPage';
 
 export const metadata = {
-  title: 'Government Contacts Directory | VERTRI TN AI OS',
+  title: 'Government Contacts Directory | VETTRI TN AI OS',
   description: 'Verified official contacts directory of Tamil Nadu Government Ministers, IAS, IPS, IFoS, District Collectors, and Department Leadership.',
 };
 

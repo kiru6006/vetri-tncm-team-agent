@@ -159,7 +159,7 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
             ),
             ReportingNode(
                 id="grm-col-cbe-01",
-                name_en="Kranthi Kumar Pati, IAS",
+                name_en="Thiru Pavankumar G Giriyappanavar, IAS.,",
                 designation_en="District Collector, Coimbatore",
                 role_tier="DISTRICT_COLLECTOR",
                 official_email="collr-cbe@nic.in"
@@ -461,15 +461,15 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
         )
     ),
 
-    # 6. DISTRICT COLLECTOR - COIMBATORE (KRANTHI KUMAR PATI IAS)
+    # 6. DISTRICT COLLECTOR - COIMBATORE
     OfficialGRMProfile(
         id="grm-col-cbe-01",
-        name_en="Kranthi Kumar Pati, IAS",
-        name_ta="கிராந்தி குமார் பாடி, இ.ஆ.ப.",
+        name_en="Thiru Pavankumar G Giriyappanavar, IAS.,",
+        name_ta="திரு பவன்குமார் ஜி கிரியப்பனவர், இ.ஆ.ப.",
         cadre="IAS",
-        batch_year=2015,
+        batch_year=2016,
         designation_en="District Collector & District Magistrate, Coimbatore",
-        designation_ta="மாவட்ட ஆட்சித்தலைவர், கோயம்புத்தூர்",
+        designation_ta="மாவட்ட ஆட்சியர் மற்றும் மாவட்ட நீதிபதி, கோயம்புத்தூர்",
         role_tier="GROUP_1",
         department_code="REVENUE",
         department_en="Revenue Administration, Disaster Management & Welfare",
@@ -596,7 +596,7 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
         ],
         recent_gos=["G.O. (Ms) No. 78 - Police Cyber Forensics Modernization"],
         recent_circulars=["SP Circular 09/2026 - Interstate Border Patrolling Directives"],
-        ai_relationship_insights="Coimbatore Rural Police maintains seamless coordination with District Collector Kranthi Kumar Pati IAS on traffic safety and border checkposts.",
+        ai_relationship_insights="Coimbatore Rural Police maintains seamless coordination with District Collector Thiru Pavankumar G Giriyappanavar IAS on traffic safety and border checkposts.",
         cross_department_collaborators=["Revenue (Collectorate)", "Highways", "Transport", "Forest", "Kerala Police"],
         data_source=DataSourceMetadata(
             source_name="Police Headquarters & CCTNS State Command Telemetry",
@@ -920,10 +920,10 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
         avatar_color="from-blue-600 to-teal-700",
         reports_to=ReportingNode(
             id="grm-col-cbe-01",
-            name_en="Kranthi Kumar Pati, IAS",
+            name_en="Thiru Pavankumar G Giriyappanavar, IAS.,",
             designation_en="District Collector, Coimbatore",
             role_tier="DISTRICT_COLLECTOR",
-            official_email="collr-cbe@nic.in"
+            official_email="collrcoi@nic.in"
         ),
         direct_reports=[
             ReportingNode(
@@ -952,7 +952,7 @@ OFFICIALS_GRM_MASTER: List[OfficialGRMProfile] = [
         ],
         recent_gos=["G.O. (Ms) No. 94 - Urban Revenue Modernization"],
         recent_circulars=["Taluk Circular 05/2026 - Survey SLA Compliance"],
-        ai_relationship_insights="Tahsildar M. Shanmugasundaram collaborates directly with Collector Kranthi Kumar Pati IAS on infrastructure land settlement.",
+        ai_relationship_insights="Tahsildar M. Shanmugasundaram collaborates directly with Collector Thiru Pavankumar G Giriyappanavar IAS on infrastructure land settlement.",
         cross_department_collaborators=["District Collector Coimbatore", "DRO", "Surveyors", "TANGEDCO", "Highways"],
         data_source=DataSourceMetadata(
             source_name="38 District Collectorates & Revenue e-District Hub",

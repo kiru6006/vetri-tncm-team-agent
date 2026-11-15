@@ -21,6 +21,12 @@ import { FraudAuditDomainView } from './components/FraudAuditDomainView';
 import { ChiefSecretaryCockpit } from './components/ChiefSecretaryCockpit';
 import { CollectorCommandView } from './components/CollectorCommandView';
 import { CopilotDrawer } from './components/CopilotDrawer';
+import { AuditLogsView } from './components/admin/AuditLogsView';
+import { SettingsView } from './components/admin/SettingsView';
+import { AIAgentsStatusView } from './components/admin/AIAgentsStatusView';
+import { RiskIntelligenceView } from './components/admin/RiskIntelligenceView';
+import { UsersRolesView } from './components/admin/UsersRolesView';
+import { ModalWrapper, StatCard } from './components/common';
 import { useAuthStore } from './stores/authStore';
 import {
   ExecutiveBriefing,
@@ -271,53 +277,49 @@ export const App: React.FC = () => {
               )}
             </section>
           )}
+
+          {/* Admin, Security & System Routes */}
+          {currentRoute === 'audit-logs' && <AuditLogsView />}
+          {currentRoute === 'settings' && <SettingsView />}
+          {currentRoute === 'ai-agents' && <AIAgentsStatusView />}
+          {currentRoute === 'risk-intelligence' && <RiskIntelligenceView />}
+          {currentRoute === 'users-roles' && <UsersRolesView />}
         </main>
       </div>
 
       {/* District Detail Modal */}
       {selectedDistrict && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
-          <div className="glass-card rounded-2xl border border-slate-700 max-w-lg w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 space-y-4 animate-in zoom-in-95 duration-200 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <div className="flex items-center gap-2">
-                <span className="px-2 py-0.5 rounded bg-slate-800 font-mono font-bold text-amber-400 text-xs">
-                  {selectedDistrict.code}
-                </span>
-                <h3 className="text-base font-bold text-white">
-                  {isTa ? selectedDistrict.nameTa : selectedDistrict.nameEn}
-                </h3>
-              </div>
-              <button
-                onClick={() => setSelectedDistrict(null)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
+        <ModalWrapper
+          isOpen={!!selectedDistrict}
+          onClose={() => setSelectedDistrict(null)}
+          title={isTa ? selectedDistrict.nameTa : selectedDistrict.nameEn}
+          badge={selectedDistrict.code}
+          maxWidth="lg"
+        >
+          <div className="space-y-4">
             <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="text-slate-400 text-[10px] uppercase font-bold">Collector</div>
-                <div className="text-slate-100 font-semibold mt-1">{selectedDistrict.collectorName}</div>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="text-slate-400 text-[10px] uppercase font-bold">Health Score</div>
-                <div className="text-emerald-400 font-mono font-bold text-base mt-1">
-                  {selectedDistrict.performanceScore.toFixed(1)} / 100
-                </div>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="text-slate-400 text-[10px] uppercase font-bold">Revenue Target</div>
-                <div className="text-slate-100 font-mono font-bold text-sm mt-1">
-                  {selectedDistrict.revenueAchievementPct}% Achieved
-                </div>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="text-slate-400 text-[10px] uppercase font-bold">Pending Petitions</div>
-                <div className="text-rose-400 font-mono font-bold text-sm mt-1">
-                  {selectedDistrict.pendingGrievances} Overdue
-                </div>
-              </div>
+              <StatCard
+                label="Collector"
+                value={selectedDistrict.collectorName}
+                variant="default"
+              />
+              <StatCard
+                label="Health Score"
+                value={`${selectedDistrict.performanceScore.toFixed(1)} / 100`}
+                variant="emerald"
+              />
+              <StatCard
+                label="Revenue Target"
+                value={`${selectedDistrict.revenueAchievementPct}%`}
+                subValue="Achieved"
+                variant="cyan"
+              />
+              <StatCard
+                label="Pending Petitions"
+                value={selectedDistrict.pendingGrievances}
+                subValue="Overdue"
+                variant="rose"
+              />
             </div>
 
             <div className="pt-2 flex justify-end gap-2">
@@ -326,7 +328,7 @@ export const App: React.FC = () => {
                   setSelectedDistrict(null);
                   handleOpenCopilot(`Analyze district ${selectedDistrict.nameEn} performance and key bottlenecks`);
                 }}
-                className="px-4 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold transition-all flex items-center gap-1.5"
+                className="px-4 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>
@@ -337,7 +339,7 @@ export const App: React.FC = () => {
               </button>
             </div>
           </div>
-        </div>
+        </ModalWrapper>
       )}
 
       {/* Floating Chief Minister AI Copilot FAB Button */}

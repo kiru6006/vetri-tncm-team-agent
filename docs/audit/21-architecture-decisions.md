@@ -1,4 +1,4 @@
-# 21 — Architecture Decision Records (ADRs): VERTRI TN AI OS
+# 21 — Architecture Decision Records (ADRs): VETTRI TN AI OS
 
 > [!NOTE]
 > Captures key architectural decisions, rationale, trade-offs, and compliance considerations.

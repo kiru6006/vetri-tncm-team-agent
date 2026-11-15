@@ -1,5 +1,5 @@
 """
-Pydantic Schemas for VERTRI TN AI OS Phase 4: Executive Intelligence Platform.
+Pydantic Schemas for VETTRI TN AI OS Phase 4: Executive Intelligence Platform.
 Defines models for Knowledge Graph, Executive Officer Dossiers, Department Intelligence,
 Scheme Intelligence, AI Meeting Preparation, and Decision Support Endpoints.
 """
